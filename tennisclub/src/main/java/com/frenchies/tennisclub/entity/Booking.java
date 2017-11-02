@@ -1,7 +1,5 @@
 package com.frenchies.tennisclub.entity;
 
-package cz.fi.muni.pa165.entity;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -18,6 +16,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import com.frenchies.tennisclub.enums.Hour24;
+
+//@Author Dore Corentin UCO 473308
+
 @Entity
 @Table(name="BOOKING")
 public class Booking {
@@ -31,11 +33,19 @@ public class Booking {
 	
 	@OneToMany
 	@NotNull
-	private List<BookingItem> bookingItems = new ArrayList<BookingItem>();
+	private List<Court> court = new ArrayList<Court>();
 		
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
+	
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateOfBooking;
+	
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Hour24 hourOfBooking;
 	
 
 	public Booking(Long idBooking) {
@@ -53,12 +63,12 @@ public class Booking {
 		this.people = people;
 	}
 
-	public List<BookingItem> getBookingItems() {
-		return Collections.unmodifiableList(bookingItems);
+	public List<Court> getCourt() {
+		return Collections.unmodifiableList(court);
 	}
 
-	public void addBookingItem(BookingItem p) {
-		bookingItems.add(p);
+	public void addBookingItem(Court p) {
+		court.add(p);
 	}
 
 	public Date getCreatedDate() {
@@ -69,6 +79,22 @@ public class Booking {
 		this.createdDate = createdDate;
 	}
 
+	public Date getDateOfBooking() {
+		return dateOfBooking;
+	}
+
+	public void setDateOfBooking(Date dateOfBooking) {
+		this.dateOfBooking = dateOfBooking;
+	}
+	
+	public Hour24 getHourOfBooking() {
+		return hourOfBooking;
+	}
+
+	public void setHourOfBooking(Hour24 hourOfBooking) {
+		this.hourOfBooking = hourOfBooking;
+	}
+	
 	public Long getIdBooking() {
 		return idBooking;
 	}

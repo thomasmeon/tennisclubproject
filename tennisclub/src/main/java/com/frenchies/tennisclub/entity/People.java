@@ -21,25 +21,27 @@ public abstract class People {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	private String password;
+	protected Long id;
 
 	@Column(nullable = false, unique = true)
 	@Pattern(regexp = ".+@.+\\....?")
 	@NotNull
-	private String email;
+	protected String email;
 	@NotNull
-	private String name;
+	protected String name;
 	@NotNull
-	private String surname;
+	protected String surname;
+	@NotNull
+	protected String login;
+	@NotNull
+	protected String password;
 
 	@Pattern(regexp = "\\+?\\d+")
-	private String phone;
+	protected String phone;
 
 	@NotNull
 	@Temporal(TemporalType.DATE)
-	private Date dateOfBirth;
+	protected Date dateOfBirth;
 
 	public Long getId() {
 		return id;
