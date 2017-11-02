@@ -10,6 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import com.frenchies.tennisclub.entity.People;
 
+/**
+ * 
+ * @author ValentinJacquet
+ *
+ */
 @Repository
 public class PeopleDaoImpl implements PeopleDao {
 

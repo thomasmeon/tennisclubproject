@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.frenchies.tennisclub.entity.People;
 
+/**
+ * 
+ * @author ValentinJacquet
+ *
+ */
 public interface PeopleDao {
 	public void create(People p);
 	 public People findById(Long id);
