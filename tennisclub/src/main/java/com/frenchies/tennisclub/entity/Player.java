@@ -26,14 +26,15 @@ public class Player extends People {
 	@Past
 	private Date dateOfBirth;
 
-	////// GETTER AND SETTER //////
+	////// CONSTRUCTOR/////
 
 	public Player(String phone, Date dateOfBirth) {
 		super();
 		this.phone = phone;
 		this.dateOfBirth = dateOfBirth;
 	}
-	
+
+	////// GETTER AND SETTER //////
 	public String getPhone() {
 		return phone;
 	}
@@ -83,14 +84,8 @@ public class Player extends People {
 
 	@Override
 	public String toString() {
-		return "Player [phone=" + phone + 
-				", dateOfBirth=" + dateOfBirth + 
-				", id=" + id + 
-				", mail=" + mail + 
-				", name="+ name + 
-				", surname=" + surname + 
-				", login=" + login + 
-				", password=" + password + "]";
+		return "Player [phone=" + phone + ", dateOfBirth=" + dateOfBirth + ", id=" + id + ", mail=" + mail + ", name="
+				+ name + ", surname=" + surname + ", login=" + login + ", password=" + password + "]";
 	}
 
 }

@@ -9,7 +9,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-//@Author Dore Corentin UCO 473308
+
+////ABSTRACT CLASS PEOPLE////
 @Entity
 @Table(name = "People")
 public abstract class People {
@@ -17,8 +18,8 @@ public abstract class People {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
-	@Column(nullable=false,unique=true)
-	@Pattern(regexp=".+@.+\\....?")
+	@Column(nullable = false, unique = true)
+	@Pattern(regexp = ".+@.+\\....?")
 	@NotNull
 	protected String mail;
 	@NotNull
@@ -30,9 +31,8 @@ public abstract class People {
 	@NotNull
 	protected String password;
 
-	
-	////SETTER AND GETTER/////
-	
+	//// SETTER AND GETTER/////
+
 	public String getMail() {
 		return mail;
 	}
@@ -40,7 +40,7 @@ public abstract class People {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -80,7 +80,9 @@ public abstract class People {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	
+		////METHODS OF PEOPLE////
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -135,17 +137,11 @@ public abstract class People {
 			return false;
 		return true;
 	}
-	
+
 	@Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", Name='" + name + '\'' +
-                ", Surname='" + surname + '\'' +
-                ", email='" + mail + '\'' +
-                ", password='" + password + '\'' +
-                ", login=" + login +
-                '}';
-}
-	
+	public String toString() {
+		return "User{" + "id=" + id + ", Name='" + name + '\'' + ", Surname='" + surname + '\'' + ", email='" + mail
+				+ '\'' + ", password='" + password + '\'' + ", login=" + login + '}';
+	}
+
 }
