@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 import com.frenchies.tennisclub.PersistenceSampleApplicationContext;
 import com.frenchies.tennisclub.dao.BookingDao;
 import com.frenchies.tennisclub.entity.Booking;
+import com.frenchies.tennisclub.entity.Player;
 import com.frenchies.tennisclub.enums.Hour24;
 
 /**
@@ -31,15 +32,12 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 	@Inject
 	private BookingDao bookingDao;
 
-//	private Player p1;
-//	private Player p2;
-
 	private long idPlayer1 = (long) 1;
 	private long idPlayer2 = (long) 2;
 	
 	@Test
 	public void testCreate() {
-//		create2People();
+		
 		
 		Calendar cal1 = Calendar.getInstance();
         cal1.set(2027, 11, 10);
@@ -53,7 +51,7 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testUpdate() {
-//		create2People();
+		
 
 		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
 
@@ -66,8 +64,8 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testRemove() {
-//		create2People();
-
+		
+		
 		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
 
 		bookingDao.create(b1);
@@ -81,7 +79,7 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testFindById() {
-//		create2People();
+		
 
 		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
 		Booking b2 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.NINE);
@@ -95,7 +93,7 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testFindAll() {
-		//create2People();
+		
 
 		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
 		Booking b2 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.NINE);
@@ -110,28 +108,4 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 		Assert.assertTrue(bookingDao.findAll().contains(b2));
 		Assert.assertTrue(bookingDao.findAll().contains(b3));
 	}
-
-//	public void create2People() {
-//		Calendar cal1 = Calendar.getInstance();
-//        cal1.set(1995, 10, 10);
-//        p1 = new Player();
-//		p1.setDateOfBirth(cal1.getTime());
-//		p1.setMail("jacques.henry@mail.com");
-//		p1.setName("Henry");
-//		p1.setSurname("Jacques");
-//		p1.setLogin("jacques.henry");
-//		p1.setPassword("blabla");
-//		//p1.setId((long) 1);
-//		p1.setPhone("+33625362718");
-//
-//		p2 = new Player();
-//		p2.setDateOfBirth(cal1.getTime());
-//		p2.setMail("jean.pierre@mail.com");
-//		p2.setName("Pierre");
-//		p2.setSurname("Jean");
-//		p2.setLogin("jean.pierre");
-//		p2.setPassword("blabla");
-//		//p2.setId((long) 2);
-//		p2.setPhone("+33725362718");
-//	}
 }
