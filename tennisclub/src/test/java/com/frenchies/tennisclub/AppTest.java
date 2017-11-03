@@ -1,4 +1,4 @@
-package com.frenchies.tennisclub.app;
+package com.frenchies.tennisclub;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
