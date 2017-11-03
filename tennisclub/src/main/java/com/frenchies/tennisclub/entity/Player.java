@@ -28,6 +28,12 @@ public class Player extends People {
 
 	////// GETTER AND SETTER //////
 
+	public Player(String phone, Date dateOfBirth) {
+		super();
+		this.phone = phone;
+		this.dateOfBirth = dateOfBirth;
+	}
+	
 	public String getPhone() {
 		return phone;
 	}

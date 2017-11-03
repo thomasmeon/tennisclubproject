@@ -12,9 +12,16 @@ import javax.persistence.Table;
 public class Manager extends People {
 		
 	
+
+	
 	//METHODE DE MANAGER
 	
 		
+	public Manager() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
     public boolean equals(Object o) {
         if (this == o) {
