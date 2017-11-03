@@ -31,7 +31,7 @@ public class Manager extends People {
 
         final Manager other = (Manager) o;
 
-        if ((getEmail() == null) ? (other.getEmail() != null) : !getEmail().equals(other.getEmail())) {
+        if ((getMail() == null) ? (other.getMail() != null) : !getMail().equals(other.getMail())) {
             return false;
         }
 
@@ -42,7 +42,7 @@ public class Manager extends People {
     public int hashCode() {
         final int prime = 23;
         int result = 1;
-        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+        result = prime * result + ((getMail() == null) ? 0 : getMail().hashCode());
         return result;
     }		
 	

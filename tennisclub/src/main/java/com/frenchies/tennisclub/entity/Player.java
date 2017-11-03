@@ -1,6 +1,5 @@
 package com.frenchies.tennisclub.entity;
 
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,45 +9,25 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
-
 
 /* CLASS PLAYER */
 
 @Entity
-@Table(name="Player")
+@Table(name = "Player")
 public class Player extends People {
-	
-	
-	@Column(nullable=false,unique=true)
-	@Pattern(regexp=".+@.+\\....?")
-	@NotNull
-	private String mail;
-	
 
 	@NotNull
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String phone;
-	
-		
-	
+
 	@NotNull
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    @Past
-    private Date dateOfBirth;
-	
-		
-	//////GETTER AND SETTER //////
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	@Past
+	private Date dateOfBirth;
 
-	public String getMail() {
-		return mail;
-	}
+	////// GETTER AND SETTER //////
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-	
 	public String getPhone() {
 		return phone;
 	}
@@ -56,7 +35,7 @@ public class Player extends People {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -65,14 +44,11 @@ public class Player extends People {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	
-	
-		
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		 result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+		result = prime * result + ((getMail() == null) ? 0 : getMail().hashCode());
 		return result;
 	}
 
@@ -83,13 +59,12 @@ public class Player extends People {
 		if (obj == null)
 			return false;
 		if (!(obj instanceof Player))
-		return false;
+			return false;
 		final Player other = (Player) obj;
-	if ((getEmail() == null) ? (other.getEmail() != null) : !getEmail().equals(other.getEmail())) {
-        return false;
-	}
+		if ((getMail() == null) ? (other.getMail() != null) : !getMail().equals(other.getMail())) {
+			return false;
+		}
 		return true;
 	}
-	
-	
+
 }
