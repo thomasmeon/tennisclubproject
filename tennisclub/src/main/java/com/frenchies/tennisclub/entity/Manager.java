@@ -3,6 +3,8 @@ package com.frenchies.tennisclub.entity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+//@author 473449 Meon Thomas
+
 /* CLASS MANAGER */
 
 @Entity
