@@ -47,8 +47,9 @@ public class Player extends People {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((getMail() == null) ? 0 : getMail().hashCode());
+		int result = super.hashCode();
+		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		return result;
 	}
 
@@ -56,15 +57,34 @@ public class Player extends People {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
-		if (!(obj instanceof Player))
+		if (getClass() != obj.getClass())
 			return false;
-		final Player other = (Player) obj;
-		if ((getMail() == null) ? (other.getMail() != null) : !getMail().equals(other.getMail())) {
+		Player other = (Player) obj;
+		if (dateOfBirth == null) {
+			if (other.dateOfBirth != null)
+				return false;
+		} else if (!dateOfBirth.equals(other.dateOfBirth))
 			return false;
-		}
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Player [phone=" + phone + 
+				", dateOfBirth=" + dateOfBirth + 
+				", id=" + id + 
+				", mail=" + mail + 
+				", name="+ name + 
+				", surname=" + surname + 
+				", login=" + login + 
+				", password=" + password + "]";
 	}
 
 }
