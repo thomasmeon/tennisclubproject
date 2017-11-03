@@ -61,7 +61,7 @@ public class Court {
 		this.idCourt = idCourt;
 	}
 
-	public Status getIdStatus() {
+	public Status getStatus() {
 		return status;
 	}
 

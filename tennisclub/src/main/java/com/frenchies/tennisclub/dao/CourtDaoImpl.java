@@ -13,7 +13,7 @@ import com.frenchies.tennisclub.entity.Court;
 /**
  * Implementation of CourtDao
  * 
- * @author ValentinJacquet
+ * @author ValentinJacquet 473362
  *
  */
 @Repository
@@ -41,6 +41,11 @@ public class CourtDaoImpl implements CourtDao {
 
 	public void remove(Court c) {
 		em.remove(c);
+	}
+
+	@Override
+	public void update(Court c) {
+		em.merge(c);		
 	}
 
 }

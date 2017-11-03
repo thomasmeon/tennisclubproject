@@ -13,7 +13,7 @@ import com.frenchies.tennisclub.entity.People;
 /**
  * Implementation of PeopleDao
  * 
- * @author ValentinJacquet
+ * @author ValentinJacquet 473362
  *
  */
 @Repository
@@ -46,6 +46,16 @@ public class PeopleDaoImpl implements PeopleDao {
 
 	public List<People> findAll() {
 		return em.createQuery("select p from People p", People.class).getResultList();
+	}
+
+	@Override
+	public void update(People b) {
+		em.merge(b);
+	}
+
+	@Override
+	public void remove(People b) {
+		em.remove(b);
 	}
 
 }
