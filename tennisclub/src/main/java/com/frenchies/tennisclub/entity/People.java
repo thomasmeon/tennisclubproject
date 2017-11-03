@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+// @author Corentin Dore
+// @author 473449 Meon Thomas
 
 ////ABSTRACT CLASS PEOPLE////
 @Entity
@@ -81,8 +83,7 @@ public abstract class People {
 		this.password = password;
 	}
 
-	
-		////METHODS OF PEOPLE////
+	//// METHODS OF PEOPLE////
 	@Override
 	public int hashCode() {
 		final int prime = 31;
