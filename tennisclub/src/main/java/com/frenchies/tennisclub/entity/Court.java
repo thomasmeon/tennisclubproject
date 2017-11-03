@@ -1,10 +1,13 @@
 package com.frenchies.tennisclub.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
@@ -12,6 +15,22 @@ import com.frenchies.tennisclub.enums.Status;
 @Entity
 @Table(name = "COURT_ITEM")
 public class Court {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idCourt;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private CourtType type;
+	
+	private int longitude;
+
+	private int lattitude;
 	
 	public Court(Long idCourt, Status status, CourtType type, int longitude, int lattitude) {
 		this.idCourt = idCourt;
@@ -20,22 +39,6 @@ public class Court {
 		this.longitude = longitude;
 		this.lattitude = lattitude;
 	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCourt;
-
-	/*
-	 * @OneToOne private Court court;
-	 */
-
-	private Status status;
-
-	private CourtType type;
-	
-	private int longitude;
-
-	private int lattitude;
 	
 	public int getLongitude() {
 		return longitude;

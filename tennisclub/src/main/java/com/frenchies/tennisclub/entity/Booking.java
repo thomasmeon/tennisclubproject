@@ -24,35 +24,18 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idBooking;
-<<<<<<< HEAD
-	
-	@ManyToOne
-	@NotNull
-	private People player1;
-	
-	@ManyToOne
-	@NotNull
-	private People player2;
-	
-//	@OneToMany
-//	@NotNull
-//	private List<Court> court = new ArrayList<Court>();
-	
-=======
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCourt;
 
-	@ManyToOne(optional = false)
+	@ManyToOne
 	@NotNull
 	private People player1;
 
-	@ManyToOne(optional = false)
+	@ManyToOne
 	@NotNull
 	private People player2;
 
->>>>>>> a66702fc7ef6c9f8449b763accf19e081da34556
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBooking;
@@ -60,21 +43,9 @@ public class Booking {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Hour24 hourOfBooking;
-<<<<<<< HEAD
-	
 
-	public Booking(People player1, People player2, Date dateOfBooking, Hour24 hourOfBooking ) {
-		//this.idBooking=idBooking;
-		this.player1=player1;
-		this.player2=player2;
-		this.dateOfBooking=dateOfBooking;
-		this.hourOfBooking=hourOfBooking;
-		
-=======
-
-	public Booking(Long idBooking, Long idCourt, People player1, People player2, Date dateOfBooking,
+	public Booking(Long idCourt, People player1, People player2, Date dateOfBooking,
 			Hour24 hourOfBooking) {
-		this.idBooking = idBooking;
 		this.idCourt = idCourt;
 		this.player1 = player1;
 		this.player2 = player2;
@@ -89,7 +60,6 @@ public class Booking {
 
 	public void setIdCourt(Long idCourt) {
 		this.idCourt = idCourt;
->>>>>>> a66702fc7ef6c9f8449b763accf19e081da34556
 	}
 
 	public People getPlayer1() {
@@ -107,18 +77,6 @@ public class Booking {
 	public void setPlayer2(People player2) {
 		this.player2 = player2;
 	}
-<<<<<<< HEAD
-	
-//	public List<Court> getCourt() {
-//		return Collections.unmodifiableList(court);
-//	}
-//
-//	public void addBookingItem(Court p) {
-//		court.add(p);
-//	}
-
-=======
->>>>>>> a66702fc7ef6c9f8449b763accf19e081da34556
 
 	public Date getDateOfBooking() {
 		return dateOfBooking;
@@ -148,10 +106,7 @@ public class Booking {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-<<<<<<< HEAD
 //		result = prime * result + ((court == null) ? 0 : court.hashCode());
-=======
->>>>>>> a66702fc7ef6c9f8449b763accf19e081da34556
 		result = prime * result + ((dateOfBooking == null) ? 0 : dateOfBooking.hashCode());
 		result = prime * result + ((hourOfBooking == null) ? 0 : hourOfBooking.hashCode());
 		result = prime * result + ((idBooking == null) ? 0 : idBooking.hashCode());
@@ -170,14 +125,6 @@ public class Booking {
 		if (getClass() != obj.getClass())
 			return false;
 		Booking other = (Booking) obj;
-<<<<<<< HEAD
-//		if (court == null) {
-//			if (other.court != null)
-//				return false;
-//		} else if (!court.equals(other.court))
-//			return false;
-=======
->>>>>>> a66702fc7ef6c9f8449b763accf19e081da34556
 		if (dateOfBooking == null) {
 			if (other.dateOfBooking != null)
 				return false;

@@ -23,12 +23,16 @@ public abstract class People {
 	@NotNull
 	protected String mail;
 	@NotNull
+	@Column(length = 25, nullable = false)
 	protected String name;
 	@NotNull
+	@Column(length = 25, nullable = false)
 	protected String surname;
 	@NotNull
+	@Column(length = 25, nullable = false)
 	protected String login;
 	@NotNull
+	@Column(length = 25, nullable = false)
 	protected String password;
 
 	//// SETTER AND GETTER/////

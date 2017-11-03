@@ -26,15 +26,25 @@ public class Player extends People {
 	@Past
 	private Date dateOfBirth;
 
-	////// CONSTRUCTOR/////
+	////// CONSTRUCTORS /////
+	
+	public Player() {
+		
+	}
 
-	public Player(String phone, Date dateOfBirth) {
-		super();
+	public Player(String name, String surname, String login, String password, String mail, String phone,
+			Date dateOfBirth) {
+		this.name = name;
+		this.surname = surname;
+		this.login = login;
+		this.password = password;
+		this.mail = mail;
 		this.phone = phone;
 		this.dateOfBirth = dateOfBirth;
 	}
 
 	////// GETTER AND SETTER //////
+
 	public String getPhone() {
 		return phone;
 	}
