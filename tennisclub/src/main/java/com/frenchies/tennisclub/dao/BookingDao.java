@@ -8,7 +8,7 @@ import com.frenchies.tennisclub.entity.Booking;
  * 
  * DAO Interface for entity Booking
  * 
- * @author ValentinJacquet
+ * @author ValentinJacquet 473362
  *
  */
 public interface BookingDao {
@@ -25,18 +25,17 @@ public interface BookingDao {
 	List<Booking> findAll();
 	
 	/**
-	 * Find user using is Name
-	 * @param user's name
-	 * @return booking with this user name
-	 */
-	Booking findUserByName(String name);
-	
-	/**
 	 * Find booking by using the booking number
 	 * @param id
 	 * @return booking
 	 */
 	Booking findById(Long id);
+	
+	/**
+	 * Update a booking already in DB
+	 * @param booking updated
+	 */
+	void update(Booking b);
 	
 	/**
 	 * Remove one booking

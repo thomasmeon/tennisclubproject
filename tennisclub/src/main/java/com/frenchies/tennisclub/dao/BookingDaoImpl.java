@@ -13,7 +13,7 @@ import com.frenchies.tennisclub.entity.Booking;
 
 /**
  * Implementation of Booking Dao
- * @author ValentinJacquet
+ * @author ValentinJacquet 473362
  *
  */
 @Repository
@@ -36,16 +36,6 @@ public class BookingDaoImpl implements BookingDao {
 	}
 
 	@Override
-	public Booking findUserByName(String name) {
-		try {
-			return em.createQuery("select b from Booking b where name = :name", Booking.class)
-					.setParameter(":name", name).getSingleResult();
-		} catch (NoResultException nrf) {
-			return null;
-		}
-	}
-
-	@Override
 	public Booking findById(Long id) {
 		try {
 			return em.createQuery("select b from Booking b where id = :id", Booking.class).setParameter(":id", id)
@@ -58,6 +48,11 @@ public class BookingDaoImpl implements BookingDao {
 	@Override
 	public void remove(Booking b) throws IllegalArgumentException {
 		em.remove(b);
+	}
+
+	@Override
+	public void update(Booking b) {
+		em.merge(b);		
 	}
 
 }

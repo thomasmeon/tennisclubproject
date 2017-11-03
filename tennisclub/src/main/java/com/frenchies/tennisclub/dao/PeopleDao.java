@@ -7,7 +7,7 @@ import com.frenchies.tennisclub.entity.People;
 /**
  * Dao Interface for entity People
  * 
- * @author ValentinJacquet
+ * @author ValentinJacquet 473362
  *
  */
 public interface PeopleDao {
@@ -33,8 +33,20 @@ public interface PeopleDao {
 	public People findUserByName(String Name);
 	
 	/**
+	 * Update a People already in DB
+	 * @param people updated
+	 */
+	void update(People b);
+	
+	/**
 	 * Get all people
 	 * @return list of people
 	 */
 	public List<People> findAll();
+	
+	/**
+	 * Remove a People already in DB
+	 * @param people to be remove
+	 */
+	void remove(People b);
 }

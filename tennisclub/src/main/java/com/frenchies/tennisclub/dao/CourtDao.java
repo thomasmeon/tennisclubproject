@@ -7,7 +7,7 @@ import com.frenchies.tennisclub.entity.Court;
 /**
  * DAO interface for entity Court
  * 
- * @author ValentinJacquet
+ * @author ValentinJacquet 473362
  *
  */
 public interface CourtDao {
@@ -30,6 +30,12 @@ public interface CourtDao {
 	 * @return court
 	 */
 	Court findById(Long id);
+	
+	/**
+	 * Update a court already in DB
+	 * @param court updated
+	 */
+	void update(Court c);
 	
 	/**
 	 * Remove one court

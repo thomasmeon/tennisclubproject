@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,29 +29,29 @@ public class Booking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idBooking;
 	
-	@ManyToOne(optional=false)
+	@ManyToOne
 	@NotNull
 	private People player1;
 	
-	@ManyToOne(optional=false)
+	@ManyToOne
 	@NotNull
 	private People player2;
 	
-	@OneToMany
-	@NotNull
-	private List<Court> court = new ArrayList<Court>();
+//	@OneToMany
+//	@NotNull
+//	private List<Court> court = new ArrayList<Court>();
 	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBooking;
 	
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
+	@Enumerated(EnumType.STRING)
 	private Hour24 hourOfBooking;
 	
 
-	public Booking(Long idBooking,People player1, People player2, Date dateOfBooking, Hour24 hourOfBooking ) {
-		this.idBooking=idBooking;
+	public Booking(People player1, People player2, Date dateOfBooking, Hour24 hourOfBooking ) {
+		//this.idBooking=idBooking;
 		this.player1=player1;
 		this.player2=player2;
 		this.dateOfBooking=dateOfBooking;
@@ -74,13 +76,13 @@ public class Booking {
 		this.player2 = player2;
 	}
 	
-	public List<Court> getCourt() {
-		return Collections.unmodifiableList(court);
-	}
-
-	public void addBookingItem(Court p) {
-		court.add(p);
-	}
+//	public List<Court> getCourt() {
+//		return Collections.unmodifiableList(court);
+//	}
+//
+//	public void addBookingItem(Court p) {
+//		court.add(p);
+//	}
 
 
 	public Date getDateOfBooking() {
@@ -107,7 +109,7 @@ public class Booking {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((court == null) ? 0 : court.hashCode());
+//		result = prime * result + ((court == null) ? 0 : court.hashCode());
 		result = prime * result + ((dateOfBooking == null) ? 0 : dateOfBooking.hashCode());
 		result = prime * result + ((hourOfBooking == null) ? 0 : hourOfBooking.hashCode());
 		result = prime * result + ((idBooking == null) ? 0 : idBooking.hashCode());
@@ -125,11 +127,11 @@ public class Booking {
 		if (getClass() != obj.getClass())
 			return false;
 		Booking other = (Booking) obj;
-		if (court == null) {
-			if (other.court != null)
-				return false;
-		} else if (!court.equals(other.court))
-			return false;
+//		if (court == null) {
+//			if (other.court != null)
+//				return false;
+//		} else if (!court.equals(other.court))
+//			return false;
 		if (dateOfBooking == null) {
 			if (other.dateOfBooking != null)
 				return false;
