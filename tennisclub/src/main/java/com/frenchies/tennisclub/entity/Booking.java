@@ -29,15 +29,15 @@ public class Booking {
 	
 	@ManyToOne(optional=false)
 	@NotNull
-	private People people;
+	private People player1;
+	
+	@ManyToOne(optional=false)
+	@NotNull
+	private People player2;
 	
 	@OneToMany
 	@NotNull
 	private List<Court> court = new ArrayList<Court>();
-		
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdDate;
 	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -48,21 +48,32 @@ public class Booking {
 	private Hour24 hourOfBooking;
 	
 
-	public Booking(Long idBooking) {
+	public Booking(Long idBooking,People player1, People player2, Date dateOfBooking, Hour24 hourOfBooking ) {
 		this.idBooking=idBooking;
-	}
-
-	public Booking() {
+		this.player1=player1;
+		this.player2=player2;
+		this.dateOfBooking=dateOfBooking;
+		this.hourOfBooking=hourOfBooking;
+		
 	}
 	
-	public People getPeople() {
-		return people;
+
+	public People getPlayer1() {
+		return player1;
 	}
 
-	public void setPeople(People people) {
-		this.people = people;
+	public void setPlayer1(People player1) {
+		this.player1 = player1;
 	}
 
+	public People getPlayer2() {
+		return player2;
+	}
+
+	public void setPlayer2(People player2) {
+		this.player2 = player2;
+	}
+	
 	public List<Court> getCourt() {
 		return Collections.unmodifiableList(court);
 	}
@@ -71,13 +82,6 @@ public class Booking {
 		court.add(p);
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
 
 	public Date getDateOfBooking() {
 		return dateOfBooking;
@@ -103,8 +107,12 @@ public class Booking {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((createdDate== null) ? 0 : createdDate.hashCode());
-		result = prime * result + ((people == null) ? 0 : people.hashCode());
+		result = prime * result + ((court == null) ? 0 : court.hashCode());
+		result = prime * result + ((dateOfBooking == null) ? 0 : dateOfBooking.hashCode());
+		result = prime * result + ((hourOfBooking == null) ? 0 : hourOfBooking.hashCode());
+		result = prime * result + ((idBooking == null) ? 0 : idBooking.hashCode());
+		result = prime * result + ((player1 == null) ? 0 : player1.hashCode());
+		result = prime * result + ((player2 == null) ? 0 : player2.hashCode());
 		return result;
 	}
 
@@ -117,18 +125,37 @@ public class Booking {
 		if (getClass() != obj.getClass())
 			return false;
 		Booking other = (Booking) obj;
-		if (createdDate == null) {
-			if (other.createdDate != null)
+		if (court == null) {
+			if (other.court != null)
 				return false;
-		} else if (!createdDate.equals(other.createdDate))
+		} else if (!court.equals(other.court))
 			return false;
-		if (people == null) {
-			if (other.people != null)
+		if (dateOfBooking == null) {
+			if (other.dateOfBooking != null)
 				return false;
-		} else if (!people.equals(other.people))
+		} else if (!dateOfBooking.equals(other.dateOfBooking))
+			return false;
+		if (hourOfBooking != other.hourOfBooking)
+			return false;
+		if (idBooking == null) {
+			if (other.idBooking != null)
+				return false;
+		} else if (!idBooking.equals(other.idBooking))
+			return false;
+		if (player1 == null) {
+			if (other.player1 != null)
+				return false;
+		} else if (!player1.equals(other.player1))
+			return false;
+		if (player2 == null) {
+			if (other.player2 != null)
+				return false;
+		} else if (!player2.equals(other.player2))
 			return false;
 		return true;
 	}
+	
+
 
 	
 	
