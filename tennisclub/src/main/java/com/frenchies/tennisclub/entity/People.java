@@ -115,11 +115,6 @@ public abstract class People {
 				return false;
 		} else if (!login.equals(other.login))
 			return false;
-		if (mail == null) {
-			if (other.mail != null)
-				return false;
-		} else if (!mail.equals(other.mail))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;

@@ -74,11 +74,6 @@ public class Player extends People {
 				return false;
 		} else if (!dateOfBirth.equals(other.dateOfBirth))
 			return false;
-		if (phone == null) {
-			if (other.phone != null)
-				return false;
-		} else if (!phone.equals(other.phone))
-			return false;
 		return true;
 	}
 
