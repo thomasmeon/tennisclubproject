@@ -12,6 +12,15 @@ import com.frenchies.tennisclub.enums.Status;
 @Entity
 @Table(name = "COURT_ITEM")
 public class Court {
+	
+	public Court(Long idCourt, Status status, CourtType type, int longitude, int lattitude) {
+		this.idCourt = idCourt;
+		this.status = status;
+		this.type = type;
+		this.longitude = longitude;
+		this.lattitude = lattitude;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCourt;
@@ -73,6 +82,8 @@ public class Court {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
+		result = prime * result + lattitude;
+		result = prime * result + longitude;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
@@ -87,21 +98,18 @@ public class Court {
 		if (getClass() != obj.getClass())
 			return false;
 		Court other = (Court) obj;
-
 		if (idCourt == null) {
 			if (other.idCourt != null)
 				return false;
 		} else if (!idCourt.equals(other.idCourt))
 			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
+		if (lattitude != other.lattitude)
 			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
+		if (longitude != other.longitude)
+			return false;
+		if (status != other.status)
+			return false;
+		if (type != other.type)
 			return false;
 		return true;
 	}
