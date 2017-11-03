@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.frenchies.tennisclub.entity.Court;
 
 /**
+ * Implementation of CourtDao
  * 
  * @author ValentinJacquet
  *

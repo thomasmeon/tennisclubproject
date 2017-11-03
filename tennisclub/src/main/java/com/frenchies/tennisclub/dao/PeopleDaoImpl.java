@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.frenchies.tennisclub.entity.People;
 
 /**
+ * Implementation of PeopleDao
  * 
  * @author ValentinJacquet
  *
