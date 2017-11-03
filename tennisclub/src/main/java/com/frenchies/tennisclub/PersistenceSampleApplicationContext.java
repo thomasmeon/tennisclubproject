@@ -22,8 +22,8 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories()
-@ComponentScan(basePackages = {"com.frenchies.tennisclub.dao"})
+@EnableJpaRepositories
+@ComponentScan(basePackages = "com.frenchies.tennisclub")
 public class PersistenceSampleApplicationContext {
 
     @Bean

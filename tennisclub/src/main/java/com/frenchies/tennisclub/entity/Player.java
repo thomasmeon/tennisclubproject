@@ -15,11 +15,10 @@ import javax.validation.constraints.Past;
 /* CLASS PLAYER */
 
 @Entity
-@Table(name = "Player")
 public class Player extends People {
 
 	@NotNull
-	@Column(nullable = false)
+	@Column(length = 25, nullable = false)
 	private String phone;
 
 	@NotNull
@@ -91,8 +90,7 @@ public class Player extends People {
 
 	@Override
 	public String toString() {
-		return "Player [phone=" + phone + ", dateOfBirth=" + dateOfBirth + ", id=" + id + ", mail=" + mail + ", name="
-				+ name + ", surname=" + surname + ", login=" + login + ", password=" + password + "]";
+		return super.toString()+"Player [phone=" + phone + ", dateOfBirth=" + dateOfBirth;
 	}
 
 }

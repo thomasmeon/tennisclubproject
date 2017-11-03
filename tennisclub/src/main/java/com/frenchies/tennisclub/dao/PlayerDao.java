@@ -2,51 +2,51 @@ package com.frenchies.tennisclub.dao;
 
 import java.util.List;
 
-import com.frenchies.tennisclub.entity.People;
+import com.frenchies.tennisclub.entity.Player;
 
 /**
- * Dao Interface for entity People
+ * Dao Interface for entity Player
  * 
  * @author ValentinJacquet 473362
  *
  */
-public interface PeopleDao {
+public interface PlayerDao {
 	
 	/**
-	 * Create new People
+	 * Create new Player
 	 * @param people to add
 	 */
-	public void create(People p);
+	public void create(Player p);
 
 	/**
 	 * Find a people in DB by using his ID
 	 * @param id
 	 * @return people find
 	 */
-	public People findById(Long id);
+	public Player findById(Long id);
 
 	/**
 	 * Find a people in DB by using his name
-	 * @param Name
+	 * @param name
 	 * @return
 	 */
-	public People findUserByName(String Name);
+	public Player findUserByName(String name);
 	
 	/**
-	 * Update a People already in DB
+	 * Update a Player already in DB
 	 * @param people updated
 	 */
-	void update(People b);
+	void update(Player b);
 	
 	/**
 	 * Get all people
 	 * @return list of people
 	 */
-	public List<People> findAll();
+	public List<Player> findAll();
 	
 	/**
-	 * Remove a People already in DB
+	 * Remove a Player already in DB
 	 * @param people to be remove
 	 */
-	void remove(People b);
+	void remove(Player b);
 }

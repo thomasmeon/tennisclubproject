@@ -3,7 +3,6 @@ package com.frenchies.tennisclub.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -37,12 +36,7 @@ public class BookingDaoImpl implements BookingDao {
 
 	@Override
 	public Booking findById(Long id) {
-		try {
-			return em.createQuery("select b from Booking b where id = :id", Booking.class).setParameter(":id", id)
-					.getSingleResult();
-		} catch (NoResultException nrf) {
-			return null;
-		}
+		return em.find(Booking.class, id);
 	}
 
 	@Override

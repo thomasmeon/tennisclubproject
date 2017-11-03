@@ -1,11 +1,10 @@
 package com.frenchies.tennisclub.entity;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -13,26 +12,29 @@ import javax.validation.constraints.Pattern;
 // @author 473449 Meon Thomas
 
 ////ABSTRACT CLASS PEOPLE////
-@Entity
-@Table(name = "People")
+@MappedSuperclass
 public abstract class People {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
-	@Column(nullable = false, unique = true)
-	@Pattern(regexp = ".+@.+\\....?")
+
 	@NotNull
+	@Column(length = 25, nullable = false, unique = true)
 	protected String mail;
+
 	@NotNull
 	@Column(length = 25, nullable = false)
 	protected String name;
+
 	@NotNull
 	@Column(length = 25, nullable = false)
 	protected String surname;
+
 	@NotNull
 	@Column(length = 25, nullable = false)
 	protected String login;
+
 	@NotNull
 	@Column(length = 25, nullable = false)
 	protected String password;

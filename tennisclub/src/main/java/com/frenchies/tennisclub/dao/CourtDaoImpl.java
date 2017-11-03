@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
+import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.Court;
 
 /**
@@ -31,12 +32,7 @@ public class CourtDaoImpl implements CourtDao {
 	}
 
 	public Court findById(Long id) {
-		try {
-			return em.createQuery("select c from Court c where id = :id", Court.class).setParameter(":id", id)
-					.getSingleResult();
-		} catch (NoResultException nrf) {
-			return null;
-		}
+		return em.find(Court.class, id);
 	}
 
 	public void remove(Court c) {

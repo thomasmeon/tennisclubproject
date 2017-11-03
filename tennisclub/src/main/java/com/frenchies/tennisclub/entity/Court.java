@@ -13,7 +13,6 @@ import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 
 @Entity
-@Table(name = "COURT_ITEM")
 public class Court {
 
 	@Id
@@ -32,8 +31,7 @@ public class Court {
 
 	private int lattitude;
 	
-	public Court(Long idCourt, Status status, CourtType type, int longitude, int lattitude) {
-		this.idCourt = idCourt;
+	public Court(Status status, CourtType type, int longitude, int lattitude) {
 		this.status = status;
 		this.type = type;
 		this.longitude = longitude;

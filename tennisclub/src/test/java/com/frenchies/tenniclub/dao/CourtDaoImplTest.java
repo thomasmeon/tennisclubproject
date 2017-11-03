@@ -32,7 +32,7 @@ public class CourtDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testCreate() {
-		Court c1 = new Court((long) 1,Status.AVAILABLE,CourtType.CLAY,49,40);
+		Court c1 = new Court(Status.AVAILABLE,CourtType.CLAY,49,40);
 
 		courtDao.create(c1);
 
@@ -41,7 +41,7 @@ public class CourtDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testUpdate() {
-		Court c1 = new Court((long) 1,Status.AVAILABLE,CourtType.CLAY,49,40);
+		Court c1 = new Court(Status.AVAILABLE,CourtType.CLAY,49,40);
 		
 		courtDao.create(c1);
 		c1.setCourtType(CourtType.HARD);;
@@ -52,7 +52,7 @@ public class CourtDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testRemove() {
-		Court c1 = new Court((long) 1,Status.AVAILABLE,CourtType.CLAY,49,40);
+		Court c1 = new Court(Status.AVAILABLE,CourtType.CLAY,49,40);
 		
 		courtDao.create(c1);
 
@@ -65,8 +65,8 @@ public class CourtDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testFindById() {
-		Court c1 = new Court((long) 1,Status.AVAILABLE,CourtType.CLAY,49,40);
-		Court c2 = new Court((long) 2,Status.AVAILABLE,CourtType.HARD,47,40);
+		Court c1 = new Court(Status.AVAILABLE,CourtType.CLAY,49,40);
+		Court c2 = new Court(Status.AVAILABLE,CourtType.HARD,47,40);
 
 		courtDao.create(c1);
 		courtDao.create(c2);
@@ -77,9 +77,9 @@ public class CourtDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testFindAll() {
-		Court c1 = new Court((long) 1,Status.AVAILABLE,CourtType.CLAY,49,40);
-		Court c2 = new Court((long) 2,Status.AVAILABLE,CourtType.HARD,47,40);
-		Court c3 = new Court((long) 3,Status.AVAILABLE,CourtType.HARD,45,40);
+		Court c1 = new Court(Status.AVAILABLE,CourtType.CLAY,49,40);
+		Court c2 = new Court(Status.AVAILABLE,CourtType.HARD,47,40);
+		Court c3 = new Court(Status.AVAILABLE,CourtType.HARD,45,40);
 
 		courtDao.create(c1);
 		courtDao.create(c2);
