@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.frenchies.tennisclub.entity.Court;
 
+/**
+ * 
+ * @author ValentinJacquet
+ *
+ */
 public interface CourtDao {
 	void create(Court c);
 	List<Court> findAll();

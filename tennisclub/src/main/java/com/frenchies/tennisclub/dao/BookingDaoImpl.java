@@ -10,6 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import com.frenchies.tennisclub.entity.Booking;
 
+/**
+ * 
+ * @author ValentinJacquet
+ *
+ */
 @Repository
 public class BookingDaoImpl implements BookingDao {
 
