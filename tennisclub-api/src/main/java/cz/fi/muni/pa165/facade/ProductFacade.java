@@ -1,12 +1,12 @@
 package cz.fi.muni.pa165.facade;
 
-import cz.fi.muni.pa165.dto.CategoryDTO;
-import cz.fi.muni.pa165.dto.NewPriceDTO;
-import cz.fi.muni.pa165.dto.ProductChangeImageDTO;
-import cz.fi.muni.pa165.dto.ProductCreateDTO;
-import cz.fi.muni.pa165.dto.ProductDTO;
-
 import java.util.List;
+
+import com.frenchies.tennisclub.dto.CategoryDTO;
+import com.frenchies.tennisclub.dto.NewPriceDTO;
+import com.frenchies.tennisclub.dto.ProductChangeImageDTO;
+import com.frenchies.tennisclub.dto.ProductCreateDTO;
+import com.frenchies.tennisclub.dto.ProductDTO;
 
 public interface ProductFacade {
 	public Long createProduct(ProductCreateDTO p);

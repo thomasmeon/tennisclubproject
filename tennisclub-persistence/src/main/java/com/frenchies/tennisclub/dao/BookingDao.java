@@ -1,8 +1,10 @@
 package com.frenchies.tennisclub.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.frenchies.tennisclub.entity.Booking;
+import com.frenchies.tennisclub.entity.User;
 
 /**
  * 
@@ -32,6 +34,13 @@ public interface BookingDao {
 	Booking findById(Long id);
 	
 	/**
+	 * Find booking by using the booking number
+	 * @param id
+	 * @return booking
+	 */
+	List<Booking> findByUser(User u);
+	
+	/**
 	 * Update a booking already in DB
 	 * @param booking updated
 	 */
@@ -43,4 +52,6 @@ public interface BookingDao {
 	 * @throws IllegalArgumentException
 	 */
 	void remove(Booking b)  throws IllegalArgumentException;
+
+	List<Booking> getBookingsCreatedBetween(Date start, Date end);
 }
