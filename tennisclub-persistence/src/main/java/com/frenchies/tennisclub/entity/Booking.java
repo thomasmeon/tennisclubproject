@@ -34,12 +34,6 @@ public class Booking {
 	@NotNull
 	private User user2;
 
-	// @NotNull
-	// private long idPlayer1;
-	//
-	// @NotNull
-	// private long idPlayer2;
-
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfBooking;
@@ -51,17 +45,6 @@ public class Booking {
 	public Booking() {
 
 	}
-
-	// public Booking(Long idCourt, long idPlayer1, long idPlayer2, Date
-	// dateOfBooking,
-	// Hour24 hourOfBooking) {
-	// this.idCourt = idCourt;
-	// this.idPlayer1 = idPlayer1;
-	// this.idPlayer2 = idPlayer2;
-	// this.dateOfBooking = dateOfBooking;
-	// this.hourOfBooking = hourOfBooking;
-	//
-	// }
 
 	public Booking(Long idCourt, User user1, User user2, Date dateOfBooking, Hour24 hourOfBooking) {
 		this.idCourt = idCourt;
@@ -79,22 +62,6 @@ public class Booking {
 	public void setIdCourt(Long idCourt) {
 		this.idCourt = idCourt;
 	}
-
-	// public long getIdPlayer1() {
-	// return idPlayer1;
-	// }
-	//
-	// public void setIdPlayer1(long idPlayer1) {
-	// this.idPlayer1 = idPlayer1;
-	// }
-	//
-	// public long getIdPlayer2() {
-	// return idPlayer2;
-	// }
-	//
-	// public void setIdPlayer2(long idPlayer2) {
-	// this.idPlayer2 = idPlayer2;
-	// }
 	
 	public User getUser1() {
 		return user1;
@@ -135,6 +102,7 @@ public class Booking {
 	public void setIdBooking(Long idBooking) {
 		this.idBooking = idBooking;
 	}
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 	@Override
@@ -232,4 +200,6 @@ public class Booking {
 	// return true;
 	// }
 >>>>>>> 1326343e9d2a7be6b7332a4be5c2004af9653ca9
+=======
+>>>>>>> beb722b5b6b12ad25ec014e87aef527e757da317
 }
