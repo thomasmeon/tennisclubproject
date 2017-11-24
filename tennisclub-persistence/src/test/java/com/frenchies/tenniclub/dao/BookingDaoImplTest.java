@@ -5,18 +5,21 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.PersistenceSampleApplicationContext;
 import com.frenchies.tennisclub.dao.BookingDao;
+import com.frenchies.tennisclub.dao.UserDao;
 import com.frenchies.tennisclub.entity.Booking;
-import com.frenchies.tennisclub.entity.Player;
+import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.enums.Hour24;
 
 /**
@@ -31,31 +34,45 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Inject
 	private BookingDao bookingDao;
+	
+	@Autowired
+	public UserDao userDao;
+	
+	private User u1;
+	private User u2;
+	private Booking b1;
+	private Booking b2;
+	private Booking b3;
+	
+	private Calendar cal1;
 
-	private long idPlayer1 = (long) 1;
-	private long idPlayer2 = (long) 2;
+	@BeforeMethod
+	public void init() {
+		cal1 = Calendar.getInstance();
+		cal1.set(1999, 11, 10);
+
+		u1 = UserDaoImplTest.getSimpleUser();
+		u2 = UserDaoImplTest.getSimpleUser2();
+		userDao.create(u1);
+		userDao.create(u2);
+		
+		b1 = new Booking((long) 1, u1, u2, new Date(20171002), Hour24.EIGHT);
+		b2 = new Booking((long) 1, u1, u2, new Date(20171002), Hour24.NINE);
+		b3 = new Booking((long) 1, u1, u2, new Date(20171002), Hour24.TEN);
+
+		bookingDao.create(b1);
+		bookingDao.create(b2);
+		bookingDao.create(b3);
+		
+	}
 	
 	@Test
 	public void testCreate() {
-		
-		
-		Calendar cal1 = Calendar.getInstance();
-        cal1.set(2027, 11, 10);
-
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, cal1.getTime(), Hour24.EIGHT);
-
-		bookingDao.create(b1);
-
 		Assert.assertEquals(bookingDao.findById(b1.getIdBooking()), b1);
 	}
 
 	@Test
 	public void testUpdate() {
-		
-
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
-
-		bookingDao.create(b1);
 		b1.setHourOfBooking(Hour24.SEVEN);
 		bookingDao.update(b1);
 
@@ -64,12 +81,6 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testRemove() {
-		
-		
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
-
-		bookingDao.create(b1);
-
 		Assert.assertEquals(bookingDao.findById(b1.getIdBooking()), b1);
 
 		bookingDao.remove(b1);
@@ -79,30 +90,12 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testFindById() {
-		
-
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
-		Booking b2 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.NINE);
-
-		bookingDao.create(b1);
-		bookingDao.create(b2);
-
 		Assert.assertEquals(bookingDao.findById(b1.getIdBooking()), b1);
 		Assert.assertEquals(bookingDao.findById(b2.getIdBooking()), b2);
 	}
 
 	@Test
 	public void testFindAll() {
-		
-
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
-		Booking b2 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.NINE);
-		Booking b3 = new Booking((long) 1, idPlayer2, idPlayer1, new Date(20171002), Hour24.TEN);
-
-		bookingDao.create(b1);
-		bookingDao.create(b2);
-		bookingDao.create(b3);
-
 		Assert.assertEquals(bookingDao.findAll().size(), 3);
 		Assert.assertTrue(bookingDao.findAll().contains(b1));
 		Assert.assertTrue(bookingDao.findAll().contains(b2));
