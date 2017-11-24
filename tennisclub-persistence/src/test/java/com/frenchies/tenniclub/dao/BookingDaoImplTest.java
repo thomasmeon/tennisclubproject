@@ -1,6 +1,5 @@
 package com.frenchies.tenniclub.dao;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import javax.inject.Inject;
@@ -32,17 +31,17 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 	@Inject
 	private BookingDao bookingDao;
 
-	private long idPlayer1 = (long) 1;
-	private long idPlayer2 = (long) 2;
+//	private long idPlayer1 = (long) 1;
+//	private long idPlayer2 = (long) 2;
+	
+	private Player player1;
+	private Player player2;
 	
 	@Test
 	public void testCreate() {
 		
-		
-		Calendar cal1 = Calendar.getInstance();
-        cal1.set(2027, 11, 10);
-
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, cal1.getTime(), Hour24.EIGHT);
+		//Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, cal1.getTime(), Hour24.EIGHT);
+        Booking b1 = new Booking((long) 1, player1, player2, new Date(20171002), Hour24.EIGHT);
 
 		bookingDao.create(b1);
 
@@ -53,8 +52,9 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 	public void testUpdate() {
 		
 
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
-
+		//Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
+		Booking b1 = new Booking((long) 1, player1, player2, new Date(20171002), Hour24.EIGHT);
+		
 		bookingDao.create(b1);
 		b1.setHourOfBooking(Hour24.SEVEN);
 		bookingDao.update(b1);
@@ -66,8 +66,9 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 	public void testRemove() {
 		
 		
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
-
+		//Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
+		Booking b1 = new Booking((long) 1, player1, player2, new Date(20171002), Hour24.EIGHT);
+		
 		bookingDao.create(b1);
 
 		Assert.assertEquals(bookingDao.findById(b1.getIdBooking()), b1);
@@ -81,8 +82,11 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 	public void testFindById() {
 		
 
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
-		Booking b2 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.NINE);
+//		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
+//		Booking b2 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.NINE);
+		
+		Booking b1 = new Booking((long) 1, player1, player2, new Date(20171002), Hour24.EIGHT);
+		Booking b2 = new Booking((long) 1, player1, player2, new Date(20171002), Hour24.NINE);
 
 		bookingDao.create(b1);
 		bookingDao.create(b2);
@@ -95,9 +99,13 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 	public void testFindAll() {
 		
 
-		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
-		Booking b2 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.NINE);
-		Booking b3 = new Booking((long) 1, idPlayer2, idPlayer1, new Date(20171002), Hour24.TEN);
+//		Booking b1 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.EIGHT);
+//		Booking b2 = new Booking((long) 1, idPlayer1, idPlayer2, new Date(20171002), Hour24.NINE);
+//		Booking b3 = new Booking((long) 1, idPlayer2, idPlayer1, new Date(20171002), Hour24.TEN);
+		
+		Booking b1 = new Booking((long) 1, player1, player2, new Date(20171002), Hour24.EIGHT);
+		Booking b2 = new Booking((long) 1, player1, player2, new Date(20171002), Hour24.NINE);
+		Booking b3 = new Booking((long) 1, player1, player2, new Date(20171002), Hour24.TEN);
 
 		bookingDao.create(b1);
 		bookingDao.create(b2);
