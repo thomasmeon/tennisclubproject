@@ -149,10 +149,5 @@ public class Booking {
 			return false;
 		return true;
 	}
-<<<<<<< HEAD:tennisclub/src/main/java/com/frenchies/tennisclub/entity/Booking.java
 
-	
-	
-=======
->>>>>>> 6f6228f83ddbda6502ae3fe041a58a93414b6b24:tennisclub-persistence/src/main/java/com/frenchies/tennisclub/entity/Booking.java
 }
