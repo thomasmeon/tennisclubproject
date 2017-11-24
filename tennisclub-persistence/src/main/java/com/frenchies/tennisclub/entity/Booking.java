@@ -26,13 +26,13 @@ public class Booking {
 	@NotNull
 	private Long idCourt;
 
-	@ManyToOne(optional = false)
+	@ManyToOne
 	@NotNull
-	private Player player1;
+	private User user1;
 
-	@ManyToOne(optional = false)
+	@ManyToOne
 	@NotNull
-	private Player player2;
+	private User user2;
 
 	// @NotNull
 	// private long idPlayer1;
@@ -63,10 +63,10 @@ public class Booking {
 	//
 	// }
 
-	public Booking(Long idCourt, Player player1, Player player2, Date dateOfBooking, Hour24 hourOfBooking) {
+	public Booking(Long idCourt, User user1, User user2, Date dateOfBooking, Hour24 hourOfBooking) {
 		this.idCourt = idCourt;
-		this.player1 = player1;
-		this.player2 = player2;
+		this.user1 = user1;
+		this.user2 = user2;
 		this.dateOfBooking = dateOfBooking;
 		this.hourOfBooking = hourOfBooking;
 
@@ -95,6 +95,22 @@ public class Booking {
 	// public void setIdPlayer2(long idPlayer2) {
 	// this.idPlayer2 = idPlayer2;
 	// }
+	
+	public User getUser1() {
+		return user1;
+	}
+
+	public void setUser1(User user1) {
+		this.user1 = user1;
+	}
+
+	public User getUser2() {
+		return user2;
+	}
+
+	public void setUser2(User user2) {
+		this.user2 = user2;
+	}
 
 	public Date getDateOfBooking() {
 		return dateOfBooking;
