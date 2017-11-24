@@ -1,4 +1,4 @@
-package cz.fi.muni.pa165.dto;
+package com.frenchies.tennisclub.dto;
 
 public class UserAuthenticateDTO
 {

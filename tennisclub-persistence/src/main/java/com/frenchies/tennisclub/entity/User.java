@@ -14,6 +14,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+/**
+ * 
+ * @author ValentinJacquet 473362
+ *
+ */
+
 @Entity
 //In Derby, its forbiden to 'USER' is reserved keyword, we need to rename table 
 @Table(name="Users")
@@ -36,8 +42,7 @@ public class User {
 	@NotNull
 	protected String login;
 
-	@NotNull
-	protected String password;
+	protected String passwordHash;
 
 	@NotNull
 	@Pattern(regexp = "\\+?\\d+")
@@ -62,7 +67,7 @@ public class User {
 		this.name = name;
 		this.surname = surname;
 		this.login = login;
-		this.password = password;
+		this.passwordHash = password;
 		this.mail = mail;
 		this.phone = phone;
 		this.dateOfBirth = dateOfBirth;
@@ -110,12 +115,12 @@ public class User {
 		this.login = login;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswordHash(String password) {
+		this.passwordHash = password;
 	}
 
 	public String getPhone() {
@@ -147,6 +152,6 @@ public class User {
 	@Override
 	public String toString() {
 		return "User{" + "id=" + id + ", Name='" + name + '\'' + ", Surname='" + surname + '\'' + ", email='" + mail
-				+ '\'' + ", password='" + password + '\'' + ", login=" + login + '}';
+				+ '\'' + ", password='" + passwordHash + '\'' + ", login=" + login + '}';
 	}
 }
