@@ -11,6 +11,11 @@ import org.springframework.stereotype.Repository;
 
 import com.frenchies.tennisclub.entity.User;
 
+/**
+ * Implemantation of User Dao 
+ * @author ValentinJacquet 473362
+ *
+ */
 @Repository
 public class UserDaoImpl implements UserDao {
 	@PersistenceContext

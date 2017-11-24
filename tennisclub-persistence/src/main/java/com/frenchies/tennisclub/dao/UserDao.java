@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.frenchies.tennisclub.entity.User;
 
+/**
+ * DAO interface for entity User
+ * @author ValentinJacquet 473362
+ *
+ */
 public interface UserDao {
 	/**
 	 * Create new User
