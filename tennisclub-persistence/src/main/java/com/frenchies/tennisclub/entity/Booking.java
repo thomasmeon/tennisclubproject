@@ -14,7 +14,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.frenchies.tennisclub.enums.Hour24;
-import com.frenchies.tennisclub.entity.People;
 
 //@Author Dore Corentin UCO 473308
 
@@ -26,12 +25,20 @@ public class Booking {
 
 	@NotNull
 	private Long idCourt;
-	
+
+	@ManyToOne(optional = false)
 	@NotNull
-	private long idPlayer1;
-	
+	private Player player1;
+
+	@ManyToOne(optional = false)
 	@NotNull
-	private long idPlayer2;
+	private Player player2;
+
+	// @NotNull
+	// private long idPlayer1;
+	//
+	// @NotNull
+	// private long idPlayer2;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -40,16 +47,26 @@ public class Booking {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Hour24 hourOfBooking;
-	
+
 	public Booking() {
-		
+
 	}
-	
-	public Booking(Long idCourt, long idPlayer1, long idPlayer2, Date dateOfBooking,
-			Hour24 hourOfBooking) {
+
+	// public Booking(Long idCourt, long idPlayer1, long idPlayer2, Date
+	// dateOfBooking,
+	// Hour24 hourOfBooking) {
+	// this.idCourt = idCourt;
+	// this.idPlayer1 = idPlayer1;
+	// this.idPlayer2 = idPlayer2;
+	// this.dateOfBooking = dateOfBooking;
+	// this.hourOfBooking = hourOfBooking;
+	//
+	// }
+
+	public Booking(Long idCourt, Player player1, Player player2, Date dateOfBooking, Hour24 hourOfBooking) {
 		this.idCourt = idCourt;
-		this.idPlayer1 = idPlayer1;
-		this.idPlayer2 = idPlayer2;
+		this.player1 = player1;
+		this.player2 = player2;
 		this.dateOfBooking = dateOfBooking;
 		this.hourOfBooking = hourOfBooking;
 
@@ -62,23 +79,22 @@ public class Booking {
 	public void setIdCourt(Long idCourt) {
 		this.idCourt = idCourt;
 	}
-	
-	public long getIdPlayer1() {
-		return idPlayer1;
-	}
 
-	public void setIdPlayer1(long idPlayer1) {
-		this.idPlayer1 = idPlayer1;
-	}
-
-	public long getIdPlayer2() {
-		return idPlayer2;
-	}
-
-	public void setIdPlayer2(long idPlayer2) {
-		this.idPlayer2 = idPlayer2;
-	}
-
+	// public long getIdPlayer1() {
+	// return idPlayer1;
+	// }
+	//
+	// public void setIdPlayer1(long idPlayer1) {
+	// this.idPlayer1 = idPlayer1;
+	// }
+	//
+	// public long getIdPlayer2() {
+	// return idPlayer2;
+	// }
+	//
+	// public void setIdPlayer2(long idPlayer2) {
+	// this.idPlayer2 = idPlayer2;
+	// }
 
 	public Date getDateOfBooking() {
 		return dateOfBooking;
@@ -104,49 +120,51 @@ public class Booking {
 		this.idBooking = idBooking;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((dateOfBooking == null) ? 0 : dateOfBooking.hashCode());
-		result = prime * result + ((hourOfBooking == null) ? 0 : hourOfBooking.hashCode());
-		result = prime * result + ((idBooking == null) ? 0 : idBooking.hashCode());
-		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
-		result = prime * result + (int) (idPlayer1 ^ (idPlayer1 >>> 32));
-		result = prime * result + (int) (idPlayer2 ^ (idPlayer2 >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Booking other = (Booking) obj;
-		if (dateOfBooking == null) {
-			if (other.dateOfBooking != null)
-				return false;
-		} else if (!dateOfBooking.equals(other.dateOfBooking))
-			return false;
-		if (hourOfBooking != other.hourOfBooking)
-			return false;
-		if (idBooking == null) {
-			if (other.idBooking != null)
-				return false;
-		} else if (!idBooking.equals(other.idBooking))
-			return false;
-		if (idCourt == null) {
-			if (other.idCourt != null)
-				return false;
-		} else if (!idCourt.equals(other.idCourt))
-			return false;
-		if (idPlayer1 != other.idPlayer1)
-			return false;
-		if (idPlayer2 != other.idPlayer2)
-			return false;
-		return true;
-	}
+	// @Override
+	// public int hashCode() {
+	// final int prime = 31;
+	// int result = 1;
+	// result = prime * result + ((dateOfBooking == null) ? 0 :
+	// dateOfBooking.hashCode());
+	// result = prime * result + ((hourOfBooking == null) ? 0 :
+	// hourOfBooking.hashCode());
+	// result = prime * result + ((idBooking == null) ? 0 : idBooking.hashCode());
+	// result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
+	// result = prime * result + (int) (idPlayer1 ^ (idPlayer1 >>> 32));
+	// result = prime * result + (int) (idPlayer2 ^ (idPlayer2 >>> 32));
+	// return result;
+	// }
+	//
+	// @Override
+	// public boolean equals(Object obj) {
+	// if (this == obj)
+	// return true;
+	// if (obj == null)
+	// return false;
+	// if (getClass() != obj.getClass())
+	// return false;
+	// Booking other = (Booking) obj;
+	// if (dateOfBooking == null) {
+	// if (other.dateOfBooking != null)
+	// return false;
+	// } else if (!dateOfBooking.equals(other.dateOfBooking))
+	// return false;
+	// if (hourOfBooking != other.hourOfBooking)
+	// return false;
+	// if (idBooking == null) {
+	// if (other.idBooking != null)
+	// return false;
+	// } else if (!idBooking.equals(other.idBooking))
+	// return false;
+	// if (idCourt == null) {
+	// if (other.idCourt != null)
+	// return false;
+	// } else if (!idCourt.equals(other.idCourt))
+	// return false;
+	// if (idPlayer1 != other.idPlayer1)
+	// return false;
+	// if (idPlayer2 != other.idPlayer2)
+	// return false;
+	// return true;
+	// }
 }
