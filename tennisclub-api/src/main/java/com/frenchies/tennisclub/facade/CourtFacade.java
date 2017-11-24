@@ -2,7 +2,9 @@ package com.frenchies.tennisclub.facade;
 
 import java.util.List;
 
-public class CourtFacade {
+import com.frenchies.tennisclub.dto.CourtDTO;
+
+public interface CourtFacade {
 	
 	List<CourtDTO> getAllCourts();
 

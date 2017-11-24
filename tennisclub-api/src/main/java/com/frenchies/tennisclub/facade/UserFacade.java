@@ -1,10 +1,8 @@
 package com.frenchies.tennisclub.facade;
 import java.util.List;
 
-import com.frenchies.tennisclub.service.facade.UserAuthenticateDTO;
-
-//import cz.fi.muni.pa165.dto.UserAuthenticateDTO;
-//import cz.fi.muni.pa165.dto.UserDTO;
+import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
+import com.frenchies.tennisclub.dto.UserDTO;
 
 public interface UserFacade {
 	
