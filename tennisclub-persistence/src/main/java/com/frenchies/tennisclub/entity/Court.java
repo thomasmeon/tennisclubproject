@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 
+//@Author Dore Corentin UCO 473308
+
 @Entity
 public class Court {
 
