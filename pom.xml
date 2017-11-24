@@ -5,45 +5,75 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.frenchies.tennisclub</groupId>
-    <artifactId>tennisclubproject</artifactId>
-    <name>Tennis Club</name>
+    <artifactId>tennisclub</artifactId>
+    <name>tennisclub</name>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
+	<modules>
+		<module>tennisclub-persistence</module>
+		<module>tennisclub-service</module>
+	</modules>
+	
     <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>Athens-RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
+    <dependencies>
+          <dependency>
+              <groupId>javax</groupId>
+              <artifactId>javaee-api</artifactId>
+              <version>7.0</version>
+              <scope>provided</scope>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-test</artifactId>
+              <version>5.0.0.RELEASE</version>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-orm</artifactId>
+              <version>5.0.0.RELEASE</version>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.data</groupId>
+              <artifactId>spring-data-jpa</artifactId>
+              <version>2.0.0.RELEASE</version>
+          </dependency>
+          <dependency>
+              <groupId>org.hibernate</groupId>
+              <artifactId>hibernate-entitymanager</artifactId>
+              <version>5.2.12.Final</version>
+          </dependency>
+          <dependency>
+              <groupId>org.hibernate</groupId>
+              <artifactId>hibernate-validator</artifactId>
+              <version>5.0.3.Final</version>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-context</artifactId>
+              <version>5.0.0.RELEASE</version>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-core</artifactId>
+              <version>5.0.0.RELEASE</version>
+          </dependency>
+          <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-swing-testng</artifactId>
+            <version>3.8.0</version>
+            <scope>test</scope>
+          </dependency>
+          <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
+            <version>6.8.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.13.1.1</version>
+        </dependency>
+      </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <modules>
-        <module>persistence</module>
-    </modules>
-
-
 </project>
