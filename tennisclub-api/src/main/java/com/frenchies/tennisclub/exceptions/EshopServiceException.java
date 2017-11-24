@@ -1,4 +1,4 @@
-package cz.fi.muni.pa165.exceptions;
+package com.frenchies.tennisclub.exceptions;
 
 public class EshopServiceException extends RuntimeException{
 
