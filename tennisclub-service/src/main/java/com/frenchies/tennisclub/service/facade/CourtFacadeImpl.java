@@ -4,8 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.frenchies.tennisclub.dto.CourtDTO;
+import com.frenchies.tennisclub.facade.CourtFacade;
+import com.frenchies.tennisclub.mappers.BeanMappingService;
 
-public class CourtFacadeImpl {
+/**
+ * 
+ * @author Meon Thomas 473449
+ *
+ */
+
+public class CourtFacadeImpl implements CourtFacade {
 	
 	@Autowired
 	private CourtService courtService;

@@ -13,6 +13,12 @@ import com.frenchies.tennisclub.facade.UserFacade;
 import com.frenchies.tennisclub.mappers.BeanMappingServiceImpl;
 import com.frenchies.tennisclub.service.UserService;
 
+/**
+ * 
+ * @author Meon Thomas 473449
+ *
+ */
+
 @Service
 @Transactional
 public class UserFacadeImpl implements UserFacade {

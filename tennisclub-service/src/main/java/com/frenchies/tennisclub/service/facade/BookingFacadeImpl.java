@@ -9,15 +9,22 @@ import org.springframework.transaction.annotation.Transactional;
 import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.User;
+import com.frenchies.tennisclub.facade.BookingFacade;
 import com.frenchies.tennisclub.facade.date;
-import com.frenchies.tennisclub.service.BeanMappingService;
+import com.frenchies.tennisclub.mappers.BeanMappingService;
 import com.frenchies.tennisclub.service.BookingService;
 import com.frenchies.tennisclub.service.UserService;
 
 
+/**
+ * 
+ * @author Meon Thomas 473449
+ *
+ */
+
 @Service
 @Transactional
-public class BookingFacadeImpl {
+public class BookingFacadeImpl implements BookingFacade  {
 	
 	@Autowired
 	private BookingService bookingService;
@@ -35,7 +42,7 @@ public class BookingFacadeImpl {
 	}
 	
 	@Override
-	public BookingDTO findBookingById(Long bookingId) {
+	public BookingDTO findBookingById(long bookingId) {
 		return beanMappingService.mapTo(bookingService.findBookingById(bookingId),
 				BookingDTO.class);
 	}
@@ -44,7 +51,7 @@ public class BookingFacadeImpl {
 	@Override
 	public List<BookingDTO> findBookingByUser(User u) {
 		User user = userService.findUserById(u);
-		List<Booking> bookings = BookingService.getBookingsByUser(user);
+		List<Booking> bookings = bookingService.getBookingsByUser(user);
 
 		return beanMappingService.mapTo(bookings, BookingDTO.class);
 	}
@@ -52,6 +59,11 @@ public class BookingFacadeImpl {
 	@Override
 	public List<BookingDTO> findBookingByDate(date date){
         throw new UnsupportedOperationException("Not supported yet.");
+	}
+	
+	@Override
+	public void deleteBooking(Long bookingId) {
+		bookingService.deleteBooking(bookingService.findBookingById(bookingId));
 	}
 	
 //	@Override
@@ -74,10 +86,6 @@ public class BookingFacadeImpl {
 //		return newProduct.getId();
 //	}
 	
-	@Override
-	public void deleteBooking(Long bookingId) {
-		bookingService.deleteBooking(new Booking(bookingId));
-	}
 	
 
 	
