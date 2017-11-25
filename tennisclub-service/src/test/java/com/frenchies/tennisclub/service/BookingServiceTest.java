@@ -39,9 +39,6 @@ public class BookingServiceTest extends BaseServiceTest {
 	@InjectMocks
 	private BookingService bookingService;
 
-	private Booking orderReceived;
-	private Booking orderShipped;
-
 	@BeforeMethod
 	public void createBookings() {
 		Booking = new Booking();
@@ -53,45 +50,28 @@ public class BookingServiceTest extends BaseServiceTest {
 		MockitoAnnotations.initMocks(this);
 	}
 
-/*	@Test
-	public void findAllBookings() {
+	@Test
+	public void getAllBookingsLastWeek() {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2015, 1, 10, 0, 0, 0);
 		Date fabricatedTime = cal.getTime();
 		cal.add(Calendar.DAY_OF_MONTH, -7);
 		Date weekBeforeFabricatedTime = cal.getTime();
 
-		Booking o = new Booking(4l);
-		o.setState(BookingState.CANCELED);
-		o.setCreated(new Date());
+		Booking b = new Booking(22);
+		b.setCreated(new Date());
 
-		when(bookindDao.getBookingsCreatedBetween(any(Date.class), any(Date.class), any()))
+		when(bookindDao.getAllBookingsBetween(any(Date.class), any(Date.class), any()))
 				.thenReturn(Collections.singletonList(o));
 		when(timeService.getCurrentTime()).thenReturn(fabricatedTime);
 
-		List<Booking> orders = bookingService.getAllBookingsLastWeek(BookingState.CANCELED);
+		List<Booking> orders = bookingService.getAllBookingsLastWeek();
 		Assert.assertEquals(1, orders.size());
-		Assert.assertTrue(orders.get(0).getId().equals(4l));
+		Assert.assertTrue(orders.get(0).getId().equals(22));
 
-		verify(bookindDao).getBookingsCreatedBetween(weekBeforeFabricatedTime, fabricatedTime, BookingState.CANCELED);
+		verify(bookindDao).getAllBookingsBetween(weekBeforeFabricatedTime, fabricatedTime, BookingState.CANCELED);
 	}
+	
 
-	@Test
-	public void ship() {
-		bookingService.shipBooking(orderReceived);
-		Assert.assertEquals(orderReceived.getState(), BookingState.SHIPPED);
-	}
-
-	@Test
-	public void finish() {
-		bookingService.finishBooking(orderShipped);
-		Assert.assertEquals(orderShipped.getState(), BookingState.DONE);
-	}
-
-	@Test
-	public void cancel() {
-		bookingService.cancelBooking(orderReceived);
-		Assert.assertEquals(orderReceived.getState(), BookingState.CANCELED);
-	}*/
 
 }
