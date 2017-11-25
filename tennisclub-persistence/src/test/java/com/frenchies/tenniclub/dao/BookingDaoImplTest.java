@@ -2,6 +2,7 @@ package com.frenchies.tenniclub.dao;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -48,17 +49,22 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
 	@BeforeMethod
 	public void init() {
-		cal1 = Calendar.getInstance();
-		cal1.set(1999, 11, 10);
+		Calendar cal = Calendar.getInstance();
+		cal.set(2017, 1, 1);
+		Date date1 = cal.getTime();
+		cal.set(2017, 2, 1);
+		Date date2 = cal.getTime();
+		cal.set(2017, 2, 3);
+		Date date3 = cal.getTime();
 
 		u1 = UserDaoImplTest.getSimpleUser();
 		u2 = UserDaoImplTest.getSimpleUser2();
 		userDao.create(u1);
 		userDao.create(u2);
 		
-		b1 = new Booking((long) 1, u1, u2, new Date(20171002), Hour24.EIGHT);
-		b2 = new Booking((long) 1, u1, u2, new Date(20171002), Hour24.NINE);
-		b3 = new Booking((long) 1, u1, u2, new Date(20171002), Hour24.TEN);
+		b1 = new Booking((long) 1, u1, u2, date1, Hour24.EIGHT);
+		b2 = new Booking((long) 1, u1, u2, date2, Hour24.NINE);
+		b3 = new Booking((long) 1, u1, u2, date3, Hour24.TEN);
 
 		bookingDao.create(b1);
 		bookingDao.create(b2);
@@ -93,6 +99,12 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 		Assert.assertEquals(bookingDao.findById(b1.getIdBooking()), b1);
 		Assert.assertEquals(bookingDao.findById(b2.getIdBooking()), b2);
 	}
+	
+	@Test
+	public void findByUser() {
+		List<Booking> bookings = bookingDao.findByUser(u1);
+		Assert.assertEquals(bookings.size(), 3);
+	}
 
 	@Test
 	public void testFindAll() {
@@ -100,5 +112,45 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 		Assert.assertTrue(bookingDao.findAll().contains(b1));
 		Assert.assertTrue(bookingDao.findAll().contains(b2));
 		Assert.assertTrue(bookingDao.findAll().contains(b3));
+	}
+	
+	@Test
+	public void getBookingsCreatedBetween() {
+		Calendar cal = Calendar.getInstance();
+		cal.set(2016, 1, 1);
+		Date date1 = cal.getTime();
+		cal.set(2017, 4, 5);
+		Date date2 = cal.getTime();
+		
+		Assert.assertEquals(bookingDao.getBookingsCreatedBetween(date1, date2).size(),3);
+		
+		cal.set(2017, 2, 2);
+		Date date3 = cal.getTime();
+		
+		Assert.assertEquals(bookingDao.getBookingsCreatedBetween(date1, date3).size(),2);
+		
+		cal.set(2015, 1, 1,0,0,0);
+		Date date4 = cal.getTime();
+		cal.set(2015, 5, 5,0,0,0);
+		Date date5 = cal.getTime();
+		Assert.assertEquals(bookingDao.getBookingsCreatedBetween(date4, date5).size(),0);
+	}
+	
+	@Test
+	public void getBookingsCreatedBetweenForUser() {
+		Calendar cal = Calendar.getInstance();
+		cal.set(2016, 1, 1);
+		Date date1 = cal.getTime();
+		cal.set(2017, 4, 5);
+		Date date2 = cal.getTime();
+		
+		Assert.assertEquals(bookingDao.getBookingsForUserCreatedBetween(date1, date2, u1).size(),3);
+		Assert.assertEquals(bookingDao.getBookingsForUserCreatedBetween(date1, date2, u2).size(),3);
+		
+		cal.set(2015, 1, 1,0,0,0);
+		Date date4 = cal.getTime();
+		cal.set(2015, 5, 5,0,0,0);
+		Date date5 = cal.getTime();
+		Assert.assertEquals(bookingDao.getBookingsForUserCreatedBetween(date4, date5, u2).size(),0);
 	}
 }

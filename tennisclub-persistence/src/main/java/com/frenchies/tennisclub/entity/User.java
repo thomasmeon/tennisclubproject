@@ -21,15 +21,15 @@ import javax.validation.constraints.Pattern;
  */
 
 @Entity
-//In Derby, its forbiden to 'USER' is reserved keyword, we need to rename table 
-@Table(name="Users")
+// In Derby, its forbiden to 'USER' is reserved keyword, we need to rename table
+@Table(name = "Users")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 
-	@Column(nullable=false,unique=true)
-	@Pattern(regexp=".+@.+\\....?")
+	@Column(nullable = false, unique = true)
+	@Pattern(regexp = ".+@.+\\....?")
 	@NotNull
 	protected String mail;
 
@@ -57,9 +57,13 @@ public class User {
 	private boolean admin;
 
 	// Constructor
-	
+
 	public User() {
 		
+	}
+	
+	public User(long id) {
+		this.id = id;
 	}
 
 	public User(String name, String surname, String login, String password, String mail, String phone,

@@ -55,7 +55,7 @@ public class BookingDaoImpl implements BookingDao {
 	@Override
 	public List<Booking> findByUser(User u) {
 		TypedQuery<Booking> query = em.createQuery(
-				"Select b from Booking o where b.user = :userid",
+				"Select b from Booking b where b.user1 = :userid OR b.user2 = :userid",
 				Booking.class);
 		
 		query.setParameter("userid", u);
@@ -66,8 +66,20 @@ public class BookingDaoImpl implements BookingDao {
 	public List<Booking> getBookingsCreatedBetween(Date start, Date end) {
 		TypedQuery<Booking> query = em
 				.createQuery(
-						"SELECT o FROM Order o WHERE o.state = :state AND  o.created BETWEEN :startDate AND :endDate ",
+						"SELECT b FROM Booking b WHERE b.dateOfBooking BETWEEN :startDate AND :endDate ",
 						Booking.class);
+		query.setParameter("startDate", start);
+		query.setParameter("endDate", end);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Booking> getBookingsForUserCreatedBetween(Date start, Date end, User u) {
+		TypedQuery<Booking> query = em
+				.createQuery(
+						"SELECT b from Booking b where (b.user1 = :userid OR b.user2 = :userid) AND b.dateOfBooking BETWEEN :startDate AND :endDate",
+						Booking.class);
+		query.setParameter("userid", u);
 		query.setParameter("startDate", start);
 		query.setParameter("endDate", end);
 		return query.getResultList();
