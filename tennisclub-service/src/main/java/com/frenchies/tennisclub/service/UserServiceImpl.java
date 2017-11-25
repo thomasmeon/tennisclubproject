@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.findUserByName(name);
 	}
 
+	@Override
 	public User update(User user) {
 		 
 		 return userDao.update(user);
