@@ -16,11 +16,7 @@ public interface BookingService {
 	/**
 	 * create a booking.
 	 */
-<<<<<<< HEAD
 	public Booking createBooking(Booking booking);
-=======
-	Booking createBooking(Booking b);
->>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
 
 	/**
 	 * Get all saved bookings belonging to the given user
@@ -33,11 +29,7 @@ public interface BookingService {
 	/**
 	 * Get all saved bookings.
 	 */
-<<<<<<< HEAD
-	public List<Booking> findAllBookings();
-=======
-	List<Booking> getAllBookings();
->>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
+	public List<Booking> getAllBookings();
 
 	/**
 	 * Cancel a Booking already in DB
@@ -52,7 +44,7 @@ public interface BookingService {
 	 * @param id
 	 * @return
 	 */
-	public Booking findBookingById(Long id);
+	public Booking getBookingById(Long id);
 	
 	/**
 	 * Get all booking of last week

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.frenchies.tennisclub.dto.CourtDTO;
 import com.frenchies.tennisclub.facade.CourtFacade;
 import com.frenchies.tennisclub.mappers.BeanMappingService;
+import com.frenchies.tennisclub.service.CourtService;
 
 /**
  * 
@@ -15,20 +16,16 @@ import com.frenchies.tennisclub.mappers.BeanMappingService;
  */
 
 public class CourtFacadeImpl implements CourtFacade {
-	
+
 	@Autowired
 	private CourtService courtService;
 
 	@Autowired
 	private BeanMappingService beanMappingService;
-	
-	
-	
+
 	@Override
-	   public List<CategoryDTO> getAllCourts()
-    {
-        return beanMappingService.mapTo(courtService.findAll(),CourtDTO.class);
-    }
-	
+	public List<CourtDTO> getAllCourts() {
+		return beanMappingService.mapTo(courtService.findAll(), CourtDTO.class);
+	}
 
 }

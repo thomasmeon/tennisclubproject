@@ -42,64 +42,31 @@ public class BookingFacadeImpl implements BookingFacade {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public BookingDTO getBookingById(Long bookingId) {
-		return beanMappingService.mapTo(bookingService.findBookingById(bookingId),
+		return beanMappingService.mapTo(bookingService.getBookingById(bookingId),
 				BookingDTO.class);
-=======
-	public BookingDTO findBookingById(Long bookingId) {
-		return beanMappingService.mapTo(bookingService.findBookingById(bookingId), BookingDTO.class);
->>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
 	}
 
 	@Override
-<<<<<<< HEAD
-	public List<BookingDTO> getBookingByUser(UserDTO u) {
-		User user = userService.findUserById(u);
-=======
 	public List<BookingDTO> getBookingsByUser(UserDTO u) {
-		User user = userService.findUserById(u.getId());
->>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
+		User user = userService.getUserById(u.getId());
 		List<Booking> bookings = bookingService.getBookingsByUser(user);
 
 		return beanMappingService.mapTo(bookings, BookingDTO.class);
 	}
 
 	@Override
-<<<<<<< HEAD
-	public List<BookingDTO> getBookingByDate(Date date){
-        throw new UnsupportedOperationException("Not supported yet.");
-=======
-	public List<BookingDTO> findBookingsByDate(Date date) {
-		final List<Booking> allBookingsByDate = bookingService.findBookingsByDate(date);
+	public List<BookingDTO> getBookingsByDate(Date date) {
+		final List<Booking> allBookingsByDate = bookingService.getBookingsByDate(date);
 		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsByDate, BookingDTO.class);
 		return dtos;
->>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
 	}
 
 	@Override
 	public void deleteBooking(Long bookingId) {
-		bookingService.deleteBooking(bookingService.findBookingById(bookingId));
+		bookingService.deleteBooking(bookingService.getBookingById(bookingId));
 	}
-<<<<<<< HEAD
 	
-	@Override
-	public Long createBooking(BookingCreateDTO b) {
-		Booking mappedBooking = beanMappingService.mapTo(b, Booking.class);
-        
-		mappedBooking.setUser1(userService.findUserById(b.getUser1().getId()));
-		mappedBooking.setUser2(userService.findUserById(b.getUser2().getId()));
-		
-		mappedBooking.setDateOfBooking(b.getDateOfBooking());
-		mappedBooking.setHourOfBooking(b.getHourOfBooking());
-		mappedBooking.setIdCourt(b.getIdCourt());
-		
-        Booking newBooking = bookingService.createBooking(mappedBooking);
-        
-		return newBooking.getIdBooking();
-	}	
-=======
-
 	@Override
 	public List<BookingDTO> getAllBookingsLastWeek() {
 		final List<Booking> allBookingsLastWeek = bookingService.getAllBookingsLastWeek();
@@ -127,8 +94,8 @@ public class BookingFacadeImpl implements BookingFacade {
 
 		Booking mappedBooking = beanMappingService.mapTo(b, Booking.class);
 
-		mappedBooking.setUser1(userService.findUserById(b.getUser1().getId()));
-		mappedBooking.setUser2(userService.findUserById(b.getUser2().getId()));
+		mappedBooking.setUser1(userService.getUserById(b.getUser1().getId()));
+		mappedBooking.setUser2(userService.getUserById(b.getUser2().getId()));
 
 		mappedBooking.setDateOfBooking(b.getDateOfBooking());
 		mappedBooking.setHourOfBooking(b.getHourOfBooking());
@@ -138,6 +105,5 @@ public class BookingFacadeImpl implements BookingFacade {
 
 		return newBooking.getIdBooking();
 	}
->>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
 
 }
