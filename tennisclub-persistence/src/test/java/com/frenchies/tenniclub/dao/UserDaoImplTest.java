@@ -3,8 +3,7 @@ package com.frenchies.tenniclub.dao;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -29,7 +28,7 @@ import com.frenchies.tennisclub.entity.User;
 @Transactional
 public class UserDaoImplTest extends AbstractTestNGSpringContextTests {
 
-	@Inject
+	@Autowired
 	private UserDao UserDao;
 
 	private User u1;

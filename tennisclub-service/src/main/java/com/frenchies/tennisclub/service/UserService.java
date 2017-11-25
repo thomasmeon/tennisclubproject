@@ -12,66 +12,68 @@ import com.frenchies.tennisclub.entity.User;
 public interface UserService {
 	/**
 	 * Register the given user with the given unencrypted password.
-	 *    
-     * Authenticate {@link User}.
-     *
-     * @return true only if hashed unencryptedPassword is equal with user hashed password
-     */
-	 
-	void registerUser(User u, String unencryptedPassword);
-
-    /**
-     * Get all {@link User}.
-     *
-     * @return list of users.
-     */
-	List<User> getAllUsers();
+	 * 
+	 * Authenticate {@link User}.
+	 *
+	 * @return true only if hashed unencryptedPassword is equal with user hashed
+	 *         password
+	 */
+	public void registerUser(User u, String unencryptedPassword);
 
 	/**
-	 * Try to authenticate a user. Return true only if the hashed password matches the records.
+	 * Get all {@link User}.
+	 *
+	 * @return list of users.
 	 */
-	boolean authenticate(User u, String password);
+	public List<User> getAllUsers();
 
-    /**
-     * Check whether {@link User} is admin, or not.
-     *
-     * @param user to check
-     * @return true if user is admin, false otherwise
-     */
-	
-	boolean isAdmin(User u);
-    
-	
-    /**
-     * Delete {@link HumanPlayer}.
-     *
-     * @param humanPlayer to delete
-     */
-	
-	void delete(User u);
-	
-    /**
-     * Update {@link HumanPlayer}.
-     *
-     * @param humanPlayer to update
-     * @return updated human player
-     */
-    User update(User user);
-	
-	 /**
-     * Find {@link User} by id.
-     *
-     * @param id user identifier
-     * @return user with given id
-     */
-	User getUserById(Long userId);
-	
-    /**
-     * Find {@link HumanPlayer} by username.
-     *
-     * @param username human player's username
-     * @return human player with given username
-     */
-	User getUserByName(String name);
+	/**
+	 * Try to authenticate a user. Return true only if the hashed password matches
+	 * the records.
+	 */
+	public boolean authenticate(User u, String password);
+
+	/**
+	 * Check whether {@link User} is admin, or not.
+	 *
+	 * @param user
+	 *            to check
+	 * @return true if user is admin, false otherwise
+	 */
+	public boolean isAdmin(User u);
+
+	/**
+	 * Delete {@link HumanPlayer}.
+	 *
+	 * @param humanPlayer
+	 *            to delete
+	 */
+	public void delete(User u);
+
+	/**
+	 * Update {@link HumanPlayer}.
+	 *
+	 * @param humanPlayer
+	 *            to update
+	 * @return updated human player
+	 */
+	public User update(User user);
+
+	/**
+	 * Find {@link User} by id.
+	 *
+	 * @param id
+	 *            user identifier
+	 * @return user with given id
+	 */
+	public User getUserById(Long userId);
+
+	/**
+	 * Find {@link HumanPlayer} by username.
+	 *
+	 * @param username
+	 *            human player's username
+	 * @return human player with given username
+	 */
+	public User getUserByName(String name);
 }
-
