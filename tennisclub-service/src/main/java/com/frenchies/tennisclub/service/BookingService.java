@@ -22,7 +22,9 @@ public interface BookingService {
 
 	List<Booking> findAllBookings();
 	
-	void cancelBooking(Booking Booking);
+	void deleteBooking(Booking Booking);
 
 	Booking findBookingById(Long id);
+
+	List<Booking> getAllBookingsLastWeek();
 }

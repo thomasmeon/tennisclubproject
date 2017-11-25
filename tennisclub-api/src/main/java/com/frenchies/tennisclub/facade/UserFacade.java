@@ -4,6 +4,12 @@ import java.util.List;
 import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
 
+/**
+ * 
+ * @author Meon Thomas 473449
+ *
+ */
+
 public interface UserFacade {
 	
 	void deleteUser(Long id);
