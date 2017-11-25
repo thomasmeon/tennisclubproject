@@ -31,20 +31,12 @@ public class BookingServiceImpl implements BookingService {
     public Booking findBookingById(Long id) {
 		return BookingDao.findById(id);
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 59599f98dfc7abf477e7455f793178ea99dfb7e9
 	@Override
 	public List<Booking> findAllBookings() {
 		return BookingDao.findAll();
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 59599f98dfc7abf477e7455f793178ea99dfb7e9
 	@Override
 	public List<Booking> getBookingsByUser(User user) {
 		return BookingDao.findByUser(user);
@@ -73,11 +65,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-<<<<<<< HEAD
-	public void cancelBooking(Booking Booking) {
-=======
 	public void deleteBooking(Booking Booking) {
->>>>>>> 59599f98dfc7abf477e7455f793178ea99dfb7e9
 		BookingDao.remove(Booking);
 	}
 

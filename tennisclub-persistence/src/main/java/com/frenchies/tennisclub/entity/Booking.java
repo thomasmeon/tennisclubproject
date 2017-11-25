@@ -61,6 +61,10 @@ public class Booking {
 	public Booking() {
 
 	}
+	
+	public Booking(Long id) {
+		this.idBooking = id;
+	}
 
 	public Booking(Long idCourt, User user1, User user2, Date dateOfBooking, Hour24 hourOfBooking) {
 		this.idCourt = idCourt;
@@ -128,11 +132,8 @@ public class Booking {
 		result = prime * result + ((dateOfBooking == null) ? 0 : dateOfBooking.hashCode());
 		result = prime * result + ((hourOfBooking == null) ? 0 : hourOfBooking.hashCode());
 		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
-<<<<<<< HEAD
-=======
 		result = prime * result + ((user1 == null) ? 0 : user1.hashCode());
 		result = prime * result + ((user2 == null) ? 0 : user2.hashCode());
->>>>>>> c31eb16cdd3d8d800f09a4f05158352770cc7468
 		return result;
 	}
 
@@ -157,11 +158,6 @@ public class Booking {
 				return false;
 		} else if (!idCourt.equals(other.idCourt))
 			return false;
-<<<<<<< HEAD
-		return true;
-	}
-
-=======
 		if (user1 == null) {
 			if (other.user1 != null)
 				return false;
@@ -174,6 +170,8 @@ public class Booking {
 			return false;
 		return true;
 	}
+
 	
->>>>>>> c31eb16cdd3d8d800f09a4f05158352770cc7468
+
+	
 }

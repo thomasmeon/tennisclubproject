@@ -30,18 +30,13 @@ public interface BookingService {
 	 * Get all saved bookings.
 	 */
 	List<Booking> findAllBookings();
-<<<<<<< HEAD
 
 	/**
 	 * Cancel a Booking already in DB
 	 * 
 	 * @param Booking
-	 */
-	void cancelBooking(Booking Booking);
-=======
-	
+	 */	
 	void deleteBooking(Booking Booking);
->>>>>>> 59599f98dfc7abf477e7455f793178ea99dfb7e9
 
 	/**
 	 * Find a booking using its id
@@ -50,8 +45,7 @@ public interface BookingService {
 	 * @return
 	 */
 	Booking findBookingById(Long id);
-
-<<<<<<< HEAD
+	
 	/**
 	 * Get all booking of last week
 	 * 
@@ -76,7 +70,4 @@ public interface BookingService {
 	 * @return
 	 */
 	List<Booking> getAllBookingsBetween(Date start, Date end);
-=======
-	List<Booking> getAllBookingsLastWeek();
->>>>>>> 59599f98dfc7abf477e7455f793178ea99dfb7e9
 }
