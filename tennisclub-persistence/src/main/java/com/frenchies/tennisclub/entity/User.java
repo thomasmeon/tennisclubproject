@@ -69,6 +69,10 @@ public class User {
 	public User() {
 
 	}
+	
+	public User(long id) {
+		this.id = id;
+	}
 
 	public User(String name, String surname, String login, String password, String mail, String phone,
 			Date dateOfBirth) {

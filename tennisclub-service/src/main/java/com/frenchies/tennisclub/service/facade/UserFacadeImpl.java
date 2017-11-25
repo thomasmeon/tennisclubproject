@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
+import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.entity.User;
-import com.frenchies.tennisclub.service.BeanMappingService;
+import com.frenchies.tennisclub.facade.UserFacade;
+import com.frenchies.tennisclub.mappers.BeanMappingServiceImpl;
 import com.frenchies.tennisclub.service.UserService;
 
 /**
@@ -24,7 +27,7 @@ public class UserFacadeImpl implements UserFacade {
     private UserService userService;
 
     @Autowired
-    private BeanMappingService beanMappingService;
+    private BeanMappingServiceImpl beanMappingService;
 
     @Override
     public UserDTO findUserById(Long userId) {
@@ -41,13 +44,13 @@ public class UserFacadeImpl implements UserFacade {
     @Override
     public void createUser(UserDTO userDTO, String unencryptedPassword) {
         User userEntity = beanMappingService.mapTo(userDTO, User.class);
-        userService.createUser(userEntity, unencryptedPassword);
+        userService.registerUser(userEntity, unencryptedPassword);
         userDTO.setId(userEntity.getId());
     }
     
     @Override
-	public void deleteUser(Long Userid) {
-		userService.deleteUser(new User(userId));
+	public void deleteUser(Long userId) {
+		userService.delete(new User(userId));
 	}
     
     
@@ -72,6 +75,12 @@ public class UserFacadeImpl implements UserFacade {
         return userService.authenticate(
                 userService.findUserById(u.getUserId()), u.getPassword());
     }
+
+	@Override
+	public List<UserDTO> getAllUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
     
 
