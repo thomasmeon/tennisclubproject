@@ -16,7 +16,7 @@ public interface BookingService {
 	/**
 	 * create a booking.
 	 */
-	void createBooking(Booking b);
+	Booking createBooking(Booking b);
 
 	/**
 	 * Get all saved bookings belonging to the given user
@@ -29,7 +29,7 @@ public interface BookingService {
 	/**
 	 * Get all saved bookings.
 	 */
-	List<Booking> findAllBookings();
+	List<Booking> getAllBookings();
 
 	/**
 	 * Cancel a Booking already in DB
