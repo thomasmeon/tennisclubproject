@@ -17,6 +17,20 @@ import com.frenchies.tennisclub.enums.Hour24;
 
 //@Author Dore Corentin UCO 473308
 
+
+/**
+ * Class representing an Booking.
+ *
+ * Every booking has:
+ * - idBooking (Long)
+ * - idBCourt (Long) // In order to identify which court is concerned by the booking
+ * - users (User) // Players 
+ *-  hourOfBooking(Hour24)
+ * - dateOfBooking (Date)
+ * - admin (Boolean) // Return true if the user is an admin or false otherwise 
+ */
+
+
 @Entity
 public class Booking {
 	@Id
@@ -41,6 +55,8 @@ public class Booking {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Hour24 hourOfBooking;
+	
+	// Constructor
 
 	public Booking() {
 
@@ -54,6 +70,8 @@ public class Booking {
 		this.hourOfBooking = hourOfBooking;
 
 	}
+
+	//// SETTER AND GETTER/////
 
 	public Long getIdCourt() {
 		return idCourt;
@@ -110,8 +128,11 @@ public class Booking {
 		result = prime * result + ((dateOfBooking == null) ? 0 : dateOfBooking.hashCode());
 		result = prime * result + ((hourOfBooking == null) ? 0 : hourOfBooking.hashCode());
 		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
+<<<<<<< HEAD
+=======
 		result = prime * result + ((user1 == null) ? 0 : user1.hashCode());
 		result = prime * result + ((user2 == null) ? 0 : user2.hashCode());
+>>>>>>> c31eb16cdd3d8d800f09a4f05158352770cc7468
 		return result;
 	}
 
@@ -136,6 +157,11 @@ public class Booking {
 				return false;
 		} else if (!idCourt.equals(other.idCourt))
 			return false;
+<<<<<<< HEAD
+		return true;
+	}
+
+=======
 		if (user1 == null) {
 			if (other.user1 != null)
 				return false;
@@ -149,4 +175,5 @@ public class Booking {
 		return true;
 	}
 	
+>>>>>>> c31eb16cdd3d8d800f09a4f05158352770cc7468
 }
