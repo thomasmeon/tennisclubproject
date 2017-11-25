@@ -25,7 +25,11 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public Booking createBooking(Booking booking) {
         BookingDao.create(booking);
+<<<<<<< HEAD
 		return booking;
+=======
+        return booking;
+>>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
     }
 
 	@Override
@@ -34,7 +38,7 @@ public class BookingServiceImpl implements BookingService {
 	}
 
 	@Override
-	public List<Booking> findAllBookings() {
+	public List<Booking> getAllBookings() {
 		return BookingDao.findAll();
 	}
 
