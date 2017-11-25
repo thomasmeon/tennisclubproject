@@ -22,7 +22,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/val/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar">
+	<classpathentry kind="lib" path="/home/cdore/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="maven.groupId" value="javax.validation"/>
