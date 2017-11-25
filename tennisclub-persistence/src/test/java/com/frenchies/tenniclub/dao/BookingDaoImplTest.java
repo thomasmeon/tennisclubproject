@@ -4,8 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -33,7 +31,7 @@ import com.frenchies.tennisclub.enums.Hour24;
 @Transactional
 public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 
-	@Inject
+	@Autowired
 	private BookingDao bookingDao;
 	
 	@Autowired

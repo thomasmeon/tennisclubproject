@@ -1,21 +1,19 @@
 package com.frenchies.tenniclub.dao;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.PersistenceSampleApplicationContext;
 import com.frenchies.tennisclub.dao.CourtDao;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
-
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Test of Court Dao Impl
@@ -27,7 +25,7 @@ import org.testng.annotations.Test;
 @Transactional
 public class CourtDaoImplTest extends AbstractTestNGSpringContextTests {
 
-	@Inject
+	@Autowired
 	private CourtDao courtDao;
 
 	@Test
