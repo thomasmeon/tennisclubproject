@@ -14,12 +14,12 @@ public class CourtServiceImpl implements CourtService {
 	private CourtDao courtDao;
 
 	@Override
-	public Court findById(Long id) {
+	public Court getCourtById(Long id) {
 		return courtDao.findById(id);
 	}
 
 	@Override
-	public List<Court> findAll() {
+	public List<Court> getAllCourts() {
 		return courtDao.findAll();
 	}
 
@@ -37,7 +37,7 @@ public class CourtServiceImpl implements CourtService {
 
 	@Override
 	public void changeCourtType(Court c, CourtType newCourtType) {
-		Court cTemp = findById(c.getIdCourt());
+		Court cTemp = getCourtById(c.getIdCourt());
 		if (cTemp != null) {
 			cTemp.setCourtType(newCourtType);
 			courtDao.update(cTemp);
