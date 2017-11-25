@@ -6,7 +6,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.frenchies.tennisclub.enums.CourtType;
@@ -14,32 +13,45 @@ import com.frenchies.tennisclub.enums.Status;
 
 //@Author Dore Corentin UCO 473308
 
+/**
+ * Class representing an Court.
+ *
+ * Every court has: - idCourt (Long) - status (Status) // In order to know if
+ * the court is available or not - type (courtType) - geolocalisation (lattitude
+ * and longitude) - hourOfBooking(Hour24) - dateOfBooking (Date) - admin
+ * (Boolean) // Return true if the user is an admin or false otherwise
+ */
+
 @Entity
 public class Court {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCourt;
-	
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Status status;
-	
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private CourtType type;
-	
+
 	private int longitude;
 
 	private int lattitude;
-	
+
+	// Constructor
+
 	public Court(Status status, CourtType type, int longitude, int lattitude) {
 		this.status = status;
 		this.type = type;
 		this.longitude = longitude;
 		this.lattitude = lattitude;
 	}
-	
+
+	//// SETTER AND GETTER/////
+
 	public int getLongitude() {
 		return longitude;
 	}

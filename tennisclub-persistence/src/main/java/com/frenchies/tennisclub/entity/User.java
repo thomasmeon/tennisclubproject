@@ -20,6 +20,14 @@ import javax.validation.constraints.Pattern;
  *
  */
 
+/**
+ * Class representing an User.
+ *
+ * Every User has: - id (Long) - mail (String) - name (String) - surname
+ * (String) - login (String) - password (String) - dateOfBirth (Date) - admin
+ * (Boolean) // Return true if the user is an admin or false otherwise
+ */
+
 @Entity
 // In Derby, its forbiden to 'USER' is reserved keyword, we need to rename table
 @Table(name = "Users")
@@ -59,7 +67,7 @@ public class User {
 	// Constructor
 
 	public User() {
-		
+
 	}
 	
 	public User(long id) {

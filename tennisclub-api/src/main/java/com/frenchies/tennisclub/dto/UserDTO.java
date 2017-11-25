@@ -39,12 +39,12 @@ public class UserDTO
     }
 
 
-    public String getGivenName() {
+    public String getName() {
         return givenName;
     }
 
 
-    public void setGivenName(String givenName) {
+    public void setName(String givenName) {
         this.givenName = givenName;
     }
 
