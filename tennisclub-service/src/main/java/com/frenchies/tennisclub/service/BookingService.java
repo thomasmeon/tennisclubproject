@@ -16,7 +16,11 @@ public interface BookingService {
 	/**
 	 * create a booking.
 	 */
+<<<<<<< HEAD
+	public Booking createBooking(Booking booking);
+=======
 	Booking createBooking(Booking b);
+>>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
 
 	/**
 	 * Get all saved bookings belonging to the given user
@@ -24,19 +28,23 @@ public interface BookingService {
 	 * @param user
 	 * @return
 	 */
-	List<Booking> getBookingsByUser(User user);
+	public List<Booking> getBookingsByUser(User user);
 
 	/**
 	 * Get all saved bookings.
 	 */
+<<<<<<< HEAD
+	public List<Booking> findAllBookings();
+=======
 	List<Booking> getAllBookings();
+>>>>>>> 4859684bca87eff87896a07eff54c2ed2aa53b62
 
 	/**
 	 * Cancel a Booking already in DB
 	 * 
 	 * @param Booking
 	 */	
-	void deleteBooking(Booking Booking);
+	public void deleteBooking(Booking Booking);
 
 	/**
 	 * Find a booking using its id
@@ -44,14 +52,14 @@ public interface BookingService {
 	 * @param id
 	 * @return
 	 */
-	Booking findBookingById(Long id);
+	public Booking findBookingById(Long id);
 	
 	/**
 	 * Get all booking of last week
 	 * 
 	 * @return
 	 */
-	List<Booking> getAllBookingsLastWeek();
+	public List<Booking> getAllBookingsLastWeek();
 
 	/**
 	 * Get all booking belonging to the given user in a period between 2 dates
@@ -61,7 +69,7 @@ public interface BookingService {
 	 * @param u
 	 * @return
 	 */
-	List<Booking> getAllBookingsByUserBetween(Date start, Date end, User u);
+	public List<Booking> getAllBookingsByUserBetween(Date start, Date end, User u);
 
 	/**
 	 * Get all booking in a period between 2 dates
@@ -69,5 +77,12 @@ public interface BookingService {
 	 * @param end
 	 * @return
 	 */
-	List<Booking> getAllBookingsBetween(Date start, Date end);
+	public List<Booking> getAllBookingsBetween(Date start, Date end);
+
+	/**
+	 * Get all booking of one date
+	 * @param date
+	 * @return
+	 */
+	public List<Booking> getBookingsByDate(Date date);
 }
