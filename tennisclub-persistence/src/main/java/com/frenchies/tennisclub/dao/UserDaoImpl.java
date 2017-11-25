@@ -54,8 +54,8 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void update(User b) {
-		em.merge(b);		
+	public User update(User b) {
+		return em.merge(b);		
 	}
 
 	@Override

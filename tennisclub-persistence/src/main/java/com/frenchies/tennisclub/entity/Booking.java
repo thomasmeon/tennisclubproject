@@ -102,19 +102,16 @@ public class Booking {
 	public void setIdBooking(Long idBooking) {
 		this.idBooking = idBooking;
 	}
-<<<<<<< HEAD
 
-<<<<<<< HEAD
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dateOfBooking == null) ? 0 : dateOfBooking.hashCode());
 		result = prime * result + ((hourOfBooking == null) ? 0 : hourOfBooking.hashCode());
-		result = prime * result + ((idBooking == null) ? 0 : idBooking.hashCode());
 		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
-		result = prime * result + (int) (idPlayer1 ^ (idPlayer1 >>> 32));
-		result = prime * result + (int) (idPlayer2 ^ (idPlayer2 >>> 32));
+		result = prime * result + ((user1 == null) ? 0 : user1.hashCode());
+		result = prime * result + ((user2 == null) ? 0 : user2.hashCode());
 		return result;
 	}
 
@@ -134,72 +131,22 @@ public class Booking {
 			return false;
 		if (hourOfBooking != other.hourOfBooking)
 			return false;
-		if (idBooking == null) {
-			if (other.idBooking != null)
-				return false;
-		} else if (!idBooking.equals(other.idBooking))
-			return false;
 		if (idCourt == null) {
 			if (other.idCourt != null)
 				return false;
 		} else if (!idCourt.equals(other.idCourt))
 			return false;
-		if (idPlayer1 != other.idPlayer1)
+		if (user1 == null) {
+			if (other.user1 != null)
+				return false;
+		} else if (!user1.equals(other.user1))
 			return false;
-		if (idPlayer2 != other.idPlayer2)
+		if (user2 == null) {
+			if (other.user2 != null)
+				return false;
+		} else if (!user2.equals(other.user2))
 			return false;
 		return true;
 	}
-
-=======
-	// @Override
-	// public int hashCode() {
-	// final int prime = 31;
-	// int result = 1;
-	// result = prime * result + ((dateOfBooking == null) ? 0 :
-	// dateOfBooking.hashCode());
-	// result = prime * result + ((hourOfBooking == null) ? 0 :
-	// hourOfBooking.hashCode());
-	// result = prime * result + ((idBooking == null) ? 0 : idBooking.hashCode());
-	// result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
-	// result = prime * result + (int) (idPlayer1 ^ (idPlayer1 >>> 32));
-	// result = prime * result + (int) (idPlayer2 ^ (idPlayer2 >>> 32));
-	// return result;
-	// }
-	//
-	// @Override
-	// public boolean equals(Object obj) {
-	// if (this == obj)
-	// return true;
-	// if (obj == null)
-	// return false;
-	// if (getClass() != obj.getClass())
-	// return false;
-	// Booking other = (Booking) obj;
-	// if (dateOfBooking == null) {
-	// if (other.dateOfBooking != null)
-	// return false;
-	// } else if (!dateOfBooking.equals(other.dateOfBooking))
-	// return false;
-	// if (hourOfBooking != other.hourOfBooking)
-	// return false;
-	// if (idBooking == null) {
-	// if (other.idBooking != null)
-	// return false;
-	// } else if (!idBooking.equals(other.idBooking))
-	// return false;
-	// if (idCourt == null) {
-	// if (other.idCourt != null)
-	// return false;
-	// } else if (!idCourt.equals(other.idCourt))
-	// return false;
-	// if (idPlayer1 != other.idPlayer1)
-	// return false;
-	// if (idPlayer2 != other.idPlayer2)
-	// return false;
-	// return true;
-	// }
->>>>>>> 1326343e9d2a7be6b7332a4be5c2004af9653ca9
-=======
->>>>>>> beb722b5b6b12ad25ec014e87aef527e757da317
+	
 }
