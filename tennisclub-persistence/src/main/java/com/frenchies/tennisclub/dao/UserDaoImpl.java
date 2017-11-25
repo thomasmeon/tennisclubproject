@@ -12,7 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.frenchies.tennisclub.entity.User;
 
 /**
- * Implemantation of User Dao 
+ * Implemantation of User Dao
+ * 
  * @author ValentinJacquet 473362
  *
  */
@@ -25,16 +26,14 @@ public class UserDaoImpl implements UserDao {
 	public void create(User u) {
 		em.persist(u);
 	}
-	
+
 	@Override
 	public User findUserByName(String name) {
 		if (name == null || name.isEmpty())
 			throw new IllegalArgumentException("Cannot search for null name");
 
 		try {
-			return em
-					.createQuery("select u from User u where name=:name",
-							User.class).setParameter("name", name)
+			return em.createQuery("select u from User u where name=:name", User.class).setParameter("name", name)
 					.getSingleResult();
 		} catch (NoResultException nre) {
 			return null;
@@ -48,14 +47,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> findAll() {
-		TypedQuery<User> query = em.createQuery("SELECT u FROM User u",
-				User.class);
+		TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
 		return (List<User>) query.getResultList();
 	}
 
 	@Override
 	public User update(User b) {
-		return em.merge(b);		
+		return em.merge(b);
 	}
 
 	@Override
