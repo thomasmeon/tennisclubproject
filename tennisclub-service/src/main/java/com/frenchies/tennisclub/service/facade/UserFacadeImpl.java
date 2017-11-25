@@ -31,13 +31,13 @@ public class UserFacadeImpl implements UserFacade {
 
     @Override
     public UserDTO findUserById(Long userId) {
-        User user = userService.findUserById(userId);
+        User user = userService.getUserById(userId);
         return (user == null) ? null : beanMappingService.mapTo(user, UserDTO.class);
     }
     
     @Override
     public UserDTO findUserByName(String name) {
-        User user = userService.findUserByName(name);
+        User user = userService.getUserByName(name);
         return (user == null) ? null : beanMappingService.mapTo(user, UserDTO.class);
     }
     
@@ -73,7 +73,7 @@ public class UserFacadeImpl implements UserFacade {
     @Override
     public boolean authenticate(UserAuthenticateDTO u) {
         return userService.authenticate(
-                userService.findUserById(u.getUserId()), u.getPassword());
+                userService.getUserById(u.getUserId()), u.getPassword());
     }
 
 	@Override

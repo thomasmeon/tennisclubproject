@@ -64,7 +64,7 @@ public interface UserService {
      * @param id user identifier
      * @return user with given id
      */
-	User findUserById(Long userId);
+	User getUserById(Long userId);
 	
     /**
      * Find {@link HumanPlayer} by username.
@@ -72,6 +72,6 @@ public interface UserService {
      * @param username human player's username
      * @return human player with given username
      */
-	User findUserByName(String name);
+	User getUserByName(String name);
 }
 
