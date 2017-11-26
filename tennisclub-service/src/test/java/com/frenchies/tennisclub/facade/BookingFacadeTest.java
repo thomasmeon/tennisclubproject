@@ -49,8 +49,13 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 		MockitoAnnotations.initMocks(this);
 	}
 	
+//	@BeforeMethod
+//	public void userDTOCreation() {
+//		
+//	}
+
 	@BeforeMethod
-	public void userDTOCreation() {
+	public void prepareTestBooking() {
 		cal1 = Calendar.getInstance();
 		cal1.set(1999, 11, 10);
 		
@@ -67,10 +72,8 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 		userDTO2.setName("Pierre");
 		userDTO2.setSurname("Paul");
 		userDTO2.setPhone("+33728962718");
-	}
-
-	@BeforeMethod
-	public void prepareTestBooking() {
+		
+		cal1 = Calendar.getInstance();
 		cal1.set(2017, 1, 1);
 		Date date1 = cal1.getTime();
 		
