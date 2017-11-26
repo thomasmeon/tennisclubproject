@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-package com.frenchies.tennisclub.service;
-
-import org.junit.Test;
-
-import com.frenchies.tennisclub.dto.UserDTO;
-import com.frenchies.tennisclub.entity.User;
-
-public class BeanMappingServiceTest extends BaseServiceTest {
-=======
-<<<<<<< HEAD
 package com.frenchies.tennisclub.service;
 
 import org.junit.Assert;
@@ -32,7 +21,6 @@ public class BeanMappingServiceTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
 	private BeanMappingService beanMappingService;
->>>>>>> 1fa0b8ddf6f8af90736ef987dd39596c6345c3d6
 
 	@Test
 	public void mapping() {
@@ -42,55 +30,38 @@ public class BeanMappingServiceTest extends AbstractTestNGSpringContextTests {
 		userDTO.setName("BOB");
 
 		UserDTO mappedUserDTO = beanMappingService.mapTo(user, UserDTO.class);
-<<<<<<< HEAD
-		assertThat(mappedUserDTO).isEqualTo(userDTO);
-		User mappedUser = beanMappingService.mapTo(userDTO, User.class);
-		assertThat(mappedUser).isEqualTo(user);
-	}
-	
-    @Test
-    public void mapUsers(){
-        List<UserDTO> mappedUsers = beanMappingService.mapTo(user, UserDTO.class);
-        assertThat(mappedUsers).hasSize(user.size());
-    }
-	
-}
-=======
 		Assert.assertEquals(mappedUserDTO, userDTO);
 		User mappedUser = beanMappingService.mapTo(userDTO, User.class);
 		Assert.assertEquals(mappedUser, user);
 	}
 
 }
-=======
-//package com.frenchies.tennisclub.service;
+// package com.frenchies.tennisclub.service;
 //
-//import org.junit.Test;
+// import org.junit.Test;
 //
-//import com.frenchies.tennisclub.dto.UserDTO;
-//import com.frenchies.tennisclub.entity.User;
+// import com.frenchies.tennisclub.dto.UserDTO;
+// import com.frenchies.tennisclub.entity.User;
 //
-//public class BeanMappingServiceTest extends BaseServiceTest {
+// public class BeanMappingServiceTest extends BaseServiceTest {
 //
-//	@Test
-//	public void mapping() {
-//		User user = new User();
-//		UserDTO userDTO = new UserDTO();
-//		user.setName("BOB");
-//		userDTO.setName("BOB");
+// @Test
+// public void mapping() {
+// User user = new User();
+// UserDTO userDTO = new UserDTO();
+// user.setName("BOB");
+// userDTO.setName("BOB");
 //
-//		UserDTO mappedUserDTO = beanMappingService.mapTo(user, UserDTO.class);
-//		assertThat(mappedUserDTO).isEqualTo(userDTO);
-//		User mappedUser = beanMappingService.mapTo(userDTO, User.class);
-//		assertThat(mappedUser).isEqualTo(user);
-//	}
-//	
-//    @Test
-//    public void mapUsers(){
-//        List<UserDTO> mappedUsers = beanMappingService.mapTo(user, UserDTO.class);
-//        assertThat(mappedUsers).hasSize(user.size());
-//    }
-//	
-//}
->>>>>>> 487549bb85cdc489faad900a07821dfa070fdca7
->>>>>>> 1fa0b8ddf6f8af90736ef987dd39596c6345c3d6
+// UserDTO mappedUserDTO = beanMappingService.mapTo(user, UserDTO.class);
+// assertThat(mappedUserDTO).isEqualTo(userDTO);
+// User mappedUser = beanMappingService.mapTo(userDTO, User.class);
+// assertThat(mappedUser).isEqualTo(user);
+// }
+//
+// @Test
+// public void mapUsers(){
+// List<UserDTO> mappedUsers = beanMappingService.mapTo(user, UserDTO.class);
+// assertThat(mappedUsers).hasSize(user.size());
+// }
+//
+// }
