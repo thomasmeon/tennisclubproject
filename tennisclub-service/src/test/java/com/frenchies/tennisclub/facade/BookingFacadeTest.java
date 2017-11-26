@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -31,52 +32,52 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
 	private BookingFacade bookingFacade;
-	
+
 	@Autowired
 	private UserFacade userFacade;
 
 	private BookingCreateDTO bookingCreateDTO;
 
 	private BookingDTO bookingDTO;
-	
+
 	private UserDTO userDTO1;
 	private UserDTO userDTO2;
-	
+
 	private Calendar cal1;
 
 	@BeforeClass
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 	}
-	
-//	@BeforeMethod
-//	public void userDTOCreation() {
-//		
-//	}
+
+	// @BeforeMethod
+	// public void userDTOCreation() {
+	//
+	// }
 
 	@BeforeMethod
 	public void prepareTestBooking() {
 		cal1 = Calendar.getInstance();
 		cal1.set(1999, 11, 10);
-		
+
 		userDTO1 = new UserDTO();
 		userDTO1.setDateOfBirth(cal1.getTime());
 		userDTO1.setEmail("jean.françois@mail.com");
 		userDTO1.setName("François");
 		userDTO1.setSurname("jean");
 		userDTO1.setPhone("+33720362718");
-		
+
 		userDTO2 = new UserDTO();
 		userDTO2.setDateOfBirth(cal1.getTime());
 		userDTO2.setEmail("paul.pierre@mail.com");
 		userDTO2.setName("Pierre");
 		userDTO2.setSurname("Paul");
 		userDTO2.setPhone("+33728962718");
-		
+
 		cal1 = Calendar.getInstance();
 		cal1.set(2017, 1, 1);
 		Date date1 = cal1.getTime();
-		
+
 		userFacade.createUser(userDTO1, "blabla");
 		userFacade.createUser(userDTO2, "blabla2");
 
@@ -86,7 +87,7 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 		bookingCreateDTO.setHourOfBooking(Hour24.EIGHT);
 		bookingCreateDTO.setUser1(userDTO1);
 		bookingCreateDTO.setUser2(userDTO2);
-		
+
 		bookingDTO = new BookingDTO();
 	}
 
@@ -121,7 +122,7 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 		assertThat(bookingFacade.getBookingsByDate(bookingFacade.getBookingById(bookingId).getDateOfBooking()))
 				.isEqualTo(bookingCreateDTO.getDateOfBooking());
 	}
-	
+
 	@Test
 	public void getBookingsByUserTest() {
 		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
