@@ -76,4 +76,6 @@ public interface UserService {
 	 * @return human player with given username
 	 */
 	public User getUserByName(String name);
+	
+	boolean updatePassword(User u, String oldPassword, String newPassword);
 }

@@ -65,6 +65,19 @@ public class UserServiceImpl implements UserService {
 		 
 		 return userDao.update(user);
 	 }
+	
+	@Override
+    public boolean updatePassword(User u, String oldPassword, String newPassword) {
+		User toUpdate = userDao.findById(u.getId());
+        if (validatePassword(oldPassword, toUpdate.getPasswordHash())){
+            toUpdate.setPasswordHash(createHash(newPassword));
+            userDao.update(toUpdate);
+            return true;
+        }
+        return false; //TODO: exception wrapping
+}
+	
+	
 	 
 	// see https://crackstation.net/hashing-security.htm#javasourcecode
 	private static String createHash(String password) {

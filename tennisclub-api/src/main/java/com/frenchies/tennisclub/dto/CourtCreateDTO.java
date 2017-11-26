@@ -6,6 +6,7 @@ import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 
 /**
+ * The DTO object for creating a court
  * 
  * @author thomasmeon 473449
  *
