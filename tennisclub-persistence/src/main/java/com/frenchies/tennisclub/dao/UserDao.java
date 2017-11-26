@@ -34,7 +34,7 @@ public interface UserDao {
 	 * Update a User already in DB
 	 * @param people updated
 	 */
-	void update(User u);
+	User update(User u);
 	
 	/**
 	 * Get all people

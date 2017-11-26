@@ -54,4 +54,6 @@ public interface BookingDao {
 	void remove(Booking b)  throws IllegalArgumentException;
 
 	List<Booking> getBookingsCreatedBetween(Date start, Date end);
+
+	List<Booking> getBookingsForUserCreatedBetween(Date start, Date end, User u);
 }
