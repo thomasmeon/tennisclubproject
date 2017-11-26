@@ -1,16 +1,15 @@
 package com.frenchies.tennisclub.service.facade;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
-import com.frenchies.tennisclub.entity.Booking;
+import com.frenchies.tennisclub.dto.UserUpdateDTO;
+import com.frenchies.tennisclub.dto.UserUpdatePasswordDTO;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.facade.UserFacade;
 import com.frenchies.tennisclub.mappers.BeanMappingServiceImpl;
@@ -49,6 +48,12 @@ public class UserFacadeImpl implements UserFacade {
         User userEntity = beanMappingService.mapTo(userDTO, User.class);
         userService.registerUser(userEntity, unencryptedPassword);
         userDTO.setId(userEntity.getId());
+        userDTO.setAddress(userEntity.getAddress());
+        userDTO.setDateOfBirth(userEntity.getDateOfBirth());
+        userDTO.setEmail(userEntity.getMail());
+        userDTO.setName(userEntity.getName());
+        userDTO.setSurname(userEntity.getSurname());
+        userDTO.setPhone(userEntity.getPhone());
     }
     
     @Override
@@ -56,12 +61,8 @@ public class UserFacadeImpl implements UserFacade {
 		userService.delete(new User(userId));
 	}
     
-    
-//    @Override
-//    public UserDTO updateUser(UserDTO userDTO) {
-//        return userService.update(userDTO);
-//    }
        
+           
     @Override
     public List<UserDTO> getAllUsers() {
         return beanMappingService.mapTo(userService.getAllUsers(), UserDTO.class);
@@ -79,11 +80,30 @@ public class UserFacadeImpl implements UserFacade {
                 userService.getUserById(u.getUserId()), u.getPassword());
     }
 
-	@Override
-	public List<UserDTO> getAllUser() {
-	return null;
-	}
+    @Override
+    public UserDTO updateUser(UserUpdateDTO userDTO) {
+        User userToUpdate = userService.getUserById(userDTO.getId());
+        userToUpdate.setDateOfBirth(userDTO.getDateOfBirth());
+        userToUpdate.setMail(userDTO.getEmail());
+        userToUpdate.setPhone(userDTO.getPhone());
+        userToUpdate.setName(userDTO.getName());
+        userToUpdate.setSurname(userDTO.getSurname());
+        userToUpdate.setId(userDTO.getId());
+        userToUpdate.setAddress(userDTO.getAddress());
+        
+        userService.update(userToUpdate);
+        return getUserById(userToUpdate.getId());
+    }
+    
+    @Override
+    public UserDTO updatePassword(UserUpdatePasswordDTO u) {
+        User userToUpdate = userService.getUserById(u.getId());
+        if (!userService.updatePassword(userToUpdate, u.getOldPassword(), u.getNewPassword())) {
+            //throw new InvalidPasswordException(); TODO
+        }
 
+        return getUserById(u.getId());
+    }
     
 
 }

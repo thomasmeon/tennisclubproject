@@ -46,6 +46,11 @@ public class User {
 
 	@NotNull
 	protected String surname;
+	
+	@NotNull
+	protected String address;
+
+	
 
 	@NotNull
 	protected String login;
@@ -93,6 +98,14 @@ public class User {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public Long getId() {

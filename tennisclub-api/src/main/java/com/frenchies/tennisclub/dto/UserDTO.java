@@ -2,10 +2,16 @@ package com.frenchies.tennisclub.dto;
 
 import java.util.Date;
 
+/**
+ * 
+ * @author valentinjacquet 473362
+ *
+ */
+
 public class UserDTO
 {
     private Long id;
-    private String passwordHash;
+    //private String passwordHash;
     private String email;
     private String givenName;
     private String surname;
@@ -22,13 +28,13 @@ public class UserDTO
     }
 
     
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
+//    public String getPasswordHash() {
+//        return passwordHash;
+//    }
+//
+//    public void setPasswordHash(String passwordHash) {
+//        this.passwordHash = passwordHash;
+//    }
 
     public String getEmail() {
         return email;
@@ -112,13 +118,13 @@ public class UserDTO
     public String toString() {
         return "UserDTO{" +
                 "id=" + id +
-                ", passwordHash='" + passwordHash + '\'' +
+           //     ", passwordHash='" + passwordHash + '\'' +
                 ", email='" + email + '\'' +
                 ", givenName='" + givenName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
-                ", joinedDate=" + dateOfBirth +
+                ", DateOfBirth=" + dateOfBirth +
                 '}';
     }
 }
