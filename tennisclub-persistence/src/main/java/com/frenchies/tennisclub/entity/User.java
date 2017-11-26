@@ -47,8 +47,8 @@ public class User {
 	@NotNull
 	protected String surname;
 	
-	@NotNull
-	protected String address;
+//	@NotNull
+//	protected String address;
 
 	
 
@@ -100,13 +100,13 @@ public class User {
 		this.mail = mail;
 	}
 	
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
+//	public String getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
 
 	public Long getId() {
 		return id;
