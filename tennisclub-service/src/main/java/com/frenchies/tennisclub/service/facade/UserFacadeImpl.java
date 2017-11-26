@@ -1,13 +1,16 @@
 package com.frenchies.tennisclub.service.facade;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
+import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.facade.UserFacade;
 import com.frenchies.tennisclub.mappers.BeanMappingServiceImpl;
@@ -30,13 +33,13 @@ public class UserFacadeImpl implements UserFacade {
     private BeanMappingServiceImpl beanMappingService;
 
     @Override
-    public UserDTO findUserById(Long userId) {
+    public UserDTO getUserById(Long userId) {
         User user = userService.getUserById(userId);
         return (user == null) ? null : beanMappingService.mapTo(user, UserDTO.class);
     }
     
     @Override
-    public UserDTO findUserByName(String name) {
+    public UserDTO getUserByName(String name) {
         User user = userService.getUserByName(name);
         return (user == null) ? null : beanMappingService.mapTo(user, UserDTO.class);
     }
@@ -54,11 +57,11 @@ public class UserFacadeImpl implements UserFacade {
 	}
     
     
-    @Override
-    public void updateUser(UserDTO userDTO) {
-        throw new UnsupportedOperationException("Not supported yet.");
-}
-    
+//    @Override
+//    public UserDTO updateUser(UserDTO userDTO) {
+//        return userService.update(userDTO);
+//    }
+       
     @Override
     public List<UserDTO> getAllUsers() {
         return beanMappingService.mapTo(userService.getAllUsers(), UserDTO.class);
@@ -78,8 +81,7 @@ public class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public List<UserDTO> getAllUser() {
-		// TODO Auto-generated method stub
-		return null;
+	return null;
 	}
 
     

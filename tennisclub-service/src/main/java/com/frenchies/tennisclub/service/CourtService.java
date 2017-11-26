@@ -26,13 +26,13 @@ public interface CourtService {
 	 * @param id
 	 * @return court
 	 */
-	public Court findById(Long id);
+	public Court getCourtById(Long id);
 	
 	/**
 	 * Find all courts of the club
 	 * @return list of courts
 	 */
-	public List<Court> findAll();
+	public List<Court> getAllCourts();
 	
 	/**
 	 * Delete one court
