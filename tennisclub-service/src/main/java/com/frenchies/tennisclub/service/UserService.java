@@ -2,6 +2,8 @@ package com.frenchies.tennisclub.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.frenchies.tennisclub.entity.User;
 
 /**
@@ -9,6 +11,7 @@ import com.frenchies.tennisclub.entity.User;
  * @author ValentinJacquet 473362
  *
  */
+@Service
 public interface UserService {
 	/**
 	 * Register the given user with the given unencrypted password.

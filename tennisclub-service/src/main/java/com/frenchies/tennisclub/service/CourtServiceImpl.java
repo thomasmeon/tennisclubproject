@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import com.frenchies.tennisclub.dao.CourtDao;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 
+@Service
 public class CourtServiceImpl implements CourtService {
 	
 	@Inject

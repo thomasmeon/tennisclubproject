@@ -2,6 +2,8 @@ package com.frenchies.tennisclub.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 
@@ -10,7 +12,7 @@ import com.frenchies.tennisclub.enums.CourtType;
  * @author valentinjacquet 4733362
  *
  */
-
+@Service
 public interface CourtService {
 	/**
 	 * Creation of a new court

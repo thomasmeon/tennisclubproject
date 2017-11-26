@@ -8,6 +8,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.frenchies.tennisclub.dao.UserDao;
 import com.frenchies.tennisclub.entity.User;
@@ -17,6 +18,7 @@ import com.frenchies.tennisclub.entity.User;
  * @author ValentinJacquet 473362
  *
  */
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
