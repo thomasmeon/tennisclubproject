@@ -3,6 +3,8 @@ package com.frenchies.tennisclub.service;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.User;
 
@@ -11,6 +13,7 @@ import com.frenchies.tennisclub.entity.User;
  * @author ValentinJacquet 473362
  *
  */
+@Service
 public interface BookingService {
 
 	/**

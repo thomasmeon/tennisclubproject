@@ -1,14 +1,16 @@
 package com.frenchies.tennisclub.mappers;
 
-import org.dozer.Mapper;
-
 import java.util.Collection;
 import java.util.List;
+
+import org.dozer.Mapper;
+import org.springframework.stereotype.Service;
 
 /**
  * Bean mapping service.
  *
  */
+@Service
 public interface BeanMappingService {
 
     public  <T> List<T> mapTo(Collection<?> objects, Class<T> mapToClass);

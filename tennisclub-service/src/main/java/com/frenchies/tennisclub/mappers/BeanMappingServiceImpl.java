@@ -1,24 +1,24 @@
 package com.frenchies.tennisclub.mappers;
 
-import com.frenchies.tennisclub.mappers.BeanMappingService;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Bean mapping service implementation.
  *
  */
+@Service
 public class BeanMappingServiceImpl implements BeanMappingService {
 
     @Autowired
     private Mapper dozer;
 
-    //@Override
+    @Override
     public <T> List<T> mapTo(Collection<?> objects, Class<T> mapToClass) {
         List<T> mappedCollection = new ArrayList<>();
         for (Object object : objects) {
@@ -27,12 +27,12 @@ public class BeanMappingServiceImpl implements BeanMappingService {
         return mappedCollection;
     }
 
-   // @Override
+    @Override
     public <T> T mapTo(Object u, Class<T> mapToClass) {
         return dozer.map(u,mapToClass);
     }
 
-   // @Override
+    @Override
     public Mapper getMapper() {
         return dozer;
     }
