@@ -1,4 +1,4 @@
-package com.frenchies.tennisclub;
+package com.frenchies.tennisclub.facade;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -62,14 +62,14 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 
 		userDTO1 = new UserDTO();
 		userDTO1.setDateOfBirth(cal1.getTime());
-		userDTO1.setEmail("jean.françois@mail.com");
+		userDTO1.setMail("jean.françois@mail.com");
 		userDTO1.setName("François");
 		userDTO1.setSurname("jean");
 		userDTO1.setPhone("+33720362718");
 
 		userDTO2 = new UserDTO();
 		userDTO2.setDateOfBirth(cal1.getTime());
-		userDTO2.setEmail("paul.pierre@mail.com");
+		userDTO2.setMail("paul.pierre@mail.com");
 		userDTO2.setName("Pierre");
 		userDTO2.setSurname("Paul");
 		userDTO2.setPhone("+33728962718");

@@ -46,14 +46,6 @@ public class User {
 
 	@NotNull
 	protected String surname;
-	
-//	@NotNull
-//	protected String address;
-
-	
-
-	@NotNull
-	protected String login;
 
 	protected String passwordHash;
 
@@ -79,11 +71,10 @@ public class User {
 		this.id = id;
 	}
 
-	public User(String name, String surname, String login, String password, String mail, String phone,
+	public User(String name, String surname, String password, String mail, String phone,
 			Date dateOfBirth) {
 		this.name = name;
 		this.surname = surname;
-		this.login = login;
 		this.passwordHash = password;
 		this.mail = mail;
 		this.phone = phone;
@@ -99,14 +90,6 @@ public class User {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	
-//	public String getAddress() {
-//		return address;
-//	}
-//
-//	public void setAddress(String address) {
-//		this.address = address;
-//	}
 
 	public Long getId() {
 		return id;
@@ -130,14 +113,6 @@ public class User {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
 	}
 
 	public String getPasswordHash() {
@@ -172,11 +147,67 @@ public class User {
 		this.admin = admin;
 	}
 
-	//// METHODS OF PEOPLE////
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (admin ? 1231 : 1237);
+		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((passwordHash == null) ? 0 : passwordHash.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (admin != other.admin)
+			return false;
+		if (dateOfBirth == null) {
+			if (other.dateOfBirth != null)
+				return false;
+		} else if (!dateOfBirth.equals(other.dateOfBirth))
+			return false;
+		if (mail == null) {
+			if (other.mail != null)
+				return false;
+		} else if (!mail.equals(other.mail))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (passwordHash == null) {
+			if (other.passwordHash != null)
+				return false;
+		} else if (!passwordHash.equals(other.passwordHash))
+			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
+		if (surname == null) {
+			if (other.surname != null)
+				return false;
+		} else if (!surname.equals(other.surname))
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {
-		return "User{" + "id=" + id + ", Name='" + name + '\'' + ", Surname='" + surname + '\'' + ", email='" + mail
-				+ '\'' + ", password='" + passwordHash + '\'' + ", login=" + login + '}';
+		return "User [id=" + id + ", mail=" + mail + ", name=" + name + ", surname=" + surname + ", passwordHash="
+				+ passwordHash + ", phone=" + phone + ", dateOfBirth=" + dateOfBirth + ", admin=" + admin + "]";
 	}
 }

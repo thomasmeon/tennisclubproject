@@ -3,22 +3,22 @@
 <suite thread-count="1" verbose="0" name="Failed suite [Surefire suite]">
   <test name="Surefire test(failed)">
     <classes>
-      <class name="com.frenchies.tennisclub.BookingFacadeTest">
+      <class name="com.frenchies.tennisclub.facade.BookingFacadeTest">
         <methods>
           <include name="springTestContextBeforeTestClass"/>
+          <include name="createBookingTest"/>
+          <include name="getBookingsByDateTest"/>
+          <include name="getBookingsByUserTest"/>
           <include name="springTestContextPrepareTestInstance"/>
           <include name="springTestContextAfterTestClass"/>
+          <include name="deleteBookingTest"/>
           <include name="springTestContextBeforeTestMethod"/>
-          <include name="prepareTestBooking"/>
-          <include name="getAllBookingTest"/>
-          <include name="createBookingTest"/>
-          <include name="getBookingsByUserTest"/>
           <include name="setup"/>
           <include name="springTestContextAfterTestMethod"/>
-          <include name="getBookingsByDateTest"/>
-          <include name="deleteBookingTest"/>
+          <include name="getAllBookingTest"/>
+          <include name="prepareTestBooking"/>
         </methods>
-      </class> <!-- com.frenchies.tennisclub.BookingFacadeTest -->
+      </class> <!-- com.frenchies.tennisclub.facade.BookingFacadeTest -->
       <class name="com.frenchies.tennisclub.service.BookingServiceTest">
         <methods>
           <include name="springTestContextBeforeTestClass"/>

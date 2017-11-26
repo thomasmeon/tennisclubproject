@@ -11,8 +11,8 @@ import java.util.Date;
 public class UserDTO
 {
     private Long id;
-    //private String passwordHash;
-    private String email;
+    private String passwordHash;
+    private String mail;
     private String givenName;
     private String surname;
     private String phone;
@@ -28,20 +28,20 @@ public class UserDTO
     }
 
     
-//    public String getPasswordHash() {
-//        return passwordHash;
-//    }
-//
-//    public void setPasswordHash(String passwordHash) {
-//        this.passwordHash = passwordHash;
-//    }
-
-    public String getEmail() {
-        return email;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
 
@@ -93,7 +93,7 @@ public class UserDTO
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + ((mail == null) ? 0 : mail.hashCode());
         return result;
     }
 
@@ -106,10 +106,10 @@ public class UserDTO
         if (getClass() != obj.getClass())
             return false;
         UserDTO other = (UserDTO) obj;
-        if (email == null) {
-            if (other.email != null)
+        if (mail == null) {
+            if (other.mail != null)
                 return false;
-        } else if (!email.equals(other.email))
+        } else if (!mail.equals(other.mail))
             return false;
         return true;
     }
@@ -118,8 +118,8 @@ public class UserDTO
     public String toString() {
         return "UserDTO{" +
                 "id=" + id +
-           //     ", passwordHash='" + passwordHash + '\'' +
-                ", email='" + email + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", email='" + mail + '\'' +
                 ", givenName='" + givenName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phone='" + phone + '\'' +
