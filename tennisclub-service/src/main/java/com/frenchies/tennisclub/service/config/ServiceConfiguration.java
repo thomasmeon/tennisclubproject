@@ -9,12 +9,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import com.frenchies.tennisclub.PersistenceSampleApplicationContext;
-import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.CourtDTO;
-import com.frenchies.tennisclub.dto.UserDTO;
-import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.Court;
-import com.frenchies.tennisclub.entity.User;
+import com.frenchies.tennisclub.service.BookingServiceImpl;
+import com.frenchies.tennisclub.service.facade.CourtFacadeImpl;
 
 /**
  * 
@@ -25,7 +23,7 @@ import com.frenchies.tennisclub.entity.User;
 
 @Configuration
 @Import(PersistenceSampleApplicationContext.class)
-@ComponentScan(basePackages="com.frenchies.tennisclub")
+@ComponentScan(basePackageClasses={BookingServiceImpl.class, CourtFacadeImpl.class})
 public class ServiceConfiguration {
 	
 
@@ -36,13 +34,15 @@ public class ServiceConfiguration {
 		return dozer;
 	}
 	
-	
+	/**
+	 * Custom config for Dozer if needed
+	 * @author nguyen
+	 *
+	 */
 	public class DozerCustomConfig extends BeanMappingBuilder {
 	    @Override
 	    protected void configure() {
 	        mapping(Court.class, CourtDTO.class);
-	        mapping(Booking.class, BookingDTO.class);
-	        mapping(User.class, UserDTO.class);
 	    }
 	}
 	

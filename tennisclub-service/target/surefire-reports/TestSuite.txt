@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 1, Time elapsed: 4.089 sec <<< FAILURE! - in TestSuite
+mapping(com.frenchies.tennisclub.service.BeanMappingServiceTest)  Time elapsed: 0.093 sec  <<< FAILURE!
+java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.frenchies.tennisclub.service.BeanMappingServiceTest.mapping(BeanMappingServiceTest.java:36)
+
