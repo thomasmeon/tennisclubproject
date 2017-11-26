@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="0" name="Failed suite [Surefire suite]">
+  <test name="Surefire test(failed)">
+    <classes>
+      <class name="com.frenchies.tennisclub.facade.BookingFacadeTest">
+        <methods>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="createBookingTest"/>
+          <include name="getBookingsByDateTest"/>
+          <include name="getBookingsByUserTest"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="deleteBookingTest"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="setup"/>
+          <include name="springTestContextAfterTestMethod"/>
+          <include name="getAllBookingTest"/>
+          <include name="prepareTestBooking"/>
+        </methods>
+      </class> <!-- com.frenchies.tennisclub.facade.BookingFacadeTest -->
+      <class name="com.frenchies.tennisclub.service.BookingServiceTest">
+        <methods>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="setup"/>
+          <include name="springTestContextAfterTestMethod"/>
+        </methods>
+      </class> <!-- com.frenchies.tennisclub.service.BookingServiceTest -->
+      <class name="com.frenchies.tennisclub.service.CourtServiceTest">
+        <methods>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="setup"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="changeType"/>
+        </methods>
+      </class> <!-- com.frenchies.tennisclub.service.CourtServiceTest -->
+      <class name="com.frenchies.tennisclub.service.BeanMappingServiceTest">
+        <methods>
+          <include name="springTestContextBeforeTestClass"/>
+          <include name="springTestContextPrepareTestInstance"/>
+          <include name="springTestContextAfterTestClass"/>
+          <include name="springTestContextBeforeTestMethod"/>
+          <include name="mapping"/>
+          <include name="springTestContextAfterTestMethod"/>
+        </methods>
+      </class> <!-- com.frenchies.tennisclub.service.BeanMappingServiceTest -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->
