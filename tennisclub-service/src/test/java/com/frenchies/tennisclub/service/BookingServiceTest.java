@@ -1,5 +1,6 @@
 package com.frenchies.tennisclub.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.util.Calendar;
@@ -8,9 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -20,7 +18,9 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.dao.BookingDao;
 import com.frenchies.tennisclub.entity.Booking;
@@ -69,8 +69,9 @@ public class BookingServiceTest extends AbstractTestNGSpringContextTests {
 		when(timeService.getCurrentTime()).thenReturn(fabricatedTime);
 
 		List<Booking> bookings = bookingService.getAllBookingsLastWeek();
-		Assert.assertEquals(1, bookings.size());
-		Assert.assertTrue(bookings.get(0).getIdBooking().equals(22l));
+		assertThat(bookings.get(0).getIdBooking()).isEqualTo(22l);
+
+		assertThat(1).isEqualTo(bookings.size());
 
 	}
 

@@ -1,8 +1,6 @@
 package com.frenchies.tennisclub.service;
 
 import org.hibernate.service.spi.ServiceException;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,13 +10,17 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.dao.CourtDao;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 
-import junit.framework.Assert;
+import static org.assertj.core.api.Assertions.assertThat;
+
+
 
 /**
  * Basic tests for facade implementations using a mock of the service layer.
@@ -49,7 +51,7 @@ public class CourtServiceTest extends AbstractTestNGSpringContextTests {
 
 		courtService.changeCourtType(c, newCourtType);
 
-		Assert.assertEquals(c.getCourtType(), newCourtType);
+		assertThat(c.getCourtType()).isEqualTo(newCourtType);
 
 	}
 
