@@ -13,7 +13,7 @@ public class UserUpdateDTO {
 	private Long id;
     private String name;
     private String surname;
-    private String email;
+    private String mail;
     private String phone;
     private String address;
     private Date dateOfBirth;
@@ -43,12 +43,12 @@ public class UserUpdateDTO {
 		this.surname = surname;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMail() {
+		return mail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public String getPhone() {

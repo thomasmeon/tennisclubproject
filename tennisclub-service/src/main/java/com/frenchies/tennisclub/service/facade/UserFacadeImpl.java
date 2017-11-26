@@ -12,7 +12,7 @@ import com.frenchies.tennisclub.dto.UserUpdateDTO;
 import com.frenchies.tennisclub.dto.UserUpdatePasswordDTO;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.facade.UserFacade;
-import com.frenchies.tennisclub.mappers.BeanMappingServiceImpl;
+import com.frenchies.tennisclub.mappers.BeanMappingService;
 import com.frenchies.tennisclub.service.UserService;
 
 /**
@@ -29,7 +29,7 @@ public class UserFacadeImpl implements UserFacade {
     private UserService userService;
 
     @Autowired
-    private BeanMappingServiceImpl beanMappingService;
+    private BeanMappingService beanMappingService;
 
     @Override
     public UserDTO getUserById(Long userId) {
@@ -49,7 +49,7 @@ public class UserFacadeImpl implements UserFacade {
         userService.registerUser(userEntity, unencryptedPassword);
         userDTO.setId(userEntity.getId());
         userDTO.setDateOfBirth(userEntity.getDateOfBirth());
-        userDTO.setEmail(userEntity.getMail());
+        userDTO.setMail(userEntity.getMail());
         userDTO.setName(userEntity.getName());
         userDTO.setSurname(userEntity.getSurname());
         userDTO.setPhone(userEntity.getPhone());
@@ -83,7 +83,7 @@ public class UserFacadeImpl implements UserFacade {
     public UserDTO updateUser(UserUpdateDTO userDTO) {
         User userToUpdate = userService.getUserById(userDTO.getId());
         userToUpdate.setDateOfBirth(userDTO.getDateOfBirth());
-        userToUpdate.setMail(userDTO.getEmail());
+        userToUpdate.setMail(userDTO.getMail());
         userToUpdate.setPhone(userDTO.getPhone());
         userToUpdate.setName(userDTO.getName());
         userToUpdate.setSurname(userDTO.getSurname());
