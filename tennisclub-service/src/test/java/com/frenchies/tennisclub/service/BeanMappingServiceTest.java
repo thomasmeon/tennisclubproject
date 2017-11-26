@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.frenchies.tennisclub.service;
 
 import org.junit.Assert;
@@ -37,7 +36,6 @@ public class BeanMappingServiceTest extends AbstractTestNGSpringContextTests {
 	}
 
 }
-=======
 //package com.frenchies.tennisclub.service;
 //
 //import org.junit.Test;
@@ -67,4 +65,4 @@ public class BeanMappingServiceTest extends AbstractTestNGSpringContextTests {
 //    }
 //	
 //}
->>>>>>> 487549bb85cdc489faad900a07821dfa070fdca7
+
