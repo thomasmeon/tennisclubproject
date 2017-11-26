@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.frenchies.tennisclub.dao.BookingDao;
 import com.frenchies.tennisclub.entity.Booking;
@@ -15,6 +16,7 @@ import com.frenchies.tennisclub.entity.User;
  * @author ValentinJacquet 473362
  *
  */
+@Service
 public class BookingServiceImpl implements BookingService {
 	
 	@Autowired
