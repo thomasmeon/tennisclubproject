@@ -1,6 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.827 sec - in TestSuite
+=======
 Tests run: 17, Failures: 2, Errors: 0, Skipped: 14, Time elapsed: 3.888 sec <<< FAILURE! - in TestSuite
 mapping(com.frenchies.tennisclub.service.BeanMappingServiceTest)  Time elapsed: 0.089 sec  <<< FAILURE!
 java.lang.AssertionError: expected [true] but found [false]
@@ -59,3 +62,4 @@ List of constraint violations:[
 	at com.sun.proxy.$Proxy49.createUser(Unknown Source)
 	at com.frenchies.tennisclub.facade.BookingFacadeTest.prepareTestBooking(BookingFacadeTest.java:81)
 
+>>>>>>> bbe617454b1a137157b7655c63c47481c53356cf
