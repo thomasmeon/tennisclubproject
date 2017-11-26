@@ -3,10 +3,11 @@ package com.frenchies.tennisclub.service.facade;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.frenchies.tennisclub.dto.CourtCreateDTO;
 import com.frenchies.tennisclub.dto.CourtDTO;
-import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.facade.CourtFacade;
@@ -18,7 +19,8 @@ import com.frenchies.tennisclub.service.CourtService;
  * @author Meon Thomas 473449
  *
  */
-
+@Service
+@Transactional
 public class CourtFacadeImpl implements CourtFacade {
 
 	@Autowired

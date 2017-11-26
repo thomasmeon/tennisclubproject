@@ -1,0 +1,15 @@
+com/frenchies/tennisclub/service/facade/CourtFacadeImpl.class
+com/frenchies/tennisclub/service/facade/UserFacadeImpl.class
+com/frenchies/tennisclub/service/BookingServiceImpl.class
+com/frenchies/tennisclub/service/CourtService.class
+com/frenchies/tennisclub/service/UserService.class
+com/frenchies/tennisclub/service/TimeServiceImpl.class
+com/frenchies/tennisclub/service/TimeService.class
+com/frenchies/tennisclub/service/UserServiceImpl.class
+com/frenchies/tennisclub/service/config/ServiceConfiguration.class
+com/frenchies/tennisclub/service/CourtServiceImpl.class
+com/frenchies/tennisclub/service/config/ServiceConfiguration$DozerCustomConfig.class
+com/frenchies/tennisclub/mappers/BeanMappingService.class
+com/frenchies/tennisclub/mappers/BeanMappingServiceImpl.class
+com/frenchies/tennisclub/service/facade/BookingFacadeImpl.class
+com/frenchies/tennisclub/service/BookingService.class
