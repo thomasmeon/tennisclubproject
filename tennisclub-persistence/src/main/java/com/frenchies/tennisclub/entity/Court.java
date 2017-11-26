@@ -37,35 +37,35 @@ public class Court {
 	@Enumerated(EnumType.STRING)
 	private CourtType type;
 
-	private int longitude;
+	private float longitude;
 
-	private int lattitude;
+	private float latitude;
 
 	// Constructor
 
-	public Court(Status status, CourtType type, int longitude, int lattitude) {
+	public Court(Status status, CourtType type, float longitude, float latitude) {
 		this.status = status;
 		this.type = type;
 		this.longitude = longitude;
-		this.lattitude = lattitude;
+		this.latitude = latitude;
 	}
 
 	//// SETTER AND GETTER/////
 
-	public int getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(int longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 
-	public int getLattitude() {
-		return lattitude;
+	public float getLatitude() {
+		return latitude;
 	}
 
-	public void setLattitude(int lattitude) {
-		this.lattitude = lattitude;
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
 	}
 
 	public Long getIdCourt() {
@@ -97,8 +97,8 @@ public class Court {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
-		result = prime * result + lattitude;
-		result = prime * result + longitude;
+		result = prime * result + Float.floatToIntBits(latitude);
+		result = prime * result + Float.floatToIntBits(longitude);
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
@@ -118,15 +118,21 @@ public class Court {
 				return false;
 		} else if (!idCourt.equals(other.idCourt))
 			return false;
-		if (lattitude != other.lattitude)
+		if (Float.floatToIntBits(latitude) != Float.floatToIntBits(other.latitude))
 			return false;
-		if (longitude != other.longitude)
+		if (Float.floatToIntBits(longitude) != Float.floatToIntBits(other.longitude))
 			return false;
 		if (status != other.status)
 			return false;
 		if (type != other.type)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Court [idCourt=" + idCourt + ", status=" + status + ", type=" + type + ", longitude=" + longitude
+				+ ", latitude=" + latitude + "]";
 	}
 
 }

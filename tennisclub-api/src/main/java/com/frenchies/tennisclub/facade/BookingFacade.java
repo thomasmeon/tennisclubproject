@@ -3,9 +3,10 @@ package com.frenchies.tennisclub.facade;
 import java.util.Date;
 import java.util.List;
 
+import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
+import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
-import com.frenchies.tennisclub.enums.Hour24;
 
 /**
  * 
@@ -15,13 +16,17 @@ import com.frenchies.tennisclub.enums.Hour24;
 
 public interface BookingFacade {
 	
-	public List<BookingDTO> getAllBookings();
-	public List<BookingDTO> findBookingByUser(UserDTO user);
-	public BookingDTO findBookingById(Long bookingId);
-//	public List<BookingDTO> findBookingByDate(date date);
-	
-
-	public BookingDTO createBooking(long idBooking, long idCourt, UserDTO user1, UserDTO user2, Date dateOfBooking, Hour24 hourOfBooking);
-	
+	public BookingDTO getBookingById(Long bookingId);
+	public Long createBooking(BookingCreateDTO p);
 	public void deleteBooking(Long idBooking);
+	
+	
+	
+	public List<BookingDTO> getAllBookings();
+	public List<BookingDTO> getBookingsByDate(Date date);
+	public List<BookingDTO> getBookingsByUser(UserDTO u);
+	public List<BookingDTO> getAllBookingsByUserBetween(Date start, Date end, UserDTO u);
+	public List<BookingDTO> getAllBookingsBetween(Date start, Date end);
+	public List<BookingDTO> getAllBookingsLastWeek();
+
 }

@@ -11,7 +11,7 @@ public class UserDTO
     private String surname;
     private String phone;
     private String address;
-    private Date joinedDate;
+    private Date dateOfBirth;
 
     public Long getId() {
         return id;
@@ -75,12 +75,12 @@ public class UserDTO
         this.address = address;
     }
 
-    public Date getJoinedDate() {
-        return joinedDate;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setJoinedDate(Date joinedDate) {
-        this.joinedDate = joinedDate;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     @Override
@@ -118,7 +118,7 @@ public class UserDTO
                 ", surname='" + surname + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
-                ", joinedDate=" + joinedDate +
+                ", joinedDate=" + dateOfBirth +
                 '}';
     }
 }

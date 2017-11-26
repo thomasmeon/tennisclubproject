@@ -12,19 +12,20 @@ import com.frenchies.tennisclub.dto.UserDTO;
 
 public interface UserFacade {
 	
-	void deleteUser(Long id);
-	void updateUser(UserDTO user);
-	void createUser(UserDTO user, String unHashPassword);
+	public void deleteUser(Long id);
+	//public UserDTO updateUser(UserDTO user);
+	public void createUser(UserDTO user, String unHashPassword);
 //	void changePassword(UserDTO user, String newUnHashPassword);
 	
-	List<UserDTO> getAllUser();
+	public List<UserDTO> getAllUser();
 		
-	UserDTO findUserByName(String Name);
+	public UserDTO getUserByName(String Name);
 	
-	UserDTO findUserById(Long userId);
+	public UserDTO getUserById(Long userId);
 	
-	boolean authenticate(UserAuthenticateDTO u);
+	public boolean authenticate(UserAuthenticateDTO u);
 
-	boolean isAdmin(UserDTO u);
+	public boolean isAdmin(UserDTO u);
+	public List<UserDTO> getAllUsers();
 	
 }

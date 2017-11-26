@@ -23,23 +23,30 @@ public class BookingServiceImpl implements BookingService {
 	private TimeService timeService;
 
 	@Override
-	public void createBooking(Booking Booking) {
-        BookingDao.create(Booking);
+	public Booking createBooking(Booking booking) {
+        BookingDao.create(booking);
+		return booking;
     }
 
 	@Override
-    public Booking findBookingById(Long id) {
+    public Booking getBookingById(Long id) {
 		return BookingDao.findById(id);
 	}
 
 	@Override
-	public List<Booking> findAllBookings() {
+	public List<Booking> getAllBookings() {
 		return BookingDao.findAll();
 	}
 
 	@Override
 	public List<Booking> getBookingsByUser(User user) {
 		return BookingDao.findByUser(user);
+	}
+	
+	@Override
+	public List<Booking> getBookingsByDate(Date date) {
+		List<Booking> Bookings = BookingDao.getBookingsCreatedBetween(date, date);
+		return Bookings;
 	}
 
 	@Override

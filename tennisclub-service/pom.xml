@@ -8,11 +8,12 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-    <artifactId>tennisclub-service</artifactId>
+	<artifactId>tennisclub-service</artifactId>
 
-    <name>tennisclub-service</name>
+	<name>tennisclub-service</name>
 
 	<dependencies>
+<<<<<<< HEAD
         <dependency>
             <groupId>com.frenchies.tennisclub</groupId>
             <artifactId>tennisclub-persistence</artifactId>
@@ -57,5 +58,60 @@
             <artifactId>mockito-core</artifactId>
             <version>2.12.0</version>
 </dependency>
+=======
+		<dependency>
+			<groupId>com.frenchies.tennisclub</groupId>
+			<artifactId>tennisclub-persistence</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.frenchies.tennisclub</groupId>
+			<artifactId>tennisclub-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>5.5.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>2.0.2-beta</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>test</scope><!-- logging implementation should not be part of a 
+				library, but is needed for tests -->
+		</dependency>
+		<!-- AssertJ -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<scope>test</scope>
+			<version>3.8.0</version>
+		</dependency>
+>>>>>>> 487549bb85cdc489faad900a07821dfa070fdca7
 	</dependencies>
 </project>

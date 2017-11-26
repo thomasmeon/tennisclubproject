@@ -41,21 +41,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean isAdmin(User u) {
 		// must get a fresh copy from database
-		return findUserById(u.getId()).isAdmin();
+		return getUserById(u.getId()).isAdmin();
 	}
 
 	@Override
-	public User findUserById(Long userId) {
+	public User getUserById(Long userId) {
 		return userDao.findById(userId);
 	}
 
 	@Override
 	public void delete(User u) {
-
+		userDao.remove(u);
 	}
 
 	@Override
-	public User findUserByName(String name) {
+	public User getUserByName(String name) {
 
 		return userDao.findUserByName(name);
 	}
