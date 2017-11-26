@@ -1,12 +1,13 @@
 package com.frenchies.tennisclub.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
@@ -17,9 +18,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.dao.BookingDao;
@@ -27,9 +27,8 @@ import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
-@Transactional
 @ContextConfiguration(classes = ServiceConfiguration.class)
-
+@Transactional
 public class BookingServiceTest extends AbstractTestNGSpringContextTests {
 	@Mock
 	private BookingDao bookindDao;
@@ -40,17 +39,19 @@ public class BookingServiceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	@InjectMocks
 	private BookingService bookingService;
-
-	@BeforeMethod
-	public void createBookings() {
-		Booking b = new Booking();
-
-	}
-
+	
 	@BeforeClass
 	public void setup() throws ServiceException {
 		MockitoAnnotations.initMocks(this);
 	}
+
+//	@BeforeMethod
+//	public void createBookings() {
+//		Booking b = new Booking();
+//
+//	}
+
+	
 
 	@Test
 	public void getAllBookingsLastWeek() {
@@ -69,10 +70,9 @@ public class BookingServiceTest extends AbstractTestNGSpringContextTests {
 		when(timeService.getCurrentTime()).thenReturn(fabricatedTime);
 
 		List<Booking> bookings = bookingService.getAllBookingsLastWeek();
-		assertThat(bookings.get(0).getIdBooking()).isEqualTo(22l);
+		Assert.assertTrue((bookings.get(0).getIdBooking()).equals(22l));
 
-		assertThat(1).isEqualTo(bookings.size());
+		Assert.assertTrue(bookings.size() == 1);
 
 	}
-
 }

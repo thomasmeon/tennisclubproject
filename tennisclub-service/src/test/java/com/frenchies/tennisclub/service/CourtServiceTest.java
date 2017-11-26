@@ -10,6 +10,7 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -17,8 +18,6 @@ import com.frenchies.tennisclub.dao.CourtDao;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 
 
@@ -29,9 +28,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
-@Transactional
 @ContextConfiguration(classes = ServiceConfiguration.class)
-
+@Transactional
 public class CourtServiceTest extends AbstractTestNGSpringContextTests {
 	@Mock
 	private CourtDao courtDao;
@@ -51,7 +49,7 @@ public class CourtServiceTest extends AbstractTestNGSpringContextTests {
 
 		courtService.changeCourtType(c, newCourtType);
 
-		assertThat(c.getCourtType()).isEqualTo(newCourtType);
+		Assert.assertTrue(c.getCourtType().equals(newCourtType));
 
 	}
 
