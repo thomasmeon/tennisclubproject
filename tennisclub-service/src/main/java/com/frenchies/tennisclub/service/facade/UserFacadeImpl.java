@@ -48,7 +48,6 @@ public class UserFacadeImpl implements UserFacade {
         User userEntity = beanMappingService.mapTo(userDTO, User.class);
         userService.registerUser(userEntity, unencryptedPassword);
         userDTO.setId(userEntity.getId());
-        userDTO.setAddress(userEntity.getAddress());
         userDTO.setDateOfBirth(userEntity.getDateOfBirth());
         userDTO.setEmail(userEntity.getMail());
         userDTO.setName(userEntity.getName());
@@ -89,7 +88,6 @@ public class UserFacadeImpl implements UserFacade {
         userToUpdate.setName(userDTO.getName());
         userToUpdate.setSurname(userDTO.getSurname());
         userToUpdate.setId(userDTO.getId());
-        userToUpdate.setAddress(userDTO.getAddress());
         
         userService.update(userToUpdate);
         return getUserById(userToUpdate.getId());

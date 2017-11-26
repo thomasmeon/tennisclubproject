@@ -1,4 +1,6 @@
 com/frenchies/tennisclub/enums/CourtType.class
+com/frenchies/tennisclub/dto/UserUpdateDTO.class
+com/frenchies/tennisclub/dto/UserUpdatePasswordDTO.class
 com/frenchies/tennisclub/enums/Status.class
 com/frenchies/tennisclub/facade/CourtFacade.class
 com/frenchies/tennisclub/dto/BookingDTO.class
