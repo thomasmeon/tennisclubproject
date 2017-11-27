@@ -23,7 +23,7 @@ import com.frenchies.tennisclub.enums.Hour24;
 
 /**
  * Test of Booking Dao Impl
- * @author ValentinJacquet 473362
+ * @author Meon Thomas 473449
  *
  */
 @ContextConfiguration(classes = PersistenceSampleApplicationContext.class)

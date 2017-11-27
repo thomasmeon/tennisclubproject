@@ -20,7 +20,7 @@ import com.frenchies.tennisclub.entity.User;
 /**
  * Test of UserDaoImpl
  * 
- * @author ValentinJacquet 473362
+ * @author Dore Corentin 473308
  *
  */
 @ContextConfiguration(classes = PersistenceSampleApplicationContext.class)

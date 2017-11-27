@@ -14,7 +14,7 @@ import com.frenchies.tennisclub.entity.User;
 /**
  * Implemantation of User Dao
  * 
- * @author ValentinJacquet 473362
+ * @author Meon Thomas 473449
  *
  */
 @Repository

@@ -39,6 +39,10 @@ import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 import com.frenchies.tennisclub.service.facade.BookingFacadeImpl;
 import com.frenchies.tennisclub.service.facade.UserFacadeImpl;
 
+/*
+ * @Author Jacquet Valentin 473362
+ */
+
 @ContextConfiguration(classes = ServiceConfiguration.class)
 public class BookingFacadeTest {
 

@@ -18,6 +18,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 /**
  * Sample Application Context
+ *
  */
 
 @Configuration
