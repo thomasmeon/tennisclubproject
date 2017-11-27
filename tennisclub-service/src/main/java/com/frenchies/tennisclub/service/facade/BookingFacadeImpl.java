@@ -19,7 +19,7 @@ import com.frenchies.tennisclub.service.UserService;
 
 /**
  * 
- * @author Meon Thomas 473449
+ * @author Jacquet Valentin 473362
  *
  */
 

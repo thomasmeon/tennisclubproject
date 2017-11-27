@@ -12,7 +12,7 @@ import com.frenchies.tennisclub.entity.Court;
 /**
  * Implementation of CourtDao
  * 
- * @author ValentinJacquet 473362
+ * @author Corentin Dore 473308
  *
  */
 @Repository

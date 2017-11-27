@@ -30,6 +30,10 @@ import com.frenchies.tennisclub.service.UserService;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 import com.frenchies.tennisclub.service.facade.UserFacadeImpl;
 
+/*
+ * @Author MEon THomas 473449
+ */
+
 @ContextConfiguration(classes = ServiceConfiguration.class)
 public class UserFacadeTest {
 	@Mock

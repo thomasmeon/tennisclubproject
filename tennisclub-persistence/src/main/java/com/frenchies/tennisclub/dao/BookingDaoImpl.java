@@ -16,7 +16,7 @@ import com.frenchies.tennisclub.entity.User;
 
 /**
  * Implementation of Booking Dao
- * @author ValentinJacquet 473362
+ * @author Corentin Dore 473308
  *
  */
 @Repository

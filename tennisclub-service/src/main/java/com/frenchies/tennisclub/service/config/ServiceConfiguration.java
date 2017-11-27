@@ -9,6 +9,10 @@ import org.springframework.context.annotation.Import;
 
 import com.frenchies.tennisclub.PersistenceSampleApplicationContext;
 
+/*
+ * @Author Meon Thomas 473449
+ */
+
 @Configuration
 @Import(PersistenceSampleApplicationContext.class)
 @ComponentScan(basePackages = "cz.fi.muni.pa165.teamred.service")
