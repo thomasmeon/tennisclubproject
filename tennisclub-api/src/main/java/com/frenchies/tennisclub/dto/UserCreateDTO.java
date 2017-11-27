@@ -2,30 +2,35 @@ package com.frenchies.tennisclub.dto;
 
 import java.util.Date;
 
-/**
- * The DTO object for updating an user
- *
- * @author  thomasmeon 473449
- */
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-public class UserUpdateDTO {
-
-	private Long id;
+public class UserCreateDTO {
+	@NotNull
+    @Size(min = 3, max = 50)
     private String name;
-    private String surname;
-    private String mail;
-    private String phone;
-    private String address;
-    private Date dateOfBirth;
-    private boolean admin;
-    
-    public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @NotNull
+    @Size(min = 3, max = 50)
+    private String surname;
+    
+    @NotNull
+    @Size(min = 3, max = 50)
+    private String mail;
+    
+    @NotNull
+    @Size(min = 3, max = 50)
+    private String phone;
+    
+    @Size(min = 3, max = 50)
+    private String passwordHash;
+    
+    @NotNull
+    @Size(min = 3, max = 50)
+    private Date dateOfBirth;
+
+    public UserCreateDTO() {
+    }
 
 	public String getName() {
 		return name;
@@ -59,12 +64,12 @@ public class UserUpdateDTO {
 		this.phone = phone;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
 	}
 
 	public Date getDateOfBirth() {
@@ -75,14 +80,7 @@ public class UserUpdateDTO {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-
+    
 
     
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-}
 }

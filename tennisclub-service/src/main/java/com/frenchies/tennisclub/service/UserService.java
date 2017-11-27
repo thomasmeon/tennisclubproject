@@ -21,7 +21,7 @@ public interface UserService {
 	 * @return true only if hashed unencryptedPassword is equal with user hashed
 	 *         password
 	 */
-	public void registerUser(User u, String unencryptedPassword);
+	public User registerUser(User u, String unencryptedPassword);
 
 	/**
 	 * Get all {@link User}.
@@ -58,9 +58,8 @@ public interface UserService {
 	 *
 	 * @param humanPlayer
 	 *            to update
-	 * @return updated human player
 	 */
-	public User update(User user);
+	public void update(User user);
 
 	/**
 	 * Find {@link User} by id.

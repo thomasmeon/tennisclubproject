@@ -1,3 +1,11 @@
+com/frenchies/tennisclub/service/BookingServiceTest.class
+com/frenchies/tennisclub/facade/UserFacadeTest.class
 com/frenchies/tennisclub/service/BeanMappingServiceTest.class
+<<<<<<< HEAD
+com/frenchies/tennisclub/service/UserServiceTest.class
+com/frenchies/tennisclub/service/CourtServiceTest.class
+com/frenchies/tennisclub/facade/BookingFacadeTest.class
+=======
 com/frenchies/tennisclub/service/BookingServiceTest.class
 com/frenchies/tennisclub/service/CourtServiceTest.class
+>>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594

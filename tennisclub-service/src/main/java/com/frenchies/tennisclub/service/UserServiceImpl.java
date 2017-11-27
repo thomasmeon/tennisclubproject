@@ -25,9 +25,10 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public void registerUser(User u, String unencryptedPassword) {
+	public User registerUser(User u, String unencryptedPassword) {
 		u.setPasswordHash(createHash(unencryptedPassword));
 		userDao.create(u);
+		return u;
 	}
 
 	@Override
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean isAdmin(User u) {
 		// must get a fresh copy from database
-		return getUserById(u.getId()).isAdmin();
+		return userDao.findById(u.getId()).isAdmin();
 	}
 
 	@Override
@@ -63,9 +64,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User update(User user) {
-		 
-		 return userDao.update(user);
+	public void update(User user) {
+		 userDao.update(user);
 	 }
 	
 	@Override
