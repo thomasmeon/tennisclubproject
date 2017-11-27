@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
  * Bean mapping service.
  *
  */
+
+//@Author Dore Corentin UCO 473308
+
 @Service
 public interface BeanMappingService {
 

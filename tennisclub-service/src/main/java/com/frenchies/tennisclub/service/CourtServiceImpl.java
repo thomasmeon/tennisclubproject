@@ -10,9 +10,12 @@ import com.frenchies.tennisclub.dao.CourtDao;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 
+//@Author Meon Thomas UCO 473449
+
+
 @Service
 public class CourtServiceImpl implements CourtService {
-	
+
 	@Inject
 	private CourtDao courtDao;
 
@@ -35,20 +38,15 @@ public class CourtServiceImpl implements CourtService {
 	@Override
 	public void deleteCourt(Court c) {
 		courtDao.remove(c);
-		
+
 	}
 
 	@Override
 	public void changeCourtType(Court c, CourtType newCourtType) {
-		Court cTemp = getCourtById(c.getIdCourt());
-		if (cTemp != null) {
-			cTemp.setCourtType(newCourtType);
-			courtDao.update(cTemp);
-		}
-		else {
-			throw new IllegalArgumentException("Cannot search for null court");
-		}
-			
+
+		Court court = courtDao.findById(c.getIdCourt());
+		court.setCourtType(newCourtType);
+		courtDao.update(court);
 	}
 
 }

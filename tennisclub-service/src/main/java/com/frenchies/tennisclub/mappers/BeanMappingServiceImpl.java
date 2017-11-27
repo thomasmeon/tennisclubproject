@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
  * Bean mapping service implementation.
  *
  */
+
+//@Author Meon Thomas UCO 473449
+
 @Service
 public class BeanMappingServiceImpl implements BeanMappingService {
     private final Mapper dozer;

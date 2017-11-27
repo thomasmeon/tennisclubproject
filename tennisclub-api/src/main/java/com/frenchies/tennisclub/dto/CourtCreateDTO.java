@@ -10,7 +10,8 @@ import com.frenchies.tennisclub.enums.Status;
 /**
  * The DTO object for creating a court
  * 
- * @author thomasmeon 473449
+//@Author Meon Thomas UCO 473449
+
  *
  */
 public class CourtCreateDTO {
@@ -24,6 +25,8 @@ public class CourtCreateDTO {
 	private float longitude;
 
 	private float latitude;
+	
+//SETTER AND GETTERS
 
 	public Status getStatus() {
 		return status;
