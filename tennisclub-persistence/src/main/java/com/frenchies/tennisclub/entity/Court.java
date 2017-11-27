@@ -17,7 +17,7 @@ import com.frenchies.tennisclub.enums.Status;
  * Class representing an Court.
  *
  * Every court has: - idCourt (Long) - status (Status) // In order to know if
- * the court is available or not - type (courtType) - geolocalisation (lattitude
+ * the court is available or not - type (courtType) - geolocalisation (latitude
  * and longitude) - hourOfBooking(Hour24) - dateOfBooking (Date) - admin
  * (Boolean) // Return true if the user is an admin or false otherwise
  */
@@ -42,6 +42,10 @@ public class Court {
 	private float latitude;
 
 	// Constructor
+	
+	public Court() {
+	
+	}
 
 	public Court(Status status, CourtType type, float longitude, float latitude) {
 		this.status = status;
