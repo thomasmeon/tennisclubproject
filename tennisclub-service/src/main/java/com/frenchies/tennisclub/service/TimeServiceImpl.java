@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
  * An interface that defines a service access to the {@link Product} entity.
  */
 
+//@Author Jacquet Valentin 473362
+
+
 @Service
 public class TimeServiceImpl implements TimeService{
 

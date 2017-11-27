@@ -1,7 +1,17 @@
 package com.frenchies.tennisclub.service;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,13 +24,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.frenchies.tennisclub.dao.CourtDao;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 
 /**
- * Basic tests for service implementations
+ * Basic tests for  Court service implementations
  *
  * @author CorentinDore 473308
  */
@@ -30,10 +41,15 @@ import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 @Transactional
 public class CourtServiceTest extends AbstractTestNGSpringContextTests {
 
+	@Mock
+	private CourtDao courtDao;
+
 	@Autowired
 	@InjectMocks
 	private CourtService courtService;
 	private Court c;
+	private Court c2;
+
 	protected CourtType newCourtType;
 
 	@BeforeClass
@@ -41,38 +57,103 @@ public class CourtServiceTest extends AbstractTestNGSpringContextTests {
 		MockitoAnnotations.initMocks(this);
 	}
 
+	// INIT
+
 	@BeforeMethod
 	public void init() {
 		c = new Court(Status.AVAILABLE, CourtType.CARPET, 234, 34);
-		courtService.createCourt(c);
 
+		c.setIdCourt(69l);
 		newCourtType = (CourtType.GRASS);
 	}
 
+	// UPDATE TEST
 	@Test
-	public void changeCourtType() throws IllegalArgumentException{
+	public void changeType() {
+		// setup
+		doAnswerSetRoleWhenUpdate(newCourtType);
 
+		when(courtDao.findById(c.getIdCourt())).thenReturn(c);
+
+		// Method call
 		courtService.changeCourtType(c, newCourtType);
 
+		// verify
 		Assert.assertTrue(c.getCourtType().equals(newCourtType));
-		
 
 	}
-	
+
+	private void doAnswerSetRoleWhenUpdate(CourtType newCourtType) {
+		doAnswer(invocation -> {
+			c.setCourtType(newCourtType);
+			return null;
+		}).when(courtDao).update(c);
+
+		doAnswer(invocation -> {
+			c.setIdCourt(null);
+			return null;
+		}).when(courtDao).remove(c);
+
+	}
+
+	// GET TEST
+
 	@Test
-    public void create() throws IllegalArgumentException{
-        courtService.createCourt(c);
-        Assert.assertFalse((c.getIdCourt()).equals(null));
-    }
-	
-    @Test
-    public void getById() throws IllegalArgumentException{
-        Court ctemp = courtService.getCourtById(c.getIdCourt());
-        
-        Assert.assertFalse((c).equals(null));
-        Assert.assertTrue((c).equals(ctemp));
-        
-        System.out.println(c);
-    }
+	void getByIdTest() {
+		when(courtDao.findById(c.getIdCourt())).thenReturn(c);
+
+		Court gotCourt = courtService.getCourtById(c.getIdCourt());
+		Assert.assertEquals(gotCourt, c);
+	}
+
+	@Test
+	void getAllTest() {
+		List<Court> courtList = new ArrayList<>();
+		courtList.add(c);
+
+		when(courtDao.findAll()).thenReturn(courtList);
+
+		List<Court> resultCourtList = courtService.getAllCourts();
+		Assert.assertNotNull(resultCourtList);
+		Assert.assertEquals(resultCourtList.size(), 1);
+		Assert.assertTrue(resultCourtList.contains(c));
+
+		courtList.add(c2);
+
+		when(courtDao.findAll()).thenReturn(courtList);
+
+		resultCourtList = courtService.getAllCourts();
+		Assert.assertNotNull(resultCourtList);
+		Assert.assertEquals(resultCourtList.size(), 2);
+		Assert.assertTrue(resultCourtList.contains(c));
+		Assert.assertTrue(resultCourtList.contains(c2));
+	}
+
+	// CREATE/DELETE TEST
+
+	@Test
+	public void deleteTest() {
+		courtService.createCourt(c);
+		when(courtDao.findById(c.getIdCourt())).thenReturn(c);
+
+		doAnswer(invocation -> {
+			c.setIdCourt(null);
+			return null;
+		}).when(courtDao).remove(c);
+
+		courtService.deleteCourt(c);
+
+		verify(courtDao).remove(c);
+		Assert.assertEquals(c.getIdCourt(), null);
+	}
+
+	@Test
+	void createTest() {
+		doNothing().when(courtDao).create(any());
+		Court verifyCourt = courtService.createCourt(c);
+		verify(courtDao).create(c);
+
+		Assert.assertEquals(verifyCourt, c);
+	}
 
 }

@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+//@Author Dore Corentin UCO 473308
+
 public class UserCreateDTO {
 	@NotNull
     @Size(min = 3, max = 50)

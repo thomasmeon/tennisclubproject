@@ -16,7 +16,7 @@ import com.frenchies.tennisclub.service.CourtService;
 
 /**
  * 
- * @author Meon Thomas 473449
+ * @author Dore Corentin 473308
  *
  */
 @Service
@@ -52,11 +52,11 @@ public class CourtFacadeImpl implements CourtFacade {
 	@Override
 	public Long createCourt(CourtCreateDTO c) {
 
-		Court mappedCourt = beanMappingService.mapTo(c, Court.class);
+		
 		Court mappedCourt = beanMappingService.mapTo(c, Court.class);
 		Court newCourt = courtService.createCourt(mappedCourt);
 
 		return newCourt.getIdCourt();
 	}
-
+	
 }
