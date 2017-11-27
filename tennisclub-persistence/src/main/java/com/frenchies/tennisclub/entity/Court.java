@@ -43,13 +43,7 @@ public class Court {
 
 	// Constructor
 	
-	public Court() {
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
-	}
+	public Court() {}
 
 	public Court(Status status, CourtType type, float longitude, float latitude) {
 		this.status = status;

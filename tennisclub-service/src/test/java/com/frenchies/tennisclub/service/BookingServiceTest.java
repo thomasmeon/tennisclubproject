@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> b6a0aec4ad702f3bcecbc746db819dff5093f864
+
 //package com.frenchies.tennisclub.service;
 //
 //import static org.mockito.Mockito.when;
@@ -43,18 +40,14 @@
 //	@Autowired
 //	@InjectMocks
 //	private BookingService bookingService;
-<<<<<<< HEAD
-//
-=======
-//	
->>>>>>> b6a0aec4ad702f3bcecbc746db819dff5093f864
+
+
 //	@BeforeClass
 //	public void setup() throws ServiceException {
 //		MockitoAnnotations.initMocks(this);
 //	}
 //
-<<<<<<< HEAD
-=======
+
 ////	@BeforeMethod
 ////	public void createBookings() {
 ////		Booking b = new Booking();
@@ -63,7 +56,7 @@
 //
 //	
 //
->>>>>>> b6a0aec4ad702f3bcecbc746db819dff5093f864
+
 //	@Test
 //	public void getAllBookingsLastWeek() {
 //
@@ -86,11 +79,11 @@
 //		Assert.assertTrue(bookings.size() == 1);
 //
 //	}
-<<<<<<< HEAD
+
 //}
-=======
+
 //}
-=======
+
 package com.frenchies.tennisclub.service;
 
 import static org.mockito.Mockito.when;
@@ -161,5 +154,4 @@ public class BookingServiceTest extends AbstractTestNGSpringContextTests {
 
 	}
 }
->>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
->>>>>>> b6a0aec4ad702f3bcecbc746db819dff5093f864
+
