@@ -33,30 +33,27 @@ public class CourtFacadeImpl implements CourtFacade {
 	public List<CourtDTO> getAllCourts() {
 		return beanMappingService.mapTo(courtService.getAllCourts(), CourtDTO.class);
 	}
-	
+
 	@Override
 	public CourtDTO getCourtById(Long courtId) {
 		return beanMappingService.mapTo(courtService.getCourtById(courtId), CourtDTO.class);
 	}
-	
+
 	@Override
 	public void deleteCourt(Long courtId) {
 		courtService.deleteCourt(courtService.getCourtById(courtId));
 	}
-	
+
 	@Override
 	public void changeCourtType(Long courtId, CourtType newCourtType) {
 		courtService.changeCourtType(courtService.getCourtById(courtId), newCourtType);
 	}
-	
+
 	@Override
 	public Long createCourt(CourtCreateDTO c) {
 
-<<<<<<< HEAD
 		Court mappedCourt = beanMappingService.mapTo(c, Court.class);
-=======
-		Court mappedCourt = beanMappingService.mapTo(c, Court.class);		
->>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
+		Court mappedCourt = beanMappingService.mapTo(c, Court.class);
 		Court newCourt = courtService.createCourt(mappedCourt);
 
 		return newCourt.getIdCourt();

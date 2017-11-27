@@ -5,6 +5,8 @@ import javax.validation.constraints.NotNull;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 
+
+
 /**
  * The DTO object for creating a court
  * 
@@ -12,26 +14,17 @@ import com.frenchies.tennisclub.enums.Status;
  *
  */
 public class CourtCreateDTO {
-<<<<<<< HEAD
 
 	@NotNull
-=======
-    
-    @NotNull
->>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 	private Status status;
 
 	@NotNull
 	private CourtType courtType;
 
-<<<<<<< HEAD
 	private float longitude;
 
 	private float latitude;
 
-	
-=======
->>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 	public Status getStatus() {
 		return status;
 	}
@@ -97,12 +90,8 @@ public class CourtCreateDTO {
 
 	@Override
 	public String toString() {
-<<<<<<< HEAD
-		return "CourtCreateDTO [status=" + status + ", type=" + courtType + ", longitude="
-=======
-		return "CourtCreateDTO status=" + status + ", type=" + courtType + ", longitude="
->>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
-				+ longitude + ", latitude=" + latitude + "]";
+		return "CourtCreateDTO [status=" + status + ", courtType=" + courtType + ", longitude=" + longitude
+				+ ", latitude=" + latitude + "]";
 	}
 
 }

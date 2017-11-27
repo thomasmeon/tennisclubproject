@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> b6a0aec4ad702f3bcecbc746db819dff5093f864
+
 //package com.frenchies.tennisclub.service;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -197,7 +194,7 @@
 //	}
 //
 //}
-=======
+
 package com.frenchies.tennisclub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -374,5 +371,4 @@ public class BeanMappingServiceTest extends AbstractTestNGSpringContextTests {
 	// // }
 
 }
->>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
->>>>>>> b6a0aec4ad702f3bcecbc746db819dff5093f864
+
