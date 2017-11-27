@@ -1,0 +1,50 @@
+<<<<<<< HEAD
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/BookingCreateDTO.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/CourtCreateDTO.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/CourtType.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/exceptions/UserAuthentificationException.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/Hour24.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/UserFacade.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserUpdatePasswordDTO.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/BookingDTO.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserDTO.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/Status.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/BookingFacade.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserUpdateDTO.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserAuthenticateDTO.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/CourtFacade.java
+/home/thomasmeon/Bureau/Projet/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/CourtDTO.java
+=======
+<<<<<<< HEAD
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserCreateDTO.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/BookingFacade.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/Hour24.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/exceptions/UserAuthentificationException.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/CourtCreateDTO.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/BookingCreateDTO.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/CourtType.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserDTO.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/Status.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/CourtFacade.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/CourtDTO.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/BookingDTO.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/UserFacade.java
+/home/val/Documents/M2_Masaryk/Java/Seminars/project/tennisClub/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserAuthenticateDTO.java
+=======
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/CourtType.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/CourtFacade.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserUpdateDTO.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/BookingCreateDTO.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/CourtDTO.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserDTO.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/exceptions/UserAuthentificationException.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/CourtCreateDTO.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserUpdatePasswordDTO.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/UserFacade.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/facade/BookingFacade.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/Status.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/UserAuthenticateDTO.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/dto/BookingDTO.java
+/home/cdore/PA165-Seminar/tennisclubproject/tennisclubproject/tennisclub-api/src/main/java/com/frenchies/tennisclub/enums/Hour24.java
+>>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476

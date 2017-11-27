@@ -14,9 +14,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class BeanMappingServiceImpl implements BeanMappingService {
+    private final Mapper dozer;
 
     @Autowired
-    private Mapper dozer;
+    public BeanMappingServiceImpl(Mapper dozer) {
+        this.dozer = dozer;
+    }
 
     @Override
     public <T> List<T> mapTo(Collection<?> objects, Class<T> mapToClass) {
@@ -29,7 +32,7 @@ public class BeanMappingServiceImpl implements BeanMappingService {
 
     @Override
     public <T> T mapTo(Object u, Class<T> mapToClass) {
-        return dozer.map(u,mapToClass);
+        return dozer.map(u, mapToClass);
     }
 
     @Override
