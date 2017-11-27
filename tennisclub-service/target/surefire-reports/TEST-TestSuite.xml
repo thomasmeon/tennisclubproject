@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="TestSuite" time="0.014" tests="4" errors="0" skipped="0" failures="0">
+=======
+<testsuite name="TestSuite" time="3.455" tests="31" errors="0" skipped="23" failures="3">
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -58,8 +62,115 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
+<<<<<<< HEAD
   <testcase name="testChangeTypeCourt" classname="com.frenchies.tennisclub.facade.CourtFacadeTest" time="0.003"/>
   <testcase name="testCreateCourt" classname="com.frenchies.tennisclub.facade.CourtFacadeTest" time="0.003"/>
   <testcase name="testGetAllCourts" classname="com.frenchies.tennisclub.facade.CourtFacadeTest" time="0.001"/>
   <testcase name="changeCourtType" classname="com.frenchies.tennisclub.service.CourtServiceTest" time="0.007"/>
+=======
+  <testcase name="init" classname="com.frenchies.tennisclub.service.UserServiceTest" time="3.443">
+    <failure message="No transactional EntityManager available" type="javax.persistence.TransactionRequiredException">javax.persistence.TransactionRequiredException: No transactional EntityManager available
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:275)
+	at com.sun.proxy.$Proxy43.persist(Unknown Source)
+	at com.frenchies.tennisclub.dao.CourtDaoImpl.create(CourtDaoImpl.java:28)
+	at com.frenchies.tennisclub.service.CourtServiceImpl.createCourt(CourtServiceImpl.java:31)
+	at com.frenchies.tennisclub.service.UserServiceTest.init(UserServiceTest.java:64)
+</failure>
+    <system-out><![CDATA[Configuring TestNG with: TestNG652Configurator
+2017-11-27 13:54:36,568 WARN  org.dozer.config.GlobalSettings - Dozer configuration file not found: dozer.properties.  Using defaults for all Dozer global properties.
+]]></system-out>
+  </testcase>
+  <testcase name="changeCourtType" classname="com.frenchies.tennisclub.service.UserServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestMethod" classname="com.frenchies.tennisclub.service.UserServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="init" classname="com.frenchies.tennisclub.service.UserServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="createUserValidTest" classname="com.frenchies.tennisclub.service.UserServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestClass" classname="com.frenchies.tennisclub.service.CourtServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextPrepareTestInstance" classname="com.frenchies.tennisclub.service.CourtServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="setup" classname="com.frenchies.tennisclub.service.CourtServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestMethod" classname="com.frenchies.tennisclub.service.CourtServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="init" classname="com.frenchies.tennisclub.service.CourtServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="changeCourtType" classname="com.frenchies.tennisclub.service.CourtServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestClass" classname="com.frenchies.tennisclub.service.BeanMappingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextPrepareTestInstance" classname="com.frenchies.tennisclub.service.BeanMappingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestMethod" classname="com.frenchies.tennisclub.service.BeanMappingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="mapping" classname="com.frenchies.tennisclub.service.BeanMappingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestClass" classname="com.frenchies.tennisclub.service.BookingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextPrepareTestInstance" classname="com.frenchies.tennisclub.service.BookingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="setup" classname="com.frenchies.tennisclub.service.BookingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestMethod" classname="com.frenchies.tennisclub.service.BookingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="getAllBookingsLastWeek" classname="com.frenchies.tennisclub.service.BookingServiceTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestClass" classname="com.frenchies.tennisclub.facade.BookingFacadeTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextPrepareTestInstance" classname="com.frenchies.tennisclub.facade.BookingFacadeTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="springTestContextBeforeTestMethod" classname="com.frenchies.tennisclub.facade.BookingFacadeTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="test" classname="com.frenchies.tennisclub.facade.BookingFacadeTest" time="0">
+    <skipped/>
+  </testcase>
+  <testcase name="authenticateTest" classname="com.frenchies.tennisclub.facade.UserFacadeTest" time="0.002">
+    <failure message="expected [true] but found [false]" type="java.lang.AssertionError">java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.frenchies.tennisclub.facade.UserFacadeTest.authenticateTest(UserFacadeTest.java:162)
+</failure>
+  </testcase>
+  <testcase name="createUserTest" classname="com.frenchies.tennisclub.facade.UserFacadeTest" time="0.004"/>
+  <testcase name="findAllUserTest" classname="com.frenchies.tennisclub.facade.UserFacadeTest" time="0.001"/>
+  <testcase name="findUserByIdTest" classname="com.frenchies.tennisclub.facade.UserFacadeTest" time="0.001"/>
+  <testcase name="findUserByNameTest" classname="com.frenchies.tennisclub.facade.UserFacadeTest" time="0.001"/>
+  <testcase name="isAdminTest" classname="com.frenchies.tennisclub.facade.UserFacadeTest" time="0.001">
+    <failure message="expected [true] but found [false]" type="java.lang.AssertionError">java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.frenchies.tennisclub.facade.UserFacadeTest.isAdminTest(UserFacadeTest.java:157)
+</failure>
+  </testcase>
+  <testcase name="updateUserTest" classname="com.frenchies.tennisclub.facade.UserFacadeTest" time="0.002"/>
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 </testsuite>

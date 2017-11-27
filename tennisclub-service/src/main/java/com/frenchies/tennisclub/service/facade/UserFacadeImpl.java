@@ -2,14 +2,15 @@ package com.frenchies.tennisclub.service.facade;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
+import com.frenchies.tennisclub.dto.UserCreateDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
-import com.frenchies.tennisclub.dto.UserUpdateDTO;
-import com.frenchies.tennisclub.dto.UserUpdatePasswordDTO;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.facade.UserFacade;
 import com.frenchies.tennisclub.mappers.BeanMappingService;
@@ -25,7 +26,7 @@ import com.frenchies.tennisclub.service.UserService;
 @Transactional
 public class UserFacadeImpl implements UserFacade {
 
-    @Autowired
+    @Inject
     private UserService userService;
 
     @Autowired
@@ -44,22 +45,11 @@ public class UserFacadeImpl implements UserFacade {
     }
     
     @Override
-    public void createUser(UserDTO userDTO, String unencryptedPassword) {
-        User userEntity = beanMappingService.mapTo(userDTO, User.class);
-        userService.registerUser(userEntity, unencryptedPassword);
-        userDTO.setId(userEntity.getId());
-        userDTO.setDateOfBirth(userEntity.getDateOfBirth());
-        userDTO.setMail(userEntity.getMail());
-        userDTO.setName(userEntity.getName());
-        userDTO.setSurname(userEntity.getSurname());
-        userDTO.setPhone(userEntity.getPhone());
-    }
-    
-    @Override
-	public void deleteUser(Long userId) {
-		userService.delete(new User(userId));
-	}
-    
+    public Long createUser(UserCreateDTO user, String unencryptedPassword) {
+        User userEntity = beanMappingService.mapTo(user, User.class);
+        User newUser = userService.registerUser(userEntity, unencryptedPassword);
+        return newUser.getId();
+    } 
        
            
     @Override
@@ -80,7 +70,7 @@ public class UserFacadeImpl implements UserFacade {
     }
 
     @Override
-    public UserDTO updateUser(UserUpdateDTO userDTO) {
+    public UserDTO updateUser(UserDTO userDTO) {
         User userToUpdate = userService.getUserById(userDTO.getId());
         userToUpdate.setDateOfBirth(userDTO.getDateOfBirth());
         userToUpdate.setMail(userDTO.getMail());
@@ -93,15 +83,15 @@ public class UserFacadeImpl implements UserFacade {
         return getUserById(userToUpdate.getId());
     }
     
-    @Override
-    public UserDTO updatePassword(UserUpdatePasswordDTO u) {
-        User userToUpdate = userService.getUserById(u.getId());
-        if (!userService.updatePassword(userToUpdate, u.getOldPassword(), u.getNewPassword())) {
-            //throw new InvalidPasswordException(); TODO
-        }
-
-        return getUserById(u.getId());
-    }
+//    @Override
+//    public UserDTO updatePassword(UserDTO u, ) {
+//        User userToUpdate = userService.getUserById(u.getId());
+//        if (!userService.updatePassword(userToUpdate, u.getOldPassword(), u.getNewPassword())) {
+//            //throw new InvalidPasswordException(); TODO
+//        }
+//
+//        return getUserById(u.getId());
+//    }
     
 
 }
