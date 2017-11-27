@@ -18,8 +18,7 @@ import com.frenchies.tennisclub.enums.Status;
  *
  * Every court has: - idCourt (Long) - status (Status) // In order to know if
  * the court is available or not - type (courtType) - geolocalisation (latitude
- * and longitude) - hourOfBooking(Hour24) - dateOfBooking (Date) - admin
- * (Boolean) // Return true if the user is an admin or false otherwise
+ * and longitude) 
  */
 
 @Entity

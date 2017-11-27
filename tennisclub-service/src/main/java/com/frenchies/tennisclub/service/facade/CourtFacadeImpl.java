@@ -16,7 +16,7 @@ import com.frenchies.tennisclub.service.CourtService;
 
 /**
  * 
- * @author Meon Thomas 473449
+ * @author Dore Corentin 473308
  *
  */
 @Service
@@ -57,5 +57,5 @@ public class CourtFacadeImpl implements CourtFacade {
 
 		return newCourt.getIdCourt();
 	}
-
+	
 }

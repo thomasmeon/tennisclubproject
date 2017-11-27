@@ -1,5 +1,7 @@
 package com.frenchies.tennisclub.dto;
 
+//@Author Meon Thomas UCO 473449
+
 public class UserAuthenticateDTO
 {
     private Long userId;

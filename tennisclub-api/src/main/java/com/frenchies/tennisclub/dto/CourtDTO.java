@@ -3,6 +3,8 @@ package com.frenchies.tennisclub.dto;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 
+//@Author Dore Corentin UCO 473308
+
 public class CourtDTO {
 	private Long idCourt;
 
@@ -13,6 +15,8 @@ public class CourtDTO {
 	private int longitude;
 
 	private int latitude;
+	
+	// Setter and getter
 
 	public Long getIdCourt() {
 		return idCourt;

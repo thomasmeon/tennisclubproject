@@ -1,6 +1,13 @@
 package com.frenchies.tennisclub.facade;
 
 import static org.mockito.Matchers.any;
+
+/*
+ *  * @author Dore Corentin 473308
+ *  
+ */
+
+//import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -40,14 +47,11 @@ public class CourtFacadeTest {
 	@Autowired
 	@InjectMocks
 	private CourtFacadeImpl courtFacade;
-	//
+
 	private Court validCourt;
-	private Court validCourt2;
-	//
-	// private Ride validRide;
-	//
+
 	private CourtCreateDTO courtCreateDTO;
-	//
+
 	private CourtDTO validCourtDTO;
 	protected CourtType newCourtType;
 
@@ -64,15 +68,10 @@ public class CourtFacadeTest {
 		courtCreateDTO.setLatitude(45);
 		courtCreateDTO.setLongitude(46);
 		courtCreateDTO.setStatus(Status.AVAILABLE);
-		
-	
+
 		validCourt = new Court(Status.AVAILABLE, CourtType.GRASS, 45, 46);
 		validCourt.setIdCourt(1L);
 		when(beanMappingService.mapTo(courtCreateDTO, Court.class)).thenReturn(validCourt);
-
-//		validCourt2 = new Court(Status.AVAILABLE, CourtType.GRASS, 45, 46);
-//		validCourt2.setIdCourt(1L);
-//		when(beanMappingService.mapTo(courtCreateDTO, Court.class)).thenReturn(validCourt2);
 
 		validCourtDTO = new CourtDTO();
 		validCourtDTO.setIdCourt(1L);
@@ -80,58 +79,15 @@ public class CourtFacadeTest {
 		validCourtDTO.setLatitude(45);
 		validCourtDTO.setLongitude(46);
 		validCourtDTO.setStatus(Status.AVAILABLE);
-	
+
 		newCourtType = CourtType.CLAY;
-		
-		
-
-		//
-		// Calendar cal = Calendar.getInstance();
-		// cal.set(2010, Calendar.JULY, 25);
-		//
-		// validRide = new Ride();
-		// validRide.setId(1L);
-		// validRide.setSeatPrice(10);
-		// validRide.setSourcePlace(new Place());
-		// validRide.setDestinationPlace(new Place());
-		// validRide.setAvailableSeats(4);
-		// validRide.setDeparture(cal.getTime());
-		// validRide.setDriver(new User());
 
 	}
 
-	@Test
-	void testCreateCourt() {
-		// Test 1
-
-		 when(courtService.createCourt(validCourt)).thenReturn(validCourt);
-		
-		 Long createdId = courtFacade.createCourt(courtCreateDTO);
-		 verify(courtService).createCourt(validCourt);
-		 Assert.assertTrue((createdId).equals(validCourt.getIdCourt()));
-	}
-
-//	@Test
-//	public void testDeleteCourt() {
-//		// test
-//
-//		doNothing().when(courtService).deleteCourt(any());
-//		when(courtService.getCourtById(1L)).thenReturn(validCourt);
-//
-//		courtFacade.deleteCourt(validCourt.getIdCourt());
-//		verify(courtService).createCourt(validCourt);
-//	}
-
+	// GET TEST
+	
 	@Test
 	public void testGetAllCourts() {
-		// when(courtService.getAllCourts()).thenReturn(Arrays.asList(validCourt,
-		// validCourt2));
-		// List<CourtDTO> courts = courtFacade.getAllCourts();
-		//
-		// verify(courtService).getAllCourts();
-		// verify(beanMappingService).mapTo(validCourt, CourtDTO.class);
-		// verify(beanMappingService).mapTo(validCourt2, CourtDTO.class);
-		// test 2
 
 		List<Court> listCourts = new ArrayList<>();
 		listCourts.add(validCourt);
@@ -144,40 +100,57 @@ public class CourtFacadeTest {
 		List<CourtDTO> resListCourtDTO = new ArrayList<>(courtFacade.getAllCourts());
 
 		verify(courtService).getAllCourts();
-		Assert.assertTrue((resListCourtDTO.size())==1);
+		Assert.assertTrue((resListCourtDTO.size()) == 1);
 		Assert.assertTrue(resListCourtDTO.contains(validCourtDTO));
 	}
 
-//	@Test
-//	void testFindUserById() {
-//		when(beanMappingService.mapTo(validCourt, CourtDTO.class)).thenReturn(validCourtDTO);
-//		when(courtService.getCourtById(1L)).thenReturn(validCourt);
-//
-//		CourtDTO resCourtDTO = courtFacade.getCourtById(validCourt.getIdCourt());
-//		Assert.assertTrue(resCourtDTO.equals(validCourtDTO));
-//		
-//		//System.out.println(validCourt.getIdCourt());
-//		//System.out.println(resCourtDTO.getIdCourt());
-//	}
-//
+	// CREATE/DELETE TEST
+
 	@Test
-	void testChangeTypeCourt() {
+	public void testCreateCourt() {
+
 		when(courtService.createCourt(validCourt)).thenReturn(validCourt);
 
-		doNothing().when(courtService).changeCourtType(validCourt,newCourtType);
-		when(courtService.getCourtById(1L)).thenReturn(validCourt);
-		
-		//validCourtDTO.setType(newCourtType);
-		courtFacade.changeCourtType(courtFacade.createCourt(courtCreateDTO), newCourtType);
-		System.out.println(courtFacade.createCourt(courtCreateDTO));
-		
-		//verify(courtService).changeCourtType(validCourt, newCourtType);
-		
-		//Assert.assertTrue(validCourt.getType().equals(newCourtType));
-		
-//		System.out.println(validCourt.getCourtType());
-//		System.out.println(newCourtType);
-//		System.out.println(validCourtDTO.getType());
-		//System.out.println(courtService.getCourtById(1L));
+		Long createdId = courtFacade.createCourt(courtCreateDTO);
+		verify(courtService).createCourt(validCourt);
+		Assert.assertTrue((createdId).equals(validCourt.getIdCourt()));
+
 	}
+
+	@Test
+	public void testDeleteCourt() {
+
+		doNothing().when(courtService).deleteCourt(any());
+		when(courtService.getCourtById(1L)).thenReturn(validCourt);
+
+		courtFacade.deleteCourt(validCourt.getIdCourt());
+		verify(courtService).createCourt(validCourt);
+	}
+
+	// FIND TEST
+	
+	@Test
+	public void testFindUserById() {
+		when(beanMappingService.mapTo(validCourt, CourtDTO.class)).thenReturn(validCourtDTO);
+		when(courtService.getCourtById(1L)).thenReturn(validCourt);
+
+		CourtDTO resCourtDTO = courtFacade.getCourtById(validCourt.getIdCourt());
+		Assert.assertTrue(resCourtDTO.equals(validCourtDTO));
+
+	}
+
+	// UPDATE TEST
+	
+	@Test
+	void testChangeTypeCourt() {
+		doNothing().when(courtService).changeCourtType(validCourt, newCourtType);
+		when(courtService.getCourtById(validCourt.getIdCourt())).thenReturn(validCourt);
+
+		validCourtDTO.setType(newCourtType);
+
+		courtFacade.changeCourtType(validCourtDTO.getIdCourt(), newCourtType);
+
+		verify(courtService).changeCourtType(validCourt, newCourtType);
+	}
+
 }
