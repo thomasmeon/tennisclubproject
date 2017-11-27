@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results skipped="6" failed="2" total="13" passed="5">
   <reporter-output>
   </reporter-output>
@@ -260,11 +261,123 @@
             <param index="0">
               <value>
                 <![CDATA[void com.frenchies.tennisclub.service.UserServiceTest.createUserValidTest()]]>
+=======
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="4251" started-at="2017-11-27T12:18:54Z" finished-at="2017-11-27T12:18:58Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="4251" started-at="2017-11-27T12:18:54Z" finished-at="2017-11-27T12:18:58Z">
+      <class name="com.frenchies.tennisclub.service.BookingServiceTest">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:com.frenchies.tennisclub.service.BookingServiceTest@646007f4]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="1" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.frenchies.tennisclub.service.BookingServiceTest@646007f4]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="27" started-at="2017-11-27T13:18:58Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.frenchies.tennisclub.service.BookingServiceTest@646007f4]" name="setup" is-config="true" duration-ms="89" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.frenchies.tennisclub.service.BookingServiceTest@646007f4]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="2" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.frenchies.tennisclub.service.BookingServiceTest.getAllBookingsLastWeek()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="getAllBookingsLastWeek()[pri:0, instance:com.frenchies.tennisclub.service.BookingServiceTest@646007f4]" name="getAllBookingsLastWeek" duration-ms="11" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getAllBookingsLastWeek -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.frenchies.tennisclub.service.BookingServiceTest@646007f4]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="1" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.frenchies.tennisclub.service.BookingServiceTest.getAllBookingsLastWeek()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.frenchies.tennisclub.service.BookingServiceTest@646007f4]" name="springTestContextAfterTestClass" is-config="true" duration-ms="1" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- com.frenchies.tennisclub.service.BookingServiceTest -->
+      <class name="com.frenchies.tennisclub.service.BeanMappingServiceTest">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:com.frenchies.tennisclub.service.BeanMappingServiceTest@5c18298f]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="1" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.frenchies.tennisclub.service.BeanMappingServiceTest@5c18298f]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="3" started-at="2017-11-27T13:18:58Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.frenchies.tennisclub.service.BeanMappingServiceTest@5c18298f]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="3" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.frenchies.tennisclub.service.BeanMappingServiceTest.mapping()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="mapping()[pri:0, instance:com.frenchies.tennisclub.service.BeanMappingServiceTest@5c18298f]" name="mapping" duration-ms="81" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mapping -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.frenchies.tennisclub.service.BeanMappingServiceTest@5c18298f]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="4" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.frenchies.tennisclub.service.BeanMappingServiceTest.mapping()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestMethod -->
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.frenchies.tennisclub.service.BeanMappingServiceTest@5c18298f]" name="springTestContextAfterTestClass" is-config="true" duration-ms="1" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+      </class> <!-- com.frenchies.tennisclub.service.BeanMappingServiceTest -->
+      <class name="com.frenchies.tennisclub.service.CourtServiceTest">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@fcd6521]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="6" started-at="2017-11-27T13:18:54Z" finished-at="2017-11-27T13:18:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@fcd6521]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="3752" started-at="2017-11-27T13:18:54Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@fcd6521]" name="setup" is-config="true" duration-ms="95" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@fcd6521]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="65" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.frenchies.tennisclub.service.CourtServiceTest.changeCourtType()]]>
+>>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+<<<<<<< HEAD
         </test-method> <!-- springTestContextAfterTestMethod -->
       </class> <!-- com.frenchies.tennisclub.service.UserServiceTest -->
       <class name="com.frenchies.tennisclub.service.BookingServiceTest">
@@ -363,12 +476,29 @@
             <param index="0">
               <value>
                 <![CDATA[public void com.frenchies.tennisclub.facade.BookingFacadeTest.test()]]>
+=======
+        </test-method> <!-- springTestContextBeforeTestMethod -->
+        <test-method status="PASS" signature="init()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@fcd6521]" name="init" is-config="true" duration-ms="79" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="changeCourtType()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@fcd6521]" name="changeCourtType" duration-ms="6" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- changeCourtType -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@fcd6521]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="9" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.frenchies.tennisclub.service.CourtServiceTest.changeCourtType()]]>
+>>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestMethod -->
+<<<<<<< HEAD
       </class> <!-- com.frenchies.tennisclub.facade.BookingFacadeTest -->
       <class name="com.frenchies.tennisclub.service.CourtServiceTest">
         <test-method status="SKIP" signature="springTestContextBeforeTestClass()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@6b0c2d26]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="0" started-at="2017-11-27T13:54:36Z" finished-at="2017-11-27T13:54:36Z">
@@ -407,6 +537,9 @@
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestMethod -->
         <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@6b0c2d26]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2017-11-27T13:54:36Z" finished-at="2017-11-27T13:54:36Z">
+=======
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@fcd6521]" name="springTestContextAfterTestClass" is-config="true" duration-ms="2" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
+>>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestClass -->

@@ -12,7 +12,7 @@ public class CourtDTO {
 
 	private int longitude;
 
-	private int lattitude;
+	private int latitude;
 
 	public Long getIdCourt() {
 		return idCourt;
@@ -46,19 +46,19 @@ public class CourtDTO {
 		this.longitude = longitude;
 	}
 
-	public int getLattitude() {
-		return lattitude;
+	public int getLatitude() {
+		return latitude;
 	}
 
-	public void setLattitude(int lattitude) {
-		this.lattitude = lattitude;
+	public void setLatitude(int latitude) {
+		this.latitude = latitude;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + lattitude;
+		result = prime * result + latitude;
 		result = prime * result + longitude;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
@@ -74,7 +74,7 @@ public class CourtDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		CourtDTO other = (CourtDTO) obj;
-		if (lattitude != other.lattitude)
+		if (latitude != other.latitude)
 			return false;
 		if (longitude != other.longitude)
 			return false;
