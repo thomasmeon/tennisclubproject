@@ -50,7 +50,7 @@ public class CourtServiceTest extends AbstractTestNGSpringContextTests {
 	}
 
 	@Test
-	public void changeCourtType() {
+	public void changeCourtType() throws IllegalArgumentException{
 
 		courtService.changeCourtType(c, newCourtType);
 
@@ -58,5 +58,21 @@ public class CourtServiceTest extends AbstractTestNGSpringContextTests {
 		
 
 	}
+	
+	@Test
+    public void create() throws IllegalArgumentException{
+        courtService.createCourt(c);
+        Assert.assertFalse((c.getIdCourt()).equals(null));
+    }
+	
+    @Test
+    public void getById() throws IllegalArgumentException{
+        Court ctemp = courtService.getCourtById(c.getIdCourt());
+        
+        Assert.assertFalse((c).equals(null));
+        Assert.assertTrue((c).equals(ctemp));
+        
+        System.out.println(c);
+    }
 
 }
