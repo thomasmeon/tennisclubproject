@@ -1,6 +1,5 @@
 package com.frenchies.tennisclub.service;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 
@@ -12,7 +11,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -31,7 +33,9 @@ import com.frenchies.tennisclub.service.config.ServiceConfiguration;
  * @author CorentinDore 473308
  */
 
+@TestExecutionListeners(TransactionalTestExecutionListener.class)
 @ContextConfiguration(classes = ServiceConfiguration.class)
+@Transactional
 public class UserServiceTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
@@ -97,7 +101,7 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
 
 	@Test
     void createUserValidTest() {
-		doNothing().when(userDao).create(null);
+		doNothing().when(userDao).create(any());
         User createdUser = userService.registerUser(validUser,"blabla");
 
         verify(userDao).create(validUser);
