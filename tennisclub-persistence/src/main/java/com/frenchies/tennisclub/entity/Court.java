@@ -42,6 +42,10 @@ public class Court {
 	private float latitude;
 
 	// Constructor
+	
+	public Court() {
+		
+	}
 
 	public Court(Status status, CourtType type, float longitude, float latitude) {
 		this.status = status;

@@ -39,19 +39,11 @@ public class BookingServiceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	@InjectMocks
 	private BookingService bookingService;
-	
+
 	@BeforeClass
 	public void setup() throws ServiceException {
 		MockitoAnnotations.initMocks(this);
 	}
-
-//	@BeforeMethod
-//	public void createBookings() {
-//		Booking b = new Booking();
-//
-//	}
-
-	
 
 	@Test
 	public void getAllBookingsLastWeek() {

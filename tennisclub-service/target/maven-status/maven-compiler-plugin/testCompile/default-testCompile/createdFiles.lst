@@ -1,4 +1,6 @@
-com/frenchies/tennisclub/service/BeanMappingServiceTest.class
-com/frenchies/tennisclub/service/CourtServiceTest.class
 com/frenchies/tennisclub/service/BookingServiceTest.class
+com/frenchies/tennisclub/facade/UserFacadeTest.class
+com/frenchies/tennisclub/service/BeanMappingServiceTest.class
+com/frenchies/tennisclub/service/UserServiceTest.class
+com/frenchies/tennisclub/service/CourtServiceTest.class
 com/frenchies/tennisclub/facade/BookingFacadeTest.class
