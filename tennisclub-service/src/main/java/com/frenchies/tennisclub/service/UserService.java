@@ -15,13 +15,8 @@ import com.frenchies.tennisclub.entity.User;
 public interface UserService {
 	/**
 	 * Register the given user with the given unencrypted password.
-	 * 
-	 * Authenticate {@link User}.
-	 *
-	 * @return true only if hashed unencryptedPassword is equal with user hashed
-	 *         password
 	 */
-	public User registerUser(User u, String unencryptedPassword);
+	public User registerUser(User user, String unencryptedPassword);
 
 	/**
 	 * Get all {@link User}.
@@ -40,13 +35,14 @@ public interface UserService {
 	 * Check whether {@link User} is admin, or not.
 	 *
 	 * @param user
-	 *            to check
+	 *            to check or id
 	 * @return true if user is admin, false otherwise
 	 */
 	public boolean isAdmin(User u);
+	public boolean isAdmin(Long id);
 
 	/**
-	 * Delete {@link HumanPlayer}.
+	 * Delete {@link User}.
 	 *
 	 * @param humanPlayer
 	 *            to delete
@@ -54,7 +50,7 @@ public interface UserService {
 	public void delete(User u);
 
 	/**
-	 * Update {@link HumanPlayer}.
+	 * Update {@link User}.
 	 *
 	 * @param humanPlayer
 	 *            to update
@@ -71,13 +67,11 @@ public interface UserService {
 	public User getUserById(Long userId);
 
 	/**
-	 * Find {@link HumanPlayer} by username.
+	 * Find {@link User} by username.
 	 *
 	 * @param username
-	 *            human player's username
-	 * @return human player with given username
+	 *            user's username
+	 * @return User with given username
 	 */
 	public User getUserByName(String name);
-	
-	boolean updatePassword(User u, String oldPassword, String newPassword);
 }

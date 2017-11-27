@@ -30,6 +30,8 @@ public class UserCreateDTO {
     @NotNull
     @Size(min = 3, max = 50)
     private Date dateOfBirth;
+    
+    private boolean admin; 
 
     public UserCreateDTO() {
     }
@@ -80,6 +82,14 @@ public class UserCreateDTO {
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
     

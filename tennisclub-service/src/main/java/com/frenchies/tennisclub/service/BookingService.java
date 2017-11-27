@@ -20,6 +20,13 @@ public interface BookingService {
 	 * create a booking.
 	 */
 	public Booking createBooking(Booking booking);
+	
+	/**
+	 * Cancel a Booking already in DB
+	 * 
+	 * @param Booking
+	 */	
+	public void deleteBooking(Booking Booking);
 
 	/**
 	 * Get all saved bookings belonging to the given user
@@ -33,13 +40,6 @@ public interface BookingService {
 	 * Get all saved bookings.
 	 */
 	public List<Booking> getAllBookings();
-
-	/**
-	 * Cancel a Booking already in DB
-	 * 
-	 * @param Booking
-	 */	
-	public void deleteBooking(Booking Booking);
 
 	/**
 	 * Find a booking using its id
@@ -56,28 +56,4 @@ public interface BookingService {
 	 */
 	public List<Booking> getAllBookingsLastWeek();
 
-	/**
-	 * Get all booking belonging to the given user in a period between 2 dates
-	 * 
-	 * @param start
-	 * @param end
-	 * @param u
-	 * @return
-	 */
-	public List<Booking> getAllBookingsByUserBetween(Date start, Date end, User u);
-
-	/**
-	 * Get all booking in a period between 2 dates
-	 * @param start
-	 * @param end
-	 * @return
-	 */
-	public List<Booking> getAllBookingsBetween(Date start, Date end);
-
-	/**
-	 * Get all booking of one date
-	 * @param date
-	 * @return
-	 */
-	public List<Booking> getBookingsByDate(Date date);
 }
