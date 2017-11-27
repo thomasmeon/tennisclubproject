@@ -12,17 +12,26 @@ import com.frenchies.tennisclub.enums.Status;
  *
  */
 public class CourtCreateDTO {
+<<<<<<< HEAD
+
+	@NotNull
+=======
     
     @NotNull
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 	private Status status;
-    
-    @NotNull
-    private CourtType courtType;
-    
-    private float longitude;
+
+	@NotNull
+	private CourtType courtType;
+
+<<<<<<< HEAD
+	private float longitude;
 
 	private float latitude;
 
+	
+=======
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 	public Status getStatus() {
 		return status;
 	}
@@ -88,10 +97,12 @@ public class CourtCreateDTO {
 
 	@Override
 	public String toString() {
+<<<<<<< HEAD
+		return "CourtCreateDTO [status=" + status + ", type=" + courtType + ", longitude="
+=======
 		return "CourtCreateDTO status=" + status + ", type=" + courtType + ", longitude="
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 				+ longitude + ", latitude=" + latitude + "]";
 	}
 
-    
-	
 }

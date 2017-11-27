@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 package com.frenchies.tennisclub.facade;
 
 import static org.mockito.Mockito.verify;
@@ -51,6 +53,7 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //	@Autowired
 //	@InjectMocks
 =======
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //package com.frenchies.tennisclub.facade;
 //
 //import java.util.Calendar;
@@ -84,7 +87,10 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //
 //	@Autowired
+<<<<<<< HEAD
+=======
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //	private BookingFacade bookingFacade;
 //
 //	@Autowired
@@ -93,6 +99,11 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //	private BookingCreateDTO bookingCreateDTO;
 //
 //	private BookingDTO bookingDTO;
+<<<<<<< HEAD
+//
+//	private UserDTO userDTO1;
+//	private UserDTO userDTO2;
+=======
 <<<<<<< HEAD
 //	
 //	private Booking booking; 
@@ -110,6 +121,7 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //	private UserDTO userDTO1;
 //	private UserDTO userDTO2;
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //
 //	private Calendar cal1;
 //
@@ -120,12 +132,18 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //	// @BeforeMethod
 //	// public void userDTOCreation() {
 //	//
 //	// }
 //
+<<<<<<< HEAD
+=======
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //	@BeforeMethod
 //	public void prepareTestBooking() {
 //		cal1 = Calendar.getInstance();
@@ -138,9 +156,12 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //		userDTO1.setSurname("jean");
 //		userDTO1.setPhone("+33720362718");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 //		userDTO1.setId(10L);
 =======
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //
 //		userDTO2 = new UserDTO();
 //		userDTO2.setDateOfBirth(cal1.getTime());
@@ -148,6 +169,8 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //		userDTO2.setName("Pierre");
 //		userDTO2.setSurname("Paul");
 //		userDTO2.setPhone("+33728962718");
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 //		userDTO2.setId(11L);
 //		
@@ -170,11 +193,16 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //		when(beanMappingService.mapTo(userDTO2, User.class)).thenReturn(user2);
 =======
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //
 //		cal1 = Calendar.getInstance();
 //		cal1.set(2017, 1, 1);
 //		Date date1 = cal1.getTime();
 //
+<<<<<<< HEAD
+//		userFacade.createUser(userDTO1, "blabla");
+//		userFacade.createUser(userDTO2, "blabla2");
+=======
 <<<<<<< HEAD
 ////		idUser1 = userFacade.createUser(userDTO1, "blabla");
 ////		idUser2 = userFacade.createUser(userDTO2, "blabla2");
@@ -185,6 +213,7 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //		userFacade.createUser(userDTO1, "blabla");
 //		userFacade.createUser(userDTO2, "blabla2");
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //
 //		bookingCreateDTO = new BookingCreateDTO();
 //		bookingCreateDTO.setIdCourt((long) 1);
@@ -192,6 +221,10 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //		bookingCreateDTO.setHourOfBooking(Hour24.EIGHT);
 //		bookingCreateDTO.setUser1(userDTO1);
 //		bookingCreateDTO.setUser2(userDTO2);
+<<<<<<< HEAD
+//
+//		bookingDTO = new BookingDTO();
+=======
 <<<<<<< HEAD
 //		
 //		booking = new Booking();
@@ -214,10 +247,13 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //
 //		bookingDTO = new BookingDTO();
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //	}
 //
 //	@Test
 //	public void createBookingTest() {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 //		when(bookingService.createBooking(booking)).thenReturn(booking);
 //		
@@ -232,6 +268,7 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //	}
 
 =======
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
 //		Assert.assertTrue((bookingFacade.getBookingById(bookingId).getIdCourt()).equals(bookingCreateDTO.getIdCourt()));
 //		Assert.assertTrue((bookingFacade.getBookingById(bookingId).getDateOfBooking())
@@ -240,7 +277,10 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //				.equals(bookingCreateDTO.getHourOfBooking()));
 //	}
 //
+<<<<<<< HEAD
+=======
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //	@Test
 //	public void deleteBookingTest() {
 //		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
@@ -271,6 +311,8 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //		Assert.assertTrue(bookingFacade.getBookingsByUser(userDTO2).contains(bookingDTO));
 //	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 	// @Test
 	// public void findByCompetitionCountryBookingTest(){
@@ -288,6 +330,7 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 	
 }
 =======
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
 //
 //	// @Test
 //	// public void findByCompetitionCountryBookingTest(){
@@ -298,5 +341,9 @@ public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
 //	// assertThat(bookings).containsExactly(bookingDTO);
 //	// }
 //
+<<<<<<< HEAD
+//}
+=======
 //}
 >>>>>>> 909cf0492c552c91966fafc1fe4781448d9b5594
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476

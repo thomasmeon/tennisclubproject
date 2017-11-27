@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <<<<<<< HEAD
+<testng-results skipped="0" failed="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="3466" started-at="2017-11-27T12:19:29Z" finished-at="2017-11-27T12:19:33Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="3466" started-at="2017-11-27T12:19:29Z" finished-at="2017-11-27T12:19:33Z">
+      <class name="com.frenchies.tennisclub.facade.CourtFacadeTest">
+        <test-method status="PASS" signature="initMocks()[pri:0, instance:com.frenchies.tennisclub.facade.CourtFacadeTest@42607a4f]" name="initMocks" is-config="true" duration-ms="114" started-at="2017-11-27T13:19:29Z" finished-at="2017-11-27T13:19:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMocks -->
+        <test-method status="PASS" signature="init()[pri:0, instance:com.frenchies.tennisclub.facade.CourtFacadeTest@42607a4f]" name="init" is-config="true" duration-ms="10" started-at="2017-11-27T13:19:29Z" finished-at="2017-11-27T13:19:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="testChangeTypeCourt()[pri:0, instance:com.frenchies.tennisclub.facade.CourtFacadeTest@42607a4f]" name="testChangeTypeCourt" duration-ms="3" started-at="2017-11-27T13:19:29Z" finished-at="2017-11-27T13:19:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testChangeTypeCourt -->
+        <test-method status="PASS" signature="testCreateCourt()[pri:0, instance:com.frenchies.tennisclub.facade.CourtFacadeTest@42607a4f]" name="testCreateCourt" duration-ms="4" started-at="2017-11-27T13:19:29Z" finished-at="2017-11-27T13:19:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateCourt -->
+        <test-method status="PASS" signature="init()[pri:0, instance:com.frenchies.tennisclub.facade.CourtFacadeTest@42607a4f]" name="init" is-config="true" duration-ms="0" started-at="2017-11-27T13:19:29Z" finished-at="2017-11-27T13:19:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="testGetAllCourts()[pri:0, instance:com.frenchies.tennisclub.facade.CourtFacadeTest@42607a4f]" name="testGetAllCourts" duration-ms="1" started-at="2017-11-27T13:19:29Z" finished-at="2017-11-27T13:19:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetAllCourts -->
+        <test-method status="PASS" signature="init()[pri:0, instance:com.frenchies.tennisclub.facade.CourtFacadeTest@42607a4f]" name="init" is-config="true" duration-ms="0" started-at="2017-11-27T13:19:29Z" finished-at="2017-11-27T13:19:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+      </class> <!-- com.frenchies.tennisclub.facade.CourtFacadeTest -->
+      <class name="com.frenchies.tennisclub.service.CourtServiceTest">
+        <test-method status="PASS" signature="springTestContextBeforeTestClass()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@3578436e]" name="springTestContextBeforeTestClass" is-config="true" duration-ms="0" started-at="2017-11-27T13:19:29Z" finished-at="2017-11-27T13:19:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextBeforeTestClass -->
+        <test-method status="PASS" signature="springTestContextPrepareTestInstance()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@3578436e]" name="springTestContextPrepareTestInstance" is-config="true" duration-ms="3188" started-at="2017-11-27T13:19:29Z" depends-on-methods="org.springframework.test.context.testng.AbstractTestNGSpringContextTests.springTestContextBeforeTestClass" finished-at="2017-11-27T13:19:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextPrepareTestInstance -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@3578436e]" name="setup" is-config="true" duration-ms="2" started-at="2017-11-27T13:19:32Z" finished-at="2017-11-27T13:19:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="springTestContextBeforeTestMethod(java.lang.reflect.Method)[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@3578436e]" name="springTestContextBeforeTestMethod" is-config="true" duration-ms="61" started-at="2017-11-27T13:19:32Z" finished-at="2017-11-27T13:19:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.frenchies.tennisclub.service.CourtServiceTest.changeCourtType()]]>
+=======
+<<<<<<< HEAD
 <testng-results skipped="6" failed="2" total="13" passed="5">
   <reporter-output>
   </reporter-output>
@@ -171,12 +228,28 @@
             <param index="0">
               <value>
                 <![CDATA[public void com.frenchies.tennisclub.service.UserServiceTest.changeCourtType()]]>
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextBeforeTestMethod -->
+<<<<<<< HEAD
+        <test-method status="PASS" signature="init()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@3578436e]" name="init" is-config="true" duration-ms="60" started-at="2017-11-27T13:19:33Z" finished-at="2017-11-27T13:19:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="changeCourtType()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@3578436e]" name="changeCourtType" duration-ms="7" started-at="2017-11-27T13:19:33Z" finished-at="2017-11-27T13:19:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- changeCourtType -->
+        <test-method status="PASS" signature="springTestContextAfterTestMethod(java.lang.reflect.Method)[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@3578436e]" name="springTestContextAfterTestMethod" is-config="true" duration-ms="7" started-at="2017-11-27T13:19:33Z" finished-at="2017-11-27T13:19:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.frenchies.tennisclub.service.CourtServiceTest.changeCourtType()]]>
+=======
         <test-method status="FAIL" signature="init()[pri:0, instance:com.frenchies.tennisclub.service.UserServiceTest@6166e06f]" name="init" is-config="true" duration-ms="0" started-at="2017-11-27T13:54:36Z" finished-at="2017-11-27T13:54:36Z">
           <exception class="javax.persistence.TransactionRequiredException">
             <message>
@@ -302,12 +375,19 @@
             <param index="0">
               <value>
                 <![CDATA[public void com.frenchies.tennisclub.service.BookingServiceTest.getAllBookingsLastWeek()]]>
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestMethod -->
+<<<<<<< HEAD
+        <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.frenchies.tennisclub.service.CourtServiceTest@3578436e]" name="springTestContextAfterTestClass" is-config="true" duration-ms="0" started-at="2017-11-27T13:19:33Z" finished-at="2017-11-27T13:19:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- springTestContextAfterTestClass -->
+=======
         <test-method status="PASS" signature="springTestContextAfterTestClass()[pri:0, instance:com.frenchies.tennisclub.service.BookingServiceTest@646007f4]" name="springTestContextAfterTestClass" is-config="true" duration-ms="1" started-at="2017-11-27T13:18:58Z" finished-at="2017-11-27T13:18:58Z">
           <reporter-output>
           </reporter-output>
@@ -543,6 +623,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- springTestContextAfterTestClass -->
+>>>>>>> d89b91c6cc50a6983ef03223426c0744253ce476
       </class> <!-- com.frenchies.tennisclub.service.CourtServiceTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
