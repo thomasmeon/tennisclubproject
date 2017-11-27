@@ -53,13 +53,6 @@ public class CourtFacadeImpl implements CourtFacade {
 	public Long createCourt(CourtCreateDTO c) {
 
 		Court mappedCourt = beanMappingService.mapTo(c, Court.class);
-		
-		mappedCourt.setIdCourt(c.getIdCourt());
-		mappedCourt.setStatus(c.getStatus());
-		mappedCourt.setCourtType(c.getCourtType());
-		mappedCourt.setLatitude(c.getLatitude());
-		mappedCourt.setLongitude(c.getLongitude());
-		
 		Court newCourt = courtService.createCourt(mappedCourt);
 
 		return newCourt.getIdCourt();

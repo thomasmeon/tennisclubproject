@@ -12,28 +12,18 @@ import com.frenchies.tennisclub.enums.Status;
  *
  */
 public class CourtCreateDTO {
-	
-    @NotNull
-	private Long idCourt;
-    
-    @NotNull
+
+	@NotNull
 	private Status status;
-    
-    @NotNull
-    private CourtType courtType;
-    
-    private float longitude;
+
+	@NotNull
+	private CourtType courtType;
+
+	private float longitude;
 
 	private float latitude;
 
-	public Long getIdCourt() {
-		return idCourt;
-	}
-
-	public void setIdCourt(Long idCourt) {
-		this.idCourt = idCourt;
-	}
-
+	
 	public Status getStatus() {
 		return status;
 	}
@@ -70,7 +60,6 @@ public class CourtCreateDTO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
 		result = prime * result + Float.floatToIntBits(latitude);
 		result = prime * result + Float.floatToIntBits(longitude);
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
@@ -87,11 +76,6 @@ public class CourtCreateDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		CourtCreateDTO other = (CourtCreateDTO) obj;
-		if (idCourt == null) {
-			if (other.idCourt != null)
-				return false;
-		} else if (!idCourt.equals(other.idCourt))
-			return false;
 		if (Float.floatToIntBits(latitude) != Float.floatToIntBits(other.latitude))
 			return false;
 		if (Float.floatToIntBits(longitude) != Float.floatToIntBits(other.longitude))
@@ -105,10 +89,8 @@ public class CourtCreateDTO {
 
 	@Override
 	public String toString() {
-		return "CourtCreateDTO [idCourt=" + idCourt + ", status=" + status + ", type=" + courtType + ", longitude="
+		return "CourtCreateDTO [status=" + status + ", type=" + courtType + ", longitude="
 				+ longitude + ", latitude=" + latitude + "]";
 	}
 
-    
-	
 }
