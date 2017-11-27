@@ -77,7 +77,7 @@ public class CourtFacadeTest {
 		validCourtDTO = new CourtDTO();
 		validCourtDTO.setIdCourt(1L);
 		validCourtDTO.setType(CourtType.GRASS);
-		validCourtDTO.setLattitude(45);
+		validCourtDTO.setLatitude(45);
 		validCourtDTO.setLongitude(46);
 		validCourtDTO.setStatus(Status.AVAILABLE);
 	

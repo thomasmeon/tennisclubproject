@@ -23,7 +23,10 @@ public class UserDaoImpl implements UserDao {
 	private EntityManager em;
 
 	@Override
-	public void create(User u) {
+	public void create(User u) throws IllegalArgumentException {
+		if (u == null) {
+            throw new IllegalArgumentException("User is null.");
+        }
 		em.persist(u);
 	}
 
@@ -52,12 +55,18 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User update(User b) {
+	public User update(User b) throws IllegalArgumentException {
+		if (b == null) {
+            throw new IllegalArgumentException("User is null.");
+        }
 		return em.merge(b);
 	}
 
 	@Override
-	public void remove(User b) {
+	public void remove(User b) throws IllegalArgumentException {
+		if (b == null) {
+            throw new IllegalArgumentException("User is null.");
+        }
 		em.remove(b);
 	}
 }

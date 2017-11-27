@@ -1,22 +1,23 @@
 package com.frenchies.tennisclub.facade;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
+import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -24,288 +25,201 @@ import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
+import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
+import com.frenchies.tennisclub.dto.UserCreateDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.enums.Hour24;
 import com.frenchies.tennisclub.mappers.BeanMappingService;
 import com.frenchies.tennisclub.service.BookingService;
+import com.frenchies.tennisclub.service.TimeService;
 import com.frenchies.tennisclub.service.UserService;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
+import com.frenchies.tennisclub.service.facade.BookingFacadeImpl;
+import com.frenchies.tennisclub.service.facade.UserFacadeImpl;
 
 @ContextConfiguration(classes = ServiceConfiguration.class)
-@TestExecutionListeners(TransactionalTestExecutionListener.class)
-@Transactional
-public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
+public class BookingFacadeTest {
+
+	@Mock
+	private BeanMappingService beanMappingService;
+
+	@Mock
+	private UserService userService;
+
+	@Mock
+	private BookingService bookingService;
 	
-//	@Mock
-//	private BeanMappingService beanMappingService;
-//	
-//	@Mock
-//	private BookingService bookingService;
-//	
-//	@Mock
-//	private UserService userService;
-//
-//	@Autowired
-//	@InjectMocks
+	@Mock
+	private TimeService timeService;
 
-//package com.frenchies.tennisclub.facade;
-//
-//import java.util.Calendar;
-//import java.util.Date;
-//import java.util.List;
-//
-//import javax.transaction.Transactional;
-//
-//import org.mockito.MockitoAnnotations;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.test.context.ContextConfiguration;
-//import org.springframework.test.context.TestExecutionListeners;
-//import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-//import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-//import org.testng.Assert;
-//import org.testng.annotations.BeforeClass;
-//import org.testng.annotations.BeforeMethod;
-//import org.testng.annotations.Test;
-//
-//import com.frenchies.tennisclub.dto.BookingCreateDTO;
-//import com.frenchies.tennisclub.dto.BookingDTO;
-//import com.frenchies.tennisclub.dto.UserDTO;
-//import com.frenchies.tennisclub.enums.Hour24;
-//import com.frenchies.tennisclub.facade.BookingFacade;
-//import com.frenchies.tennisclub.facade.UserFacade;
-//import com.frenchies.tennisclub.service.config.ServiceConfiguration;
-//
-//@ContextConfiguration(classes = ServiceConfiguration.class)
-//@TestExecutionListeners(TransactionalTestExecutionListener.class)
-//@Transactional
-//public class BookingFacadeTest extends AbstractTestNGSpringContextTests {
-//
-//	@Autowired
+	@Autowired
+	@InjectMocks
+	private UserFacadeImpl userFacade;
 
-//	private BookingFacade bookingFacade;
-//
-//	@Autowired
-//	private UserFacade userFacade;
-//
-//	private BookingCreateDTO bookingCreateDTO;
-//
-//	private BookingDTO bookingDTO;
+	@Autowired
+	@InjectMocks
+	private BookingFacadeImpl bookingFacade;
 
-//
-//	private UserDTO userDTO1;
-//	private UserDTO userDTO2;
+	private BookingCreateDTO bookingCreateDTO;
 
-//	
-//	private Booking booking; 
-//
-//	private UserDTO userDTO1;
-//	private UserDTO userDTO2;
-//	
-//	private User user1;
-//	private User user2;
-//	
-//	private Long idUser1;
-//	private Long idUser2;
+	private BookingDTO bookingDTO;
+	private Booking booking;
 
-//
-//	private UserDTO userDTO1;
-//	private UserDTO userDTO2;
+	private UserDTO userDTO1;
+	private UserDTO userDTO2;
 
-//
-//	private Calendar cal1;
-//
-//	@BeforeClass
-//	public void setup() {
-//		MockitoAnnotations.initMocks(this);
-//	}
-//
+	private User user1;
+	private User user2;
 
+	private Calendar cal1;
 
-//	// @BeforeMethod
-//	// public void userDTOCreation() {
-//	//
-//	// }
+	@BeforeClass
+	public void setup() {
+		MockitoAnnotations.initMocks(this);
+	}
 
-//	@BeforeMethod
-//	public void prepareTestBooking() {
-//		cal1 = Calendar.getInstance();
-//		cal1.set(1999, 11, 10);
-//
-//		userDTO1 = new UserDTO();
-//		userDTO1.setDateOfBirth(cal1.getTime());
-//		userDTO1.setMail("jean.françois@mail.com");
-//		userDTO1.setName("François");
-//		userDTO1.setSurname("jean");
-//		userDTO1.setPhone("+33720362718");
-
-//		userDTO1.setId(10L);
-
-//
-//		userDTO2 = new UserDTO();
-//		userDTO2.setDateOfBirth(cal1.getTime());
-//		userDTO2.setMail("paul.pierre@mail.com");
-//		userDTO2.setName("Pierre");
-//		userDTO2.setSurname("Paul");
-//		userDTO2.setPhone("+33728962718");
-
-//		userDTO2.setId(11L);
-//		
-//		user1 = new User();
-//		user1.setDateOfBirth(cal1.getTime());
-//		user1.setMail("jean.françois@mail.com");
-//		user1.setName("François");
-//		user1.setSurname("jean");
-//		user1.setPhone("+33720362718");
-//		user1.setId(10L);
-//
-//		user2 = new User();
-//		user2.setDateOfBirth(cal1.getTime());
-//		user2.setMail("paul.pierre@mail.com");
-//		user2.setName("Pierre");
-//		user2.setSurname("Paul");
-//		user2.setPhone("+33728962718");
-//		user2.setId(11L);
-//		when(beanMappingService.mapTo(userDTO1, User.class)).thenReturn(user1);
-//		when(beanMappingService.mapTo(userDTO2, User.class)).thenReturn(user2);
-
-//
-//		cal1 = Calendar.getInstance();
-//		cal1.set(2017, 1, 1);
-//		Date date1 = cal1.getTime();
-//
-
-//		userFacade.createUser(userDTO1, "blabla");
-//		userFacade.createUser(userDTO2, "blabla2");
-
-////		idUser1 = userFacade.createUser(userDTO1, "blabla");
-////		idUser2 = userFacade.createUser(userDTO2, "blabla2");
-//		
-//		verify(userService).registerUser(user1, "blabla");		
-//		verify(userService).registerUser(user2, "blabla2");
-
-//		userFacade.createUser(userDTO1, "blabla");
-//		userFacade.createUser(userDTO2, "blabla2");
-
-//
-//		bookingCreateDTO = new BookingCreateDTO();
-//		bookingCreateDTO.setIdCourt((long) 1);
-//		bookingCreateDTO.setDateOfBooking(date1);
-//		bookingCreateDTO.setHourOfBooking(Hour24.EIGHT);
-//		bookingCreateDTO.setUser1(userDTO1);
-//		bookingCreateDTO.setUser2(userDTO2);
-
-//		bookingDTO = new BookingDTO();
-
-//		
-//		booking = new Booking();
-//		booking.setIdCourt((long) 1);
-//		booking.setDateOfBooking(date1);
-//		booking.setHourOfBooking(Hour24.EIGHT);
-//		booking.setUser1(user1);
-//		booking.setUser2(user2);
-//		//booking.setIdBooking(12L);
-//		when(beanMappingService.mapTo(bookingCreateDTO, Booking.class)).thenReturn(booking);
-//		
-//		bookingDTO = new BookingDTO();
-//		bookingDTO.setIdCourt((long) 1);
-//		bookingDTO.setDateOfBooking(date1);
-//		bookingDTO.setHourOfBooking(Hour24.EIGHT);
-//		bookingDTO.setUser1(userDTO1);
-//		bookingDTO.setUser2(userDTO2);
-//		//bookingDTO.setIdBooking(12L);
-
-//
-//		bookingDTO = new BookingDTO();
-
-//	}
-//
-//	@Test
-//	public void createBookingTest() {
-
-//		when(bookingService.createBooking(booking)).thenReturn(booking);
-//		
-//		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
-//		verify(bookingService).createBooking(booking);
-//		Assert.assertTrue(bookingId.equals(booking.getIdBooking()));
-////		Assert.assertTrue((bookingFacade.getBookingById(bookingId).getIdCourt()).equals(bookingCreateDTO.getIdCourt()));
-////		Assert.assertTrue((bookingFacade.getBookingById(bookingId).getDateOfBooking())
-////				.equals(bookingCreateDTO.getDateOfBooking()));
-////		Assert.assertTrue((bookingFacade.getBookingById(bookingId).getHourOfBooking())
-////				.equals(bookingCreateDTO.getHourOfBooking()));
-//	}
-
-
-//		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
-//		Assert.assertTrue((bookingFacade.getBookingById(bookingId).getIdCourt()).equals(bookingCreateDTO.getIdCourt()));
-//		Assert.assertTrue((bookingFacade.getBookingById(bookingId).getDateOfBooking())
-//				.equals(bookingCreateDTO.getDateOfBooking()));
-//		Assert.assertTrue((bookingFacade.getBookingById(bookingId).getHourOfBooking())
-//				.equals(bookingCreateDTO.getHourOfBooking()));
-//	}
-//
-
-//	@Test
-//	public void deleteBookingTest() {
-//		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
-//		bookingFacade.deleteBooking(bookingId);
-//		Assert.assertTrue((bookingFacade.getBookingById(bookingId)).equals(null));
-//	}
-//
-//	@Test
-//	public void getAllBookingTest() {
-//		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
-//		List<BookingDTO> bookings = bookingFacade.getAllBookings();
-//		BookingDTO bookingDTO = bookingFacade.getBookingById(bookingId);
-//		Assert.assertTrue(bookings.contains(bookingDTO));
-//	}
-//
-//	@Test
-//	public void getBookingsByDateTest() {
-//		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
-//		Assert.assertTrue(bookingFacade.getBookingsByDate(bookingFacade.getBookingById(bookingId).getDateOfBooking())
-//				.equals(bookingCreateDTO.getDateOfBooking()));
-//	}
-//
-//	@Test
-//	public void getBookingsByUserTest() {
-//		Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
-//		bookingDTO.setIdBooking(bookingId);
-//		Assert.assertTrue(bookingFacade.getBookingsByUser(userDTO1).contains(bookingDTO));
-//		Assert.assertTrue(bookingFacade.getBookingsByUser(userDTO2).contains(bookingDTO));
-//	}
-
-
-	// @Test
-	// public void findByCompetitionCountryBookingTest(){
-	// Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
-	// List<BookingDTO> bookings =
-	// bookingFacade.getBookingsByCountry(CompetitionCountry.CZECH_REPUBLIC);
-	// BookingDTO bookingDTO = bookingFacade.getBookingById(bookingId);
-	// assertThat(bookings).containsExactly(bookingDTO);
+	// @BeforeMethod
+	// public void userDTOCreation() {
+	//
 	// }
 
-	@Test
-	public void test() {
-		Assert.assertTrue(true);
+	public void generateUsers() {
+		cal1 = Calendar.getInstance();
+		cal1.set(1987, 1, 1);
+
+		// User Inits
+		user1 = new User();
+		user1.setName("Jean");
+		user1.setSurname("Patrick");
+		user1.setId(1L);
+		user1.setDateOfBirth(cal1.getTime());
+		user1.setMail("jean.patrick@mail.com");
+		user1.setPhone("+33678787878");
+		user1.setAdmin(false);
+
+		user2 = new User();
+		user2.setName("Jacques");
+		user2.setSurname("Henry");
+		user2.setId(2L);
+		user2.setDateOfBirth(cal1.getTime());
+		user2.setMail("jacques.henry@mail.com");
+		user2.setPhone("+33678789090");
+		user2.setAdmin(false);
+
+		userDTO1 = new UserDTO();
+		userDTO1.setName("Jean");
+		userDTO1.setSurname("Patrick");
+		userDTO1.setId(1L);
+		userDTO1.setDateOfBirth(cal1.getTime());
+		userDTO1.setMail("jean.patrick@mail.com");
+		userDTO1.setPhone("+33678787878");
+		userDTO1.setAdmin(false);
+
+		userDTO2 = new UserDTO();
+		userDTO2.setName("Jacques");
+		userDTO2.setSurname("Henry");
+		userDTO2.setId(2L);
+		userDTO2.setDateOfBirth(cal1.getTime());
+		userDTO2.setMail("jacques.henry@mail.com");
+		userDTO2.setPhone("+33678789090");
+		userDTO2.setAdmin(false);
 	}
+
+	public void initBooking() {
+		Date date1 = new Date();
+
+		bookingCreateDTO = new BookingCreateDTO();
+		bookingCreateDTO.setIdCourt((long) 1);
+		bookingCreateDTO.setDateOfBooking(date1);
+		bookingCreateDTO.setHourOfBooking(Hour24.EIGHT);
+		bookingCreateDTO.setUser1(userDTO1);
+		bookingCreateDTO.setUser2(userDTO2);
+
+		bookingDTO = new BookingDTO();
+
+		booking = new Booking();
+		booking.setIdCourt((long) 1);
+		booking.setDateOfBooking(date1);
+		booking.setHourOfBooking(Hour24.EIGHT);
+		booking.setUser1(user1);
+		booking.setUser2(user2);
+		booking.setIdBooking(12L);
+		when(beanMappingService.mapTo(bookingCreateDTO, Booking.class)).thenReturn(booking);
+
+		bookingDTO = new BookingDTO();
+		bookingDTO.setIdCourt((long) 1);
+		bookingDTO.setDateOfBooking(date1);
+		bookingDTO.setHourOfBooking(Hour24.EIGHT);
+		bookingDTO.setUser1(userDTO1);
+		bookingDTO.setUser2(userDTO2);
+		bookingDTO.setIdBooking(12L);
+
+	}
+
+	@BeforeMethod
+	public void init() {
+		generateUsers();
+		initBooking();
+	}
+
+	@Test
+	public void createBookingTest() {
+		when(beanMappingService.mapTo(bookingDTO, Booking.class)).thenReturn(booking);
+		when(bookingService.createBooking(booking)).thenReturn(booking);
+
+		Long verifyId = bookingFacade.createBooking(bookingCreateDTO);
+
+		verify(bookingService).createBooking(booking);
+		Assert.assertTrue((verifyId).equals(booking.getIdBooking()));
+
+	}
+
+	@Test
+	public void deleteBookingTest() {
+		Long id = 12L;
+
+		when(bookingService.getBookingById(id)).thenReturn(booking);
+
+		bookingFacade.deleteBooking(id);
+		verify(bookingService, times(1)).deleteBooking(booking);
+	}
+
+	@Test
+	public void getAllBookingTest() {
+		List<Booking> allBookings = new ArrayList<>();
+        allBookings.add(booking);
+
+        List<BookingDTO> allDtoBookings = new ArrayList<>();
+        allDtoBookings.add(bookingDTO);
+
+        when(bookingService.getAllBookings()).thenReturn(allBookings);
+        when(beanMappingService.mapTo(allBookings,BookingDTO.class)).thenReturn(allDtoBookings);
+
+        List<BookingDTO> testBookingList = bookingFacade.getAllBookings();
+
+        verify(bookingService).getAllBookings();
+        Assert.assertTrue(testBookingList.contains(bookingDTO));
+
+	}
+
+	@Test
+    public void getBookingByUserTest(){
+		List<Booking> bookingList = new ArrayList<>();
+        when(bookingService.getBookingsByUser(user1)).thenReturn(bookingList);
+
+        List<BookingDTO> listFoundBookings = bookingFacade.getBookingsByUser(bookingDTO.getUser1());
+        Assert.assertEquals(listFoundBookings,bookingList);
+    }
 	
+	@Test
+	void getBookingByIdTest() {
+		when(beanMappingService.mapTo(booking, BookingDTO.class)).thenReturn(bookingDTO);
+		when(bookingService.getBookingById(12L)).thenReturn(booking);
+
+		BookingDTO resBookingDTO = bookingFacade.getBookingById(booking.getIdBooking());
+		Assert.assertTrue((resBookingDTO).equals(bookingDTO));
+	}
+
 }
-
-
-//
-//	// @Test
-//	// public void findByCompetitionCountryBookingTest(){
-//	// Long bookingId = bookingFacade.createBooking(bookingCreateDTO);
-//	// List<BookingDTO> bookings =
-//	// bookingFacade.getBookingsByCountry(CompetitionCountry.CZECH_REPUBLIC);
-//	// BookingDTO bookingDTO = bookingFacade.getBookingById(bookingId);
-//	// assertThat(bookings).containsExactly(bookingDTO);
-//	// }
-//
-
-//}
-
-//}
-

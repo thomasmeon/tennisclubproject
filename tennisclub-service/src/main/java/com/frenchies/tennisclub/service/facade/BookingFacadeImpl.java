@@ -56,13 +56,6 @@ public class BookingFacadeImpl implements BookingFacade {
 	}
 
 	@Override
-	public List<BookingDTO> getBookingsByDate(Date date) {
-		final List<Booking> allBookingsByDate = bookingService.getBookingsByDate(date);
-		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsByDate, BookingDTO.class);
-		return dtos;
-	}
-
-	@Override
 	public void deleteBooking(Long bookingId) {
 		bookingService.deleteBooking(bookingService.getBookingById(bookingId));
 	}
@@ -71,21 +64,6 @@ public class BookingFacadeImpl implements BookingFacade {
 	public List<BookingDTO> getAllBookingsLastWeek() {
 		final List<Booking> allBookingsLastWeek = bookingService.getAllBookingsLastWeek();
 		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastWeek, BookingDTO.class);
-		return dtos;
-	}
-
-	@Override
-	public List<BookingDTO> getAllBookingsBetween(Date start, Date end) {
-		final List<Booking> allBookingsBetween = bookingService.getAllBookingsBetween(start, end);
-		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsBetween, BookingDTO.class);
-		return dtos;
-	}
-
-	@Override
-	public List<BookingDTO> getAllBookingsByUserBetween(Date start, Date end, UserDTO u) {
-		User uTemp = new User(u.getId());
-		final List<Booking> allBookingsByUserBetween = bookingService.getAllBookingsByUserBetween(start, end, uTemp);
-		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsByUserBetween, BookingDTO.class);
 		return dtos;
 	}
 

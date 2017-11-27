@@ -23,10 +23,7 @@ public interface BookingFacade {
 	
 	
 	public List<BookingDTO> getAllBookings();
-	public List<BookingDTO> getBookingsByDate(Date date);
 	public List<BookingDTO> getBookingsByUser(UserDTO u);
-	public List<BookingDTO> getAllBookingsByUserBetween(Date start, Date end, UserDTO u);
-	public List<BookingDTO> getAllBookingsBetween(Date start, Date end);
 	public List<BookingDTO> getAllBookingsLastWeek();
 
 }

@@ -26,72 +26,79 @@ import com.frenchies.tennisclub.service.UserService;
 @Transactional
 public class UserFacadeImpl implements UserFacade {
 
-    @Inject
-    private UserService userService;
+	@Inject
+	private UserService userService;
 
-    @Autowired
-    private BeanMappingService beanMappingService;
+	@Autowired
+	private BeanMappingService beanMappingService;
 
-    @Override
-    public UserDTO getUserById(Long userId) {
-        User user = userService.getUserById(userId);
-        return (user == null) ? null : beanMappingService.mapTo(user, UserDTO.class);
-    }
-    
-    @Override
-    public UserDTO getUserByName(String name) {
-        User user = userService.getUserByName(name);
-        return (user == null) ? null : beanMappingService.mapTo(user, UserDTO.class);
-    }
-    
-    @Override
-    public Long createUser(UserCreateDTO user, String unencryptedPassword) {
-        User userEntity = beanMappingService.mapTo(user, User.class);
-        User newUser = userService.registerUser(userEntity, unencryptedPassword);
-        return newUser.getId();
-    } 
-       
-           
-    @Override
-    public List<UserDTO> getAllUsers() {
-        return beanMappingService.mapTo(userService.getAllUsers(), UserDTO.class);
-    }
+	@Override
+	public Long createUser(UserCreateDTO userCreatedDTO, String unencryptedPassword) {
+		User mappedUser = beanMappingService.mapTo(userCreatedDTO, User.class);
+		userService.registerUser(mappedUser, unencryptedPassword);
+		return mappedUser.getId();
+	}
 
-    @Override
-    public boolean isAdmin(UserDTO u) {
-        return userService.isAdmin(beanMappingService.mapTo(u, User.class));
-    }
-        
-    
-    @Override
-    public boolean authenticate(UserAuthenticateDTO u) {
-        return userService.authenticate(
-                userService.getUserById(u.getUserId()), u.getPassword());
-    }
+	@Override
+	public void updateUser(UserDTO userDTO) {
+		User userToUpdate = new User();
+		userToUpdate.setDateOfBirth(userDTO.getDateOfBirth());
+		userToUpdate.setMail(userDTO.getMail());
+		userToUpdate.setPhone(userDTO.getPhone());
+		userToUpdate.setName(userDTO.getName());
+		userToUpdate.setSurname(userDTO.getSurname());
+		userToUpdate.setId(userDTO.getId());
 
-    @Override
-    public UserDTO updateUser(UserDTO userDTO) {
-        User userToUpdate = userService.getUserById(userDTO.getId());
-        userToUpdate.setDateOfBirth(userDTO.getDateOfBirth());
-        userToUpdate.setMail(userDTO.getMail());
-        userToUpdate.setPhone(userDTO.getPhone());
-        userToUpdate.setName(userDTO.getName());
-        userToUpdate.setSurname(userDTO.getSurname());
-        userToUpdate.setId(userDTO.getId());
-        
-        userService.update(userToUpdate);
-        return getUserById(userToUpdate.getId());
-    }
-    
-//    @Override
-//    public UserDTO updatePassword(UserDTO u, ) {
-//        User userToUpdate = userService.getUserById(u.getId());
-//        if (!userService.updatePassword(userToUpdate, u.getOldPassword(), u.getNewPassword())) {
-//            //throw new InvalidPasswordException(); TODO
-//        }
-//
-//        return getUserById(u.getId());
-//    }
-    
+		userService.update(userToUpdate);
+	}
+
+	@Override
+	public void deleteUser(Long userId) {
+		User userToDelete = userService.getUserById(userId);
+		userService.delete(userToDelete);
+	}
+
+	@Override
+	public List<UserDTO> getAllUsers() {
+		List<User> users = userService.getAllUsers();
+		return beanMappingService.mapTo(users, UserDTO.class);
+	}
+
+	@Override
+	public UserDTO getUserByName(String name) {
+		User user = userService.getUserByName(name);
+		if (user == null) {
+			return null;
+		}
+		return beanMappingService.mapTo(user, UserDTO.class);
+	}
+
+	@Override
+	public UserDTO getUserById(Long userId) {
+		User user = userService.getUserById(userId);
+		if (user == null)
+			return null;
+		return (user == null) ? null : beanMappingService.mapTo(user, UserDTO.class);
+	}
+
+	@Override
+	public boolean isAdmin(UserDTO u) {
+		return userService.isAdmin(beanMappingService.mapTo(u, User.class));
+	}
+
+	@Override
+	public boolean isAdmin(Long id) {
+		return userService.isAdmin(id);
+	}
+
+	@Override
+	public boolean authenticate(UserAuthenticateDTO u) {
+		return userService.authenticate(userService.getUserById(u.getUserId()), u.getPassword());
+	}
+
+	@Override
+	public boolean authenticate(UserDTO u, String password) {
+		return userService.authenticate(userService.getUserById(u.getId()), password);
+	}
 
 }

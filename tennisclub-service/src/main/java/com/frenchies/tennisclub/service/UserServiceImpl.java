@@ -2,6 +2,7 @@ package com.frenchies.tennisclub.service;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Date;
 import java.util.List;
 
 import javax.crypto.SecretKeyFactory;
@@ -25,10 +26,36 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public User registerUser(User u, String unencryptedPassword) {
-		u.setPasswordHash(createHash(unencryptedPassword));
-		userDao.create(u);
-		return u;
+	public User registerUser(User user, String unencryptedPassword) throws IllegalArgumentException {
+		if (!isValidUser(user)) {
+            throw new IllegalArgumentException(UserServiceImpl.class +
+                    " - User argument is not valid.");
+        }
+		user.setPasswordHash(createHash(unencryptedPassword));
+		userDao.create(user);
+		return user;
+	}
+	
+	@Override
+	public void update(User user) throws IllegalArgumentException {
+		if (!isValidUser(user)) {
+            throw new IllegalArgumentException(UserServiceImpl.class +
+                    " - User argument is not valid.");
+        }
+		userDao.update(user);
+	}
+	
+	@Override
+	public void delete(User user) throws IllegalArgumentException {
+		if (user == null){
+            throw new IllegalArgumentException(UserServiceImpl.class +
+                    " - Null User.");
+        }
+        if (userDao.findById(user.getId()) == null) {
+            throw new IllegalArgumentException(UserServiceImpl.class +
+                    " - Not found User: " + user);
+        }
+		userDao.remove(user);
 	}
 
 	@Override
@@ -44,42 +71,34 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean isAdmin(User u) {
 		// must get a fresh copy from database
-		return userDao.findById(u.getId()).isAdmin();
+		return getUserById(u.getId()).isAdmin();
+	}
+	
+	@Override
+	public boolean isAdmin(Long id) {
+		// must get a fresh copy from database
+		return getUserById(id).isAdmin();
 	}
 
 	@Override
 	public User getUserById(Long userId) {
+		if (userId == null) {
+            throw new IllegalArgumentException(UserServiceImpl.class +
+                    " - Passed id paramenter is null");
+        }
 		return userDao.findById(userId);
 	}
 
 	@Override
-	public void delete(User u) {
-		userDao.remove(u);
-	}
-
-	@Override
 	public User getUserByName(String name) {
-
+		if (name == null) {
+            throw new IllegalArgumentException(UserServiceImpl.class +
+                    " - Name paramenter is null");
+        }
 		return userDao.findUserByName(name);
 	}
 
-	@Override
-	public void update(User user) {
-		 userDao.update(user);
-	 }
-	
-	@Override
-    public boolean updatePassword(User u, String oldPassword, String newPassword) {
-		User toUpdate = userDao.findById(u.getId());
-        if (validatePassword(oldPassword, toUpdate.getPasswordHash())){
-            toUpdate.setPasswordHash(createHash(newPassword));
-            userDao.update(toUpdate);
-            return true;
-        }
-        return false; //TODO: exception wrapping
-}
-	
-	
+		
 	 
 	// see https://crackstation.net/hashing-security.htm#javasourcecode
 	private static String createHash(String password) {
@@ -150,5 +169,32 @@ public class UserServiceImpl implements UserService {
 		int paddingLength = (array.length * 2) - hex.length();
 		return paddingLength > 0 ? String.format("%0" + paddingLength + "d", 0) + hex : hex;
 	}
+	
+	private boolean isValidUser(User user) {
+        if (user == null) {
+            return false;
+        }
+        String name = user.getName();
+        if (name == null || name.length() == 0) {
+            return false;
+        }
+        String surname = user.getSurname();
+        if (surname == null || surname.length() == 0) {
+            return false;
+        }
+        String mail = user.getMail();
+        if (mail == null || mail.length() == 0) {
+            return false;
+        }
+        String phone = user.getPhone();
+        if (phone == null || phone.length() == 0) {
+            return false;
+        }
+        Date dateOfBirth = user.getDateOfBirth();
+        if (dateOfBirth == null) {
+            return false;
+        }
+        return true;
+    }
 
 }

@@ -1,9 +1,14 @@
 package com.frenchies.tennisclub.service;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
@@ -21,11 +26,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.dao.UserDao;
-import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.entity.User;
-import com.frenchies.tennisclub.enums.CourtType;
-import com.frenchies.tennisclub.enums.Status;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
+
+import ch.qos.logback.core.pattern.color.ForegroundCompositeConverterBase;
 
 /**
  * Basic tests for service implementations
@@ -38,24 +42,17 @@ import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 @Transactional
 public class UserServiceTest extends AbstractTestNGSpringContextTests {
 
+	@Mock
+	private UserDao userDao;
+
 	@Autowired
 	@InjectMocks
-	private CourtService courtService;
-	private Court c;
-	protected CourtType newCourtType;
+	private UserService userService;
 
+	private User validUser;
+	private User invalidUser;
 
-	@Mock
-    private UserDao userDao;
-
-    @Autowired
-    @InjectMocks
-    private UserService userService;
-
-    private User validUser;
-    private User invalidUser;
-
-    private Calendar calendar = Calendar.getInstance();
+	private Calendar calendar = Calendar.getInstance();
 
 	@BeforeClass
 	public void setup() throws ServiceException {
@@ -64,49 +61,180 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
 
 	@BeforeMethod
 	public void init() {
-		c = new Court(Status.AVAILABLE, CourtType.CARPET, 234, 34);
-		courtService.createCourt(c);
+		// User Inits
+		validUser = new User();
+		validUser.setName("Jean");
+		validUser.setSurname("Patrick");
+		validUser.setId(1L);
+		validUser.setDateOfBirth(calendar.getTime());
+		validUser.setMail("jean.patrick@mail.com");
+		validUser.setPhone("+33678787878");
+		validUser.setAdmin(true);
 
-		newCourtType = (CourtType.GRASS);
-
-		calendar.set(1980, Calendar.NOVEMBER, 7);
-
-        //User Inits
-        validUser = new User();
-        validUser.setName("Jean");
-        validUser.setSurname("Patrick");
-        validUser.setId(1L);
-        validUser.setDateOfBirth(calendar.getTime());
-        validUser.setMail("jean.patrick@mail.com");
-        validUser.setPhone("+33678787878");
-        validUser.setAdmin(true);
-
-        invalidUser = new User();
-        invalidUser.setName("Jacques");
-        invalidUser.setSurname("Henry");
-        invalidUser.setId(2L);
-        invalidUser.setDateOfBirth(calendar.getTime());
-        invalidUser.setMail("jacques.henry@mail.com");
-        invalidUser.setPhone("+33678789090");
-        invalidUser.setAdmin(true);
+		invalidUser = new User();
+		invalidUser.setName("Jacques");
+		invalidUser.setSurname("Henry");
+		invalidUser.setId(2L);
+		invalidUser.setDateOfBirth(calendar.getTime());
+		invalidUser.setMail("jacques.henry@mail.com");
+		invalidUser.setPhone("+33678789090");
+		invalidUser.setAdmin(false);
 	}
 
+	/*
+	 * Creation Tests
+	 */
+
 	@Test
-	public void changeCourtType() {
+	public void createUserValidTest() {
+		doNothing().when(userDao).create((User) any());
+		User createdUser = userService.registerUser(validUser, "blabla");
 
-		Assert.assertTrue(true);
-		
+		verify(userDao).create(validUser);
 
+		Assert.assertTrue(createdUser.equals(validUser));
 	}
 
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void createNullUserTest() {
+		userService.registerUser(null, "blabla");
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void testCreateUserNullName() {
+		invalidUser.setName(null);
+		userService.registerUser(invalidUser, "blabla");
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void testCreateUserNullSurname() {
+		invalidUser.setSurname(null);
+		userService.registerUser(invalidUser, "blabla");
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void testCreateUserNullMail() {
+		invalidUser.setMail(null);
+		userService.registerUser(invalidUser, "blabla");
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void testCreateUserNullPhone() {
+		invalidUser.setPhone(null);
+		userService.registerUser(invalidUser, "blabla");
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void testCreateUserNullDateOfBirth() {
+		invalidUser.setDateOfBirth(null);
+		userService.registerUser(invalidUser, "blabla");
+	}
+
+	/*
+	 * Update Test
+	 */
+
 	@Test
-    void createUserValidTest() {
-		doNothing().when(userDao).create(null);
-        User createdUser = userService.registerUser(validUser,"blabla");
+	public void updateUserTest() {
+		String newName = "Paul";
+		validUser.setName(newName);
+		userService.update(validUser);
+		Assert.assertTrue(validUser.getName().equals(newName));
+	}
 
-        verify(userDao).create(validUser);
+	/*
+	 * Delete Test
+	 */
 
-        Assert.assertTrue(createdUser.equals(validUser));
+	@Test
+	public void deleteUserTest() {
+		when(userDao.findById(validUser.getId())).thenReturn(validUser);
+
+		doAnswer(invocation -> {
+			validUser.setId(null);
+			return null;
+		}).when(userDao).remove(validUser);
+
+		userService.delete(validUser);
+
+		verify(userDao).remove(validUser);
+		Assert.assertEquals(validUser.getId(), null);
+	}
+
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void deleteNullUserTest() {
+		userService.delete(null);
+	}
+
+	/*
+	 * Get Test
+	 */
+
+	@Test
+	public void getAllUsersTest() {
+		List<User> userList = new ArrayList<>();
+		userList.add(validUser);
+
+		when(userDao.findAll()).thenReturn(userList);
+
+		List<User> resultUserList = userService.getAllUsers();
+		Assert.assertNotNull(resultUserList);
+		Assert.assertEquals(resultUserList.size(), 1);
+		Assert.assertTrue(resultUserList.contains(validUser));
+
+		userList.add(invalidUser);
+
+		when(userDao.findAll()).thenReturn(userList);
+
+		resultUserList = userService.getAllUsers();
+		Assert.assertNotNull(resultUserList);
+		Assert.assertEquals(resultUserList.size(), 2);
+		Assert.assertTrue(resultUserList.contains(validUser));
+		Assert.assertTrue(resultUserList.contains(invalidUser));
+	}
+	
+	@Test
+    public void getUserByIdTest(){
+        when(userDao.findById(validUser.getId())).thenReturn(validUser);
+
+        User foundUser = userService.getUserById(validUser.getId());
+        Assert.assertEquals(foundUser, validUser);
     }
+	
+	@Test
+    public void getUserByNameTest(){
+        when(userDao.findUserByName(validUser.getName())).thenReturn(validUser);
+
+        User foundUser = userService.getUserByName(validUser.getName());
+        Assert.assertEquals(foundUser, validUser);
+    }
+	
+	/*
+	 * Admin test
+	 */
+	@Test
+	public void isAdminTest() {
+		when(userDao.findUserByName(validUser.getName())).thenReturn(validUser);
+		
+		Assert.assertEquals(userService.isAdmin(validUser), validUser.isAdmin());
+	}
+	
+	@Test
+	public void isAdminIdTest() {
+		when(userDao.findUserByName(validUser.getName())).thenReturn(validUser);
+		
+		Assert.assertEquals(userService.isAdmin(validUser.getId()), validUser.isAdmin());
+	}
+	
+	/*
+	 * authentication Test
+	 */
+	
+	@Test
+	public void authenticateTest() {
+		User createdUser = userService.registerUser(validUser, "blabla");
+		verify(userDao).create(validUser);
+		Assert.assertTrue(userService.authenticate(createdUser, "blabla"));
+	}
 
 }
