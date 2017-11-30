@@ -11,7 +11,7 @@ import com.frenchies.tennisclub.PersistenceSampleApplicationContext;
 
 @Configuration
 @Import(PersistenceSampleApplicationContext.class)
-@ComponentScan(basePackages = "cz.fi.muni.pa165.teamred.service")
+@ComponentScan(basePackages = "com.frenchies.tennisclub.service")
 public class ServiceConfiguration {
     @Bean
     public Mapper dozer() {
