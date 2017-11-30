@@ -7,7 +7,7 @@ import com.frenchies.tennisclub.entity.Court;
 /**
  * DAO interface for entity Court
  * 
- * @author ValentinJacquet 473362
+ * @author Meon Thomas 473449
  *
  */
 public interface CourtDao {

@@ -35,6 +35,10 @@ import com.frenchies.tennisclub.service.CourtService;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 import com.frenchies.tennisclub.service.facade.CourtFacadeImpl;
 
+/*
+ * @Author Dore COrentin 473308
+ */
+
 @ContextConfiguration(classes = ServiceConfiguration.class)
 public class CourtFacadeTest {
 

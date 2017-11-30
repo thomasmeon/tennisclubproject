@@ -1,6 +1,6 @@
 package com.frenchies.tennisclub.enums;
 
-//@Author Dore Corentin UCO 473308
+//@Author Meon Thomas 473449
 public enum Hour24{
     SIX(6),
     SEVEN(7),
