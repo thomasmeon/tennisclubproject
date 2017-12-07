@@ -209,6 +209,14 @@ public class UserServiceTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(foundUser, validUser);
     }
 	
+	@Test
+    public void getUserByEmailTest(){
+        when(userDao.findUserByEmail(validUser.getMail())).thenReturn(validUser);
+
+        User foundUser = userService.getUserByEmail(validUser.getMail());
+        Assert.assertEquals(foundUser, validUser);
+    }
+	
 	/*
 	 * Admin test
 	 */

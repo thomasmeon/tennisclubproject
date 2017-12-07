@@ -97,6 +97,17 @@ public class UserDaoImplTest extends AbstractTestNGSpringContextTests {
 		Assert.assertEquals(UserDao.findUserByName(u1.getName()), u1);
 		Assert.assertEquals(UserDao.findUserByName(u2.getName()), u2);
 	}
+	
+	@Test
+	public void testFindByEmail() {
+		create2People();
+
+		UserDao.create(u1);
+		UserDao.create(u2);
+
+		Assert.assertEquals(UserDao.findUserByEmail(u1.getMail()), u1);
+		Assert.assertEquals(UserDao.findUserByEmail(u2.getMail()), u2);
+	}
 
 	@Test
 	public void testFindAll() {

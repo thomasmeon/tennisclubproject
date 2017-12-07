@@ -97,6 +97,15 @@ public class UserServiceImpl implements UserService {
         }
 		return userDao.findUserByName(name);
 	}
+	
+	@Override
+	public User getUserByEmail(String email) {
+		if (email == null) {
+            throw new IllegalArgumentException(UserServiceImpl.class +
+                    " - Name paramenter is null");
+        }
+		return userDao.findUserByEmail(email);
+	}
 
 		
 	 
