@@ -13,24 +13,22 @@
         <thead>
         <tr>
             <th>id</th>
-            <th>given name</th>
+            <th>name</th>
             <th>surname</th>
             <th>email</th>
             <th>phone</th>
-            <th>address</th>
-            <th>joined</th>
+            <th>dateOfBirth</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${users}" var="user">
             <tr>
                 <td>${user.id}</td>
-                <td><c:out value="${user.givenName}"/></td>
+                <td><c:out value="${user.name}"/></td>
                 <td><c:out value="${user.surname}"/></td>
                 <td><c:out value="${user.email}"/></td>
                 <td><c:out value="${user.phone}"/></td>
-                <td><c:out value="${user.address}"/></td>
-                <td><fmt:formatDate value="${user.joinedDate}" pattern="yyyy-MM-dd"/></td>
+                <td><fmt:formatDate value="${user.dateOfBirth}" pattern="yyyy-MM-dd"/></td>
             </tr>
         </c:forEach>
         </tbody>

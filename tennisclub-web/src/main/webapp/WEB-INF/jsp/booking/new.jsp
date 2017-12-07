@@ -11,14 +11,25 @@
     <form:form method="post" action="${pageContext.request.contextPath}/product/create"
                modelAttribute="productCreate" cssClass="form-horizontal">
         <div class="form-group">
-            <form:label path="categoryId" cssClass="col-sm-2 control-label">Category</form:label>
+            <form:label path="courtId" cssClass="col-sm-2 control-label">Court</form:label>
             <div class="col-sm-10">
-                <form:select path="categoryId" cssClass="form-control">
-                    <c:forEach items="${categories}" var="c">
-                        <form:option value="${c.id}">${c.name}</form:option>
+                <form:select path="courtId" cssClass="form-control">
+                    <c:forEach items="${courts}" var="c">
+                        <form:option value="${c.id}">${c.id} ${c.type}</form:option>
                     </c:forEach>
                 </form:select>
-                <p class="help-block"><form:errors path="categoryId" cssClass="error"/></p>
+                <p class="help-block"><form:errors path="courtId" cssClass="error"/></p>
+            </div>
+        </div>
+        <div class="form-group">
+            <form:label path="userId" cssClass="col-sm-2 control-label">User 1</form:label>
+            <div class="col-sm-10">
+                <form:select path="userId" cssClass="form-control">
+                    <c:forEach items="${users}" var="u">
+                        <form:option value="${u.id}">${u.mail}</form:option>
+                    </c:forEach>
+                </form:select>
+                <p class="help-block"><form:errors path="userId" cssClass="error"/></p>
             </div>
         </div>
         <div class="form-group ${name_error?'has-error':''}">

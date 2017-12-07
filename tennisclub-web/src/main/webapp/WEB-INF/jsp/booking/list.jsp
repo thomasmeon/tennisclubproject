@@ -5,37 +5,40 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<my:pagetemplate title="Products">
+<my:pagetemplate title="Bookings">
 <jsp:attribute name="body">
 
-    <my:a href="/product/new" class="btn btn-primary">
+    <my:a href="/booking/new" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        New product
+        New booking
     </my:a>
 
     <table class="table">
         <thead>
         <tr>
             <th>id</th>
-            <th>added</th>
-            <th>product name</th>
-            <th>color</th>
-            <th>price</th>
+            <th>idCourt</th>
+            <th>user1</th>
+            <th>user2</th>
+            <th>dateOfBooking</th>
+            <th>hourOfBooking</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${products}" var="product">
+        <c:forEach items="${bookings}" var="booking">
             <tr>
-                <td>${product.id}</td>
-                <td><fmt:formatDate value="${product.addedDate}" pattern="yyyy-MM-dd"/></td>
-                <td><c:out value="${product.name}"/></td>
-                <td><c:out value="${product.color}"/></td>
-                <td><c:out value="${product.currentPrice.value} ${product.currentPrice.currency}"/></td>
+                <td>${booking.id}</td>
+                
+                <td><c:out value="${booking.idCourt}"/></td>
+                <td><c:out value="${booking.user1}"/></td>
+                <td><c:out value="${booking.user2}"/></td>
+                <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
+                <td><c:out value="${booking.hourOfBooking}"/></td>
                 <td>
-                    <my:a href="/product/view/${product.id}" class="btn btn-primary">View</my:a>
+                    <my:a href="/booking/view/${booking.id}" class="btn btn-primary">View</my:a>
                 </td>
                 <td>
-                    <form method="post" action="${pageContext.request.contextPath}/product/delete/${product.id}">
+                    <form method="post" action="${pageContext.request.contextPath}/booking/delete/${booking.id}">
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </form>
                 </td>
