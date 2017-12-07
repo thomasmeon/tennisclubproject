@@ -12,6 +12,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	
+	<!-- defines compatible versions of many libraries -->
+    <!-- see http://docs.spring.io/platform/docs/1.1.4.RELEASE/reference/htmlsingle/#getting-started-using-spring-io-platform-maven -->
+    <parent>
+        <groupId>io.spring.platform</groupId>
+        <artifactId>platform-bom</artifactId>
+        <version>1.1.4.RELEASE</version>
+        <relativePath/>
+    </parent>
 
 	<dependencyManagement>
 		<dependencies>
@@ -22,6 +31,12 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>2.0.2-beta</version>
+                <scope>test</scope>
+            </dependency>
 			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
@@ -43,6 +58,11 @@
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>1.7.12</version>
 			</dependency>
+			<dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-api</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -74,5 +94,6 @@
     	<module>tennisclub-service</module>
     <module>tennisclub-web</module>
     <module>tennisclub-rest</module>
+    <module>tennisclub-sample-data</module>
   </modules>
 </project>

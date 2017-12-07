@@ -8,12 +8,9 @@
 		<artifactId>tennisclub</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.frenchies.tennisclub</groupId>
 	<artifactId>tennisclub-service</artifactId>
-	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>tennisclub-service</name>
-	<url>http://maven.apache.org</url>
+	<name>Service Layer</name>
 
 	<dependencies>
 		<dependency>
