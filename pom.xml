@@ -72,5 +72,7 @@
 		<module>tennisclub-persistence</module>
 		<module>tennisclub-api</module>
     	<module>tennisclub-service</module>
+    <module>tennisclub-web</module>
+    <module>tennisclub-rest</module>
   </modules>
 </project>
