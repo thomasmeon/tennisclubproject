@@ -12,35 +12,15 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
-=======
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
->>>>>>> 1d21538dd1a3e69281d221ea251384b28cd72a08
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-=======
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
->>>>>>> 1d21538dd1a3e69281d221ea251384b28cd72a08
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="/home/val/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.slf4j"/>
-			<attribute name="maven.artifactId" value="slf4j-api"/>
-			<attribute name="maven.version" value="1.7.12"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-=======
->>>>>>> 1d21538dd1a3e69281d221ea251384b28cd72a08
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
