@@ -42,6 +42,20 @@ public class UserDaoImpl implements UserDao {
 			return null;
 		}
 	}
+	
+
+	@Override
+	public User findUserByEmail(String email) {
+		if (email == null || email.isEmpty())
+			throw new IllegalArgumentException("Cannot search for null email");
+
+		try {
+			return em.createQuery("select u from User u where mail=:email", User.class).setParameter("email", email)
+					.getSingleResult();
+		} catch (NoResultException nre) {
+			return null;
+		}
+	}
 
 	@Override
 	public User findById(Long id) {
@@ -69,4 +83,5 @@ public class UserDaoImpl implements UserDao {
         }
 		em.remove(b);
 	}
+
 }

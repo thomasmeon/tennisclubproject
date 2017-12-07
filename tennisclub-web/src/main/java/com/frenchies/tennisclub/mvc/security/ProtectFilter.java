@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 
-import cz.fi.muni.pa165.dto.UserAuthenticateDTO;
-import cz.fi.muni.pa165.dto.UserDTO;
-import cz.fi.muni.pa165.facade.UserFacade;
+import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
+import com.frenchies.tennisclub.dto.UserDTO;
+import com.frenchies.tennisclub.facade.UserFacade;
 
 /**
  * Protects administrative part of application.
  *
- * @author Martin Kuba makub@ics.muni.cz
+ * @author valentinjacquet 473362
  */
-@WebFilter(urlPatterns = {"/order/*", "/user/*", "/product/*", "/category/*"})
+@WebFilter(urlPatterns = {"/court/*", "/user/*", "/booking/*"})
 public class ProtectFilter implements Filter {
 
     final static Logger log = LoggerFactory.getLogger(ProtectFilter.class);
@@ -42,7 +42,7 @@ public class ProtectFilter implements Filter {
 
         //get Spring context and UserFacade from it
         UserFacade userFacade = WebApplicationContextUtils.getWebApplicationContext(r.getServletContext()).getBean(UserFacade.class);
-        UserDTO matchingUser = userFacade.findUserByEmail(logname);
+        UserDTO matchingUser = userFacade.getUserByEmail(logname);
         if(matchingUser==null) {
             log.warn("no user with email {}", logname);
             response401(response);

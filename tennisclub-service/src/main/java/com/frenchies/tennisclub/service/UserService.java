@@ -74,4 +74,13 @@ public interface UserService {
 	 * @return User with given username
 	 */
 	public User getUserByName(String name);
+	
+	/**
+	 * Find {@link User} by email.
+	 *
+	 * @param username
+	 *            user's email
+	 * @return User with given email
+	 */
+	public User getUserByEmail(String email);
 }

@@ -72,6 +72,15 @@ public class UserFacadeImpl implements UserFacade {
 		}
 		return beanMappingService.mapTo(user, UserDTO.class);
 	}
+	
+	@Override
+	public UserDTO getUserByEmail(String Email) {
+		User user = userService.getUserByEmail(Email);
+		if (user == null) {
+			return null;
+		}
+		return beanMappingService.mapTo(user, UserDTO.class);
+	}
 
 	@Override
 	public UserDTO getUserById(Long userId) {
@@ -100,5 +109,7 @@ public class UserFacadeImpl implements UserFacade {
 	public boolean authenticate(UserDTO u, String password) {
 		return userService.authenticate(userService.getUserById(u.getId()), password);
 	}
+
+	
 
 }

@@ -31,6 +31,13 @@ public interface UserDao {
 	public User findUserByName(String name);
 	
 	/**
+	 * Find a people in DB by using his name
+	 * @param name
+	 * @return user
+	 */
+	public User findUserByEmail(String email);
+	
+	/**
 	 * Update a User already in DB
 	 * @param people updated
 	 */
