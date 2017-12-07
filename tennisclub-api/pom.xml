@@ -5,26 +5,23 @@
 
 	<parent>
 		<groupId>com.frenchies.tennisclub</groupId>
-        <artifactId>tennisclub</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+		<artifactId>tennisclub</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 
-    <artifactId>tennisclub-api</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<artifactId>tennisclub-api</artifactId>
 	<packaging>jar</packaging>
-
-	<name>tennisclub-api</name>
+	<name>API</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 	<dependencies>
 		<!-- validation annotations for bean properties -->
-        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
 		<dependency>
-		    <groupId>javax.validation</groupId>
-		    <artifactId>validation-api</artifactId>
-		    <version>1.0.0.GA</version>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
 		</dependency>
 	</dependencies>
 </project>
