@@ -1,3 +1,9 @@
+package com.frenchies.tennisclub.mvc.controllers;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +13,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -18,10 +28,6 @@ import com.frenchies.tennisclub.enums.Hour24;
 import com.frenchies.tennisclub.facade.BookingFacade;
 import com.frenchies.tennisclub.facade.CourtFacade;
 import com.frenchies.tennisclub.mvc.forms.BookingCreateDTOValidator;
-
-import javax.validation.Valid;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * SpringMVC Controller for administering bookings.

@@ -287,5 +287,82 @@ public class BookingServiceTest extends AbstractTestNGSpringContextTests {
 
 	}
 	
+	@Test
+	public void getAllBookingsLastWeekByUserTest() {
+
+		Booking b = new Booking(22l);
+		b.setDateOfBooking(timeService.getCurrentTime());
+		b.setUser1(user1);
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(2017, 25, 11, 0, 0, 0);
+		Date fabricatedTime = cal.getTime();
+		cal.add(Calendar.DAY_OF_MONTH, -7);
+		Date weekBeforeFabricatedTime = cal.getTime();
+
+		when(bookingDao.getBookingsForUserCreatedBetween(weekBeforeFabricatedTime, fabricatedTime, user1))
+				.thenReturn(Collections.singletonList(b));
+		when(timeService.getCurrentTime()).thenReturn(fabricatedTime);
+
+		List<Booking> bookings = bookingService.getAllBookingsLastWeekByUser(user1);
+		Assert.assertTrue((bookings.get(0).getIdBooking()).equals(22l));
+
+		Assert.assertTrue(bookings.size() == 1);
+
+	}
+	
+	@Test
+	public void getAllBookingsLastMonthByUserTest() {
+
+		Booking b = new Booking(29l);
+		Calendar cal = Calendar.getInstance();
+		cal.set(2017, 9, 9, 0, 0, 0);
+		Date bookingDate = cal.getTime();
+		
+		b.setDateOfBooking(bookingDate);
+		b.setUser1(user1);
+
+		cal.set(2017, 25, 11, 0, 0, 0);
+		Date fabricatedTime = cal.getTime();
+		cal.add(Calendar.DAY_OF_MONTH, -30);
+		Date weekBeforeFabricatedTime = cal.getTime();
+
+		when(bookingDao.getBookingsForUserCreatedBetween(weekBeforeFabricatedTime, fabricatedTime, user1))
+				.thenReturn(Collections.singletonList(b));
+		when(timeService.getCurrentTime()).thenReturn(fabricatedTime);
+
+		List<Booking> bookings = bookingService.getAllBookingsLastMonthByUser(user1);
+		Assert.assertTrue((bookings.get(0).getIdBooking()).equals(29l));
+
+		Assert.assertTrue(bookings.size() == 1);
+
+	}
+	
+	@Test
+	public void getAllBookingsLastYearByUserTest() {
+
+		Booking b = new Booking(30l);
+		Calendar cal = Calendar.getInstance();
+		cal.set(2017, 4, 4, 0, 0, 0);
+		Date bookingDate = cal.getTime();
+		
+		b.setDateOfBooking(bookingDate);
+		b.setUser1(user1);
+		
+		cal.set(2017, 25, 11, 0, 0, 0);
+		Date fabricatedTime = cal.getTime();
+		cal.add(Calendar.DAY_OF_MONTH, -365);
+		Date weekBeforeFabricatedTime = cal.getTime();
+
+		when(bookingDao.getBookingsForUserCreatedBetween(weekBeforeFabricatedTime, fabricatedTime, user1))
+				.thenReturn(Collections.singletonList(b));
+		when(timeService.getCurrentTime()).thenReturn(fabricatedTime);
+
+		List<Booking> bookings = bookingService.getAllBookingsLastYearByUser(user1);
+		Assert.assertTrue((bookings.get(0).getIdBooking()).equals(30l));
+
+		Assert.assertTrue(bookings.size() == 1);
+
+	}
 	
 }
