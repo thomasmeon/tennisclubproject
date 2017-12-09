@@ -56,4 +56,6 @@ public interface BookingService {
 	 */
 	public List<Booking> getAllBookingsLastWeek();
 
+	List<Booking> getBookingsByCourt(Long idCourt);
+
 }

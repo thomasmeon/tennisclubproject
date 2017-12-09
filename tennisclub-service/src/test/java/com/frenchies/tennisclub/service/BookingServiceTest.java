@@ -202,6 +202,15 @@ public class BookingServiceTest extends AbstractTestNGSpringContextTests {
         List<Booking> listFoundBookings = bookingService.getBookingsByUser(booking.getUser1());
         Assert.assertEquals(listFoundBookings,bookingList);
     }
+	
+	@Test
+    public void getBookingByCourtTest(){
+		List<Booking> bookingList = new ArrayList<>();
+        when(bookingDao.findByCourt(booking.getIdCourt())).thenReturn(bookingList);
+
+        List<Booking> listFoundBookings = bookingService.getBookingsByCourt(booking.getIdCourt());
+        Assert.assertEquals(listFoundBookings,bookingList);
+    }
 
 	@Test
 	public void getAllBookingsLastWeekTest() {

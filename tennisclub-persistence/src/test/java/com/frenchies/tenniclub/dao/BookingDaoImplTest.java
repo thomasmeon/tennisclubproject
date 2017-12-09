@@ -104,6 +104,13 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 		Assert.assertEquals(bookings.size(), 3);
 	}
 	
+
+	@Test
+	public void findByCourt() {
+		List<Booking> bookings = bookingDao.findByCourt(1L);
+		Assert.assertEquals(bookings.size(), 3);
+	}
+	
 	@Test
 	public void getBookingsCreatedBetween() {
 		Calendar cal = Calendar.getInstance();
