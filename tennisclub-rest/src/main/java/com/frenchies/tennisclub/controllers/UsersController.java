@@ -4,7 +4,7 @@ import com.frenchies.tennisclub.rest.ApiUris;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.UserFacade;
-import com.frenchies.tennisclub.rest.exceptions.ResourceNotFoundException;
+import com.frenchies.tennisclub.exceptions.ResourceNotFoundException;
 import java.util.Collection;
 
 import javax.inject.Inject;

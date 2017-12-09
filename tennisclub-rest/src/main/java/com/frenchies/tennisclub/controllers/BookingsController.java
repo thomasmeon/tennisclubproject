@@ -1,27 +1,24 @@
 package com.frenchies.tennisclub.controllers;
 
-import com.frenchies.tennisclub.rest.ApiUris;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.frenchies.tennisclub.dto.CourtDTO;
+import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
-import com.frenchies.tennisclub.dto.UserCreateDTO;
-import com.frenchies.tennisclub.exceptions.TennisClubServiceException;
+import com.frenchies.tennisclub.exceptions.ResourceAlreadyExistingException;
+import com.frenchies.tennisclub.exceptions.ResourceNotFoundException;
 import com.frenchies.tennisclub.facade.BookingFacade;
-import com.frenchies.tennisclub.rest.exceptions.InvalidParameterException;
-import com.frenchies.tennisclub.rest.exceptions.ResourceAlreadyExistingException;
-import com.frenchies.tennisclub.rest.exceptions.ResourceNotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
+import com.frenchies.tennisclub.rest.ApiUris;
 
 /**
  * REST Controller for Bookings
