@@ -55,15 +55,32 @@ public interface BookingService {
 	 * @return
 	 */
 	public List<Booking> getAllBookingsLastWeek();
-
-<<<<<<< HEAD
+	
+	/**
+	 * Get bookings during a period
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	public List<Booking> getBookingsCreatedBetween(Date start, Date end);
 
+	/**
+	 * Get bookings of last Month
+	 * @return
+	 */
 	public List<Booking> getAllBookingsLastMonth();
 
+	/**
+	 * Get bookings of last Year
+	 * @return
+	 */
 	public List<Booking> getAllBookingsLastYear();
-=======
-	List<Booking> getBookingsByCourt(Long idCourt);
->>>>>>> 88f7263558dfaf693b470797f338d37c2ba0b6ab
+	
+	/**
+	 * Get booking by court
+	 * @param idCourt
+	 * @return
+	 */
+	public List<Booking> getBookingsByCourt(Long idCourt);
 
 }
