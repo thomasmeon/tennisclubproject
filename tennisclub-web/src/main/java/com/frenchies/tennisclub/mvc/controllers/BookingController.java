@@ -30,7 +30,7 @@ import com.frenchies.tennisclub.facade.CourtFacade;
 import com.frenchies.tennisclub.mvc.forms.BookingCreateDTOValidator;
 
 /**
- * SpringMVC Controller for administering bookings.
+ * Web MVC Controller for administering bookings.
  *
  * @author Dore Corentin 473308
  */

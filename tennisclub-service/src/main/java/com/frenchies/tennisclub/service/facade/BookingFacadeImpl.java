@@ -83,6 +83,33 @@ public class BookingFacadeImpl implements BookingFacade {
 		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastYear, BookingDTO.class);
 		return dtos;
 	}
+	
+	@Override
+	public List<BookingDTO> getAllBookingsLastWeekByUser(Long idUser) {
+		User uTemp = new User();
+		uTemp.setId(idUser);
+		final List<Booking> allBookingsLastWeek = bookingService.getAllBookingsLastWeekByUser(uTemp);
+		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastWeek, BookingDTO.class);
+		return dtos;
+	}
+	
+	@Override
+	public List<BookingDTO> getAllBookingsLastMonthByUser(Long idUser) {
+		User uTemp = new User();
+		uTemp.setId(idUser);
+		final List<Booking> allBookingsLastMonth = bookingService.getAllBookingsLastMonthByUser(uTemp);
+		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastMonth, BookingDTO.class);
+		return dtos;
+	}
+	
+	@Override
+	public List<BookingDTO> getAllBookingsLastYearByUser(Long idUser) {
+		User uTemp = new User();
+		uTemp.setId(idUser);
+		final List<Booking> allBookingsLastYear = bookingService.getAllBookingsLastYearByUser(uTemp);
+		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastYear, BookingDTO.class);
+		return dtos;
+	}
 
 	@Override
 	public List<BookingDTO> getBookingsByCourt(Long idCourt) {
