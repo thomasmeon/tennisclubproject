@@ -25,5 +25,7 @@ public interface BookingFacade {
 	public List<BookingDTO> getAllBookings();
 	public List<BookingDTO> getBookingsByUser(UserDTO u);
 	public List<BookingDTO> getAllBookingsLastWeek();
+	public List<BookingDTO> getAllBookingsLastMonth();
+	public List<BookingDTO> getAllBookingsLastYear();
 
 }

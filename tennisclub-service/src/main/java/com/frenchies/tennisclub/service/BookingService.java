@@ -56,4 +56,10 @@ public interface BookingService {
 	 */
 	public List<Booking> getAllBookingsLastWeek();
 
+	public List<Booking> getBookingsCreatedBetween(Date start, Date end);
+
+	public List<Booking> getAllBookingsLastMonth();
+
+	public List<Booking> getAllBookingsLastYear();
+
 }

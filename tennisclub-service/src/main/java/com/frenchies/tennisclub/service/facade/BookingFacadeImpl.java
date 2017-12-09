@@ -66,6 +66,20 @@ public class BookingFacadeImpl implements BookingFacade {
 		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastWeek, BookingDTO.class);
 		return dtos;
 	}
+	
+	@Override
+	public List<BookingDTO> getAllBookingsLastMonth() {
+		final List<Booking> allBookingsLastMonth = bookingService.getAllBookingsLastMonth();
+		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastMonth, BookingDTO.class);
+		return dtos;
+	}
+	
+	@Override
+	public List<BookingDTO> getAllBookingsLastYear() {
+		final List<Booking> allBookingsLastYear = bookingService.getAllBookingsLastYear();
+		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastYear, BookingDTO.class);
+		return dtos;
+	}
 
 	@Override
 	public Long createBooking(BookingCreateDTO b) {

@@ -1,1 +1,4 @@
 com/frenchies/tennisclub/App.class
+com/frenchies/tennisclub/sampledata/SampleDataLoadingFacade.class
+com/frenchies/tennisclub/sampledata/SampleDataLoadingFacadeImpl.class
+com/frenchies/tennisclub/sampledata/TennisClubWithSampleDataConfiguration.class
