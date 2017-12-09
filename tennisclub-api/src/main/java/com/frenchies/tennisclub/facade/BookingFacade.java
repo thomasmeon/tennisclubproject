@@ -5,7 +5,6 @@ import java.util.List;
 import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
-import com.frenchies.tennisclub.entity.Court;
 
 /**
  * 
