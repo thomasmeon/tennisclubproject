@@ -18,8 +18,8 @@ import com.frenchies.tennisclub.facade.CourtFacade;
  */
 @Controller
 @RequestMapping("/mybooking")
-public class MyBookingController {
-	final static Logger log = LoggerFactory.getLogger(MyBookingController.class);
+public class MyBookingsController {
+	final static Logger log = LoggerFactory.getLogger(MyBookingsController.class);
 
     @Autowired
     private BookingFacade bookingFacade;

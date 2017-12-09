@@ -1,9 +1,8 @@
 package com.frenchies.tennisclub.mvc.config;
 
-import java.util.logging.Logger;
-
 import javax.xml.validation.Validator;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

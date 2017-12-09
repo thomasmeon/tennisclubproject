@@ -95,6 +95,36 @@ public class BookingServiceImpl implements BookingService {
 	}
 	
 	@Override
+	public List<Booking> getAllBookingsLastWeekByUser(User user) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(timeService.getCurrentTime());
+		calendar.add(Calendar.DAY_OF_YEAR, -7);
+		Date lastWeek = calendar.getTime();
+		List<Booking> Bookings = BookingDao.getBookingsForUserCreatedBetween(lastWeek, timeService.getCurrentTime(), user);
+		return Bookings;
+	}
+	
+	@Override
+	public List<Booking> getAllBookingsLastMonthByUser(User user) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(timeService.getCurrentTime());
+		calendar.add(Calendar.DAY_OF_YEAR, -30);
+		Date lastMonth = calendar.getTime();
+		List<Booking> Bookings = BookingDao.getBookingsForUserCreatedBetween(lastMonth, timeService.getCurrentTime(), user);
+		return Bookings;
+	}
+	
+	@Override
+	public List<Booking> getAllBookingsLastYearByUser(User user) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(timeService.getCurrentTime());
+		calendar.add(Calendar.DAY_OF_YEAR, -365);
+		Date lastYear = calendar.getTime();
+		List<Booking> Bookings = BookingDao.getBookingsForUserCreatedBetween(lastYear, timeService.getCurrentTime(), user);
+		return Bookings;
+	}
+	
+	@Override
 	public List<Booking> getBookingsCreatedBetween(Date start, Date end) {
 		List<Booking> Bookings = BookingDao.getBookingsCreatedBetween(start, end);
 		return Bookings;
