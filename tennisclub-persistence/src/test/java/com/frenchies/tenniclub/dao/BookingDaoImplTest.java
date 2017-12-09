@@ -99,7 +99,7 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	@Test
-	public void findByUser() {
+	public void testFindByUser() {
 		List<Booking> bookings = bookingDao.findByUser(u1);
 		Assert.assertEquals(bookings.size(), 3);
 	}
@@ -112,9 +112,18 @@ public class BookingDaoImplTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	@Test
+	public void testFindAllBookings() {
+		List<Booking> bookings = bookingDao.findAll();
+		Assert.assertEquals(bookings.size(), 3);
+		Assert.assertTrue(bookings.contains(b1));
+		Assert.assertTrue(bookings.contains(b2));
+		Assert.assertTrue(bookings.contains(b3));
+	}
+	
+	@Test
 	public void getBookingsCreatedBetween() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2017,1, 1);;
+		cal.set(2017,1, 1);
 		Date date1 = cal.getTime();
 		cal.set(2017, 2, 2);
 		Date date2 = cal.getTime();

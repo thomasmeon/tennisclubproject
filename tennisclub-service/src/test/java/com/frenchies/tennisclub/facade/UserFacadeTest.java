@@ -154,6 +154,15 @@ public class UserFacadeTest {
 		UserDTO resUserDTO = userFacade.getUserByName(validUser.getName());
 		Assert.assertTrue(resUserDTO.equals(validUserDTO));
 	}
+	
+	@Test
+	void findUserByEmailTest() {
+		when(beanMappingService.mapTo(validUser, UserDTO.class)).thenReturn(validUserDTO);
+		when(userService.getUserByEmail("jean.pierre@mail.com")).thenReturn(validUser);
+
+		UserDTO resUserDTO = userFacade.getUserByEmail(validUser.getMail());
+		Assert.assertTrue(resUserDTO.equals(validUserDTO));
+	}
 
 	@Test
 	void findAllUserTest() {

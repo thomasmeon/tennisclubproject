@@ -47,8 +47,15 @@ public interface UserFacade {
 	 * @param String
 	 * @return UserDTO
 	 */
-
 	public UserDTO getUserByName(String Name);
+	
+	/**
+	 * Method for getting the user by its email
+	 * 
+	 * @param String
+	 * @return UserDTO
+	 */
+	public UserDTO getUserByEmail(String Email);
 
 	/**
 	 * Method for getting the user by its Id
