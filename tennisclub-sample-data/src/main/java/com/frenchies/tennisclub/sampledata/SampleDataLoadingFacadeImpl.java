@@ -42,7 +42,6 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 	@Autowired
 	private BookingService bookingService;
 
-	@Override
 	@SuppressWarnings("unused")
 	public void loadData() throws IOException {
 		Calendar cal = Calendar.getInstance();

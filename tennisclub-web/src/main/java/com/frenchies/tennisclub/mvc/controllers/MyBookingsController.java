@@ -17,14 +17,14 @@ import com.frenchies.tennisclub.facade.CourtFacade;
  * @author Valentin Jacquet 473362
  */
 @Controller
-@RequestMapping("/mybooking")
+@RequestMapping("/mybookings")
 public class MyBookingsController {
 	final static Logger log = LoggerFactory.getLogger(MyBookingsController.class);
 
     @Autowired
     private BookingFacade bookingFacade;
 
-    public void setProductFacade(BookingFacade bookingFacade) {
+    public void setBookingFacade(BookingFacade bookingFacade) {
         this.bookingFacade = bookingFacade;
     }
     
@@ -38,7 +38,7 @@ public class MyBookingsController {
     public String listAll(@PathVariable long id, Model model) {
         log.debug("showAllBookingsOfUser({})",id);
         model.addAttribute("booking", bookingFacade.getBookingById(id));
-        return "mybooking/show";
+        return "mybookings/show";
     }
     
     /**
@@ -50,8 +50,8 @@ public class MyBookingsController {
     @RequestMapping("/show/lastweek/{id}")
     public String listLastWeek(@PathVariable long id, Model model) {
         log.debug("showLastWeekBookingsOfUser({})",id);
-        model.addAttribute("booking", bookingFacade.getAllBookingsLastWeek());
-        return "mybooking/show";
+        model.addAttribute("booking", bookingFacade.getAllBookingsLastWeekByUser(id));
+        return "mybookings/show";
     }
     
     /**
@@ -63,8 +63,8 @@ public class MyBookingsController {
     @RequestMapping("/show/lastmonth/{id}")
     public String listLastMonth(@PathVariable long id, Model model) {
         log.debug("showLastMonthBookingsOfUser({})",id);
-        model.addAttribute("booking", bookingFacade.getAllBookingsLastMonth());
-        return "mybooking/show";
+        model.addAttribute("booking", bookingFacade.getAllBookingsLastMonthByUser(id));
+        return "mybookings/show";
     }
     
     /**
@@ -76,7 +76,7 @@ public class MyBookingsController {
     @RequestMapping("/show/lastyear/{id}")
     public String listLastYear(@PathVariable long id, Model model) {
         log.debug("showLastYearBookingsOfUser({})",id);
-        model.addAttribute("booking", bookingFacade.getAllBookingsLastYear());
+        model.addAttribute("booking", bookingFacade.getAllBookingsLastYearByUser(id));
         return "mybooking/show";
     }
 }
