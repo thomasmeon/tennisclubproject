@@ -289,4 +289,67 @@ public class BookingFacadeTest {
 		
 	}
 	
+	@Test
+	public void getAllBookingsLastWeekByUserTest() {
+		List<Booking> allBookingsLastWeek = new ArrayList<>();
+        allBookingsLastWeek.add(booking);
+
+        List<BookingDTO> allDtoBookingsLastWeek = new ArrayList<>();
+        allDtoBookingsLastWeek.add(bookingDTO);
+        
+        User uTemp = new User();
+        uTemp.setId(user1.getId());
+
+        when(bookingService.getAllBookingsLastWeekByUser(uTemp)).thenReturn(allBookingsLastWeek);
+        when(beanMappingService.mapTo(allBookingsLastWeek,BookingDTO.class)).thenReturn(allDtoBookingsLastWeek);
+
+        List<BookingDTO> testBookingLastWeekList = bookingFacade.getAllBookingsLastWeekByUser(uTemp.getId());
+
+        verify(bookingService).getAllBookingsLastWeekByUser(uTemp);
+        Assert.assertTrue(testBookingLastWeekList.contains(bookingDTO));
+		
+	}
+	
+	@Test
+	public void getAllBookingsLastMonthByUserTest() {
+		List<Booking> allBookingsLastMonth = new ArrayList<>();
+        allBookingsLastMonth.add(booking);
+
+        List<BookingDTO> allDtoBookingsLastMonth = new ArrayList<>();
+        allDtoBookingsLastMonth.add(bookingDTO);
+        
+        User uTemp = new User();
+        uTemp.setId(user2.getId());
+
+        when(bookingService.getAllBookingsLastMonthByUser(uTemp)).thenReturn(allBookingsLastMonth);
+        when(beanMappingService.mapTo(allBookingsLastMonth,BookingDTO.class)).thenReturn(allDtoBookingsLastMonth);
+
+        List<BookingDTO> testBookingLastMonthList = bookingFacade.getAllBookingsLastMonthByUser(uTemp.getId());
+
+        //verify(bookingService).getAllBookingsLastMonthByUser(uTemp);
+        Assert.assertTrue(testBookingLastMonthList.contains(bookingDTO));
+		
+	}
+	
+	@Test
+	public void getAllBookingsLastYearByUserTest() {
+		List<Booking> allBookingsLastYear = new ArrayList<>();
+        allBookingsLastYear.add(booking);
+
+        List<BookingDTO> allDtoBookingsLastYear = new ArrayList<>();
+        allDtoBookingsLastYear.add(bookingDTO);
+        
+        User uTemp = new User();
+        uTemp.setId(user1.getId());
+
+        when(bookingService.getAllBookingsLastYearByUser(uTemp)).thenReturn(allBookingsLastYear);
+        when(beanMappingService.mapTo(allBookingsLastYear,BookingDTO.class)).thenReturn(allDtoBookingsLastYear);
+
+        List<BookingDTO> testBookingLastYearList = bookingFacade.getAllBookingsLastYearByUser(uTemp.getId());
+
+        //verify(bookingService).getAllBookingsLastYearByUser(uTemp);
+        Assert.assertTrue(testBookingLastYearList.contains(bookingDTO));
+		
+	}
+	
 }

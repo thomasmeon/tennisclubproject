@@ -9,5 +9,5 @@ import java.io.IOException;
  */
 public interface SampleDataLoadingFacade {
 
-    void loadData() throws IOException;
+    public void loadData() throws IOException;
 }

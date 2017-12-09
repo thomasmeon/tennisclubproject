@@ -1,6 +1,6 @@
 package com.frenchies.tennisclub.mvc.config;
 
-import javax.xml.validation.Validator;
+import javax.validation.Validator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
