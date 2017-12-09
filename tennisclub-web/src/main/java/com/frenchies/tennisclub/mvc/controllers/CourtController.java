@@ -20,7 +20,7 @@ import com.frenchies.tennisclub.dto.CourtCreateDTO;
 import com.frenchies.tennisclub.facade.CourtFacade;
 
 /**
- * SpringMVC Controller for administering courts.
+ * Web MVC Controller for administering courts.
  *
  * @author Dore Corentin 473308
  */
