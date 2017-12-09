@@ -1,3 +1,5 @@
+package com.frenchies.tennisclub.mvc.controllers;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
