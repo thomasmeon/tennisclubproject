@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page import="java.util.Date,java.text.SimpleDateFormat,java.text.ParseException"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 
 <my:pagetemplate title="New product">
 <jsp:attribute name="body">
@@ -32,50 +34,40 @@
                 <p class="help-block"><form:errors path="userId" cssClass="error"/></p>
             </div>
         </div>
-        <div class="form-group ${name_error?'has-error':''}">
-            <form:label path="name" cssClass="col-sm-2 control-label">Name</form:label>
+        <div class="form-group">
+            <form:label path="userId" cssClass="col-sm-2 control-label">User 2</form:label>
             <div class="col-sm-10">
-                <form:input path="name" cssClass="form-control"/>
-                <form:errors path="name" cssClass="help-block"/>
-            </div>
-        </div>
-        <div class="form-group ${description_error?'has-error':''}">
-            <form:label path="description" cssClass="col-sm-2 control-label">Description</form:label>
-            <div class="col-sm-10">
-                <form:textarea cols="80" rows="20" path="description" cssClass="form-control"/>
-                <form:errors path="description" cssClass="help-block"/>
+                <form:select path="userId" cssClass="form-control">
+                    <c:forEach items="${users}" var="u">
+                        <form:option value="${u.id}">${u.mail}</form:option>
+                    </c:forEach>
+                </form:select>
+                <p class="help-block"><form:errors path="userId" cssClass="error"/></p>
             </div>
         </div>
         <div class="form-group">
-            <form:label path="color" cssClass="col-sm-2 control-label">Color</form:label>
+            <form:label path="name" cssClass="col-sm-2 control-label">Date</form:label>
             <div class="col-sm-10">
-                <form:select path="color" cssClass="form-control">
-                    <c:forEach items="${colors}" var="c">
-                        <form:option value="${c}">${c}</form:option>
-                    </c:forEach>
-                </form:select>
-                <form:errors path="color" cssClass="error"/>
+                <form:input type="date" path="dateTemp" cssClass="form-control"/>
+                <%
+					String dateStr = request.getParameter("dateTemp");
+					SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+					Date dateOfBooking = formater.parse(dateStr);         
+                %>
             </div>
         </div>
-        <div class="form-group ${price_error?'has-error':''}" >
-            <form:label path="price" cssClass="col-sm-2 control-label">Price</form:label>
-            <div class="col-sm-10">
-                <form:input path="price" cssClass="form-control"/>
-                <form:errors path="price" cssClass="help-block"/>
-            </div>
-        </div>
+        
         <div class="form-group">
-            <form:label path="currency" cssClass="col-sm-2 control-label">currency</form:label>
+            <form:label path="hourOfBookingId" cssClass="col-sm-2 control-label">Hour of Booking</form:label>
             <div class="col-sm-10">
-                <form:select path="currency" cssClass="form-control">
-                    <c:forEach items="${currencies}" var="c">
-                        <form:option value="${c}">${c}</form:option>
+                <form:select path="hourOfBookingId" cssClass="form-control">
+                    <c:forEach items="${hourOfBookings}" var="h">
+                        <form:option value="${c.id}">${h}</form:option>
                     </c:forEach>
                 </form:select>
-                <form:errors path="currency" cssClass="error"/>
+                <p class="help-block"><form:errors path="hourOfBookingId" cssClass="error"/></p>
             </div>
         </div>
-
 
         <button class="btn btn-primary" type="submit">Create product</button>
     </form:form>

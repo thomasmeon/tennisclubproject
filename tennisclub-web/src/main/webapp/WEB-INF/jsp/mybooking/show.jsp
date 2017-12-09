@@ -39,4 +39,4 @@
     </c:forEach>
 
 </jsp:attribute>
-</my:pagetemplate>
+</my:pagetemplate>cat2prods

@@ -21,9 +21,9 @@ import com.frenchies.tennisclub.facade.UserFacade;
  * @author valentinjacquet 473362
  */
 @WebFilter(urlPatterns = {"/court/*", "/user/*", "/booking/*"})
-public class ProtectFilter implements Filter {
+public class ProtectFilterAdmin implements Filter {
 
-    final static Logger log = LoggerFactory.getLogger(ProtectFilter.class);
+    final static Logger log = LoggerFactory.getLogger(ProtectFilterAdmin.class);
 
 
     @Override

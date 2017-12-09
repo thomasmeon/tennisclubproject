@@ -132,10 +132,10 @@ public class BookingFacadeTest {
 	}
 
 	public void initBooking() {
-		Date date1 = new Date();
+		Date date1 = timeService.getCurrentTime();
 
 		bookingCreateDTO = new BookingCreateDTO();
-		bookingCreateDTO.setIdCourt((long) 1);
+		bookingCreateDTO.setIdCourt(1L);
 		bookingCreateDTO.setDateOfBooking(date1);
 		bookingCreateDTO.setHourOfBooking(Hour24.EIGHT);
 		bookingCreateDTO.setUser1(userDTO1);
@@ -144,7 +144,7 @@ public class BookingFacadeTest {
 		bookingDTO = new BookingDTO();
 
 		booking = new Booking();
-		booking.setIdCourt((long) 1);
+		booking.setIdCourt(1L);
 		booking.setDateOfBooking(date1);
 		booking.setHourOfBooking(Hour24.EIGHT);
 		booking.setUser1(user1);
@@ -153,7 +153,7 @@ public class BookingFacadeTest {
 		when(beanMappingService.mapTo(bookingCreateDTO, Booking.class)).thenReturn(booking);
 
 		bookingDTO = new BookingDTO();
-		bookingDTO.setIdCourt((long) 1);
+		bookingDTO.setIdCourt(1L);
 		bookingDTO.setDateOfBooking(date1);
 		bookingDTO.setHourOfBooking(Hour24.EIGHT);
 		bookingDTO.setUser1(userDTO1);
@@ -234,5 +234,59 @@ public class BookingFacadeTest {
 		BookingDTO resBookingDTO = bookingFacade.getBookingById(booking.getIdBooking());
 		Assert.assertTrue((resBookingDTO).equals(bookingDTO));
 	}
+	
+	@Test
+	public void getAllBookingsLastWeekTest() {
+		List<Booking> allBookingsLastWeek = new ArrayList<>();
+        allBookingsLastWeek.add(booking);
 
+        List<BookingDTO> allDtoBookingsLastWeek = new ArrayList<>();
+        allDtoBookingsLastWeek.add(bookingDTO);
+
+        when(bookingService.getAllBookingsLastWeek()).thenReturn(allBookingsLastWeek);
+        when(beanMappingService.mapTo(allBookingsLastWeek,BookingDTO.class)).thenReturn(allDtoBookingsLastWeek);
+
+        List<BookingDTO> testBookingLastWeekList = bookingFacade.getAllBookingsLastWeek();
+
+        verify(bookingService).getAllBookingsLastWeek();
+        Assert.assertTrue(testBookingLastWeekList.contains(bookingDTO));
+		
+	}
+	
+	@Test
+	public void getAllBookingsLastMonthTest() {
+		List<Booking> allBookingsLastMonth = new ArrayList<>();
+        allBookingsLastMonth.add(booking);
+
+        List<BookingDTO> allDtoBookingsLastMonth = new ArrayList<>();
+        allDtoBookingsLastMonth.add(bookingDTO);
+
+        when(bookingService.getAllBookingsLastMonth()).thenReturn(allBookingsLastMonth);
+        when(beanMappingService.mapTo(allBookingsLastMonth,BookingDTO.class)).thenReturn(allDtoBookingsLastMonth);
+
+        List<BookingDTO> testBookingLastMonthList = bookingFacade.getAllBookingsLastMonth();
+
+        verify(bookingService).getAllBookingsLastMonth();
+        Assert.assertTrue(testBookingLastMonthList.contains(bookingDTO));
+		
+	}
+	
+	@Test
+	public void getAllBookingsLastYearTest() {
+		List<Booking> allBookingsLastYear = new ArrayList<>();
+        allBookingsLastYear.add(booking);
+
+        List<BookingDTO> allDtoBookingsLastYear = new ArrayList<>();
+        allDtoBookingsLastYear.add(bookingDTO);
+
+        when(bookingService.getAllBookingsLastYear()).thenReturn(allBookingsLastYear);
+        when(beanMappingService.mapTo(allBookingsLastYear,BookingDTO.class)).thenReturn(allDtoBookingsLastYear);
+
+        List<BookingDTO> testBookingLastYearList = bookingFacade.getAllBookingsLastYear();
+
+        verify(bookingService).getAllBookingsLastYear();
+        Assert.assertTrue(testBookingLastYearList.contains(bookingDTO));
+		
+	}
+	
 }
