@@ -58,6 +58,11 @@ public class BookingServiceImpl implements BookingService {
 	public List<Booking> getBookingsByUser(User user) {
 		return BookingDao.findByUser(user);
 	}
+	
+	@Override
+	public List<Booking> getBookingsByCourt(Long idCourt) {
+		return BookingDao.findByCourt(idCourt);
+	}
 
 	@Override
 	public List<Booking> getAllBookingsLastWeek() {

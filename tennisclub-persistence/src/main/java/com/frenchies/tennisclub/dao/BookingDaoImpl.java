@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.frenchies.tennisclub.entity.Booking;
+import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.entity.User;
 
 /**
@@ -60,6 +61,16 @@ public class BookingDaoImpl implements BookingDao {
 				Booking.class);
 		
 		query.setParameter("userid", u);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Booking> findByCourt(Long idCourt) {
+		TypedQuery<Booking> query = em.createQuery(
+				"Select b from Booking b where b.idCourt = :idCourt",
+				Booking.class);
+		
+		query.setParameter("idCourt", idCourt);
 		return query.getResultList();
 	}
 	

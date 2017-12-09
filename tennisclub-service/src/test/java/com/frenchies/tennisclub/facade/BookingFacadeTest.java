@@ -218,6 +218,15 @@ public class BookingFacadeTest {
     }
 	
 	@Test
+    public void getBookingBCourtTest(){
+		List<Booking> bookingList = new ArrayList<>();
+        when(bookingService.getBookingsByCourt(booking.getIdCourt())).thenReturn(bookingList);
+
+        List<BookingDTO> listFoundBookings = bookingFacade.getBookingsByCourt(bookingDTO.getIdCourt());
+        Assert.assertEquals(listFoundBookings,bookingList);
+    }
+	
+	@Test
 	void getBookingByIdTest() {
 		when(beanMappingService.mapTo(booking, BookingDTO.class)).thenReturn(bookingDTO);
 		when(bookingService.getBookingById(12L)).thenReturn(booking);

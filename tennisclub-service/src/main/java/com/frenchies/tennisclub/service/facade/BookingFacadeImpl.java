@@ -1,6 +1,5 @@
 package com.frenchies.tennisclub.service.facade;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +10,14 @@ import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.entity.Booking;
+import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.facade.BookingFacade;
 import com.frenchies.tennisclub.mappers.BeanMappingService;
 import com.frenchies.tennisclub.service.BookingService;
+import com.frenchies.tennisclub.service.CourtService;
 import com.frenchies.tennisclub.service.UserService;
-
+	
 /**
  * 
  * @author Jacquet Valentin 473362
@@ -34,6 +35,9 @@ public class BookingFacadeImpl implements BookingFacade {
 	private UserService userService;
 
 	@Autowired
+	private CourtService courtService;
+
+	@Autowired
 	private BeanMappingService beanMappingService;
 
 	@Override
@@ -43,8 +47,7 @@ public class BookingFacadeImpl implements BookingFacade {
 
 	@Override
 	public BookingDTO getBookingById(Long bookingId) {
-		return beanMappingService.mapTo(bookingService.getBookingById(bookingId),
-				BookingDTO.class);
+		return beanMappingService.mapTo(bookingService.getBookingById(bookingId), BookingDTO.class);
 	}
 
 	@Override
@@ -59,12 +62,19 @@ public class BookingFacadeImpl implements BookingFacade {
 	public void deleteBooking(Long bookingId) {
 		bookingService.deleteBooking(bookingService.getBookingById(bookingId));
 	}
-	
+
 	@Override
 	public List<BookingDTO> getAllBookingsLastWeek() {
 		final List<Booking> allBookingsLastWeek = bookingService.getAllBookingsLastWeek();
 		final List<BookingDTO> dtos = beanMappingService.mapTo(allBookingsLastWeek, BookingDTO.class);
 		return dtos;
+	}
+
+	@Override
+	public List<BookingDTO> getBookingsByCourt(Long idCourt) {
+		List<Booking> bookings = bookingService.getBookingsByCourt(idCourt);
+
+		return beanMappingService.mapTo(bookings, BookingDTO.class);
 	}
 
 	@Override
