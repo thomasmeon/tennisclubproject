@@ -5,38 +5,60 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<fmt:message var="title" key="shopping.show.title"/>
+<fmt:message var="title" key="mybooking.show.title"><fmt:param value="${user.name}"/></fmt:message>
 <my:pagetemplate title="${title}">
 <jsp:attribute name="body">
 
-    <c:forEach items="${categories}" var="category" varStatus="ic">
-        <h2>${ic.count}. <c:out value="${category.name}"/></h2>
-        <div class="row">
-        <c:choose>
-            <c:when test="${empty cat2prods[category.id]}">
-                <div class="col-xs-12">
-                This category is empty.
-                </div>
-            </c:when>
-            <c:otherwise>
-                <c:forEach items="${cat2prods[category.id]}" var="product">
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><!-- bootstrap responsive grid -->
-                        <a href="${pageContext.request.contextPath}/shopping/product/${product.id}">
-                        <div class="thumbnail">
-                        <img src="${pageContext.request.contextPath}/shopping/productImage/${product.id}"><br>
-                        <div class="caption">
-                            <h3><c:out value="${product.name}"/></h3>
-                            <span style="color: red; font-weight: bold;"><c:out value="${product.currentPrice.value}"/>&nbsp;<c:out value="${product.currentPrice.currency}"/></span>
-                            <%--<p><a href="#" class="btn btn-primary" role="button">Detail</a>--%>
-                        </div>
-                        </div>
-                        </a>
-                    </div>
-                </c:forEach>
-            </c:otherwise>
-        </c:choose>
-        </div>
-    </c:forEach>
+	<div class="buttons">
+		<form method="post" action="${pageContext.request.contextPath}/show/all/{user.id}">
+	        <button type="submit" class="btn btn-primary">All</button>
+	    </form>
+	    <form method="post" action="${pageContext.request.contextPath}/show/lastweek/{user.id}">
+	        <button type="submit" class="btn btn-primary">Last Week</button>
+	    </form>
+	    <form method="post" action="${pageContext.request.contextPath}/show/lastmonth/{user.id}">
+	        <button type="submit" class="btn btn-primary">Last Month</button>
+	    </form>
+	    <form method="post" action="${pageContext.request.contextPath}/show/lastyear/{user.id}">
+	        <button type="submit" class="btn btn-primary">Last Year</button>
+	    </form>
+	</div>
+
+    <div class="row">
+        <table class="table">
+	        <thead>
+	        <tr>
+	            <th>id</th>
+	            <th>idCourt</th>
+	            <th>user1</th>
+	            <th>user2</th>
+	            <th>dateOfBooking</th>
+	            <th>hourOfBooking</th>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        <c:forEach items="${bookings}" var="booking">
+	            <tr>
+	                <td>${booking.id}</td>
+	                
+	                <td><c:out value="${booking.idCourt}"/></td>
+	                <td><c:out value="${booking.user1}"/></td>
+	                <td><c:out value="${booking.user2}"/></td>
+	                <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
+	                <td><c:out value="${booking.hourOfBooking}"/></td>
+	                <td>
+	                    <my:a href="/booking/view/${booking.id}" class="btn btn-primary">View</my:a>
+	                </td>
+	                <td>
+	                    <form method="post" action="${pageContext.request.contextPath}/booking/delete/${booking.id}">
+	                        <button type="submit" class="btn btn-primary">Delete</button>
+	                    </form>
+	                </td>
+	            </tr>
+	        </c:forEach>
+	        </tbody>
+	    </table>
+    </div>
 
 </jsp:attribute>
-</my:pagetemplate>cat2prods
+</my:pagetemplate>

@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0ecf354668f17f799b3cabd13c256838e1c4b03f
 package com.frenchies.tennisclub.sampledata;
 
 import java.io.IOException;
@@ -28,7 +31,13 @@ import com.frenchies.tennisclub.service.UserService;
  * @author Meon Thomas 473449
  */
 @ContextConfiguration(classes = {TennisClubWithSampleDataConfiguration.class})
+<<<<<<< HEAD
+@TestExecutionListeners(TransactionalTestExecutionListener.class)
+@Transactional
+public class SampleDataLoadingFacadeTest extends AbstractTestNGSpringContextTests {
+=======
 public class SampleDataLoadingFacadeTest {
+>>>>>>> 0ecf354668f17f799b3cabd13c256838e1c4b03f
 
     final static Logger log = LoggerFactory.getLogger(SampleDataLoadingFacadeTest.class);
 
@@ -50,16 +59,27 @@ public class SampleDataLoadingFacadeTest {
     @Test
     public void createSampleData() throws IOException {
         log.debug("starting test");
+<<<<<<< HEAD
+        sampleDataLoadingFacade.loadData();
+
+        Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
+
+        Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
+=======
         
         Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
 
         //Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
+>>>>>>> 0ecf354668f17f799b3cabd13c256838e1c4b03f
 
         User admin = userService.getAllUsers().stream().filter(userService::isAdmin).findFirst().get();
         Assert.assertEquals(true, userService.authenticate(admin,"admin"));
         
     }
 
+<<<<<<< HEAD
+}
+=======
 }
 =======
 //package com.frenchies.tennisclub.sampledata;
@@ -128,3 +148,4 @@ public class SampleDataLoadingFacadeTest {
 //
 //}
 >>>>>>> e5ea778890932b5877e295799a6f8f3f48e09e56
+>>>>>>> 0ecf354668f17f799b3cabd13c256838e1c4b03f

@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.BookingFacade;
-import com.frenchies.tennisclub.facade.CourtFacade;
 
 /**
  * Provides the user mybooking interface.
@@ -37,7 +37,9 @@ public class MyBookingsController {
     @RequestMapping("/show/all/{id}")
     public String listAll(@PathVariable long id, Model model) {
         log.debug("showAllBookingsOfUser({})",id);
-        model.addAttribute("booking", bookingFacade.getBookingById(id));
+        UserDTO uTemp = new UserDTO();
+        uTemp.setId(id);
+        model.addAttribute("booking", bookingFacade.getBookingsByUser(uTemp));
         return "mybookings/show";
     }
     
@@ -78,5 +80,19 @@ public class MyBookingsController {
         log.debug("showLastYearBookingsOfUser({})",id);
         model.addAttribute("booking", bookingFacade.getAllBookingsLastYearByUser(id));
         return "mybooking/show";
+    }
+    
+    /**
+     * Shows booking detail.
+     *
+     * @param id    booking id
+     * @param model data to display
+     * @return JSP page name
+     */
+    @RequestMapping("/booking/{id}")
+    public String booking(@PathVariable long id, Model model) {
+        log.debug("booking({})", id);
+        model.addAttribute("booking", bookingFacade.getBookingById(id));
+        return "shopping/booking";
     }
 }
