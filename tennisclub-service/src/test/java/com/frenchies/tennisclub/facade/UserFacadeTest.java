@@ -25,7 +25,7 @@ import com.frenchies.tennisclub.dto.UserAuthenticateDTO;
 import com.frenchies.tennisclub.dto.UserCreateDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.entity.User;
-import com.frenchies.tennisclub.mappers.BeanMappingService;
+import com.frenchies.tennisclub.service.BeanMappingService;
 import com.frenchies.tennisclub.service.UserService;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 import com.frenchies.tennisclub.service.facade.UserFacadeImpl;

@@ -13,7 +13,7 @@ import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.facade.BookingFacade;
-import com.frenchies.tennisclub.mappers.BeanMappingService;
+import com.frenchies.tennisclub.service.BeanMappingService;
 import com.frenchies.tennisclub.service.BookingService;
 import com.frenchies.tennisclub.service.CourtService;
 import com.frenchies.tennisclub.service.UserService;
