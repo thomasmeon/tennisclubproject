@@ -18,20 +18,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.RootWebContext;
+import com.frenchies.tennisclub.controllers.UsersController;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.UserFacade;
-import com.frenchies.tennisclub.controllers.UsersController;
-import com.frenchies.tennisclub.exceptions.ResourceNotFoundException;
-import static org.mockito.Mockito.doThrow;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
-import org.springframework.web.context.WebApplicationContext;
 
 @WebAppConfiguration
 @ContextConfiguration(classes = {RootWebContext.class})

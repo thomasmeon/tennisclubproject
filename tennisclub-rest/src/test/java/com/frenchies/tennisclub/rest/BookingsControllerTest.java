@@ -17,7 +17,6 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import org.mockito.InjectMocks;
@@ -45,14 +44,13 @@ import com.frenchies.tennisclub.controllers.BookingsController;
 import com.frenchies.tennisclub.controllers.GlobalExceptionController;
 import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
-import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.enums.Hour24;
 import com.frenchies.tennisclub.facade.BookingFacade;
-
+import org.springframework.beans.factory.BeanCreationException;
 
 @WebAppConfiguration
-@ContextConfiguration(classes = { RootWebContext.class})
-public class BookingsControllerTest  extends AbstractTestNGSpringContextTests {
+@ContextConfiguration(classes = { RootWebContext.class })
+public class BookingsControllerTest extends AbstractTestNGSpringContextTests {
 
 	@Mock
 	private BookingFacade bookingFacade;
@@ -60,91 +58,60 @@ public class BookingsControllerTest  extends AbstractTestNGSpringContextTests {
 	@Autowired
 	@InjectMocks
 	private BookingsController bookingsController;
-        
-         @Autowired
-        private WebApplicationContext webApplicationContext;
+
+	private Calendar calendar = Calendar.getInstance();
+
+	@Autowired
+	private WebApplicationContext webApplicationContext;
 
 	private MockMvc mockMvc;
-        
 
 	@BeforeClass
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		mockMvc = standaloneSetup(bookingsController).setMessageConverters(new MappingJackson2HttpMessageConverter()).build();          
-    }
-        
-        
-      
-    /**
-     * Registering the GlobalExceptionController if @ControllerAdvice is used
-     * this can be used in SetHandlerExceptionResolvers() standaloneSetup()
-     * Note that new Spring version from 4.2 has already a setControllerAdvice() method on 
-     * MockMVC builders, so in that case it is only needed to pass one or more
-     * @ControllerAdvice(s) configured within the application
-     * 
-     * @return
-     */
-    private ExceptionHandlerExceptionResolver createExceptionResolver() {
-        ExceptionHandlerExceptionResolver exceptionResolver = new ExceptionHandlerExceptionResolver() {
-            protected ServletInvocableHandlerMethod getExceptionHandlerMethod(HandlerMethod handlerMethod, Exception exception) {
-                Method method = new ExceptionHandlerMethodResolver(GlobalExceptionController.class).resolveMethod(exception);
-                return new ServletInvocableHandlerMethod(new GlobalExceptionController(), method);
-            }
-        };
-        exceptionResolver.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        exceptionResolver.afterPropertiesSet();
-        return exceptionResolver;
-    }
+		mockMvc = standaloneSetup(bookingsController).setMessageConverters(new MappingJackson2HttpMessageConverter())
+				.build();
+	}
 
+	/**
+	 * Registering the GlobalExceptionController if @ControllerAdvice is used this
+	 * can be used in SetHandlerExceptionResolvers() standaloneSetup() Note that new
+	 * Spring version from 4.2 has already a setControllerAdvice() method on MockMVC
+	 * builders, so in that case it is only needed to pass one or
+	 * more @ControllerAdvice(s) configured within the application
+	 * 
+	 * @return
+	 */
+	private ExceptionHandlerExceptionResolver createExceptionResolver() {
+		ExceptionHandlerExceptionResolver exceptionResolver = new ExceptionHandlerExceptionResolver() {
+			protected ServletInvocableHandlerMethod getExceptionHandlerMethod(HandlerMethod handlerMethod,
+					Exception exception) {
+				Method method = new ExceptionHandlerMethodResolver(GlobalExceptionController.class)
+						.resolveMethod(exception);
+				return new ServletInvocableHandlerMethod(new GlobalExceptionController(), method);
+			}
+		};
+		exceptionResolver.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+		exceptionResolver.afterPropertiesSet();
+		return exceptionResolver;
+	}
+	
 	@Test
 	public void debugTest() throws Exception {
-		doReturn(Collections.unmodifiableList(this.createBookings())).when(
-				bookingFacade).getAllBookings();
+		doReturn(Collections.unmodifiableList(this.createBookings())).when(bookingFacade).getAllBookings();
 		mockMvc.perform(get("/bookings")).andDo(print());
 	}
 
 	@Test
-	public void getAllBookings() throws Exception {
-		
-		Calendar cal = Calendar.getInstance();
-		cal.set(2017, 1, 2);
-		Date date1 = cal.getTime();
-		cal.set(2017, 2, 1);
-		Date date2 = cal.getTime();
-		
-		UserDTO jean = new UserDTO();
-		UserDTO jacques = new UserDTO();
-		UserDTO jean2 = new UserDTO();
-		UserDTO jacques2 = new UserDTO();
+	public void getBookings() throws Exception {
 
-		doReturn(Collections.unmodifiableList(this.createBookings())).when(
-				bookingFacade).getAllBookings();
+		doReturn(Collections.unmodifiableList(this.createBookings())).when(bookingFacade).getAllBookings();
 
-		mockMvc.perform(get("/bookings"))
-				.andExpect(status().isOk())
-				.andExpect(
-						content().contentType(MediaType.APPLICATION_JSON_VALUE))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==10)].idCourt").value(1l))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==10)].dateOfBooking").value(date1))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==10)].hourOfBooking").value(Hour24.NINE))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==10)].user1").value(jean))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==10)].user2").value(jacques))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==20)].idCourt").value(2l))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==20)].dateOfBooking").value(date2))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==20)].hourOfBooking").value(Hour24.SIX))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==20)].user1").value(jean2))
-				.andExpect(
-						jsonPath("$.[?(@.idBooking==20)].user2").value(jacques2));
-				
+		mockMvc.perform(get("/bookings")).andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+				.andExpect(jsonPath("$.[?(@.id==10)].name").value("Raspberry PI"))
+				.andExpect(jsonPath("$.[?(@.id==20)].name").value("Arduino"));
+
 	}
 
 	@Test
@@ -153,27 +120,22 @@ public class BookingsControllerTest  extends AbstractTestNGSpringContextTests {
 		List<BookingDTO> bookings = this.createBookings();
 
 		doReturn(bookings.get(0)).when(bookingFacade).getBookingById(10l);
-		doReturn(bookings.get(1)).when(bookingFacade).getBookingById(20l);
+		doReturn(bookings.get(1)).when(bookingFacade).getBookingById(12l);
 
-		mockMvc.perform(get("/bookings/10"))
-				.andExpect(status().isOk())
-				.andExpect(
-						content().contentType(MediaType.APPLICATION_JSON_VALUE))
-				.andExpect(jsonPath("$.idBooking").value(10l));
-		mockMvc.perform(get("/bookings/20"))
-				.andExpect(status().isOk())
-				.andExpect(
-						content().contentType(MediaType.APPLICATION_JSON_VALUE))
-				.andExpect(jsonPath("$.idBooking").value(20l));
+		mockMvc.perform(get("/bookings/10")).andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+				.andExpect(jsonPath("$.IdCourt").value("11"));
+		mockMvc.perform(get("/bookings/12")).andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+				.andExpect(jsonPath("$.IdCourt").value("13"));
 
 	}
 
 	@Test
 	public void getInvalidBooking() throws Exception {
-		doReturn(null).when(bookingFacade).getBookingById(1l);
+		doReturn(null).when(bookingFacade).getBookingById(10l);
 
-		mockMvc.perform(get("/bookings/1")).andExpect(
-				status().is4xxClientError());
+		mockMvc.perform(get("/bookings/10")).andExpect(status().is4xxClientError());
 
 	}
 
@@ -181,40 +143,27 @@ public class BookingsControllerTest  extends AbstractTestNGSpringContextTests {
 	public void deleteBooking() throws Exception {
 
 		List<BookingDTO> bookings = this.createBookings();
-                
-		mockMvc.perform(delete("/bookings/10"))
-				.andExpect(status().isOk());
+
+		mockMvc.perform(delete("/bookings/10")).andExpect(status().isOk());
 
 	}
-        
-        @Test
+
+	@Test
 	public void deleteBookingNonExisting() throws Exception {
 
 		List<BookingDTO> bookings = this.createBookings();
 
 		doThrow(new RuntimeException("the booking does not exist")).when(bookingFacade).deleteBooking(20l);
 
-		mockMvc.perform(delete("/bookings/20"))
-				.andExpect(status().isNotFound());
+		mockMvc.perform(delete("/bookings/12")).andExpect(status().isNotFound());
 
 	}
 
 	@Test
 	public void createBooking() throws Exception {
-		
-		Calendar cal = Calendar.getInstance();
-		cal.set(2017, 2, 1);
-		Date date3 = cal.getTime();
-		
-		UserDTO jean = new UserDTO();
-		UserDTO jacques = new UserDTO();
-		
+
 		BookingCreateDTO bookingCreateDTO = new BookingCreateDTO();
-		bookingCreateDTO.setDateOfBooking(date3);
-		bookingCreateDTO.setHourOfBooking(Hour24.NINETEEN);
-		bookingCreateDTO.setIdCourt(1l);
-		bookingCreateDTO.setUser1(jean);
-		bookingCreateDTO.setUser2(jacques);
+		bookingCreateDTO.setIdCourt(22l);
 
 		doReturn(1l).when(bookingFacade).createBooking(any(BookingCreateDTO.class));
 
@@ -222,49 +171,27 @@ public class BookingsControllerTest  extends AbstractTestNGSpringContextTests {
 
 		System.out.println(json);
 
-		mockMvc.perform(
-				post("/bookings/create").contentType(MediaType.APPLICATION_JSON)
-						.content(json)).andDo(print())
+		mockMvc.perform(post("/bookings/create").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print())
 				.andExpect(status().isOk());
 	}
 
-	
 	private List<BookingDTO> createBookings() {
-		
-		
-		Calendar cal = Calendar.getInstance();
-		cal.set(2017, 1, 2);
-		Date date1 = cal.getTime();
-		cal.set(2017, 2, 1);
-		Date date2 = cal.getTime();
-		
-		
 		BookingDTO bookingOne = new BookingDTO();
-		bookingOne.setIdBooking(10l);
-		bookingOne.setIdCourt(1l);
-		bookingOne.setDateOfBooking(date1);
-		bookingOne.setHourOfBooking(Hour24.NINE);
-		UserDTO jean = new UserDTO();
-		UserDTO jacques = new UserDTO();
-		bookingOne.setUser1(jean);
-		bookingOne.setUser2(jacques);
-
+		bookingOne.setIdBooking(10L);
+		bookingOne.setIdCourt(11L);
+		bookingOne.setDateOfBooking(calendar.getTime());
+		bookingOne.setHourOfBooking(Hour24.EIGHT);
 
 		BookingDTO bookingTwo = new BookingDTO();
-		bookingTwo.setIdBooking(20l);
-		bookingTwo.setIdCourt(2l);
-		bookingTwo.setDateOfBooking(date2);
-		bookingTwo.setHourOfBooking(Hour24.SIX);
-		UserDTO jean2 = new UserDTO();
-		UserDTO jacques2 = new UserDTO();
-		bookingTwo.setUser1(jean2);
-		bookingTwo.setUser2(jacques2);
+		bookingTwo.setIdBooking(12L);
+		bookingTwo.setIdCourt(13L);
+		bookingTwo.setDateOfBooking(calendar.getTime());
+		bookingTwo.setHourOfBooking(Hour24.NINE);
 
 		return Arrays.asList(bookingOne, bookingTwo);
 	}
 
-	private static String convertObjectToJsonBytes(Object object)
-			throws IOException {
+	private static String convertObjectToJsonBytes(Object object) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 		return mapper.writeValueAsString(object);

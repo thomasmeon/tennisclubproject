@@ -6,6 +6,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.mockito.Mock;
@@ -22,6 +25,7 @@ import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.BookingFacade;
 import com.frenchies.tennisclub.facade.CourtFacade;
+import com.frenchies.tennisclub.facade.UserFacade;
 import com.frenchies.tennisclub.mvc.controllers.MyBookingsController;
 
 /**
@@ -37,12 +41,12 @@ public class MyBookingsControllerTest {
 	private BookingFacade bookingFacade;
 
 	@Mock
-	private CourtFacade courtFacade;
+	private UserFacade userFacade;
 
 	private MockMvc mockMvc;
 
 	private BookingDTO bookingDTO;
-
+	
 	private List<BookingDTO> listBookingDTO;
 
 	private UserDTO uTemp;
@@ -59,23 +63,73 @@ public class MyBookingsControllerTest {
 	public void setUp() throws Exception {
 		bookingDTO = new BookingDTO();
 		bookingDTO.setIdBooking(1l);
-		bookingDTO.setIdCourt(2l);
+		bookingDTO.setIdCourt(1l);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(2017, 12, 10);
+		Date date = cal.getTime();
+		
+		bookingDTO.setDateOfBooking(date);
 
 		uTemp = new UserDTO();
 		uTemp.setId(1L);
 		bookingDTO.setUser1(uTemp);
-
+		
+		listBookingDTO = new ArrayList<BookingDTO>();
+		listBookingDTO.add(bookingDTO);
 	}
-
+	
 	@Test
-	public void testBooking() throws Exception {
-
+	public void listAllTest() throws Exception {
 		when(bookingFacade.getBookingsByUser(uTemp)).thenReturn(listBookingDTO);
 		this.mockMvc.perform(get("/mybookings/show/all/1").accept(MediaType.parseMediaType("text/html;charset=UTF-8")))
 				.andExpect(status().isOk())
-				//.andExpect(model().attributeExists("booking"))
+				.andExpect(model().attributeExists("booking"))
+				.andExpect(model().attribute("booking", listBookingDTO))
+				.andExpect(forwardedUrl("mybookings/show"));
+	}
+	
+	@Test
+	public void listLastWeekTest() throws Exception {
+		when(bookingFacade.getAllBookingsLastWeekByUser(uTemp.getId())).thenReturn(listBookingDTO);
+		this.mockMvc.perform(get("/mybookings/show/lastweek/1").accept(MediaType.parseMediaType("text/html;charset=UTF-8")))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("booking"))
+				.andExpect(model().attribute("booking", listBookingDTO))
+				.andExpect(forwardedUrl("mybookings/show"));
+	}
+	
+	@Test
+	public void listLastMonthTest() throws Exception {
+		when(bookingFacade.getAllBookingsLastMonthByUser(uTemp.getId())).thenReturn(listBookingDTO);
+		this.mockMvc.perform(get("/mybookings/show/lastmonth/1").accept(MediaType.parseMediaType("text/html;charset=UTF-8")))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("booking"))
+				.andExpect(model().attribute("booking", listBookingDTO))
+				.andExpect(forwardedUrl("mybookings/show"));
+	}
+	
+	@Test
+	public void listLastYearTest() throws Exception {
+		when(bookingFacade.getAllBookingsLastYearByUser(uTemp.getId())).thenReturn(listBookingDTO);
+		this.mockMvc.perform(get("/mybookings/show/lastyear/1").accept(MediaType.parseMediaType("text/html;charset=UTF-8")))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("booking"))
+				.andExpect(model().attribute("booking", listBookingDTO))
+				.andExpect(forwardedUrl("mybookings/show"));
+	}
+
+	@Test
+	public void bookingTest() throws Exception {
+
+		when(bookingFacade.getBookingById(1L)).thenReturn(bookingDTO);
+		this.mockMvc.perform(get("/mybookings/booking/1").accept(MediaType.parseMediaType("text/html;charset=UTF-8")))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("booking"))
 				.andExpect(model().attribute("booking", bookingDTO))
 				.andExpect(forwardedUrl("mybookings/booking"));
 
 	}
+
+
 }
