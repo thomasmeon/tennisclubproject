@@ -13,7 +13,7 @@ import com.frenchies.tennisclub.dto.UserCreateDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.facade.UserFacade;
-import com.frenchies.tennisclub.mappers.BeanMappingService;
+import com.frenchies.tennisclub.service.BeanMappingService;
 import com.frenchies.tennisclub.service.UserService;
 
 /**

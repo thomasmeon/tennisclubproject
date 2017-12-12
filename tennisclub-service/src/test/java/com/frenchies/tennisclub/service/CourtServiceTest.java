@@ -15,10 +15,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -36,17 +32,15 @@ import com.frenchies.tennisclub.service.config.ServiceConfiguration;
  * @author CorentinDore 473308
  */
 
-@TestExecutionListeners(TransactionalTestExecutionListener.class)
 @ContextConfiguration(classes = ServiceConfiguration.class)
-@Transactional
-public class CourtServiceTest extends AbstractTestNGSpringContextTests {
+public class CourtServiceTest {
 
 	@Mock
 	private CourtDao courtDao;
 
 	@Autowired
 	@InjectMocks
-	private CourtService courtService;
+	private CourtServiceImpl courtService;
 	private Court c;
 	private Court c2;
 
