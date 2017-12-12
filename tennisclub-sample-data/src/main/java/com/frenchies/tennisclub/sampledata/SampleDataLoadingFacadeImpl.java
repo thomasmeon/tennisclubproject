@@ -1,4 +1,4 @@
-package com.frenchies.tennisclub.sampledata;
+package com.frenchies.tennisclub.sampledata;															
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -33,15 +33,13 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 
 	final static Logger log = LoggerFactory.getLogger(SampleDataLoadingFacadeImpl.class);
 
-	public static final String JPEG = "image/jpeg";
-
 	@Autowired
 	private UserService userService;
 	@Autowired
 	private CourtService courtService;
 	@Autowired
 	private BookingService bookingService;
-
+	
 	@SuppressWarnings("unused")
 	public void loadData() throws IOException {
 		Calendar cal = Calendar.getInstance();
@@ -150,59 +148,3 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		return u;
 	}
 }
-
-//	private static Date daysBeforeNow(int days) {
-//		return Date.from(ZonedDateTime.now().minusDays(days).toInstant());
-//	}
-//
-//	private static Date toDate(int year, int month, int day) {
-//		return Date.from(LocalDate.of(year, month, day).atStartOfDay(ZoneId.systemDefault()).toInstant());
-//	}
-//
-//	private Order order(User user, Date created, OrderState state, OrderItem... items) {
-//		Order o = new Order();
-//		o.setUser(user);
-//		o.setCreated(created);
-//		o.setState(state);
-//		for (OrderItem item : items) {
-//			o.addOrderItem(item);
-//		}
-//		orderService.createOrder(o);
-//		return o;
-//	}
-//
-//	private OrderItem orderItem(Product product, int amount) {
-//		OrderItem oi = new OrderItem();
-//		oi.setProduct(product);
-//		oi.setPricePerItem(product.getCurrentPrice());
-//		oi.setAmount(amount);
-//		return oi;
-//	}
-//
-//	
-//
-//	
-//	private static Random random = new Random();
-//
-//	private Price price(long price, ZonedDateTime priceStart) {
-//		Price p = new Price();
-//		p.setCurrency(Currency.CZK);
-//		p.setPriceStart(Date.from(priceStart.toInstant()));
-//		p.setValue(BigDecimal.valueOf(price));
-//		return p;
-//	}
-//
-//	
-//
-//	private byte[] readImage(String file) throws IOException {
-//		try (InputStream is = this.getClass().getResourceAsStream("/" + file)) {
-//			int nRead;
-//			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-//			byte[] data = new byte[1024];
-//			while ((nRead = is.read(data, 0, data.length)) != -1) {
-//				buffer.write(data, 0, nRead);
-//			}
-//			buffer.flush();
-//			return buffer.toByteArray();
-//		}
-//	}
