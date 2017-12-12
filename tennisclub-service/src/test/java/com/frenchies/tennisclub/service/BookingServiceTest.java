@@ -12,17 +12,12 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.service.spi.ServiceException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -34,10 +29,8 @@ import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.enums.Hour24;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 
-@TestExecutionListeners(TransactionalTestExecutionListener.class)
 @ContextConfiguration(classes = ServiceConfiguration.class)
-@Transactional
-public class BookingServiceTest extends AbstractTestNGSpringContextTests {
+public class BookingServiceTest {
 	@Mock
 	private BookingDao bookingDao;
 
@@ -46,7 +39,7 @@ public class BookingServiceTest extends AbstractTestNGSpringContextTests {
 
 	@Autowired
 	@InjectMocks
-	private BookingService bookingService;
+	private BookingServiceImpl bookingService;
 	
 	private Booking booking;
 	private Booking invalidBooking;

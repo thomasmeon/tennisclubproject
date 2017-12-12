@@ -16,10 +16,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -29,25 +25,21 @@ import com.frenchies.tennisclub.dao.UserDao;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 
-import ch.qos.logback.core.pattern.color.ForegroundCompositeConverterBase;
-
 /**
  * Basic tests for service implementations
  *
  * @author CorentinDore 473308
  */
 
-@TestExecutionListeners(TransactionalTestExecutionListener.class)
 @ContextConfiguration(classes = ServiceConfiguration.class)
-@Transactional
-public class UserServiceTest extends AbstractTestNGSpringContextTests {
+public class UserServiceTest {
 
 	@Mock
 	private UserDao userDao;
 
 	@Autowired
 	@InjectMocks
-	private UserService userService;
+	private UserServiceImpl userService;
 
 	private User validUser;
 	private User invalidUser;
