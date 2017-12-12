@@ -57,24 +57,11 @@ public class SampleDataLoadingFacadeTest extends AbstractTestNGSpringContextTest
 	public void createSampleData() throws IOException {
 		log.debug("starting test");
 
-		sampleDataLoadingFacade.loadData();
-
 		Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
 
 		Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
 
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		// System.out.println(bookingDao.findAll().size());
-
-		// System.out.println(courtDao.findAll().size());
-
 		System.out.println(userDao.findAll().size());
-
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-
-		// Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
-
-		// Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
 
 		User admin = userService.getAllUsers().stream().filter(userService::isAdmin).findFirst().get();
 		Assert.assertEquals(true, userService.authenticate(admin, "admin"));
