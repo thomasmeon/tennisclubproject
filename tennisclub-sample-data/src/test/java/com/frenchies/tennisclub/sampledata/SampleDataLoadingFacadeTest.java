@@ -21,6 +21,8 @@ import com.frenchies.tennisclub.dao.CourtDao;
 import com.frenchies.tennisclub.dao.UserDao;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.service.UserService;
+import com.frenchies.tennisclub.sampledata.TennisClubWithSampleDataConfiguration;
+
 
 /**
  * Tests data loading.
@@ -32,7 +34,7 @@ import com.frenchies.tennisclub.service.UserService;
 @Transactional
 public class SampleDataLoadingFacadeTest extends AbstractTestNGSpringContextTests {
 
-    final static Logger log = LoggerFactory.getLogger(SampleDataLoadingFacadeTest.class);
+	final static Logger log = LoggerFactory.getLogger(SampleDataLoadingFacadeTest.class);
 
     @Autowired
     public BookingDao bookingDao;
@@ -56,7 +58,13 @@ public class SampleDataLoadingFacadeTest extends AbstractTestNGSpringContextTest
     @Test
     public void createSampleData() throws IOException {
         log.debug("starting test");
-        
+
+        sampleDataLoadingFacade.loadData();
+
+        Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
+
+        Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
+    
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       //  System.out.println(bookingDao.findAll().size());
         
@@ -70,6 +78,7 @@ public class SampleDataLoadingFacadeTest extends AbstractTestNGSpringContextTest
         //Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
 
         //Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
+
 
         User admin = userService.getAllUsers().stream().filter(userService::isAdmin).findFirst().get();
         Assert.assertEquals(true, userService.authenticate(admin,"admin"));

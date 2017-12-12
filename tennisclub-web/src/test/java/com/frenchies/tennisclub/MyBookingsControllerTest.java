@@ -6,6 +6,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.List;
+
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
@@ -17,7 +19,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.dto.BookingDTO;
-import com.frenchies.tennisclub.dto.CourtDTO;
+import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.BookingFacade;
 import com.frenchies.tennisclub.facade.CourtFacade;
 import com.frenchies.tennisclub.mvc.controllers.MyBookingsController;
@@ -41,6 +43,10 @@ public class MyBookingsControllerTest {
 
 	private BookingDTO bookingDTO;
 
+	private List<BookingDTO> listBookingDTO;
+
+	private UserDTO uTemp;
+
 	@BeforeClass
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
@@ -55,15 +61,21 @@ public class MyBookingsControllerTest {
 		bookingDTO.setIdBooking(1l);
 		bookingDTO.setIdCourt(2l);
 
+		uTemp = new UserDTO();
+		uTemp.setId(1L);
+		bookingDTO.setUser1(uTemp);
+
 	}
 
 	@Test
 	public void testBooking() throws Exception {
 
-		when(bookingFacade.getBookingById(1l)).thenReturn(bookingDTO);
-		this.mockMvc.perform(get("/myBookings/booking/1").accept(MediaType.parseMediaType("text/html;charset=UTF-8")))
-				.andExpect(status().isOk()).andExpect(model().attributeExists("booking"))
-				.andExpect(model().attribute("booking", bookingDTO)).andExpect(forwardedUrl("myBookings/booking"));
+		when(bookingFacade.getBookingsByUser(uTemp)).thenReturn(listBookingDTO);
+		this.mockMvc.perform(get("/mybookings/show/all/1").accept(MediaType.parseMediaType("text/html;charset=UTF-8")))
+				.andExpect(status().isOk())
+				//.andExpect(model().attributeExists("booking"))
+				.andExpect(model().attribute("booking", bookingDTO))
+				.andExpect(forwardedUrl("mybookings/booking"));
 
 	}
 }
