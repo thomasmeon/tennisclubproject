@@ -1,4 +1,4 @@
-package com.frenchies.tennisclub.mappers;
+package com.frenchies.tennisclub.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 //@Author Dore Corentin UCO 473308
 
-@Service
 public interface BeanMappingService {
 
     public  <T> List<T> mapTo(Collection<?> objects, Class<T> mapToClass);

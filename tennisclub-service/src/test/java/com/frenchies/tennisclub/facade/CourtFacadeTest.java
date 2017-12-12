@@ -30,7 +30,7 @@ import com.frenchies.tennisclub.dto.CourtDTO;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
-import com.frenchies.tennisclub.mappers.BeanMappingService;
+import com.frenchies.tennisclub.service.BeanMappingService;
 import com.frenchies.tennisclub.service.CourtService;
 import com.frenchies.tennisclub.service.config.ServiceConfiguration;
 import com.frenchies.tennisclub.service.facade.CourtFacadeImpl;

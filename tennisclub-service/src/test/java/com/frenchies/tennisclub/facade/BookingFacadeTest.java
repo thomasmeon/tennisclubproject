@@ -31,7 +31,7 @@ import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.enums.Hour24;
-import com.frenchies.tennisclub.mappers.BeanMappingService;
+import com.frenchies.tennisclub.service.BeanMappingService;
 import com.frenchies.tennisclub.service.BookingService;
 import com.frenchies.tennisclub.service.TimeService;
 import com.frenchies.tennisclub.service.UserService;
