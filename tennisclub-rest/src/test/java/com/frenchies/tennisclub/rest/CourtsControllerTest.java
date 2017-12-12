@@ -25,11 +25,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.RootWebContext;
-import com.frenchies.tennisclub.controllers.CourtsController;
 import com.frenchies.tennisclub.dto.CourtDTO;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 import com.frenchies.tennisclub.facade.CourtFacade;
+import com.frenchies.tennisclub.rest.controllers.CourtsController;
 
 @WebAppConfiguration
 @ContextConfiguration(classes = { RootWebContext.class })

@@ -1,4 +1,4 @@
-package com.frenchies.tennisclub.mixin;
+package com.frenchies.tennisclub.rest.mixin;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

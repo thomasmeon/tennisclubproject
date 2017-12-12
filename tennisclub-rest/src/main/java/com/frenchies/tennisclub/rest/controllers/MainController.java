@@ -1,4 +1,4 @@
-package com.frenchies.tennisclub.controllers;
+package com.frenchies.tennisclub.rest.controllers;
 
 import java.util.Collections;
 import java.util.HashMap;

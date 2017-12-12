@@ -40,12 +40,13 @@ import org.testng.annotations.Test;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.frenchies.tennisclub.RootWebContext;
-import com.frenchies.tennisclub.controllers.BookingsController;
-import com.frenchies.tennisclub.controllers.GlobalExceptionController;
 import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.enums.Hour24;
 import com.frenchies.tennisclub.facade.BookingFacade;
+import com.frenchies.tennisclub.rest.controllers.BookingsController;
+import com.frenchies.tennisclub.rest.controllers.GlobalExceptionController;
+
 import org.springframework.beans.factory.BeanCreationException;
 
 @WebAppConfiguration

@@ -1,7 +1,8 @@
-package com.frenchies.tennisclub.assemblers;
+package com.frenchies.tennisclub.rest.assemblers;
 
 import com.frenchies.tennisclub.dto.BookingDTO;
-import com.frenchies.tennisclub.controllers.BookingsControllerHateoas;
+import com.frenchies.tennisclub.rest.controllers.BookingsControllerHateoas;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.hateoas.Resource;

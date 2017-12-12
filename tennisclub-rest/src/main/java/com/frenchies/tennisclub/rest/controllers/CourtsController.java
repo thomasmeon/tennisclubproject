@@ -1,6 +1,8 @@
-package com.frenchies.tennisclub.controllers;
+package com.frenchies.tennisclub.rest.controllers;
 
 import com.frenchies.tennisclub.rest.ApiUris;
+import com.frenchies.tennisclub.rest.exceptions.ResourceNotFoundException;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.frenchies.tennisclub.dto.CourtDTO;
 import com.frenchies.tennisclub.facade.CourtFacade;
-import com.frenchies.tennisclub.exceptions.ResourceNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;

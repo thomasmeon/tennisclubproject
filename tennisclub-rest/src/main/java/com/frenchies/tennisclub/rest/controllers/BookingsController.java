@@ -1,4 +1,4 @@
-package com.frenchies.tennisclub.controllers;
+package com.frenchies.tennisclub.rest.controllers;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
-import com.frenchies.tennisclub.exceptions.ResourceAlreadyExistingException;
-import com.frenchies.tennisclub.exceptions.ResourceNotFoundException;
 import com.frenchies.tennisclub.facade.BookingFacade;
 import com.frenchies.tennisclub.rest.ApiUris;
+import com.frenchies.tennisclub.rest.exceptions.ResourceAlreadyExistingException;
+import com.frenchies.tennisclub.rest.exceptions.ResourceNotFoundException;
 
 /**
  * REST Controller for Bookings

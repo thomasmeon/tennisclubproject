@@ -22,8 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
-import com.frenchies.tennisclub.mixin.BookingDTOMixin;
-import com.frenchies.tennisclub.mixin.UserDTOMixin;
+import com.frenchies.tennisclub.rest.mixin.BookingDTOMixin;
+import com.frenchies.tennisclub.rest.mixin.UserDTOMixin;
 import com.frenchies.tennisclub.sampledata.TennisClubWithSampleDataConfiguration;
 
 @EnableWebMvc

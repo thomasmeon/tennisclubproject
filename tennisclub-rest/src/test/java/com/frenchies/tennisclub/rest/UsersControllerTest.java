@@ -25,9 +25,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.RootWebContext;
-import com.frenchies.tennisclub.controllers.UsersController;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.UserFacade;
+import com.frenchies.tennisclub.rest.controllers.UsersController;
 
 @WebAppConfiguration
 @ContextConfiguration(classes = {RootWebContext.class})
