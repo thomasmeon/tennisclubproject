@@ -1,7 +1,8 @@
 package com.frenchies.tennisclub.rest;
 
 import com.frenchies.tennisclub.RootWebContext;
-import com.frenchies.tennisclub.controllers.MainController;
+import com.frenchies.tennisclub.rest.controllers.MainController;
+
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;

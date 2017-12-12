@@ -1,4 +1,4 @@
-package com.frenchies.tennisclub.controllers;
+package com.frenchies.tennisclub.rest.controllers;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
-import com.frenchies.tennisclub.assemblers.BookingRessourceAssembler;
 import com.frenchies.tennisclub.dto.BookingDTO;
-import com.frenchies.tennisclub.exceptions.ResourceNotFoundException;
-import com.frenchies.tennisclub.exceptions.ResourceNotModifiedException;
 import com.frenchies.tennisclub.facade.BookingFacade;
+import com.frenchies.tennisclub.rest.assemblers.BookingRessourceAssembler;
+import com.frenchies.tennisclub.rest.exceptions.ResourceNotFoundException;
+import com.frenchies.tennisclub.rest.exceptions.ResourceNotModifiedException;
 
 /**
  * REST HATEOAS Controller for Bookings
