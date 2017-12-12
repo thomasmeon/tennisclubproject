@@ -23,66 +23,62 @@ import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.service.UserService;
 import com.frenchies.tennisclub.sampledata.TennisClubWithSampleDataConfiguration;
 
-
 /**
  * Tests data loading.
  *
  * @author Meon Thomas 473449
  */
-@ContextConfiguration(classes = {TennisClubWithSampleDataConfiguration.class})
+@ContextConfiguration(classes = { TennisClubWithSampleDataConfiguration.class })
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
 @Transactional
 public class SampleDataLoadingFacadeTest extends AbstractTestNGSpringContextTests {
 
 	final static Logger log = LoggerFactory.getLogger(SampleDataLoadingFacadeTest.class);
 
-    @Autowired
-    public BookingDao bookingDao;
+	@Autowired
+	public BookingDao bookingDao;
 
-    @Autowired
-    public CourtDao courtDao;
-    
-    @Autowired
-    public UserDao userDao;
-    
+	@Autowired
+	public CourtDao courtDao;
 
-    @Autowired
-    public UserService userService;
+	@Autowired
+	public UserDao userDao;
 
-    @Autowired
-    public SampleDataLoadingFacade sampleDataLoadingFacade;
+	@Autowired
+	public UserService userService;
 
-    @PersistenceContext
-    private EntityManager em;
+	@Autowired
+	public SampleDataLoadingFacade sampleDataLoadingFacade;
 
-    @Test
-    public void createSampleData() throws IOException {
-        log.debug("starting test");
+	@PersistenceContext
+	private EntityManager em;
 
-        sampleDataLoadingFacade.loadData();
+	@Test
+	public void createSampleData() throws IOException {
+		log.debug("starting test");
 
-        Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
+		sampleDataLoadingFacade.loadData();
 
-        Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
-    
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-      //  System.out.println(bookingDao.findAll().size());
-        
-      // System.out.println(courtDao.findAll().size());
-              	
-        System.out.println(userDao.findAll().size());
+		Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
 
+		Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
 
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		// System.out.println(bookingDao.findAll().size());
 
-        //Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
+		// System.out.println(courtDao.findAll().size());
 
-        //Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
+		System.out.println(userDao.findAll().size());
 
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
-        User admin = userService.getAllUsers().stream().filter(userService::isAdmin).findFirst().get();
-        Assert.assertEquals(true, userService.authenticate(admin,"admin"));
-        
-    }
+		// Assert.assertTrue(bookingDao.findAll().size() > 0, "no bookings");
+
+		// Assert.assertTrue(courtDao.findAll().size() > 0, "no courts");
+
+		User admin = userService.getAllUsers().stream().filter(userService::isAdmin).findFirst().get();
+		Assert.assertEquals(true, userService.authenticate(admin, "admin"));
+
+	}
 
 }
