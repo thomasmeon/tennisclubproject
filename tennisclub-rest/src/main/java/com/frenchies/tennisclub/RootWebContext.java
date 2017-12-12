@@ -1,33 +1,34 @@
 package com.frenchies.tennisclub;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.frenchies.tennisclub.dto.BookingDTO;
-import com.frenchies.tennisclub.dto.UserDTO;
-import com.frenchies.tennisclub.mixin.BookingDTOMixin;
-import com.frenchies.tennisclub.mixin.UserDTOMixin;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import com.frenchies.tennisclub.service.config.ServiceConfiguration;
-import com.frenchies.tennisclub.sampledata.TennisClubWithSampleDataConfiguration;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.frenchies.tennisclub.dto.BookingDTO;
+import com.frenchies.tennisclub.dto.UserDTO;
+import com.frenchies.tennisclub.mixin.BookingDTOMixin;
+import com.frenchies.tennisclub.mixin.UserDTOMixin;
+import com.frenchies.tennisclub.sampledata.TennisClubWithSampleDataConfiguration;
+
 @EnableWebMvc
 @Configuration
-@Import({ServiceConfiguration.class, TennisClubWithSampleDataConfiguration.class})
+@Import({TennisClubWithSampleDataConfiguration.class})
 @ComponentScan(basePackages = {"com.frenchies.tennisclub.rest.controllers", "com.frenchies.tennisclub.rest.assemblers"})
 public class RootWebContext extends WebMvcConfigurerAdapter {
 
