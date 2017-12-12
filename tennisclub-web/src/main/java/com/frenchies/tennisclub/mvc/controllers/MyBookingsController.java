@@ -79,7 +79,7 @@ public class MyBookingsController {
     public String listLastYear(@PathVariable long id, Model model) {
         log.debug("showLastYearBookingsOfUser({})",id);
         model.addAttribute("booking", bookingFacade.getAllBookingsLastYearByUser(id));
-        return "mybooking/show";
+        return "mybookings/show";
     }
     
     /**
@@ -93,6 +93,6 @@ public class MyBookingsController {
     public String booking(@PathVariable long id, Model model) {
         log.debug("booking({})", id);
         model.addAttribute("booking", bookingFacade.getBookingById(id));
-        return "shopping/booking";
+        return "mybookings/booking";
     }
 }

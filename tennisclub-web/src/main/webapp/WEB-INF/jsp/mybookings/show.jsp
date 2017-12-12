@@ -5,7 +5,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<fmt:message var="title" key="mybooking.show.title"><fmt:param value="${user.name}"/></fmt:message>
+<fmt:message var="title" key="mybookings.show.title"><fmt:param value="${user.name}"/></fmt:message>
 <my:pagetemplate title="${title}">
 <jsp:attribute name="body">
 
