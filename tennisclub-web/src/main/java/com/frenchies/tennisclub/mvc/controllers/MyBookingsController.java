@@ -1,5 +1,8 @@
 package com.frenchies.tennisclub.mvc.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.BookingFacade;
 
@@ -29,56 +34,35 @@ public class MyBookingsController {
     }
     
     /**
-     * Shows all bookings of user.
-     * @param id       booking id
-     * @param model data to display
+     * Shows a list of bookings, filtered by specified filter
+     *
+     * @param filter selects which bookings should be displayed
+     * @param model  data to display
      * @return JSP page name
      */
-    @RequestMapping("/show/all/{id}")
-    public String listAll(@PathVariable long id, Model model) {
-        log.debug("showAllBookingsOfUser({})",id);
+    @RequestMapping(value = "/show/{filter}/{id}", method = RequestMethod.GET)
+    public String list(@PathVariable String filter, @PathVariable long id, Model model) {
+        List<BookingDTO> bookings;
         UserDTO uTemp = new UserDTO();
         uTemp.setId(id);
-        model.addAttribute("booking", bookingFacade.getBookingsByUser(uTemp));
-        return "mybookings/show";
-    }
-    
-    /**
-     * Shows all last week bookings of user
-     * @param id	booking id
-     * @param model	date to display
-     * @return JSP page name
-     */
-    @RequestMapping("/show/lastweek/{id}")
-    public String listLastWeek(@PathVariable long id, Model model) {
-        log.debug("showLastWeekBookingsOfUser({})",id);
-        model.addAttribute("booking", bookingFacade.getAllBookingsLastWeekByUser(id));
-        return "mybookings/show";
-    }
-    
-    /**
-     * Shows all last month bookings of user
-     * @param id	booking id
-     * @param model	date to display
-     * @return JSP page name
-     */
-    @RequestMapping("/show/lastmonth/{id}")
-    public String listLastMonth(@PathVariable long id, Model model) {
-        log.debug("showLastMonthBookingsOfUser({})",id);
-        model.addAttribute("booking", bookingFacade.getAllBookingsLastMonthByUser(id));
-        return "mybookings/show";
-    }
-    
-    /**
-     * Shows all last year bookings of user
-     * @param id	booking id
-     * @param model	date to display
-     * @return JSP page name
-     */
-    @RequestMapping("/show/lastyear/{id}")
-    public String listLastYear(@PathVariable long id, Model model) {
-        log.debug("showLastYearBookingsOfUser({})",id);
-        model.addAttribute("booking", bookingFacade.getAllBookingsLastYearByUser(id));
+        switch (filter) {
+            case "all":
+                bookings = bookingFacade.getBookingsByUser(uTemp);
+                break;
+            case "lastweek":
+                bookings = bookingFacade.getAllBookingsLastWeekByUser(id);
+                break;
+            case "lastmonth":
+                bookings = bookingFacade.getAllBookingsLastMonthByUser(id);
+                break;
+            case "lastyear":
+                bookings = bookingFacade.getAllBookingsLastYearByUser(id);
+                break;
+            default:
+                bookings = new ArrayList<>();
+                model.addAttribute("alert_danger", "Unknown filter " + filter);
+        }
+        model.addAttribute("booking", bookings);
         return "mybookings/show";
     }
     

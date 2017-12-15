@@ -11,7 +11,7 @@
     <div class="jumbotron">
         <h1>Welcome to Tennis Club !</h1>
         <p class="lead">On this website, we can book a court, have your statistics, and more :). </p>
-        <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/shopping/show"
+        <p><a class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/mybookings/show"
               role="button">Go Booking</a></p>
     </div>
 
