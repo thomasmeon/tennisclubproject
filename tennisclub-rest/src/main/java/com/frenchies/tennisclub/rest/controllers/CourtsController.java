@@ -55,7 +55,7 @@ public class CourtsController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public final CourtDTO getCourt(@PathVariable("id") long id) throws Exception {
 
-        logger.debug("rest getCCourt({})", id);
+        logger.debug("rest getCourt({})", id);
 
         CourtDTO courtDTO = courtFacade.getCourtById(id);
         if (courtDTO == null) {
