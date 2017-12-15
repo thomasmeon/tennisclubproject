@@ -17,6 +17,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 import org.testng.annotations.Test;
 
+//@Author Dore Corentin UCO 473308
+
 @WebAppConfiguration
 @ContextConfiguration(classes = {RootWebContext.class})
 public class MainControllerTest extends AbstractTestNGSpringContextTests {

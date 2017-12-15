@@ -49,6 +49,10 @@ import com.frenchies.tennisclub.rest.controllers.GlobalExceptionController;
 
 import org.springframework.beans.factory.BeanCreationException;
 
+
+//@Author Dore Corentin UCO 473308
+
+
 @WebAppConfiguration
 @ContextConfiguration(classes = { RootWebContext.class })
 public class BookingsControllerTest extends AbstractTestNGSpringContextTests {
@@ -105,13 +109,14 @@ public class BookingsControllerTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void getBookings() throws Exception {
+		
 
 		doReturn(Collections.unmodifiableList(this.createBookings())).when(bookingFacade).getAllBookings();
 
 		mockMvc.perform(get("/bookings")).andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-				.andExpect(jsonPath("$.[?(@.id==10)].name").value("Raspberry PI"))
-				.andExpect(jsonPath("$.[?(@.id==20)].name").value("Arduino"));
+				.andExpect(jsonPath("$.[?(@.idBooking==10)].hourOfBooking").value("EIGHT"))
+				.andExpect(jsonPath("$.[?(@.idBooking==12)].hourOfBooking").value("NINE"));
 
 	}
 
@@ -125,10 +130,10 @@ public class BookingsControllerTest extends AbstractTestNGSpringContextTests {
 
 		mockMvc.perform(get("/bookings/10")).andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-				.andExpect(jsonPath("$.IdCourt").value("11"));
+				.andExpect(jsonPath("$.hourOfBooking.").value("EIGHT"));
 		mockMvc.perform(get("/bookings/12")).andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-				.andExpect(jsonPath("$.IdCourt").value("13"));
+				.andExpect(jsonPath("$.hourOfBooking").value("NINE"));
 
 	}
 
@@ -154,7 +159,7 @@ public class BookingsControllerTest extends AbstractTestNGSpringContextTests {
 
 		List<BookingDTO> bookings = this.createBookings();
 
-		doThrow(new RuntimeException("the booking does not exist")).when(bookingFacade).deleteBooking(20l);
+		doThrow(new RuntimeException("the booking does not exist")).when(bookingFacade).deleteBooking(12l);
 
 		mockMvc.perform(delete("/bookings/12")).andExpect(status().isNotFound());
 
@@ -178,14 +183,14 @@ public class BookingsControllerTest extends AbstractTestNGSpringContextTests {
 
 	private List<BookingDTO> createBookings() {
 		BookingDTO bookingOne = new BookingDTO();
-		bookingOne.setIdBooking(10L);
-		bookingOne.setIdCourt(11L);
+		bookingOne.setIdBooking(10l);
+		bookingOne.setIdCourt(11l);
 		bookingOne.setDateOfBooking(calendar.getTime());
 		bookingOne.setHourOfBooking(Hour24.EIGHT);
 
 		BookingDTO bookingTwo = new BookingDTO();
-		bookingTwo.setIdBooking(12L);
-		bookingTwo.setIdCourt(13L);
+		bookingTwo.setIdBooking(12l);
+		bookingTwo.setIdCourt(13l);
 		bookingTwo.setDateOfBooking(calendar.getTime());
 		bookingTwo.setHourOfBooking(Hour24.NINE);
 
