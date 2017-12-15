@@ -15,7 +15,7 @@
             <th>id</th>
             <th>name</th>
             <th>surname</th>
-            <th>email</th>
+            <th>mail</th>
             <th>phone</th>
             <th>dateOfBirth</th>
         </tr>
@@ -26,7 +26,7 @@
                 <td>${user.id}</td>
                 <td><c:out value="${user.name}"/></td>
                 <td><c:out value="${user.surname}"/></td>
-                <td><c:out value="${user.email}"/></td>
+                <td><c:out value="${user.mail}"/></td>
                 <td><c:out value="${user.phone}"/></td>
                 <td><fmt:formatDate value="${user.dateOfBirth}" pattern="yyyy-MM-dd"/></td>
             </tr>

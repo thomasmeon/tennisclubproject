@@ -16,7 +16,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>id</th>
+            <th>idBooking</th>
             <th>idCourt</th>
             <th>user1</th>
             <th>user2</th>
@@ -27,7 +27,7 @@
         <tbody>
         <c:forEach items="${bookings}" var="booking">
             <tr>
-                <td>${booking.id}</td>
+                <td>${booking.idBooking}</td>
                 
                 <td><c:out value="${booking.idCourt}"/></td>
                 <td><c:out value="${booking.user1}"/></td>
@@ -35,10 +35,10 @@
                 <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
                 <td><c:out value="${booking.hourOfBooking}"/></td>
                 <td>
-                    <my:a href="/booking/view/${booking.id}" class="btn btn-primary">View</my:a>
+                    <my:a href="/booking/view/${booking.idBooking}" class="btn btn-primary">View</my:a>
                 </td>
                 <td>
-                    <form method="post" action="${pageContext.request.contextPath}/booking/delete/${booking.id}">
+                    <form method="post" action="${pageContext.request.contextPath}/booking/delete/${booking.idBooking}">
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </form>
                 </td>
