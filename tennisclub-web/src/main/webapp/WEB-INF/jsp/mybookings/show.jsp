@@ -9,20 +9,12 @@
 <my:pagetemplate title="${title}">
 <jsp:attribute name="body">
 
-	<div class="buttons">
-		<form method="post" action="${pageContext.request.contextPath}/show/all/{user.id}">
-	        <button type="submit" class="btn btn-primary">All</button>
-	    </form>
-	    <form method="post" action="${pageContext.request.contextPath}/show/lastweek/{user.id}">
-	        <button type="submit" class="btn btn-primary">Last Week</button>
-	    </form>
-	    <form method="post" action="${pageContext.request.contextPath}/show/lastmonth/{user.id}">
-	        <button type="submit" class="btn btn-primary">Last Month</button>
-	    </form>
-	    <form method="post" action="${pageContext.request.contextPath}/show/lastyear/{user.id}">
-	        <button type="submit" class="btn btn-primary">Last Year</button>
-	    </form>
-	</div>
+	<div class="btn-group" role="group" aria-label="filter">
+        <my:a href="/mybookings/show/all/${authenticatedUser.id}" class="btn btn-default ${filter=='all'?'active':''}">All</my:a>
+        <my:a href="/mybookings/show/lastweek/${authenticatedUser.id}" class="btn btn-default ${filter=='lastweek'?'active':''}">Last Week</my:a>
+        <my:a href="/mybookings/show/lastmonth/${authenticatedUser.id}" class="btn btn-default ${filter=='lastmonth'?'active':''}">Last Month</my:a>
+        <my:a href="/mybookings/show/lastyear/${authenticatedUser.id}" class="btn btn-default ${filter=='lastyear'?'active':''}">Last Year</my:a>
+    </div>
 
     <div class="row">
         <table class="table">
@@ -42,8 +34,8 @@
 	                <td>${booking.id}</td>
 	                
 	                <td><c:out value="${booking.idCourt}"/></td>
-	                <td><c:out value="${booking.user1}"/></td>
-	                <td><c:out value="${booking.user2}"/></td>
+	                <td><c:out value="${booking.user1.id}"/></td>
+	                <td><c:out value="${booking.user2.id}"/></td>
 	                <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
 	                <td><c:out value="${booking.hourOfBooking}"/></td>
 	                <td>

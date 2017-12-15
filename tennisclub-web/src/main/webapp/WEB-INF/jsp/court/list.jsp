@@ -16,14 +16,14 @@
     <table class="table">
         <thead>
         <tr>
-            <th>id</th>
+            <th>idCourt</th>
             <th>type</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${courts}" var="court">
             <tr>
-                <td>${court.id}</td>
+                <td>${court.idCourt}</td>
                 <td><c:out value="${court.type}"/></td>
             </tr>
         </c:forEach>
