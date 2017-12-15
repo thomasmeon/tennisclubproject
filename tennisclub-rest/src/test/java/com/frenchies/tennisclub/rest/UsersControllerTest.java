@@ -29,6 +29,8 @@ import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.UserFacade;
 import com.frenchies.tennisclub.rest.controllers.UsersController;
 
+//@Author Dore Corentin UCO 473308
+
 @WebAppConfiguration
 @ContextConfiguration(classes = {RootWebContext.class})
 public class UsersControllerTest extends AbstractTestNGSpringContextTests {
