@@ -20,7 +20,7 @@
         <table class="table">
 	        <thead>
 	        <tr>
-	            <th>id</th>
+	            <th>idBooking</th>
 	            <th>idCourt</th>
 	            <th>user1</th>
 	            <th>user2</th>
@@ -29,20 +29,19 @@
 	        </tr>
 	        </thead>
 	        <tbody>
-	        <c:forEach items="${bookings}" var="booking">
+	        <c:forEach items="${booking}" var="b">
 	            <tr>
-	                <td>${booking.id}</td>
-	                
-	                <td><c:out value="${booking.idCourt}"/></td>
-	                <td><c:out value="${booking.user1.id}"/></td>
-	                <td><c:out value="${booking.user2.id}"/></td>
-	                <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
-	                <td><c:out value="${booking.hourOfBooking}"/></td>
+	                <td>${b.idBooking}</td>
+	                <td><c:out value="${b.idCourt}"/></td>
+	                <td><c:out value="${b.user1.name} ${b.user1.surname}"/></td>
+	                <td><c:out value="${b.user2.name} ${b.user1.surname}"/></td>
+	                <td><fmt:formatDate value="${b.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
+	                <td><c:out value="${b.hourOfBooking}"/></td>
 	                <td>
-	                    <my:a href="/booking/view/${booking.id}" class="btn btn-primary">View</my:a>
+	                    <my:a href="/booking/view/${b.idBooking}" class="btn btn-primary">View</my:a>
 	                </td>
 	                <td>
-	                    <form method="post" action="${pageContext.request.contextPath}/booking/delete/${booking.id}">
+	                    <form method="post" action="${pageContext.request.contextPath}/booking/delete/${b.idBooking}">
 	                        <button type="submit" class="btn btn-primary">Delete</button>
 	                    </form>
 	                </td>
