@@ -16,7 +16,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th>id</th>
+            <th>idBooking</th>
             <th>idCourt</th>
             <th>user1</th>
             <th>user2</th>
@@ -26,10 +26,10 @@
         </thead>
         <tbody>
             <tr>
-               	<td>${booking.id}</td>
+               	<td>${booking.idBooking}</td>
                 <td><c:out value="${booking.idCourt}"/></td>
-                <td><c:out value="${booking.user1}"/></td>
-                <td><c:out value="${booking.user2}"/></td>
+                <td><c:out value="${booking.user1.name} ${booking.user1.surname}"/></td>
+                <td><c:out value="${booking.user2.name} ${booking.user2.surname}"/></td>
                 <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
                 <td><c:out value="${booking.hourOfBooking}"/></td>            
             </tr>
