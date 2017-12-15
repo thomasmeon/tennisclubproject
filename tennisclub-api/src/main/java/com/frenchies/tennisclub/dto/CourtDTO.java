@@ -12,9 +12,9 @@ public class CourtDTO {
 
 	private CourtType type;
 
-	private int longitude;
+	private float longitude;
 
-	private int latitude;
+	private float latitude;
 	
 	// Setter and getter
 
@@ -42,19 +42,19 @@ public class CourtDTO {
 		this.type = type;
 	}
 
-	public int getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(int longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 
-	public int getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(int latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 
@@ -62,8 +62,9 @@ public class CourtDTO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + latitude;
-		result = prime * result + longitude;
+		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
+		result = prime * result + Float.floatToIntBits(latitude);
+		result = prime * result + Float.floatToIntBits(longitude);
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
@@ -78,9 +79,14 @@ public class CourtDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		CourtDTO other = (CourtDTO) obj;
-		if (latitude != other.latitude)
+		if (idCourt == null) {
+			if (other.idCourt != null)
+				return false;
+		} else if (!idCourt.equals(other.idCourt))
 			return false;
-		if (longitude != other.longitude)
+		if (Float.floatToIntBits(latitude) != Float.floatToIntBits(other.latitude))
+			return false;
+		if (Float.floatToIntBits(longitude) != Float.floatToIntBits(other.longitude))
 			return false;
 		if (status != other.status)
 			return false;
@@ -88,4 +94,5 @@ public class CourtDTO {
 			return false;
 		return true;
 	}
+
 }
