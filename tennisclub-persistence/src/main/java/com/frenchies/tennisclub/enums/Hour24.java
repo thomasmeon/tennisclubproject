@@ -2,31 +2,33 @@ package com.frenchies.tennisclub.enums;
 
 //@Author Meon Thomas 473449
 public enum Hour24{
-    SIX(6),
-    SEVEN(7),
-    EIGHT(8),
-    NINE(9),
-    TEN(10),
-    ELEVEN(11),
-    TWELVE(12),
-    THIRTEEN(13),
-    FOURTEEN(14),
-    FIFTEEN(15),
-    SIXTEEN(16),
-    SEVENTEEN(17),
-    EIGHTEEN(18),
-    NINETEEN(19),
-    TWENTY(20),
-    TWENTY_ONE(21),
-    TWENTY_TWO(22);
+    SIX,
+    SEVEN,
+    EIGHT,
+    NINE,
+    TEN,
+    ELEVEN,
+    TWELVE,
+    THIRTEEN,
+    FOURTEEN,
+    FIFTEEN,
+    SIXTEEN,
+    SEVENTEEN,
+    EIGHTEEN,
+    NINETEEN,
+    TWENTY,
+    TWENTY_ONE,
+    TWENTY_TWO;
     
-    private final int value;
 
-    Hour24(final int newValue) {
-        value = newValue;
+	
+public static boolean contains(final String valueString) {
+    for (Hour24 os : Hour24.values()) {
+        if (os.name().equals(valueString)) {
+            return true;
+        }
     }
-
-    public int getValue() { return value; }
-}
+    return false;
+}}
 
 // And then you call Hour24.SIX.getValue() to get 6.
