@@ -68,7 +68,7 @@ public class CourtFacadeTest {
 	void init() {
 
 		courtCreateDTO = new CourtCreateDTO();
-		courtCreateDTO.setCourtType(CourtType.GRASS);
+		courtCreateDTO.setType(CourtType.GRASS);
 		courtCreateDTO.setLatitude(45);
 		courtCreateDTO.setLongitude(46);
 		courtCreateDTO.setStatus(Status.AVAILABLE);
