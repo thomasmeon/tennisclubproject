@@ -26,6 +26,11 @@
                 <td><c:out value="${court.type}"/></td>
                 <td><c:out value= "${court.longitude}"/></td>
                 <td><c:out value= "${court.latitude}"/></td>
+                <td>
+                    <form method="post" action="${pageContext.request.contextPath}/court/delete/${court.idCourt}">
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
        </tbody>
