@@ -1,5 +1,6 @@
 package com.frenchies.tennisclub.mvc.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -24,10 +25,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.frenchies.tennisclub.dto.BookingCreateDTO;
 import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.CourtDTO;
+import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.enums.Hour24;
 import com.frenchies.tennisclub.facade.BookingFacade;
 import com.frenchies.tennisclub.facade.CourtFacade;
+import com.frenchies.tennisclub.facade.UserFacade;
 import com.frenchies.tennisclub.mvc.forms.BookingCreateDTOValidator;
+
+import cz.fi.muni.pa165.dto.Color;
 
 /**
  * Web MVC Controller for administering bookings.
@@ -45,6 +50,7 @@ public class BookingController {
 
 	@Autowired
 	private CourtFacade courtFacade;
+	private UserFacade userFacade;
 
 	/**
 	 * Shows a list of bookings with the ability to add, delete or edit.
@@ -96,12 +102,14 @@ public class BookingController {
 		log.debug("hour24()");
 		return Hour24.values();
 	}
+	
 
 	@ModelAttribute("courts")
 	public List<CourtDTO> courts() {
 		log.debug("courts()");
 		return courtFacade.getAllCourts();
 	}
+	
 
 	/**
 	 * Spring Validator added to JSR-303 Validator for this @Controller only. It is

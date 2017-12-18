@@ -13,7 +13,7 @@
     <form:form method="post" action="${pageContext.request.contextPath}/booking/create"
                modelAttribute="bookingCreate" cssClass="form-horizontal">
         <div class="form-group">
-            <form:label path="idCourt" cssClass="col-sm-2 control-label">Court</form:label>
+            <form:label path="idCourt" cssClass="col-sm-2 control-label">Which Court do you want to book ? </form:label>
             <div class="col-sm-10">
                 <form:select path="idCourt" cssClass="form-control">
                     <c:forEach items="${courts}" var="c">
@@ -24,50 +24,28 @@
             </div>
         </div>
         <div class="form-group">
-            <form:label path="idUser" cssClass="col-sm-2 control-label">User 1</form:label>
+            <form:label path="hourOfBooking" cssClass="col-sm-2 control-label"> Hour of your booking ? (Each reservation is for one hour) </form:label>
             <div class="col-sm-10">
-                <form:select path="idUser" cssClass="form-control">
-                    <c:forEach items="${users}" var="u">
-                        <form:option value="${u.id}">${u.mail}</form:option>
+                <form:select path="hourOfBooking" cssClass="form-control">
+                    <c:forEach items="${hour24}" var="h">
+                        <form:option value="${h}">${h}</form:option>
                     </c:forEach>
                 </form:select>
-                <p class="help-block"><form:errors path="id" cssClass="error"/></p>
+                <form:errors path="hourOfBooking" cssClass="error"/>
             </div>
-        </div>
-        <div class="form-group">
-            <form:label path="idUser" cssClass="col-sm-2 control-label">User 2</form:label>
-            <div class="col-sm-10">
-                <form:select path="id" cssClass="form-control">
-                    <c:forEach items="${users}" var="u">
-                        <form:option value="${u.id}">${u.mail}</form:option>
-                    </c:forEach>
-                </form:select>
-                <p class="help-block"><form:errors path="id" cssClass="error"/></p>
-            </div>
-        </div>
-        <div class="form-group">
-            <form:label path="name" cssClass="col-sm-2 control-label">Date</form:label>
-            <div class="col-sm-10">
-                <form:input type="date" path="dateTemp" cssClass="form-control"/>
-                <%
-					String dateStr = request.getParameter("dateTemp");
-					SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-					Date dateOfBooking = formater.parse(dateStr);         
-                %>
-            </div>
-        </div>
-        
-   <!--    <div class="form-group">
-            <form:label path="hourOfBookingId" cssClass="col-sm-2 control-label">Hour of Booking</form:label>
-            <div class="col-sm-10">
-                <form:select path="hourOfBookingId" cssClass="form-control">
-                    <c:forEach items="${hourOfBookings}" var="h">
-                        <form:option value="${c.id}">${h}</form:option>
-                    </c:forEach>
-                </form:select>
-                <p class="help-block"><form:errors path="hourOfBookingId" cssClass="error"/></p>
-            </div>
-        </div> -->
+       </div>
+            
+	    <div class="form-group">
+	        <form:label path="dateOfBooking" cssClass="col-sm-2 control-label">Day of your booking ?</form:label>
+	        <div class="col-sm-10">
+	            <form:select path="dateOfBooking" cssClass="form-control">
+	                <c:forEach items="${dates}" var="c">
+	                    <form:option value="${c}">${c}</form:option>
+	                </c:forEach>
+	            </form:select>
+	            <form:errors path="dateOfBooking" cssClass="error"/>
+	        </div>
+	    </div>
 
         <button class="btn btn-primary" type="submit">Create booking</button>
     </form:form>
