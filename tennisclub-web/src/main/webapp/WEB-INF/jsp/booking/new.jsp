@@ -7,42 +7,42 @@
 <%@ page import="java.util.Date,java.text.SimpleDateFormat,java.text.ParseException"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 
-<my:pagetemplate title="New product">
+<my:pagetemplate title="New booking">
 <jsp:attribute name="body">
 
-    <form:form method="post" action="${pageContext.request.contextPath}/product/create"
-               modelAttribute="productCreate" cssClass="form-horizontal">
+    <form:form method="post" action="${pageContext.request.contextPath}/booking/create"
+               modelAttribute="bookingCreate" cssClass="form-horizontal">
         <div class="form-group">
-            <form:label path="courtId" cssClass="col-sm-2 control-label">Court</form:label>
+            <form:label path="idCourt" cssClass="col-sm-2 control-label">Court</form:label>
             <div class="col-sm-10">
-                <form:select path="courtId" cssClass="form-control">
+                <form:select path="idCourt" cssClass="form-control">
                     <c:forEach items="${courts}" var="c">
-                        <form:option value="${c.id}">${c.id} ${c.type}</form:option>
+                        <form:option value="${c.idCourt}">${c.idCourt} ${c.type}</form:option>
                     </c:forEach>
                 </form:select>
-                <p class="help-block"><form:errors path="courtId" cssClass="error"/></p>
+                <p class="help-block"><form:errors path="idCourt" cssClass="error"/></p>
             </div>
         </div>
         <div class="form-group">
-            <form:label path="userId" cssClass="col-sm-2 control-label">User 1</form:label>
+            <form:label path="idUser" cssClass="col-sm-2 control-label">User 1</form:label>
             <div class="col-sm-10">
-                <form:select path="userId" cssClass="form-control">
+                <form:select path="idUser" cssClass="form-control">
                     <c:forEach items="${users}" var="u">
                         <form:option value="${u.id}">${u.mail}</form:option>
                     </c:forEach>
                 </form:select>
-                <p class="help-block"><form:errors path="userId" cssClass="error"/></p>
+                <p class="help-block"><form:errors path="id" cssClass="error"/></p>
             </div>
         </div>
         <div class="form-group">
-            <form:label path="userId" cssClass="col-sm-2 control-label">User 2</form:label>
+            <form:label path="idUser" cssClass="col-sm-2 control-label">User 2</form:label>
             <div class="col-sm-10">
-                <form:select path="userId" cssClass="form-control">
+                <form:select path="id" cssClass="form-control">
                     <c:forEach items="${users}" var="u">
                         <form:option value="${u.id}">${u.mail}</form:option>
                     </c:forEach>
                 </form:select>
-                <p class="help-block"><form:errors path="userId" cssClass="error"/></p>
+                <p class="help-block"><form:errors path="id" cssClass="error"/></p>
             </div>
         </div>
         <div class="form-group">
@@ -57,7 +57,7 @@
             </div>
         </div>
         
-        <div class="form-group">
+   <!--    <div class="form-group">
             <form:label path="hourOfBookingId" cssClass="col-sm-2 control-label">Hour of Booking</form:label>
             <div class="col-sm-10">
                 <form:select path="hourOfBookingId" cssClass="form-control">
@@ -67,9 +67,9 @@
                 </form:select>
                 <p class="help-block"><form:errors path="hourOfBookingId" cssClass="error"/></p>
             </div>
-        </div>
+        </div> -->
 
-        <button class="btn btn-primary" type="submit">Create product</button>
+        <button class="btn btn-primary" type="submit">Create booking</button>
     </form:form>
 
 </jsp:attribute>
