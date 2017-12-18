@@ -13,6 +13,15 @@ import com.frenchies.tennisclub.dto.UserDTO;
  */
 
 public interface UserFacade {
+	
+	/**
+	 * Method for getting all users
+	 * 
+	 * @param void
+	 * @return List<UserDTO>
+	 */
+
+	List<UserDTO> getAllUsers();
 
 	/**
 	 * Creates a user.
@@ -91,12 +100,5 @@ public interface UserFacade {
 
 	public boolean isAdmin(Long id);
 
-	/**
-	 * Method for getting all users
-	 * 
-	 * @param void
-	 * @return List<UserDTO>
-	 */
-
-	public List<UserDTO> getAllUsers();
+	
 }

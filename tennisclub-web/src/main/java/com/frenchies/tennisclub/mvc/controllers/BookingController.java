@@ -48,6 +48,8 @@ public class BookingController {
 
 	@Autowired
 	private CourtFacade courtFacade;
+	
+	@Autowired
 	private UserFacade userFacade;
 
 	/**
@@ -95,6 +97,13 @@ public class BookingController {
 		return "booking/new";
 	}
 
+	
+	@ModelAttribute("users")
+	public List<UserDTO> users() {
+		log.debug("users()");
+		return userFacade.getAllUsers();
+	}
+	
 	@ModelAttribute("hour24")
 	public Hour24[] hour24() {
 		log.debug("hour24()");
@@ -107,11 +116,7 @@ public class BookingController {
 		return courtFacade.getAllCourts();
 	}
 
-	@ModelAttribute("users")
-	public List<UserDTO> users() {
-		log.debug("users()");
-		return userFacade.getAllUsers();
-	}
+	
 
 	/**
 	 * Spring Validator added to JSR-303 Validator for this @Controller only. It is
