@@ -33,6 +33,11 @@ public class MyBookingsController {
         this.bookingFacade = bookingFacade;
     }
     
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public void home() {
+    	
+    }
+    
     /**
      * Shows a list of bookings, filtered by specified filter
      *
