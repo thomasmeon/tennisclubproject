@@ -12,31 +12,49 @@
                modelAttribute="courtCreate" cssClass="form-horizontal">
         <div class="form-group">
         
-            <form:label path="longitude" cssClass="col-sm-2 control-label">Longitude</form:label>
+        
+        
+        	<form:label path="longitude" cssClass="col-sm-2 control-label">Longitude</form:label>
             <div class="col-sm-10">
-                        
-			<input path="longitude" type="number" placeholder="0.0" step="0.1" min="0" max="360">             
+            
+          
+			<form:input path="longitude" type="number" placeholder="0.0" step="0.1" min="0" max="360" cssClass="form-control"/>             
+            <form:errors path="longitude" cssClass="help-block"/>
             </div>
             
             
-            <form:label path="longitude" cssClass="col-sm-2 control-label">Latitude</form:label>
+            <form:label path="latitude" cssClass="col-sm-2 control-label">Latitude</form:label>
             <div class="col-sm-10">
                         
-			<input path="latitude" type="number" placeholder="0.0" step="0.1" min="0" max="90">             
+			<form:input path="latitude" type="number" placeholder="0.0" step="0.1" min="0" max="90" cssClass="form-control"/>             
+            <form:errors path="latitude" cssClass="help-block"/>
             </div>
            
         
-            <form:label path="courtType" cssClass="col-sm-2 control-label">Type of the court</form:label>
-            <div class="col-sm-10">
             
-            
-                <form:select path="courtType" cssClass="form-control">
-                    <c:forEach items="${type}" var="c">
-                        <form:option value="${c.id}">${c.type}</form:option>
-                    </c:forEach>
-                </form:select>
-                <p class="help-block"><form:errors path="courtType" cssClass="error"/></p>
-            </div>
+            <div class="form-group">
+	            <form:label path="type" cssClass="col-sm-2 control-label"> Type of the court </form:label>
+	            <div class="col-sm-10">
+	                <form:select path="type" cssClass="form-control">
+	                    <c:forEach items="${courtType}" var="t">
+	                        <form:option value="${t}">${t}</form:option>
+	                    </c:forEach>
+	                </form:select>
+	                <form:errors path="type" cssClass="error"/>
+	            </div>
+       		</div>
+       		
+       		<div class="form-group">
+	            <form:label path="status" cssClass="col-sm-2 control-label"> Status of the court </form:label>
+	            <div class="col-sm-10">
+	                <form:select path="status" cssClass="form-control">
+	                    <c:forEach items="${status}" var="s">
+	                        <form:option value="${s}">${s}</form:option>
+	                    </c:forEach>
+	                </form:select>
+	                <form:errors path="status" cssClass="error"/>
+	            </div>
+       		</div>
         </div>
         <button class="btn btn-primary" type="submit">Create Court</button>
     </form:form>

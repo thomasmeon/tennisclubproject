@@ -85,11 +85,11 @@ public class Court {
 		this.status = status;
 	}
 
-	public CourtType getCourtType() {
+	public CourtType getType() {
 		return type;
 	}
 
-	public void setCourtType(CourtType type) {
+	public void setType(CourtType type) {
 		this.type = type;
 	}
 

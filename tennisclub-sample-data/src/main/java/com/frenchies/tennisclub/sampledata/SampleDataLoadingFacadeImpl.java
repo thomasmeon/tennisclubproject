@@ -129,7 +129,7 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 
 	private Court court(CourtType type, Status status, float longitude, float latitude) {
 		Court c = new Court();
-		c.setCourtType(type);
+		c.setType(type);
 		c.setStatus(status);
 		c.setLongitude(longitude);
 		c.setLatitude(latitude);

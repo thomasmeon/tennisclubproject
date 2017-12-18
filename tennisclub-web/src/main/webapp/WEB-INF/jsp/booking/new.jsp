@@ -47,11 +47,11 @@
             <form:label path="user1" cssClass="col-sm-2 control-label">Name of Player 1?</form:label>
             <div class="col-sm-10">
                 <form:select path="user1" cssClass="form-control">
-                    <%-- <c:forEach items="${users}" var="u">
+                     <c:forEach items="${users}" var="u">
                         <form:option value="${u}">${u}</form:option>
-                    </c:forEach> --%>
+                    </c:forEach> 
                 </form:select>
-                <%-- <form:errors path="users" cssClass="error"/> --%>
+                 <form:errors path="users" cssClass="error"/> 
             </div>
         </div>
         
@@ -59,11 +59,11 @@
             <form:label path="user2" cssClass="col-sm-2 control-label">Name of Player 2?</form:label>
             <div class="col-sm-10">
                 <form:select path="user2" cssClass="form-control">
-                    <%-- <c:forEach items="${users}" var="u">
+                     <c:forEach items="${users}" var="u">
                         <form:option value="${u}">${u}</form:option>
-                    </c:forEach> --%>
+                    </c:forEach>
                 </form:select>
-                <%-- <form:errors path="users" cssClass="error"/> --%>
+                 <form:errors path="users" cssClass="error"/> 
             </div>
         </div>            
 

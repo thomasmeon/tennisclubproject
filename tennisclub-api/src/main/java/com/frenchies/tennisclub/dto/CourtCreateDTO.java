@@ -20,7 +20,7 @@ public class CourtCreateDTO {
 	private Status status;
 
 	@NotNull
-	private CourtType courtType;
+	private CourtType type;
 
 	private float longitude;
 
@@ -36,12 +36,12 @@ public class CourtCreateDTO {
 		this.status = status;
 	}
 
-	public CourtType getCourtType() {
-		return courtType;
+	public CourtType getType() {
+		return type;
 	}
 
-	public void setCourtType(CourtType courtType) {
-		this.courtType = courtType;
+	public void setType(CourtType type) {
+		this.type = type;
 	}
 
 	public float getLongitude() {
@@ -67,7 +67,7 @@ public class CourtCreateDTO {
 		result = prime * result + Float.floatToIntBits(latitude);
 		result = prime * result + Float.floatToIntBits(longitude);
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((courtType == null) ? 0 : courtType.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
@@ -86,14 +86,14 @@ public class CourtCreateDTO {
 			return false;
 		if (status != other.status)
 			return false;
-		if (courtType != other.courtType)
+		if (type != other.type)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CourtCreateDTO [status=" + status + ", courtType=" + courtType + ", longitude=" + longitude
+		return "CourtCreateDTO [status=" + status + ", courtType=" + type + ", longitude=" + longitude
 				+ ", latitude=" + latitude + "]";
 	}
 
