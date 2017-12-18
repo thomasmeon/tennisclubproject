@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> dde9e2c762de6bb5fe9a75c8e22bc339a31fe612
 package com.frenchies.tennisclub.rest;
 
 import static org.mockito.Mockito.doReturn;
