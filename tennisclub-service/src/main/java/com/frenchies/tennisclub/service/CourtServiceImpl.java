@@ -45,7 +45,7 @@ public class CourtServiceImpl implements CourtService {
 	public void changeCourtType(Court c, CourtType newCourtType) {
 
 		Court court = courtDao.findById(c.getIdCourt());
-		court.setCourtType(newCourtType);
+		court.setType(newCourtType);
 		courtDao.update(court);
 	}
 

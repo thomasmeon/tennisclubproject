@@ -17,6 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.frenchies.tennisclub.dto.CourtCreateDTO;
+import com.frenchies.tennisclub.enums.CourtType;
+import com.frenchies.tennisclub.enums.Status;
 import com.frenchies.tennisclub.facade.CourtFacade;
 
 /**
@@ -59,6 +61,18 @@ public class CourtController {
 		model.addAttribute("courtCreate", new CourtCreateDTO());
 		return "court/new";
 	}
+	
+	@ModelAttribute("courtType")
+	public CourtType[] courtType() {
+		log.debug("courtType()");
+		return CourtType.values();
+	}
+	
+	@ModelAttribute("status")
+	public Status[] status() {
+		log.debug("status()");
+		return Status.values();
+	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String create(@Valid @ModelAttribute("courtCreate") CourtCreateDTO formBean, BindingResult bindingResult,
@@ -81,4 +95,6 @@ public class CourtController {
 		redirectAttributes.addFlashAttribute("alert_success", "Court " + id + " was created");
 		return "redirect:" + uriBuilder.path("/court/list").toUriString();
 	}
+	
+	
 }

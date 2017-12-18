@@ -26,17 +26,30 @@
             </div>
            
         
-            <form:label path="courtType" cssClass="col-sm-2 control-label">Type of the court</form:label>
-            <div class="col-sm-10">
             
-            
-                <form:select path="courtType" cssClass="form-control">
-                    <c:forEach items="${type}" var="c">
-                        <form:option value="${c.id}">${c.type}</form:option>
-                    </c:forEach>
-                </form:select>
-                <p class="help-block"><form:errors path="courtType" cssClass="error"/></p>
-            </div>
+            <div class="form-group">
+	            <form:label path="type" cssClass="col-sm-2 control-label"> Type of the court </form:label>
+	            <div class="col-sm-10">
+	                <form:select path="type" cssClass="form-control">
+	                    <c:forEach items="${courtType}" var="t">
+	                        <form:option value="${t}">${t}</form:option>
+	                    </c:forEach>
+	                </form:select>
+	                <form:errors path="type" cssClass="error"/>
+	            </div>
+       		</div>
+       		
+       		<div class="form-group">
+	            <form:label path="status" cssClass="col-sm-2 control-label"> Status of the court </form:label>
+	            <div class="col-sm-10">
+	                <form:select path="status" cssClass="form-control">
+	                    <c:forEach items="${status}" var="s">
+	                        <form:option value="${s}">${s}</form:option>
+	                    </c:forEach>
+	                </form:select>
+	                <form:errors path="status" cssClass="error"/>
+	            </div>
+       		</div>
         </div>
         <button class="btn btn-primary" type="submit">Create Court</button>
     </form:form>

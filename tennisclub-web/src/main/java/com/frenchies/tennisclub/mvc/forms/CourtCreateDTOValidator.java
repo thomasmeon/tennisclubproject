@@ -22,7 +22,7 @@ public class CourtCreateDTOValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         CourtCreateDTO courtCreateDTO = (CourtCreateDTO) target;
-        if (courtCreateDTO.getCourtType() == null) return;
+        if (courtCreateDTO.getType() == null) return;
         if (courtCreateDTO.getStatus() == null) return;
     }
 }
