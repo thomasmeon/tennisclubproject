@@ -32,8 +32,6 @@ import com.frenchies.tennisclub.facade.CourtFacade;
 import com.frenchies.tennisclub.facade.UserFacade;
 import com.frenchies.tennisclub.mvc.forms.BookingCreateDTOValidator;
 
-import cz.fi.muni.pa165.dto.Color;
-
 /**
  * Web MVC Controller for administering bookings.
  *
@@ -102,14 +100,18 @@ public class BookingController {
 		log.debug("hour24()");
 		return Hour24.values();
 	}
-	
 
 	@ModelAttribute("courts")
 	public List<CourtDTO> courts() {
 		log.debug("courts()");
 		return courtFacade.getAllCourts();
 	}
-	
+
+//	@ModelAttribute("users")
+//	public List<UserDTO> users() {
+//		log.debug("users()");
+//		return userFacade.getAllUsers();
+//	}
 
 	/**
 	 * Spring Validator added to JSR-303 Validator for this @Controller only. It is
