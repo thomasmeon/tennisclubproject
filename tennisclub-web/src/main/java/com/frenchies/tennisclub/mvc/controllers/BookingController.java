@@ -1,6 +1,5 @@
 package com.frenchies.tennisclub.mvc.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -48,7 +47,7 @@ public class BookingController {
 
 	@Autowired
 	private CourtFacade courtFacade;
-	
+
 	@Autowired
 	private UserFacade userFacade;
 
