@@ -11,12 +11,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.CourtCreateDTO;
+import com.frenchies.tennisclub.dto.CourtDTO;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 import com.frenchies.tennisclub.facade.CourtFacade;
@@ -72,6 +75,17 @@ public class CourtController {
 	public Status[] status() {
 		log.debug("status()");
 		return Status.values();
+	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public String delete(@PathVariable long id, Model model, UriComponentsBuilder uriBuilder,
+			RedirectAttributes redirectAttributes) {
+		CourtDTO court = courtFacade.getCourtById(id);
+		courtFacade.deleteCourt(id);
+		log.debug("delete({})", id);
+		redirectAttributes.addFlashAttribute("alert_success",
+				"Court \"" + court.getIdCourt() + "\" was deleted.");
+		return "redirect:" + uriBuilder.path("/court/list").toUriString();
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)

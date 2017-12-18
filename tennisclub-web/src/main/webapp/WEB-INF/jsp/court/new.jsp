@@ -12,17 +12,22 @@
                modelAttribute="courtCreate" cssClass="form-horizontal">
         <div class="form-group">
         
-            <form:label path="longitude" cssClass="col-sm-2 control-label">Longitude</form:label>
+        
+        
+        	<form:label path="longitude" cssClass="col-sm-2 control-label">Longitude</form:label>
             <div class="col-sm-10">
-                        
-			<input path="longitude" type="number" placeholder="0.0" step="0.1" min="0" max="360">             
+            
+          
+			<form:input path="longitude" type="number" placeholder="0.0" step="0.1" min="0" max="360" cssClass="form-control"/>             
+            <form:errors path="longitude" cssClass="help-block"/>
             </div>
             
             
-            <form:label path="longitude" cssClass="col-sm-2 control-label">Latitude</form:label>
+            <form:label path="latitude" cssClass="col-sm-2 control-label">Latitude</form:label>
             <div class="col-sm-10">
                         
-			<input path="latitude" type="number" placeholder="0.0" step="0.1" min="0" max="90">             
+			<form:input path="latitude" type="number" placeholder="0.0" step="0.1" min="0" max="90" cssClass="form-control"/>             
+            <form:errors path="latitude" cssClass="help-block"/>
             </div>
            
         
