@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" trimDirectiveWhitespaces="false" session="false" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -47,19 +48,11 @@
             <form:label path="user1" cssClass="col-sm-2 control-label">Name of Player 1?</form:label>
             <div class="col-sm-10">
                 <form:select path="user1" cssClass="form-control">
-
-                     <c:forEach items="${users}" var="u">
-                        <form:option value="${u}">${u}</form:option>
-                    </c:forEach> 
-                </form:select>
-                 <form:errors path="users" cssClass="error"/> 
-
                     <c:forEach items="${users}" var="u">
-                        <form:option value="${u}">${u}</form:option>
+                        <form:option value="${u.surname} ${u.name}">${u.surname} ${u.name}</form:option>
                     </c:forEach>
                 </form:select>
                 <%-- <form:errors path="user1" cssClass="error"/> --%>
-
             </div>
         </div>
         
@@ -67,19 +60,11 @@
             <form:label path="user2" cssClass="col-sm-2 control-label">Name of Player 2?</form:label>
             <div class="col-sm-10">
                 <form:select path="user2" cssClass="form-control">
-
-                     <c:forEach items="${users}" var="u">
-                        <form:option value="${u}">${u}</form:option>
-                    </c:forEach>
-                </form:select>
-                 <form:errors path="users" cssClass="error"/> 
-
                     <c:forEach items="${users}" var="u">
-                        <form:option value="${u}">${u}</form:option>
+                        <form:option value="${u.surname} ${u.name}">${u.surname} ${u.name}</form:option>
                     </c:forEach>
                 </form:select>
                 <%-- <form:errors path="user2" cssClass="error"/> --%>
-
             </div>
         </div>       
 
