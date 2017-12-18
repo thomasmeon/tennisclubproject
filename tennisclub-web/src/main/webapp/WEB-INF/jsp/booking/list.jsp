@@ -14,24 +14,24 @@
     </my:a>
 
     <table class="table">
-        <thead>
+        <thread>
         <tr>
-            <th>idBooking</th>
-            <th>idCourt</th>
-            <th>user1</th>
-            <th>user2</th>
-            <th>dateOfBooking</th>
-            <th>hourOfBooking</th>
+            <th>Number of Booking</th>
+            <th>Number of Court</th>
+            <th>Player 1</th>
+            <th>Player 2</th>
+            <th>Booking Date</th>
+            <th>Booking Hour</th>
         </tr>
-        </thead>
+        </thread>
         <tbody>
         <c:forEach items="${bookings}" var="booking">
             <tr>
                 <td>${booking.idBooking}</td>
                 
                 <td><c:out value="${booking.idCourt}"/></td>
-                <td><c:out value="${booking.user1}"/></td>
-                <td><c:out value="${booking.user2}"/></td>
+                <td><c:out value="${booking.user1.name} ${booking.user1.surname}"/></td>
+                <td><c:out value="${booking.user2.name} ${booking.user1.surname}"/></td>
                 <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
                 <td><c:out value="${booking.hourOfBooking}"/></td>
                 <td>

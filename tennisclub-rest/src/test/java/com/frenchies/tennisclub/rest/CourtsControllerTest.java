@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.frenchies.tennisclub.rest;
 
 import static org.mockito.Mockito.doReturn;
@@ -132,7 +131,6 @@ public class CourtsControllerTest extends AbstractTestNGSpringContextTests {
 		return Arrays.asList(courtOne, courtTwo);
 	}
 }
-=======
 //package com.frenchies.tennisclub.rest;
 //
 //import static org.mockito.Mockito.doReturn;
@@ -243,4 +241,4 @@ public class CourtsControllerTest extends AbstractTestNGSpringContextTests {
 //		return Arrays.asList(courtOne, courtTwo);
 //	}
 //}
->>>>>>> bfc88d0dd6d5c6422ab96cddcf452339e970acae
+
