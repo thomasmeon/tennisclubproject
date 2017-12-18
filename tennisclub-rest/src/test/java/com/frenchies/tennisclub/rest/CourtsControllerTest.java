@@ -27,6 +27,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.frenchies.tennisclub.RootWebContext;
+import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.dto.CourtDTO;
 import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
@@ -74,6 +75,7 @@ public class CourtsControllerTest extends AbstractTestNGSpringContextTests {
 //				.andExpect(status().isOk());
 //
 //	}
+	
 //	
 //    @Test
 //	public void deleteCourtNonExisting() throws Exception {
