@@ -5,27 +5,34 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<my:pagetemplate title="Courts">
+<my:pagetemplate title="List of courts p">
 <jsp:attribute name="body">
 
     <my:a href="/court/new" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        New Court
+        Create a new Court
     </my:a>
 
+<caption>Courts</caption>
     <table class="table">
         <thead>
         <tr>
             <th>idCourt</th>
             <th>type</th>
+            <th>latitude</th>
+            <th>longitude</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${courts}" var="court">
             <tr>
                 <td>${court.idCourt}</td>
-                <td><c:out value="${court.type}"/></td>
-            </tr>
+                
+                <td><c:out value= "${court.type}"/> </td>
+                <td><c:out value= "${court.longitude}"/></td>
+                <td><c:out value= "${court.latitude}"/></td>
+                
+           </tr>
         </c:forEach>
         </tbody>
     </table>
