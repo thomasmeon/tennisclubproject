@@ -1,12 +1,12 @@
 package com.frenchies.tennisclub.rest.controllers;
 
-import com.frenchies.tennisclub.rest.ApiUris;
-import com.frenchies.tennisclub.rest.exceptions.ResourceNotFoundException;
-
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,13 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.frenchies.tennisclub.dto.CourtDTO;
 import com.frenchies.tennisclub.facade.CourtFacade;
+import com.frenchies.tennisclub.rest.ApiUris;
+import com.frenchies.tennisclub.rest.exceptions.ResourceNotFoundException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
 
 /**
- * REST Controller for Categories
+ * REST Controller for Courts
  * 
  * @author Meon Thomas 473449
  */
@@ -58,10 +57,10 @@ public class CourtsController {
         logger.debug("rest getCourt({})", id);
 
         CourtDTO courtDTO = courtFacade.getCourtById(id);
-        if (courtDTO == null) {
+        if (courtDTO != null) {
+        	return courtDTO;
+        } else {
             throw new ResourceNotFoundException();
         }
-
-        return courtDTO;
     }
 }

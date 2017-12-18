@@ -88,10 +88,10 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		cal.set(2017, 11, 3);
 		Date date21 = cal.getTime();
 
-		Court court1 = court(CourtType.GRASS, Status.AVAILABLE);
-		Court court2 = court(CourtType.CLAY, Status.AVAILABLE);
-		Court court3 = court(CourtType.HARD, Status.AVAILABLE);
-		Court court4 = court(CourtType.GRASS, Status.AVAILABLE);
+		Court court1 = court(CourtType.GRASS, Status.AVAILABLE,5,4);
+		Court court2 = court(CourtType.CLAY, Status.AVAILABLE,4,8);
+		Court court3 = court(CourtType.HARD, Status.AVAILABLE,7,8);
+		Court court4 = court(CourtType.GRASS, Status.AVAILABLE,9,9);
 		log.info("Loaded court.");
 
 		User Jean = user("heslo", "Jean", "A", "jean@A.cz", "603123456", date12);
@@ -127,10 +127,12 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		return b;
 	}
 
-	private Court court(CourtType type, Status status) {
+	private Court court(CourtType type, Status status, float longitude, float latitude) {
 		Court c = new Court();
 		c.setCourtType(type);
 		c.setStatus(status);
+		c.setLongitude(longitude);
+		c.setLatitude(latitude);
 		courtService.createCourt(c);
 		return c;
 	}

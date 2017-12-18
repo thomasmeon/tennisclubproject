@@ -11,8 +11,25 @@
     <form:form method="post" action="${pageContext.request.contextPath}/court/create"
                modelAttribute="courtCreate" cssClass="form-horizontal">
         <div class="form-group">
-            <form:label path="courtType" cssClass="col-sm-2 control-label">Type</form:label>
+        
+            <form:label path="longitude" cssClass="col-sm-2 control-label">Longitude</form:label>
             <div class="col-sm-10">
+                        
+			<input path="longitude" type="number" placeholder="0.0" step="0.1" min="0" max="360">             
+            </div>
+            
+            
+            <form:label path="longitude" cssClass="col-sm-2 control-label">Latitude</form:label>
+            <div class="col-sm-10">
+                        
+			<input path="latitude" type="number" placeholder="0.0" step="0.1" min="0" max="90">             
+            </div>
+           
+        
+            <form:label path="type" cssClass="col-sm-2 control-label">Type of the court</form:label>
+            <div class="col-sm-10">
+            
+            
                 <form:select path="courtType" cssClass="form-control">
                     <c:forEach items="${type}" var="c">
                         <form:option value="${c.id}">${c.type}</form:option>
