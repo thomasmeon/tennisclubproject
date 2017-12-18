@@ -35,7 +35,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><my:a href="/mybookings/show/all/${authenticatedUser.id}"><f:message key="navigation.mybookings"/></my:a></li>
+            	<c:choose>
+	            	<c:when test="${not empty authenticatedUser}">
+	                	<li><my:a href="/mybookings/show/all/${authenticatedUser.id}"><f:message key="navigation.mybookings"/></my:a></li>
+	                </c:when>
+	                <c:otherwise>
+	                	<li><my:a href="/mybookings/home"><f:message key="navigation.mybookings"/></my:a></li>
+	                </c:otherwise>
+                 </c:choose>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.admin"/><b class="caret"></b></a>
                     <ul class="dropdown-menu">
