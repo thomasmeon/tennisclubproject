@@ -107,11 +107,11 @@ public class BookingController {
 		return courtFacade.getAllCourts();
 	}
 
-//	@ModelAttribute("users")
-//	public List<UserDTO> users() {
-//		log.debug("users()");
-//		return userFacade.getAllUsers();
-//	}
+	@ModelAttribute("users")
+	public List<UserDTO> users() {
+		log.debug("users()");
+		return userFacade.getAllUsers();
+	}
 
 	/**
 	 * Spring Validator added to JSR-303 Validator for this @Controller only. It is

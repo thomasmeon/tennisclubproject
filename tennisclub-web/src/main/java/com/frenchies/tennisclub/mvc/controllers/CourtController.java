@@ -18,7 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.frenchies.tennisclub.dto.CourtCreateDTO;
 import com.frenchies.tennisclub.enums.CourtType;
-import com.frenchies.tennisclub.enums.Hour24;
+import com.frenchies.tennisclub.enums.Status;
 import com.frenchies.tennisclub.facade.CourtFacade;
 
 /**
@@ -66,6 +66,12 @@ public class CourtController {
 	public CourtType[] courtType() {
 		log.debug("courtType()");
 		return CourtType.values();
+	}
+	
+	@ModelAttribute("status")
+	public Status[] status() {
+		log.debug("status()");
+		return Status.values();
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)

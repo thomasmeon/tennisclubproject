@@ -38,6 +38,18 @@
 	                <form:errors path="type" cssClass="error"/>
 	            </div>
        		</div>
+       		
+       		<div class="form-group">
+	            <form:label path="status" cssClass="col-sm-2 control-label"> Status of the court </form:label>
+	            <div class="col-sm-10">
+	                <form:select path="status" cssClass="form-control">
+	                    <c:forEach items="${status}" var="s">
+	                        <form:option value="${s}">${s}</form:option>
+	                    </c:forEach>
+	                </form:select>
+	                <form:errors path="status" cssClass="error"/>
+	            </div>
+       		</div>
         </div>
         <button class="btn btn-primary" type="submit">Create Court</button>
     </form:form>

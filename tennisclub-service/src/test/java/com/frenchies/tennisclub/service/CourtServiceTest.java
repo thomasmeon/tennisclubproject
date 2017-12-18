@@ -73,13 +73,13 @@ public class CourtServiceTest {
 		courtService.changeCourtType(c, newCourtType);
 
 		// verify
-		Assert.assertTrue(c.getCourtType().equals(newCourtType));
+		Assert.assertTrue(c.getType().equals(newCourtType));
 
 	}
 
 	private void doAnswerSetRoleWhenUpdate(CourtType newCourtType) {
 		doAnswer(invocation -> {
-			c.setCourtType(newCourtType);
+			c.setType(newCourtType);
 			return null;
 		}).when(courtDao).update(c);
 

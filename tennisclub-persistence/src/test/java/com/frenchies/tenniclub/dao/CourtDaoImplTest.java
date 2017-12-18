@@ -42,10 +42,10 @@ public class CourtDaoImplTest extends AbstractTestNGSpringContextTests {
 		Court c1 = new Court(Status.AVAILABLE,CourtType.CLAY,49,40);
 		
 		courtDao.create(c1);
-		c1.setCourtType(CourtType.HARD);;
+		c1.setType(CourtType.HARD);;
 		courtDao.update(c1);
 
-		Assert.assertEquals(courtDao.findById(c1.getIdCourt()).getCourtType(), c1.getCourtType());
+		Assert.assertEquals(courtDao.findById(c1.getIdCourt()).getType(), c1.getType());
 	}
 
 	@Test
