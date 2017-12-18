@@ -26,7 +26,7 @@
             </div>
            
         
-            <form:label path="type" cssClass="col-sm-2 control-label">Type of the court</form:label>
+            <form:label path="courtType" cssClass="col-sm-2 control-label">Type of the court</form:label>
             <div class="col-sm-10">
             
             

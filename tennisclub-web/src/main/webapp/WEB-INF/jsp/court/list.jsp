@@ -23,7 +23,7 @@
         <c:forEach items="${courts}" var="court">
             <tr>
                 <td>${court.idCourt}</td>
-                 <td><c:out value="${court.type}"/></td>
+                <td><c:out value="${court.type}"/></td>
                 <td><c:out value= "${court.longitude}"/></td>
                 <td><c:out value= "${court.latitude}"/></td>
             </tr>
