@@ -63,4 +63,22 @@ public class CourtsController {
             throw new ResourceNotFoundException();
         }
     }
+    
+
+    /**
+     * Delete one court by id curl -i -X DELETE
+     * http://localhost:8080/pa165/rest/courts/1
+     *
+     * @param id identifier for court
+     * @throws ResourceNotFoundException
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public final void deleteCourt(@PathVariable("id") long id) throws Exception {
+        logger.debug("rest deleteCourt({})", id);
+        try {
+            courtFacade.deleteCourt(id);
+        } catch (Exception ex) {
+            throw new ResourceNotFoundException();
+        }
+    }
 }

@@ -39,7 +39,7 @@
        <div class="form-group ${date_error?'has-error':''}">
             <form:label path="dateOfBooking" cssClass="col-sm-2 control-label">Day of your booking ? (yyyy/mm/dd)</form:label>
             <div class="col-sm-10">
-                <form:input path="dateOfBooking" cssClass="form-control"/>
+                <form:input path="dateOfBooking" type="text" cssClass="form-control"/>
                 <form:errors path="dateOfBooking" cssClass="help-block"/>
             </div>
         </div>
