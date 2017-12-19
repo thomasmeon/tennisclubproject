@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-//import com.frenchies.tennisclub.dao.PriceRepository;
-//import com.frenchies.tennisclub.dto.Color;
 import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.entity.User;

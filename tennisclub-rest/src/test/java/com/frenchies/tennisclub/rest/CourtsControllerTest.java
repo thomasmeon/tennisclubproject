@@ -32,7 +32,11 @@ import com.frenchies.tennisclub.enums.CourtType;
 import com.frenchies.tennisclub.enums.Status;
 import com.frenchies.tennisclub.facade.CourtFacade;
 import com.frenchies.tennisclub.rest.controllers.CourtsController;
-
+/**
+ * 
+ * @author Corentin DORE 473308
+ *
+ */
 @WebAppConfiguration
 @ContextConfiguration(classes = { RootWebContext.class })
 public class CourtsControllerTest extends AbstractTestNGSpringContextTests {
