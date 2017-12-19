@@ -49,9 +49,15 @@
                
        <div class="form-group">
        		<form:label path="dateOfBooking" cssClass="col-sm-2 control-label"> Day of the booking ? </form:label>
+<<<<<<< HEAD
+  			<input type="date" max="2020-01-01" min="2017-12-24" name="dateOfBooking" required pattern = "yyyy-mm-dd"">
+  			<span class="validity"></span>	
+    	    <div class="col-sm-10">
+=======
   			<div class="col-sm-10">
   			<form:input cssClass="control" path="dateOfBooking" name="dateOfBooking" type="date""/> 
     	    </div>
+>>>>>>> 2caf1424ed07caaebea2d031cb9524faf4520e17
     	    <form:errors path="dateOfBooking" cssClass="error"/>
 
        </div>

@@ -30,7 +30,7 @@
                 <td><c:out value="${booking.idCourt}"/></td>
                 <td><c:out value="${booking.user1.name} ${booking.user1.surname}"/></td>
                 <td><c:out value="${booking.user2.name} ${booking.user2.surname}"/></td>
-                <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="yyyy-MM-dd"/></td>
+                <td><fmt:formatDate value="${booking.dateOfBooking}" pattern = "yyyy-mm-dd"/></td>
                 <td><c:out value="${booking.hourOfBooking}"/></td>            
             </tr>
         </tbody>
