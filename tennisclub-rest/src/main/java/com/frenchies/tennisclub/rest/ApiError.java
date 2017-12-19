@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Represents a possible representation of errors to be used 
  * with @ControllerAdvice global exception handler
  * 
- * @author Meon Thomas 473449
+ * @author Valentin JACQUET 473362
  */
 @XmlRootElement
 public class ApiError {

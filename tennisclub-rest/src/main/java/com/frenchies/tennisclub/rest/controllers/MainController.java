@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.frenchies.tennisclub.rest.ApiUris;
-
+/**
+ * 
+ * @author Corentin DORE 473308
+ *
+ */
 @RestController
 public class MainController {
     
