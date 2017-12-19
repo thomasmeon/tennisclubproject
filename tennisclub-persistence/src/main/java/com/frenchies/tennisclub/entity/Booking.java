@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.frenchies.tennisclub.enums.Hour24;
 
 //@Author Dore Corentin UCO 473308
@@ -49,7 +51,8 @@ public class Booking {
 	private User user2;
 
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd-mm-yyyy")
+	@Temporal(TemporalType.DATE)
 	private Date dateOfBooking;
 
 	@NotNull

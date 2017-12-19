@@ -35,15 +35,15 @@
                 <form:errors path="hourOfBooking" cssClass="error"/>
             </div>
        </div>
-       
-       <div class="form-group ${date_error?'has-error':''}">
-            <form:label path="dateOfBooking" cssClass="col-sm-2 control-label">Day of your booking ? (yyyy/mm/dd)</form:label>
-            <div class="col-sm-10">
-                <input type=date path="dateOfBooking" pattern="${date.format}" cssClass="form-control"/>
-                <errors path="dateOfBooking" cssClass="help-block"/>
-            </div>
-        </div>
-        
+               
+       <div class="form-group">
+       		<form:label path="dateOfBooking" cssClass="col-sm-2 control-label"> Day of the booking ? </form:label>
+  			<form:input cssClass="control" path="dateOfBooking" name="dateOfBooking" type="date" /> 
+    	    <div class="col-sm-10">
+    	    <form:errors path="dateOfBooking" cssClass="error"/>
+
+       </div>
+          
 	    <div class="form-group">
             <form:label path="idUser1" cssClass="col-sm-2 control-label">Player 1?</form:label>
             <div class="col-sm-10">
@@ -72,6 +72,7 @@
 
         <button class="btn btn-primary" type="submit">Create booking</button>
     </form:form>
+    
 
 </jsp:attribute>
 </my:pagetemplate>

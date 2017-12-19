@@ -1,5 +1,7 @@
 package com.frenchies.tennisclub.mvc.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -7,6 +9,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -95,7 +98,6 @@ public class BookingController {
 		model.addAttribute("bookingCreate", new BookingCreateDTO());
 		return "booking/new";
 	}
-
 	
 	@ModelAttribute("users")
 	public List<UserDTO> users() {
@@ -127,6 +129,8 @@ public class BookingController {
 	protected void initBinder(WebDataBinder binder) {
 		if (binder.getTarget() instanceof BookingCreateDTO) {
 			binder.addValidators(new BookingCreateDTOValidator());
+			
+			binder.registerCustomEditor(Date.class,new CustomDateEditor(new SimpleDateFormat("dd-mm-yyyy"), true, 10));   
 		}
 	}
 
