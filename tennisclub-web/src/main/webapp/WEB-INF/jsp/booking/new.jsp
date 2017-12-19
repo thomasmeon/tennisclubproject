@@ -35,6 +35,7 @@
                 <form:errors path="hourOfBooking" cssClass="error"/>
             </div>
        </div>
+<<<<<<< HEAD
        
        <div class="form-group ${date_error?'has-error':''}">
             <form:label path="dateOfBooking" cssClass="col-sm-2 control-label">Day of your booking ? (yyyy/mm/dd)</form:label>
@@ -44,32 +45,46 @@
             </div>
         </div>
         
+=======
+               
+       <div class="form-group">
+       		<form:label path="dateOfBooking" cssClass="col-sm-2 control-label"> Day of the booking ? </form:label>
+  			<form:input cssClass="control" path="dateOfBooking" name="dateOfBooking" type="date" /> 
+    	    <div class="col-sm-10">
+    	    <form:errors path="dateOfBooking" cssClass="error"/>
+
+       </div>
+          
+>>>>>>> cef3ac5ef0a671e7484bc894576fd0f2230ad717
 	    <div class="form-group">
-            <form:label path="user1" cssClass="col-sm-2 control-label">Name of Player 1?</form:label>
+            <form:label path="idUser1" cssClass="col-sm-2 control-label">Player 1?</form:label>
             <div class="col-sm-10">
-                <form:select path="user1" cssClass="form-control">
+                <form:select path="idUser1" cssClass="form-control">
                     <c:forEach items="${users}" var="u">
-                        <form:option value="${u.surname} ${u.name}">${u.surname} ${u.name}</form:option>
+                        <form:option value="${u.id}">${u.surname} ${u.name}</form:option>
                     </c:forEach>
                 </form:select>
-                <%-- <form:errors path="user1" cssClass="error"/> --%>
+                 <p class="help-block"><form:errors path="idUser1" cssClass="error"/></p>
             </div>
         </div>
         
-        	    <div class="form-group">
-            <form:label path="user2" cssClass="col-sm-2 control-label">Name of Player 2?</form:label>
+        <div class="form-group">
+            <form:label path="idUser2" cssClass="col-sm-2 control-label">Player 2</form:label>
             <div class="col-sm-10">
-                <form:select path="user2" cssClass="form-control">
+                <form:select path="idUser2" cssClass="form-control">
                     <c:forEach items="${users}" var="u">
-                        <form:option value="${u.surname} ${u.name}">${u.surname} ${u.name}</form:option>
+                        <form:option value="${u.id}">${u.surname} ${u.name}</form:option>
                     </c:forEach>
                 </form:select>
-                <%-- <form:errors path="user2" cssClass="error"/> --%>
+                <p class="help-block"><form:errors path="idUser2" cssClass="error"/></p>
             </div>
-        </div>       
+        </div>
+        
+        	    
 
         <button class="btn btn-primary" type="submit">Create booking</button>
     </form:form>
+    
 
 </jsp:attribute>
 </my:pagetemplate>

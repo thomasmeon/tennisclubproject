@@ -23,7 +23,7 @@ public class BookingCreateDTOValidator implements Validator {
     public void validate(Object target, Errors errors) {
     	BookingCreateDTO bookingCreateDTO = (BookingCreateDTO) target;
         if (bookingCreateDTO.getIdCourt() == null) return;
-        if (bookingCreateDTO.getUser1() == null) return;
+        if (bookingCreateDTO.getIdUser1() == null) return;
         if (bookingCreateDTO.getDateOfBooking() == null) return;
         if (bookingCreateDTO.getHourOfBooking() == null) return;
     }

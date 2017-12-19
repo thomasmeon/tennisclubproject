@@ -94,23 +94,27 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		Court court4 = court(CourtType.GRASS, Status.AVAILABLE,9,9);
 		log.info("Loaded court.");
 
-		User Jean = user("heslo", "Jean", "A", "jean@A.cz", "603123456", date12);
-		User Jean2 = user("heslo", "Jean2", "A2", "jean2@A.cz", "603123456", date13);
-		User Jean3 = user("heslo", "Jean3", "A3", "jean3@A.cz", "603123456", date14);
-		User Jean4 = user("heslo", "Jean4", "A4", "jean4@A.cz", "603123456", date15);
-		User Jean5 = user("heslo", "Jean5", "A5", "jean5@A.cz", "603123456", date16);
-		User admin = user("admin", "admin", "Admin", "admin@A.cz", "603123456", date17);
+		User HanSolo = user("hanshotfirst", "Han", "Solo", "faucon@millenium.com", "603123456", date12);
+		User LukeSkywalker = user("thewayyouthink", "Luke", "Skywlaker", "love@porgs.com", "656738925", date13);
+		User Chewbacca = user("arrgh", "Chewbacca", "LastWookie", "arrgh@arrgh.com", "678093677", date14);
+		User ObiwanKenobi = user("badfeeling", "Obiwan", "Kenobi", "hello@there.com", "609874815", date15);
+		User R2D2 = user("bip", "R2", "D2", "C3@PO.com", "612345678", date16);
+		User BenSolo = user("papy4ever", "Ben", "Solo", "ilove@mydad.com", "634171189", date17);
+		User Palpatine = user("pleiguis", "Senator", "Palpatine", "Order@66.com", "688663091", date18);
+		User JarJarBinks = user("clumpsy", "JarJar", "Binks", "missa@naboo.com", "609800053", date19);
+		User BobaFeet = user("carbonite", "Boba", "Feet", "sarlac@jetpack.com", "690748920", date20);
+		User admin = user("admin", "admin", "Admin", "admin@admin.cz", "611775389", date21);
 		log.info("Loaded users.");
 
-		Booking b1 = booking(date1, 1L, Hour24.EIGHT, Jean, Jean2);
-		Booking b2 = booking(date2, 1L, Hour24.SEVEN, Jean, Jean3);
-		Booking b3 = booking(date3, 2L, Hour24.EIGHT, Jean, Jean4);
-		Booking b4 = booking(date4, 1L, Hour24.EIGHT, Jean, Jean5);
-		Booking b5 = booking(date5, 4L, Hour24.EIGHT, Jean2, Jean);
-		Booking b6 = booking(date6, 3L, Hour24.EIGHT, Jean, Jean2);
-		Booking b7 = booking(date7, 1L, Hour24.EIGHT, Jean, Jean2);
-		Booking b8 = booking(date8, 2L, Hour24.EIGHT, Jean, Jean2);
-		Booking b9 = booking(date9, 3L, Hour24.EIGHT, Jean, Jean2);
+		Booking b1 = booking(date1, 1L, Hour24.EIGHT, HanSolo, LukeSkywalker);
+		Booking b2 = booking(date2, 1L, Hour24.SEVEN, Palpatine, JarJarBinks);
+		Booking b3 = booking(date3, 2L, Hour24.EIGHT, ObiwanKenobi, BobaFeet);
+		Booking b4 = booking(date4, 1L, Hour24.EIGHT, BenSolo, HanSolo);
+		Booking b5 = booking(date5, 4L, Hour24.EIGHT, Chewbacca, R2D2);
+		Booking b6 = booking(date6, 3L, Hour24.EIGHT, Palpatine, LukeSkywalker);
+		Booking b7 = booking(date7, 1L, Hour24.EIGHT, JarJarBinks, Chewbacca);
+		Booking b8 = booking(date8, 2L, Hour24.EIGHT, BenSolo, ObiwanKenobi);
+		Booking b9 = booking(date9, 3L, Hour24.EIGHT, BobaFeet, R2D2);
 		log.info("Loaded bookings.");
 
 	}
