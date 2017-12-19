@@ -12,7 +12,7 @@ import com.frenchies.tennisclub.facade.UserFacade;
 
 /**
  *
- * @author Dore Corentin UCO 473308
+ * @author Valentin JACQUET 473362
  */
 @Controller
 @RequestMapping("/user")

@@ -10,7 +10,7 @@ import com.frenchies.tennisclub.dto.BookingCreateDTO;
  * The place for validation checks. Useful for checks involving multiple properties at once.
  * This SpringMVC validation is <b>additional</b> to the JSR-303 validation specified by annotations in CourtCreateDTO.
  *
- * @author Dore Corentin UCO 473308
+ * @author Meon Thomas 473349
  */
 public class BookingCreateDTOValidator implements Validator {
 
