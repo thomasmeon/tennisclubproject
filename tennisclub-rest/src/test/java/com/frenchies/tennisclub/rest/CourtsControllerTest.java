@@ -65,14 +65,15 @@ public class CourtsControllerTest extends AbstractTestNGSpringContextTests {
 				.andExpect(jsonPath("$.[?(@.idCourt==2)].type").value("GRASS"));
 		}	
 
-//	@Test
-//	public void deleteCourt() throws Exception {
-//
-//		List<CourtDTO> courts = this.createCourts();
-//                
-//		mockMvc.perform(delete("/courts/1"))
-//				.andExpect(status().isOk());
-//
+	@Test
+	public void deleteCourt() throws Exception {
+
+		List<CourtDTO> courts = this.createCourts();
+                
+		mockMvc.perform(delete("/courts/1"))
+				.andExpect(status().isOk());
+	}
+
 //	}
 //	
 //    @Test
