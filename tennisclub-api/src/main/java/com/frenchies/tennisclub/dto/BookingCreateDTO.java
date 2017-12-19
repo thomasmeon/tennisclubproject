@@ -14,10 +14,10 @@ import com.frenchies.tennisclub.enums.Hour24;
 public class BookingCreateDTO {
 
     @NotNull
-    private UserDTO user1;
+    private Long idUser1;
 
     @NotNull
-	private UserDTO user2;
+	private Long idUser2;
 
     @NotNull
 	private Long idCourt;
@@ -35,20 +35,20 @@ public class BookingCreateDTO {
 		this.idCourt = idCourt;
 	}
 
-	public UserDTO getUser1() {
-		return user1;
+	public Long getIdUser1() {
+		return idUser1;
 	}
 
-	public void setUser1(UserDTO user1) {
-		this.user1 = user1;
+	public void setIdUser1(Long idUser1) {
+		this.idUser1 = idUser1;
 	}
 
-	public UserDTO getUser2() {
-		return user2;
+	public Long getIdUser2() {
+		return idUser2;
 	}
 
-	public void setUser2(UserDTO user2) {
-		this.user2 = user2;
+	public void setIdUser2(Long idUser2) {
+		this.idUser2 = idUser2;
 	}
 
 	public Date getDateOfBooking() {
@@ -74,8 +74,8 @@ public class BookingCreateDTO {
 		result = prime * result + ((dateOfBooking == null) ? 0 : dateOfBooking.hashCode());
 		result = prime * result + ((hourOfBooking == null) ? 0 : hourOfBooking.hashCode());
 		result = prime * result + ((idCourt == null) ? 0 : idCourt.hashCode());
-		result = prime * result + ((user1 == null) ? 0 : user1.hashCode());
-		result = prime * result + ((user2 == null) ? 0 : user2.hashCode());
+		result = prime * result + ((idUser1 == null) ? 0 : idUser1.hashCode());
+		result = prime * result + ((idUser2 == null) ? 0 : idUser2.hashCode());
 		return result;
 	}
 
@@ -100,22 +100,22 @@ public class BookingCreateDTO {
 				return false;
 		} else if (!idCourt.equals(other.idCourt))
 			return false;
-		if (user1 == null) {
-			if (other.user1 != null)
+		if (idUser1 == null) {
+			if (other.idUser1 != null)
 				return false;
-		} else if (!user1.equals(other.user1))
+		} else if (!idUser1.equals(other.idUser1))
 			return false;
-		if (user2 == null) {
-			if (other.user2 != null)
+		if (idUser2 == null) {
+			if (other.idUser2 != null)
 				return false;
-		} else if (!user2.equals(other.user2))
+		} else if (!idUser2.equals(other.idUser2))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "BookingCreateDTO [user1=" + user1 + ", user2=" + user2 + ", idCourt=" + idCourt
+		return "BookingCreateDTO [idUser1=" + idUser1 + ", idUser2=" + idUser2 + ", idCourt=" + idCourt
 				+ ", dateOfBooking=" + dateOfBooking + ", hourOfBooking=" + hourOfBooking + "]";
 	}
 

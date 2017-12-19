@@ -138,8 +138,8 @@ public class BookingFacadeTest {
 		bookingCreateDTO.setIdCourt(1L);
 		bookingCreateDTO.setDateOfBooking(date1);
 		bookingCreateDTO.setHourOfBooking(Hour24.EIGHT);
-		bookingCreateDTO.setUser1(userDTO1);
-		bookingCreateDTO.setUser2(userDTO2);
+		bookingCreateDTO.setIdUser1(userDTO1.getId());
+		bookingCreateDTO.setIdUser2(userDTO2.getId());
 
 		bookingDTO = new BookingDTO();
 

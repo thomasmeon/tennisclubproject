@@ -123,8 +123,8 @@ public class BookingFacadeImpl implements BookingFacade {
 
 		Booking mappedBooking = beanMappingService.mapTo(b, Booking.class);
 
-		mappedBooking.setUser1(userService.getUserById(b.getUser1().getId()));
-		mappedBooking.setUser2(userService.getUserById(b.getUser2().getId()));
+		mappedBooking.setUser1(userService.getUserById(b.getIdUser1()));
+		mappedBooking.setUser2(userService.getUserById(b.getIdUser2()));
 
 		mappedBooking.setDateOfBooking(b.getDateOfBooking());
 		mappedBooking.setHourOfBooking(b.getHourOfBooking());
