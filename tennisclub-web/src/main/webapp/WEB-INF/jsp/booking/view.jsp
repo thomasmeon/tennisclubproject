@@ -5,10 +5,10 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<my:pagetemplate title="Product Administration">
+<my:pagetemplate title="Booking Administration">
 <jsp:attribute name="body">
 
-    <form method="post" action="${pageContext.request.contextPath}/product/delete/${product.idBooking}">
+    <form method="post" action="${pageContext.request.contextPath}/booking/delete/${booking.idBooking}">
         <button type="submit" class="btn btn-primary">Delete</button>
     </form>
 

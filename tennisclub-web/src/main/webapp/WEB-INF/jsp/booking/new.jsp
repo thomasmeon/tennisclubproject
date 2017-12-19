@@ -49,15 +49,16 @@
                
        <div class="form-group">
        		<form:label path="dateOfBooking" cssClass="col-sm-2 control-label"> Day of the booking ? </form:label>
-  			<form:input cssClass="control" path="dateOfBooking" name="dateOfBooking" type="date" /> 
-    	    <div class="col-sm-10">
+  			<div class="col-sm-10">
+  			<form:input cssClass="control" path="dateOfBooking" name="dateOfBooking" type="date""/> 
+    	    </div>
     	    <form:errors path="dateOfBooking" cssClass="error"/>
 
        </div>
           
 >>>>>>> cef3ac5ef0a671e7484bc894576fd0f2230ad717
 	    <div class="form-group">
-            <form:label path="idUser1" cssClass="col-sm-2 control-label">Player 1?</form:label>
+            <form:label path="idUser1" cssClass="col-sm-2 control-label">Player 1</form:label>
             <div class="col-sm-10">
                 <form:select path="idUser1" cssClass="form-control">
                     <c:forEach items="${users}" var="u">
