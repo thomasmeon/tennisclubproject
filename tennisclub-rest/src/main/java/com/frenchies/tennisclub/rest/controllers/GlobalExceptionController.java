@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * This shows how a @ControllerAdvice can be used so that all the 
  * handlers can be managed from a central location.
  * 
- * @author Meon Thomas 473449
+ * @author Valentin JACQUET 473362
  */
 @ControllerAdvice
 public class GlobalExceptionController {

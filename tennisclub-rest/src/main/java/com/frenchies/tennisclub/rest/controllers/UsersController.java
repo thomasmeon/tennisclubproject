@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * REST Controller for Users
  * 
- * @author Meon Thomas 473449
+ * @author Valentin JACQUET 473362
  */
 @RestController
 @RequestMapping(ApiUris.ROOT_URI_USERS)

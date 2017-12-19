@@ -34,7 +34,7 @@ import com.frenchies.tennisclub.facade.CourtFacade;
 import com.frenchies.tennisclub.rest.controllers.CourtsController;
 /**
  * 
- * @author Corentin DORE 473308
+ * @author Valentin JACQUET 473362
  *
  */
 @WebAppConfiguration

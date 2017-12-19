@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * servlet</li>
  * </ul>
  * 
- * @author Meon Thomas 473449
+ * @author Valentin JACQUET 473362
  */
 public class MyStartInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 

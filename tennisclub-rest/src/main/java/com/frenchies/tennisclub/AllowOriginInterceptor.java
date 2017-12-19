@@ -12,7 +12,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  * "*" and all operations "Access-Control-Allow-Methods", "GET, POST, PUT,
  * DELETE, OPTIONS"
  *
- * @author Meon Thomas 473449
+ * @author Corentin DORE 473308
  */
 public class AllowOriginInterceptor extends HandlerInterceptorAdapter {
 

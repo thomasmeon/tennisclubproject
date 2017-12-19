@@ -23,7 +23,7 @@ import com.frenchies.tennisclub.rest.exceptions.ResourceNotFoundException;
 /**
  * REST Controller for Bookings
  *
- * @author Meon Thomas 473449
+ * @author Valentin JACQUET 473362
  */
 @RestController
 @RequestMapping(ApiUris.ROOT_URI_BOOKINGS)

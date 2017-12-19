@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  *
- * @author Meon Thomas 473449
+ * @author Corentin DORE 473308
  */
 @JsonIgnoreProperties({ "passwordHash"})
 public class UserDTOMixin {
