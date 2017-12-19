@@ -36,7 +36,7 @@ public class BookingsController {
 
     /**
      * Get list of Bookings curl -i -X GET
-     * http://localhost:8080/tennisclub-rest/bookings
+     * http://localhost:8080/pa165/rest/bookings
      *
      * @return BookingDTO
      */
@@ -49,7 +49,7 @@ public class BookingsController {
     /**
      *
      * Get Booking by identifier id curl -i -X GET
-     * http://localhost:8080/tennisclub-rest/bookings/1
+     * http://localhost:8080/pa165/rest/bookings/1
      *
      * @param id identifier for a booking
      * @return BookingDTO
@@ -69,7 +69,7 @@ public class BookingsController {
 
     /**
      * Delete one booking by id curl -i -X DELETE
-     * http://localhost:8080/tennisclub-rest/bookings/1
+     * http://localhost:8080/pa165/rest/bookings/1
      *
      * @param id identifier for booking
      * @throws ResourceNotFoundException
@@ -87,7 +87,7 @@ public class BookingsController {
     /**
      * Create a new booking by POST method
     
-     * http://localhost:8080/tennisclub-rest/bookings/create
+     * http://localhost:8080/pa165/rest/bookings/create
      * 
      * @param booking BookingCreateDTO with required fields for creation
      * @return the created booking BookingDTO

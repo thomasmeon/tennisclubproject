@@ -51,8 +51,12 @@ public class Booking {
 	private User user2;
 
 	@NotNull
+<<<<<<< HEAD
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+=======
 	@DateTimeFormat(pattern = "dd-mm-yyyy")
 	@Temporal(TemporalType.DATE)
+>>>>>>> cef3ac5ef0a671e7484bc894576fd0f2230ad717
 	private Date dateOfBooking;
 
 	@NotNull
