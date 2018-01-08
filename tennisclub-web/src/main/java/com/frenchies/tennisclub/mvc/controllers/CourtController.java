@@ -87,7 +87,20 @@ public class CourtController {
 				"Court \"" + court.getIdCourt() + "\" was deleted.");
 		return "redirect:" + uriBuilder.path("/court/list").toUriString();
 	}
-
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String edit(@PathVariable long id,  Model model, UriComponentsBuilder uriBuilder,
+			RedirectAttributes redirectAttributes) {
+		CourtDTO court = courtFacade.getCourtById(id);
+		CourtType newCourtType = CourtType.CARPET;
+		courtFacade.changeCourtType(id, newCourtType);
+		log.debug("edit({})", id);
+		redirectAttributes.addFlashAttribute("alert_success",
+				"Court \"" + court.getIdCourt() + "\" was edited.");
+		return "redirect:" + uriBuilder.path("/court/edit").toUriString();
+	}
+	
+	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String create(@Valid @ModelAttribute("courtCreate") CourtCreateDTO formBean, BindingResult bindingResult,
 			Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
