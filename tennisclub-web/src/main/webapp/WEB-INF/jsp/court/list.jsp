@@ -30,6 +30,10 @@
                     <form method="post" action="${pageContext.request.contextPath}/court/delete/${court.idCourt}">
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </form>
+                    
+                <td>
+                    <my:a href="/court/edit/${court.idCourt}" class="btn btn-primary">Edit</my:a>
+                </td>
                 </td>
             </tr>
         </c:forEach>
