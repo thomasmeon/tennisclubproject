@@ -30,7 +30,10 @@
                 <td><c:out value="${booking.user1.name} ${booking.user1.surname}"/></td>
                 <td><c:out value="${booking.user2.name} ${booking.user2.surname}"/></td>
                 <td><fmt:formatDate value="${booking.dateOfBooking}" pattern = "dd-MM-yyyy"/></td>
-                <td><c:out value="${booking.hourOfBooking}"/></td>       
+                <td><c:out value="${booking.hourOfBooking}"/></td>      
+                <td>
+                    <my:a href="/booking/edit/${booking.idBooking}" class="btn btn-primary">Edit</my:a>
+                </td> 
                
             </tr>
         </tbody>

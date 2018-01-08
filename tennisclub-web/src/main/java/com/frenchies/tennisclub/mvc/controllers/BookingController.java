@@ -84,7 +84,20 @@ public class BookingController {
 		model.addAttribute("booking", bookingFacade.getBookingById(id));
 		return "booking/view";
 	}
+	
 
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String edit(@PathVariable long id, Model model, UriComponentsBuilder uriBuilder,
+			RedirectAttributes redirectAttributes) {
+		BookingDTO booking = bookingFacade.getBookingById(id);
+		bookingFacade.deleteBooking(id);
+		log.debug("delete({})", id);
+		redirectAttributes.addFlashAttribute("alert_success",
+				"Booking \"" + booking.getIdBooking() + "\" is editing.");
+		log.debug("new()");
+		model.addAttribute("bookingCreate", new BookingCreateDTO());
+		return "booking/edit";
+	}
 	/**
 	 * Prepares an empty form.
 	 *

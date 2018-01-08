@@ -27,6 +27,26 @@
         </div>
       <button class="btn btn-primary" type="submit">Login</button>
     </form:form>
+    	 
+        <table class="table">
+        <thead>
+        <tr>
+ 		<th>Available Password & Login </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+            	<td> As User -> </td>
+                <td>Pwd : hanshotfirst</td> 
+                <td>Login:  millenium@falcon.com</td>
+            </tr>
+            <tr>
+            	<td> As Admin -> </td>    
+                <td>Pwd : admin </td>     
+                <td> Login:  admin@admin.com</td>                       
+            </tr>
+        </tbody>
+    </table>
 
 
     </jsp:attribute>
