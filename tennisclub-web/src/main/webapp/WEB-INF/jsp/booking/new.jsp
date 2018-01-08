@@ -37,31 +37,14 @@
        </div>
 
        
-       <div class="form-group ${date_error?'has-error':''}">
-            <form:label path="dateOfBooking" cssClass="col-sm-2 control-label">Day of your booking ? (yyyy/mm/dd)</form:label>
+       <div class="form-group ${dateOfBooking_error?'has-error':''}">
+            <form:label path="dateOfBooking" cssClass="col-sm-2 control-label">Day of the booking ?</form:label>
             <div class="col-sm-10">
-                <form:input path="dateOfBooking" type="text" cssClass="form-control"/>
+                <form:input type ="date" path="dateOfBooking" cssClass="form-control" placeholder="In format DD-MM-YYYY"/>
                 <form:errors path="dateOfBooking" cssClass="help-block"/>
             </div>
-        </div>
-        
-
-               
-       <div class="form-group">
-       		<form:label path="dateOfBooking" cssClass="col-sm-2 control-label"> Day of the booking ? </form:label>
-
-  			<input type="date" max="2020-01-01" min="2017-12-24" name="dateOfBooking" required pattern = "yyyy-mm-dd"">
-  			<span class="validity"></span>	
-    	    <div class="col-sm-10">
-
-  			<div class="col-sm-10">
-  			<form:input cssClass="control" path="dateOfBooking" name="dateOfBooking" type="date""/> 
-    	    </div>
-
-    	    <form:errors path="dateOfBooking" cssClass="error"/>
-
        </div>
-          
+       
 
 	    <div class="form-group">
             <form:label path="idUser1" cssClass="col-sm-2 control-label">Player 1</form:label>
