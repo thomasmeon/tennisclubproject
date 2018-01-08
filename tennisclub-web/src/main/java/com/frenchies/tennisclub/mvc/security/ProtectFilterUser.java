@@ -20,64 +20,73 @@ import com.frenchies.tennisclub.facade.UserFacade;
  *
  * @author valentinjacquet 473362
  */
-@WebFilter(urlPatterns = {"/mybookings/*"})
+@WebFilter(urlPatterns = { "/mybookings/*" })
 public class ProtectFilterUser implements Filter {
 
-    final static Logger log = LoggerFactory.getLogger(ProtectFilterUser.class);
+	final static Logger log = LoggerFactory.getLogger(ProtectFilterUser.class);
 
+	@Override
+	public void doFilter(ServletRequest r, ServletResponse s, FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest request = (HttpServletRequest) r;
+		HttpServletResponse response = (HttpServletResponse) s;
 
-    @Override
-    public void doFilter(ServletRequest r, ServletResponse s, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) r;
-        HttpServletResponse response = (HttpServletResponse) s;
+		// String auth = request.getHeader("Authorization");
+		// if (auth == null) {
+		// response401(response);
+		// return;
+		// }
+		// String[] creds = parseAuthHeader(auth);
+		// String logname = creds[0];
+		// String password = creds[1];
+		//
+		// //get Spring context and UserFacade from it
+		// UserFacade userFacade =
+		// WebApplicationContextUtils.getWebApplicationContext(r.getServletContext()).getBean(UserFacade.class);
+		// UserDTO matchingUser = userFacade.getUserByEmail(logname);
+		// if(matchingUser==null) {
+		// log.warn("no user with email {}", logname);
+		// response401(response);
+		// return;
+		// }
+		// UserAuthenticateDTO userAuthenticateDTO = new UserAuthenticateDTO();
+		// userAuthenticateDTO.setUsername(matchingUser.getMail());
+		// userAuthenticateDTO.setPassword(password);
+		// if (!userFacade.authenticate(userAuthenticateDTO)) {
+		// log.warn("wrong credentials: user={} password={}", creds[0], creds[1]);
+		// response401(response);
+		// return;
+		// }
+		// request.setAttribute("authenticatedUser", matchingUser);
+		// chain.doFilter(request, response);
 
-        String auth = request.getHeader("Authorization");
-        if (auth == null) {
-            response401(response);
-            return;
-        }
-        String[] creds = parseAuthHeader(auth);
-        String logname = creds[0];
-        String password = creds[1];
+		UserDTO matchingUser = (UserDTO) request.getSession().getAttribute("authenticatedUser");
 
-        //get Spring context and UserFacade from it
-        UserFacade userFacade = WebApplicationContextUtils.getWebApplicationContext(r.getServletContext()).getBean(UserFacade.class);
-        UserDTO matchingUser = userFacade.getUserByEmail(logname);
-        if(matchingUser==null) {
-            log.warn("no user with email {}", logname);
-            response401(response);
-            return;
-        }
-        UserAuthenticateDTO userAuthenticateDTO = new UserAuthenticateDTO();
-        userAuthenticateDTO.setUserId(matchingUser.getId());
-        userAuthenticateDTO.setPassword(password);
-        if (!userFacade.authenticate(userAuthenticateDTO)) {
-            log.warn("wrong credentials: user={} password={}", creds[0], creds[1]);
-            response401(response);
-            return;
-        }
-        request.setAttribute("authenticatedUser", matchingUser);
-        chain.doFilter(request, response);
-    }
+		if (matchingUser == null) {
+			log.debug("User not authorized!");
+			response.sendRedirect(request.getContextPath() + "/auth");
+			return;
+		}
+		request.setAttribute("authenticatedUser", matchingUser);
+		chain.doFilter(request, response);
+	}
 
+	private String[] parseAuthHeader(String auth) {
+		return new String(DatatypeConverter.parseBase64Binary(auth.split(" ")[1])).split(":", 2);
+	}
 
-    private String[] parseAuthHeader(String auth) {
-        return new String(DatatypeConverter.parseBase64Binary(auth.split(" ")[1])).split(":", 2);
-    }
+	private void response401(HttpServletResponse response) throws IOException {
+		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+		response.setHeader("WWW-Authenticate", "Basic realm=\"type email and password\"");
+		response.getWriter().println("<html><body><h1>401 Unauthorized</h1> Go away ...</body></html>");
+	}
 
-    private void response401(HttpServletResponse response) throws IOException {
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.setHeader("WWW-Authenticate", "Basic realm=\"type email and password\"");
-        response.getWriter().println("<html><body><h1>401 Unauthorized</h1> Go away ...</body></html>");
-    }
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+	}
 
-    }
+	@Override
+	public void destroy() {
 
-    @Override
-    public void destroy() {
-
-    }
+	}
 }

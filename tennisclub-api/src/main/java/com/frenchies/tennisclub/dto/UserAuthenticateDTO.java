@@ -4,17 +4,17 @@ package com.frenchies.tennisclub.dto;
 
 public class UserAuthenticateDTO
 {
-    private Long userId;
+    private String username;
     private String password;
-
-    public Long getUserId()
+    
+    public String getUsername()
     {
-        return userId;
+        return username;
     }
 
-    public void setUserId(Long userId)
+    public void setUsername(String username)
     {
-        this.userId = userId;
+        this.username = username;
     }
 
     public String getPassword()
