@@ -13,10 +13,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><c:out value="${title}"/></title>
+    
     <!-- bootstrap loaded from content delivery network -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
     <jsp:invoke fragment="head"/>
 </head>
 <body>
@@ -43,14 +44,17 @@
 	                	<li><my:a href="/mybookings/home"><f:message key="navigation.mybookings"/></my:a></li>
 	                </c:otherwise>
                  </c:choose>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.admin"/><b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><my:a href="/user/list"><f:message key="navigation.admin.users"/></my:a></li>
-                        <li><my:a href="/booking/list"><f:message key="navigation.admin.bookings"/></my:a></li>
-                        <li><my:a href="/court/list"><f:message key="navigation.admin.courts"/></my:a></li>
-                    </ul>
-                </li>
+                 
+                 <c:if test="${authenticatedUser.admin}">
+	                <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.admin"/><b class="caret"></b></a>
+	                    <ul class="dropdown-menu">
+	                        <li><my:a href="/user/list"><f:message key="navigation.admin.users"/></my:a></li>
+	                        <li><my:a href="/booking/list"><f:message key="navigation.admin.bookings"/></my:a></li>
+	                        <li><my:a href="/court/list"><f:message key="navigation.admin.courts"/></my:a></li>
+	                    </ul>
+	                </li>
+                </c:if>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><f:message key="navigation.docs"/><b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -74,6 +78,22 @@
                     </ul>
                 </li>
             </ul>
+	        <ul class="nav navbar-nav navbar-right">
+		        <c:if test="${not empty authenticatedUser}">
+		        	<li class="dropdown" style="float: right">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><c:out value="${authenticatedUser.name} ${authenticatedUser.surname}"/><b
+			              class="caret"></b></a>
+			          <ul class="dropdown-menu">
+			            <li><my:a href="/auth/logout"><f:message key="navigation.user.logout"/></my:a></li>
+			          </ul>
+			        </li>
+		          </c:if>
+		
+		        <c:if test="${empty authenticatedUser}">
+		          <li><my:a href="/auth"><f:message key="navigation.auth.login"/></my:a></li>
+		        </c:if>
+	
+	      	</ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
@@ -85,20 +105,6 @@
         <div class="page-header">
             <h1><c:out value="${title}"/></h1>
         </div>
-    </c:if>
-
-    <!-- authenticated user info -->
-    <c:if test="${not empty authenticatedUser}">
-    <div class="row">
-        <div class="col-xs-6 col-sm-8 col-md-9 col-lg-10"></div>
-        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <c:out value="${authenticatedUser.name} ${authenticatedUser.surname}"/>
-                </div>
-            </div>
-        </div>
-    </div>
     </c:if>
 
     <!-- alerts -->
