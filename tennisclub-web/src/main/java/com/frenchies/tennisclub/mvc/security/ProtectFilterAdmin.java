@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.frenchies.tennisclub.dto.UserDTO;
 import com.frenchies.tennisclub.facade.UserFacade;
@@ -25,7 +26,7 @@ import com.frenchies.tennisclub.facade.UserFacade;
  */
 @WebFilter(urlPatterns = { "/court/*", "/user/*", "/booking/list/*" })
 public class ProtectFilterAdmin implements Filter {
-
+	
 	final static Logger log = LoggerFactory.getLogger(ProtectFilterAdmin.class);
 
 	@Override
@@ -33,7 +34,9 @@ public class ProtectFilterAdmin implements Filter {
 		HttpServletRequest request = (HttpServletRequest) r;
 		HttpServletResponse response = (HttpServletResponse) s;
 		// get Spring context and UserFacade from it
-		UserFacade userFacade = (UserFacade) request.getSession().getAttribute("authenticatedUser");
+		
+		UserFacade userFacade = WebApplicationContextUtils.getWebApplicationContext(r.getServletContext()).getBean(UserFacade.class);
+		
 		UserDTO matchingUser = (UserDTO) request.getSession().getAttribute("authenticatedUser");
 		
 		if (!userFacade.isAdmin(matchingUser)) {
