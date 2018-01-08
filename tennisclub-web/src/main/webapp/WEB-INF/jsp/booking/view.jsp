@@ -11,8 +11,7 @@
     <form method="post" action="${pageContext.request.contextPath}/booking/delete/${booking.idBooking}">
         <button type="submit" class="btn btn-primary">Delete</button>
     </form>
-
-
+ 
     <table class="table">
         <thead>
         <tr>
@@ -30,8 +29,9 @@
                 <td><c:out value="${booking.idCourt}"/></td>
                 <td><c:out value="${booking.user1.name} ${booking.user1.surname}"/></td>
                 <td><c:out value="${booking.user2.name} ${booking.user2.surname}"/></td>
-                <td><fmt:formatDate value="${booking.dateOfBooking}" pattern = "yyyy-mm-dd"/></td>
-                <td><c:out value="${booking.hourOfBooking}"/></td>            
+                <td><fmt:formatDate value="${booking.dateOfBooking}" pattern = "dd-MM-yyyy"/></td>
+                <td><c:out value="${booking.hourOfBooking}"/></td>       
+               
             </tr>
         </tbody>
     </table>

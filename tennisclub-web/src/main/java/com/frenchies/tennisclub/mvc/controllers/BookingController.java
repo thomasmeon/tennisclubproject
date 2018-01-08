@@ -130,8 +130,11 @@ public class BookingController {
 		if (binder.getTarget() instanceof BookingCreateDTO) {
 			binder.addValidators(new BookingCreateDTOValidator());
 			
-			binder.registerCustomEditor(Date.class,new CustomDateEditor(new SimpleDateFormat("dd-mm-yyyy"), true, 10));   
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+			binder.registerCustomEditor(Date.class,new CustomDateEditor(dateFormat, false));  
 		}
+		
+
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
