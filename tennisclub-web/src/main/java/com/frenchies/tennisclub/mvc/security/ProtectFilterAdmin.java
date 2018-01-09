@@ -24,7 +24,7 @@ import com.frenchies.tennisclub.facade.UserFacade;
  *
  * @author valentinjacquet 473362
  */
-@WebFilter(urlPatterns = { "/court/*", "/user/*", "/booking/list/*" })
+@WebFilter(urlPatterns = { "/court/*", "/user/list/*", "/booking/list/*" })
 public class ProtectFilterAdmin implements Filter {
 	
 	final static Logger log = LoggerFactory.getLogger(ProtectFilterAdmin.class);

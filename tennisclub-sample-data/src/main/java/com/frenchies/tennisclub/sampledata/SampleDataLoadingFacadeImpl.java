@@ -92,16 +92,16 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		Court court4 = court(CourtType.GRASS, Status.AVAILABLE, 9, 9);
 		log.info("Loaded court.");
 
-		User admin = user("admin", "admin", "Admin", "admin@admin.com", "611775389", date21);
-		User HanSolo = user("hanshotfirst", "Han", "Solo", "millenium@falcon.com", "603123456", date12);
-		User LukeSkywalker = user("thewayyouthink", "Luke", "Skywlaker", "love@porgs.com", "656738925", date13);
-		User Chewbacca = user("arrgh", "Chewbacca", "LastWookie", "chewie@arrgh.com", "678093677", date14);
-		User ObiwanKenobi = user("badfeeling", "Obiwan", "Kenobi", "hello@there.com", "609874815", date15);
-		User R2D2 = user("bip", "R2", "D2", "C3@PO.com", "612345678", date16);
-		User BenSolo = user("papy4ever", "Ben", "Solo", "ilove@mydad.com", "634171189", date17);
-		User Palpatine = user("pleiguis", "Senator", "Palpatine", "order@66.com", "688663091", date18);
-		User JarJarBinks = user("clumpsy", "JarJar", "Binks", "missa@naboo.com", "609800053", date19);
-		User BobaFeet = user("carbonite", "Boba", "Feet", "sarlac@jetpack.com", "690748920", date20);
+		User admin = user("admin", "admin", "Admin", "admin@admin.com", "611775389", date21, false);
+		User HanSolo = user("hanshotfirst", "Han", "Solo", "millenium@falcon.com", "603123456", date12, false);
+		User LukeSkywalker = user("thewayyouthink", "Luke", "Skywlaker", "love@porgs.com", "656738925", date13, true);
+		User Chewbacca = user("arrgh", "Chewbacca", "LastWookie", "chewie@arrgh.com", "678093677", date14, false);
+		User ObiwanKenobi = user("badfeeling", "Obiwan", "Kenobi", "hello@there.com", "609874815", date15, false);
+		User R2D2 = user("bip", "R2", "D2", "C3@PO.com", "612345678", date16, false);
+		User BenSolo = user("papy4ever", "Ben", "Solo", "ilove@mydad.com", "634171189", date17, false);
+		User Palpatine = user("pleiguis", "Senator", "Palpatine", "order@66.com", "688663091", date18, false);
+		User JarJarBinks = user("clumpsy", "JarJar", "Binks", "missa@naboo.com", "609800053", date19, false);
+		User BobaFeet = user("carbonite", "Boba", "Feet", "sarlac@jetpack.com", "690748920", date20, false);
 		log.info("Loaded users.");
 
 		Booking b1 = booking(date1, 1L, Hour24.EIGHT, HanSolo, LukeSkywalker, false, false);
@@ -143,7 +143,7 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		return c;
 	}
 
-	private User user(String password, String name, String surname, String email, String phone, Date dateOfBirth) {
+	private User user(String password, String name, String surname, String email, String phone, Date dateOfBirth, boolean teacher) {
 		User u = new User();
 		u.setName(name);
 		u.setSurname(surname);
@@ -152,6 +152,9 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		u.setDateOfBirth(dateOfBirth);
 		if (password.equals("admin"))
 			u.setAdmin(true);
+		else
+			u.setAdmin(false);
+		u.setTeacher(teacher);
 		userService.registerUser(u, password);
 		return u;
 	}
