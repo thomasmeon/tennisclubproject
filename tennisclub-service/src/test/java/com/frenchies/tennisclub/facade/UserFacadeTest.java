@@ -60,7 +60,7 @@ public class UserFacadeTest {
 	}
 
 	
-	public void initUser(String Name, String Surname, String Mail, Date dateOfBooking, String Phone, boolean admin) {
+	public void initUser(String Name, String Surname, String Mail, Date dateOfBooking, String Phone, boolean admin, boolean teacher) {
 		
 
 		userCreateDTO = new UserCreateDTO();
@@ -71,6 +71,7 @@ public class UserFacadeTest {
 		userCreateDTO.setPhone(Phone);
 		userCreateDTO.setPasswordHash(null);
 		userCreateDTO.setAdmin(admin);
+		userCreateDTO.setTeacher(teacher);
 
 		validUser = new User();
 		validUser.setName(Name);
@@ -81,6 +82,7 @@ public class UserFacadeTest {
 		validUser.setPasswordHash(null);
 		validUser.setAdmin(admin);
 		validUser.setId(10L);
+		validUser.setTeacher(teacher);
 		when(beanMappingService.mapTo(userCreateDTO, User.class)).thenReturn(validUser);
 
 		validUserDTO = new UserDTO();
@@ -92,6 +94,7 @@ public class UserFacadeTest {
 		validUserDTO.setPasswordHash(null);
 		validUserDTO.setAdmin(admin);
 		validUserDTO.setId(10L);
+		validUserDTO.setTeacher(teacher);
 
 		
 	}
@@ -102,7 +105,7 @@ public class UserFacadeTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(1995, Calendar.JULY, 29);
 		Date date1 = cal.getTime();
-		initUser("Jean", "Pierre", "jean.pierre@mail.com", date1, "+33654545454",false);
+		initUser("Jean", "Pierre", "jean.pierre@mail.com", date1, "+33654545454",false,false);
 		
 		userAuthDTO = new UserAuthenticateDTO();
 	}
@@ -186,6 +189,13 @@ public class UserFacadeTest {
 		UserDTO uTemp = userFacade.getUserById(validUser.getId());
 
 		Assert.assertEquals(userFacade.isAdmin(uTemp.getId()), validUserDTO.isAdmin());
+	}
+	
+	@Test
+	void isTeacherTest() {
+		UserDTO uTemp = userFacade.getUserById(validUser.getId());
+
+		Assert.assertEquals(userFacade.isTeacher(uTemp.getId()), validUserDTO.isTeacher());
 	}
 
 //	@Test

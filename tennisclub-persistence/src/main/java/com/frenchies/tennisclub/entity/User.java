@@ -60,6 +60,8 @@ public class User {
 	private Date dateOfBirth;
 
 	private boolean admin;
+	
+	private boolean teacher;
 
 	// Constructor
 
@@ -145,6 +147,14 @@ public class User {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+
+	public boolean isTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(boolean teacher) {
+		this.teacher = teacher;
 	}
 
 	@Override

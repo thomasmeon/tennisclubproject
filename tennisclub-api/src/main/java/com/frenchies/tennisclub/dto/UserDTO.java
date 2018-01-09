@@ -18,6 +18,7 @@ public class UserDTO
     private String phone;
     private Date dateOfBirth;
     private boolean admin;
+    private boolean teacher;
 
     public Long getId() {
         return id;
@@ -87,6 +88,14 @@ public class UserDTO
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+
+	public boolean isTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(boolean teacher) {
+		this.teacher = teacher;
 	}
 
 	@Override

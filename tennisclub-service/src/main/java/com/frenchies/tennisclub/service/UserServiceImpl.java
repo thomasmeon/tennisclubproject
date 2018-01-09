@@ -79,6 +79,18 @@ public class UserServiceImpl implements UserService {
 		// must get a fresh copy from database
 		return getUserById(id).isAdmin();
 	}
+	
+	@Override
+	public boolean isTeacher(User u) {
+		// must get a fresh copy from database
+		return getUserById(u.getId()).isTeacher();
+	}
+	
+	@Override
+	public boolean isTeacher(Long id) {
+		// must get a fresh copy from database
+		return getUserById(id).isTeacher();
+	}
 
 	@Override
 	public User getUserById(Long userId) {

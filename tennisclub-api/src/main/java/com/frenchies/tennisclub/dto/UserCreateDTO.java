@@ -32,6 +32,8 @@ public class UserCreateDTO {
     private Date dateOfBirth;
     
     private boolean admin; 
+    
+    private boolean teacher;
 
     public UserCreateDTO() {
     }
@@ -90,6 +92,14 @@ public class UserCreateDTO {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+
+	public boolean isTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(boolean teacher) {
+		this.teacher = teacher;
 	}
 
     
