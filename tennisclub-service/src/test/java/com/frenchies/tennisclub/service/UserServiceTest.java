@@ -62,6 +62,7 @@ public class UserServiceTest {
 		validUser.setMail("jean.patrick@mail.com");
 		validUser.setPhone("+33678787878");
 		validUser.setAdmin(true);
+		validUser.setTeacher(true);
 
 		invalidUser = new User();
 		invalidUser.setName("Jacques");
@@ -224,6 +225,23 @@ public class UserServiceTest {
 		when(userDao.findUserByName(validUser.getName())).thenReturn(validUser);
 		
 		Assert.assertEquals(userService.isAdmin(validUser.getId()), validUser.isAdmin());
+	}
+	
+	/*
+	 * Teacher test
+	 */
+	@Test
+	public void isTeacherTest() {
+		when(userDao.findUserByName(validUser.getName())).thenReturn(validUser);
+		
+		Assert.assertEquals(userService.isTeacher(validUser), validUser.isTeacher());
+	}
+	
+	@Test
+	public void isTeacherIdTest() {
+		when(userDao.findUserByName(validUser.getName())).thenReturn(validUser);
+		
+		Assert.assertEquals(userService.isTeacher(validUser.getId()), validUser.isTeacher());
 	}
 	
 	/*

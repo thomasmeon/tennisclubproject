@@ -21,9 +21,11 @@ import com.frenchies.tennisclub.facade.UserFacade;
 public class BookingCreateDTOValidator implements Validator {
 
 	private BookingFacade bookingFacade;
+
 	private UserFacade userFacade;
 	private int cpt = 0;
 	private UserDTO u;
+
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -42,6 +44,7 @@ public class BookingCreateDTOValidator implements Validator {
 			return;
 		if (bookingCreateDTO.getHourOfBooking() == null)
 			return;
+
 		if (bookingCreateDTO.isLesson() || bookingCreateDTO.isTournament()) {
 			bookingCreateDTO.setIdUser1(1L);
 			bookingCreateDTO.setIdUser2(1L);
@@ -67,6 +70,16 @@ public class BookingCreateDTOValidator implements Validator {
 //		 if (cpt >= 2) {
 //		 return;
 //		 }
+
+
+		if (bookingCreateDTO.isLesson() && bookingCreateDTO.getIdUser2() == null) {
+			bookingCreateDTO.setIdUser2(1L);
+		}
+		if (bookingCreateDTO.isTournament() && bookingCreateDTO.getIdUser1() == null
+				&& bookingCreateDTO.getIdUser2() == null) {
+			bookingCreateDTO.setIdUser1(1L);
+			bookingCreateDTO.setIdUser2(1L);
+		}
 
 		// if(!testDuplication(bookingCreateDTO))
 		// errors.rejectValue("dateOfBooking", "BookingCreateDTOValidator.duplication");

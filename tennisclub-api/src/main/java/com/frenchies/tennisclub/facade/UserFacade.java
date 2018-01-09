@@ -100,5 +100,16 @@ public interface UserFacade {
 
 	public boolean isAdmin(Long id);
 
+	/**
+	 * Check whether {@link User} is teacher, or not.
+	 *
+	 * @param user
+	 *            to check or Id
+	 * @return true if user is teacher, false otherwise
+	 */
+	public boolean isTeacher(UserDTO u);
+
+	public boolean isTeacher(Long id);
+
 	
 }

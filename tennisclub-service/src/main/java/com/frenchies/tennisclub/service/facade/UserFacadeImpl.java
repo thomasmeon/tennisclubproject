@@ -98,6 +98,16 @@ public class UserFacadeImpl implements UserFacade {
 	public boolean isAdmin(Long id) {
 		return userService.isAdmin(id);
 	}
+	
+	@Override
+	public boolean isTeacher(UserDTO u) {
+		return userService.isTeacher(beanMappingService.mapTo(u, User.class));
+	}
+
+	@Override
+	public boolean isTeacher(Long id) {
+		return userService.isTeacher(id);
+	}
 
 	@Override
 	public boolean authenticate(UserAuthenticateDTO u) {

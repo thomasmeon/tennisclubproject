@@ -16,8 +16,8 @@
         <my:a href="/mybookings/show/lastmonth/${authenticatedUser.id}" class="btn btn-default ${filter=='lastmonth'?'active':''}">Last Month</my:a>
         <my:a href="/mybookings/show/lastyear/${authenticatedUser.id}" class="btn btn-default ${filter=='lastyear'?'active':''}">Last Year</my:a>
         <c:if test="${authenticatedUser.admin}">
-        	<my:a href="/mybookings/show/lessons/${authenticatedUser.id}" class="btn btn-default ${filter=='lastweek'?'active':''}">Lessons</my:a>
-        	<my:a href="/mybookings/show/tournaments/${authenticatedUser.id}" class="btn btn-default ${filter=='lastweek'?'active':''}">Tournaments</my:a>
+        	<my:a href="/mybookings/show/lessons/${authenticatedUser.id}" class="btn btn-default ${filter=='lessons'?'active':''}">Lessons</my:a>
+        	<my:a href="/mybookings/show/tournaments/${authenticatedUser.id}" class="btn btn-default ${filter=='tournaments'?'active':''}">Tournaments</my:a>
         </c:if>
     </div>
 

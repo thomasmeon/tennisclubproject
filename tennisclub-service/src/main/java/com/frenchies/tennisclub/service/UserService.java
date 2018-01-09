@@ -40,6 +40,16 @@ public interface UserService {
 	 */
 	public boolean isAdmin(User u);
 	public boolean isAdmin(Long id);
+	
+	/**
+	 * Check whether {@link User} is admin, or not.
+	 *
+	 * @param user
+	 *            to check or id
+	 * @return true if user is admin, false otherwise
+	 */
+	public boolean isTeacher(User u);
+	public boolean isTeacher(Long id);
 
 	/**
 	 * Delete {@link User}.

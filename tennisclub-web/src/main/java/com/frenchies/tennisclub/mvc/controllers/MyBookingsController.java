@@ -29,69 +29,72 @@ import com.frenchies.tennisclub.facade.BookingFacade;
 public class MyBookingsController {
 	final static Logger log = LoggerFactory.getLogger(MyBookingsController.class);
 
-    @Autowired
-    private BookingFacade bookingFacade;
+	@Autowired
+	private BookingFacade bookingFacade;
 
-    public void setBookingFacade(BookingFacade bookingFacade) {
-        this.bookingFacade = bookingFacade;
-    }
-    
-   
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public void home() {
-    	
-    }
-    
-    /**
-     * Shows a list of bookings, filtered by specified filter
-     *
-     * @param filter selects which bookings should be displayed
-     * @param model  data to display
-     * @return JSP page name
-     */
-    @RequestMapping(value = "/show/{filter}/{id}", method = RequestMethod.GET)
-    public String list(@PathVariable String filter, @PathVariable long id, Model model) {
-        List<BookingDTO> bookings;
-        UserDTO uTemp = new UserDTO();
-        uTemp.setId(id);
-        switch (filter) {
-            case "all":
-                bookings = bookingFacade.getBookingsByUser(uTemp);
-                break;
-            case "lastweek":
-                bookings = bookingFacade.getAllBookingsLastWeekByUser(id);
-                break;
-            case "lastmonth":
-                bookings = bookingFacade.getAllBookingsLastMonthByUser(id);
-                break;
-            case "lastyear":
-                bookings = bookingFacade.getAllBookingsLastYearByUser(id);
-                break;
-            case "lessons":
-                bookings = bookingFacade.getAllLessonsBookings();
-                break;
-            case "tournaments":
-                bookings = bookingFacade.getAllTournamentBookings();
-                break;
-            default:
-                bookings = new ArrayList<>();
-                model.addAttribute("alert_danger", "Unknown filter " + filter);
-        }
-        model.addAttribute("booking", bookings);
-        return "mybookings/show";
-    }
-    
-    /**
-     * Shows booking detail.
-     *
-     * @param id    booking id
-     * @param model data to display
-     * @return JSP page name
-     */
-    @RequestMapping("/booking/{id}")
-    public String booking(@PathVariable long id, Model model) {
-        log.debug("booking({})", id);
-        model.addAttribute("booking", bookingFacade.getBookingById(id));
-        return "mybookings/booking";
-    }
+	public void setBookingFacade(BookingFacade bookingFacade) {
+		this.bookingFacade = bookingFacade;
+	}
+
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public void home() {
+
+	}
+
+	/**
+	 * Shows a list of bookings, filtered by specified filter
+	 *
+	 * @param filter
+	 *            selects which bookings should be displayed
+	 * @param model
+	 *            data to display
+	 * @return JSP page name
+	 */
+	@RequestMapping(value = "/show/{filter}/{id}", method = RequestMethod.GET)
+	public String list(@PathVariable String filter, @PathVariable long id, Model model) {
+		List<BookingDTO> bookings;
+		UserDTO uTemp = new UserDTO();
+		uTemp.setId(id);
+		switch (filter) {
+		case "all":
+			bookings = bookingFacade.getBookingsByUser(uTemp);
+			break;
+		case "lastweek":
+			bookings = bookingFacade.getAllBookingsLastWeekByUser(id);
+			break;
+		case "lastmonth":
+			bookings = bookingFacade.getAllBookingsLastMonthByUser(id);
+			break;
+		case "lastyear":
+			bookings = bookingFacade.getAllBookingsLastYearByUser(id);
+			break;
+		case "lessons":
+			bookings = bookingFacade.getAllLessonsBookings();
+			break;
+		case "tournaments":
+			bookings = bookingFacade.getAllTournamentBookings();
+			break;
+		default:
+			bookings = new ArrayList<>();
+			model.addAttribute("alert_danger", "Unknown filter " + filter);
+		}
+		model.addAttribute("booking", bookings);
+		return "mybookings/show";
+	}
+
+	/**
+	 * Shows booking detail.
+	 *
+	 * @param id
+	 *            booking id
+	 * @param model
+	 *            data to display
+	 * @return JSP page name
+	 */
+	@RequestMapping("/booking/{id}")
+	public String booking(@PathVariable long id, Model model) {
+		log.debug("booking({})", id);
+		model.addAttribute("booking", bookingFacade.getBookingById(id));
+		return "mybookings/booking";
+	}
 }

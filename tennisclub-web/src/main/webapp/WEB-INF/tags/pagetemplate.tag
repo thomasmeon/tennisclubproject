@@ -86,6 +86,7 @@
 			              class="caret"></b></a>
 			          <ul class="dropdown-menu">
 			            <li><my:a href="/auth/logout"><f:message key="navigation.user.logout"/></my:a></li>
+			            <li><my:a href="/user/stats/${authenticatedUser.id}"><f:message key="navigation.user.profile"/></my:a></li>
 			          </ul>
 			        </li>
 		          </c:if>
