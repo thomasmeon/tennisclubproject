@@ -1,10 +1,15 @@
 package com.frenchies.tennisclub.mvc.forms;
 
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.frenchies.tennisclub.dto.BookingCreateDTO;
+import com.frenchies.tennisclub.dto.BookingDTO;
+import com.frenchies.tennisclub.facade.BookingFacade;
 
 /**
  * The place for validation checks. Useful for checks involving multiple properties at once.
@@ -14,6 +19,8 @@ import com.frenchies.tennisclub.dto.BookingCreateDTO;
  */
 public class BookingCreateDTOValidator implements Validator {
 
+	private BookingFacade bookingFacade;
+	
     @Override
     public boolean supports(Class<?> clazz) {
         return BookingCreateDTO.class.isAssignableFrom(clazz);
@@ -22,9 +29,33 @@ public class BookingCreateDTOValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
     	BookingCreateDTO bookingCreateDTO = (BookingCreateDTO) target;
+    	
         if (bookingCreateDTO.getIdCourt() == null) return;
         if (bookingCreateDTO.getIdUser1() == null) return;
         if (bookingCreateDTO.getDateOfBooking() == null) return;
         if (bookingCreateDTO.getHourOfBooking() == null) return;
+        if (bookingCreateDTO.isLesson() || bookingCreateDTO.isTournament())
+        {
+        	bookingCreateDTO.setIdUser1(1L);
+        	bookingCreateDTO.setIdUser2(1L);
+        }
+//        if(!testDuplication(bookingCreateDTO))
+//        	errors.rejectValue("dateOfBooking", "BookingCreateDTOValidator.duplication");
+        	
+        
     }
+    
+//    public boolean testDuplication(BookingCreateDTO b) {
+//    	List<BookingDTO> listBookingsSameCourt = bookingFacade.getBookingsByCourt(b.getIdCourt());
+//    	for(BookingDTO bTemp : listBookingsSameCourt)
+//    	{
+//    		if(bTemp.getDateOfBooking()==b.getDateOfBooking()) {
+//    			if(bTemp.getHourOfBooking()==b.getHourOfBooking()) {
+//    				return false;
+//    			}
+//    				
+//    		}
+//    	}
+//    	return true;
+//    }
 }

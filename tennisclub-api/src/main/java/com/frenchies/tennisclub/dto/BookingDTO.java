@@ -2,6 +2,8 @@ package com.frenchies.tennisclub.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import com.frenchies.tennisclub.enums.Hour24;
 
 /**
@@ -21,6 +23,10 @@ public class BookingDTO {
 	private Date dateOfBooking;
 
 	private Hour24 hourOfBooking;
+	
+    private boolean lesson;
+    
+    private boolean tournament;
 
 	public Long getIdBooking() {
 		return idBooking;
@@ -68,6 +74,22 @@ public class BookingDTO {
 
 	public void setHourOfBooking(Hour24 hourOfBooking) {
 		this.hourOfBooking = hourOfBooking;
+	}
+
+	public boolean isLesson() {
+		return lesson;
+	}
+
+	public void setLesson(boolean lesson) {
+		this.lesson = lesson;
+	}
+
+	public boolean isTournament() {
+		return tournament;
+	}
+
+	public void setTournament(boolean tournament) {
+		this.tournament = tournament;
 	}
 
 	@Override

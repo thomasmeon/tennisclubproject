@@ -24,6 +24,10 @@ public class BookingCreateDTO {
 
     @NotNull
 	private Date dateOfBooking;
+    
+    private boolean lesson;
+    
+    private boolean tournament;
 
 	private Hour24 hourOfBooking;
 
@@ -65,6 +69,22 @@ public class BookingCreateDTO {
 
 	public void setHourOfBooking(Hour24 hourOfBooking) {
 		this.hourOfBooking = hourOfBooking;
+	}
+
+	public boolean isLesson() {
+		return lesson;
+	}
+
+	public void setLesson(boolean lesson) {
+		this.lesson = lesson;
+	}
+
+	public boolean isTournament() {
+		return tournament;
+	}
+
+	public void setTournament(boolean tournament) {
+		this.tournament = tournament;
 	}
 
 	@Override

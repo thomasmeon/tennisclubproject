@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.User;
 
@@ -88,5 +89,9 @@ public interface BookingService {
 	public List<Booking> getAllBookingsLastMonthByUser(User user);
 
 	public List<Booking> getAllBookingsLastYearByUser(User user);
+	
+	public List<Booking> getAllLessonsBookings();
+	
+	public List<Booking> getAllTournamentBookings();
 
 }

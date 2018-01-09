@@ -22,6 +22,8 @@
             <th>Player 2</th>
             <th>Booking Date</th>
             <th>Booking Hour</th>
+            <th>Lesson</th>
+            <th>Tournament</th>
         </tr>
         </thread>
         <tbody>
@@ -34,6 +36,8 @@
                 <td><c:out value="${booking.user2.name} ${booking.user2.surname}"/></td>
                 <td><fmt:formatDate value="${booking.dateOfBooking}" pattern="dd-MM-yyyy"/></td>
                 <td><c:out value="${booking.hourOfBooking}"/></td>
+                <td><c:out value="${booking.lesson}"/></td>
+                <td><c:out value="${booking.tournament}"/></td>
                 <td>
                     <my:a href="/booking/view/${booking.idBooking}" class="btn btn-primary">View</my:a>
                 </td>

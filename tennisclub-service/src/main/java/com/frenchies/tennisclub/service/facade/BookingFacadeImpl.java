@@ -134,5 +134,17 @@ public class BookingFacadeImpl implements BookingFacade {
 
 		return newBooking.getIdBooking();
 	}
+	
+	public List<BookingDTO> getAllLessonsBookings(){
+		List<Booking> bookings = bookingService.getAllLessonsBookings();
+
+		return beanMappingService.mapTo(bookings, BookingDTO.class);
+	}
+	
+	public List<BookingDTO> getAllTournamentBookings(){
+		List<Booking> bookings = bookingService.getAllTournamentBookings();
+
+		return beanMappingService.mapTo(bookings, BookingDTO.class);
+	}
 
 }
