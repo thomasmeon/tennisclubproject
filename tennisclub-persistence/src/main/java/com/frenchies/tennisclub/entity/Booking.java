@@ -55,9 +55,12 @@ public class Booking {
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBooking;
 
-	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Hour24 hourOfBooking;
+	
+    private boolean lesson;
+    
+    private boolean tournament;
 	
 	// Constructor
 
@@ -126,6 +129,22 @@ public class Booking {
 
 	public void setIdBooking(Long idBooking) {
 		this.idBooking = idBooking;
+	}
+
+	public boolean isLesson() {
+		return lesson;
+	}
+
+	public void setLesson(boolean lesson) {
+		this.lesson = lesson;
+	}
+
+	public boolean isTournament() {
+		return tournament;
+	}
+
+	public void setTournament(boolean tournament) {
+		this.tournament = tournament;
 	}
 
 	@Override

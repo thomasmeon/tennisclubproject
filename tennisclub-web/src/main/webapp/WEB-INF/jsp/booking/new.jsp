@@ -50,9 +50,14 @@
             <form:label path="idUser1" cssClass="col-sm-2 control-label">Player 1</form:label>
             <div class="col-sm-10">
                 <form:select path="idUser1" cssClass="form-control">
-                    <c:forEach items="${users}" var="u">
-                        <form:option value="${u.id}">${u.surname} ${u.name}</form:option>
-                    </c:forEach>
+                    <c:if test="${authenticatedUser.admin}">
+	                    <c:forEach items="${users}" var="u">
+	                        <form:option value="${u.id}">${u.surname} ${u.name}</form:option>
+	                    </c:forEach>
+                    </c:if>
+                    <c:if test="${!authenticatedUser.admin}">
+	                    <form:option value="${authenticatedUser.id}">${authenticatedUser.surname} ${authenticatedUser.name}</form:option>
+                    </c:if>
                 </form:select>
                  <p class="help-block"><form:errors path="idUser1" cssClass="error"/></p>
             </div>
@@ -63,13 +68,26 @@
             <div class="col-sm-10">
                 <form:select path="idUser2" cssClass="form-control">
                     <c:forEach items="${users}" var="u">
-                        <form:option value="${u.id}">${u.surname} ${u.name}</form:option>
+                        <c:if test="${!(u.id == authenticatedUser.id) && !(u.admin)}">
+                        	<form:option value="${u.id}">${u.surname} ${u.name}</form:option>
+                        </c:if>
                     </c:forEach>
                 </form:select>
                 <p class="help-block"><form:errors path="idUser2" cssClass="error"/></p>
             </div>
         </div>
         
+        <c:if test="${authenticatedUser.admin}">
+	        <div class="form-group">
+	        	<div class="col-sm-10">
+	        	<div class="form-group">
+	             	<form:checkbox path="lesson" value="lesson"/>Lesson
+	             </div>
+	            <div class="form-group">
+	             	<form:checkbox path="tournament" value="tournament"/>Tournament
+	             </div>
+	        </div>
+        </c:if>
         	    
 
         <button class="btn btn-primary" type="submit">Create booking</button>

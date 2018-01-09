@@ -97,5 +97,21 @@ public class BookingDaoImpl implements BookingDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Booking> getAllLessonsBookings() {
+		TypedQuery<Booking> query = em.createQuery(
+				"Select b from Booking b where lesson = true",
+				Booking.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Booking> getAllTournamentBookings() {
+		TypedQuery<Booking> query = em.createQuery(
+				"Select b from Booking b where tournament = true",
+				Booking.class);
+		return query.getResultList();
+	}
+
 
 }

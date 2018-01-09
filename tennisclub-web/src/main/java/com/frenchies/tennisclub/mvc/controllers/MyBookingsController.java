@@ -67,6 +67,12 @@ public class MyBookingsController {
             case "lastyear":
                 bookings = bookingFacade.getAllBookingsLastYearByUser(id);
                 break;
+            case "lessons":
+                bookings = bookingFacade.getAllLessonsBookings();
+                break;
+            case "tournaments":
+                bookings = bookingFacade.getAllTournamentBookings();
+                break;
             default:
                 bookings = new ArrayList<>();
                 model.addAttribute("alert_danger", "Unknown filter " + filter);

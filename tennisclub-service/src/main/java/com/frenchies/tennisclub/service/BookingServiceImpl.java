@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.frenchies.tennisclub.dao.BookingDao;
+import com.frenchies.tennisclub.dto.BookingDTO;
 import com.frenchies.tennisclub.entity.Booking;
 import com.frenchies.tennisclub.entity.User;
 import com.frenchies.tennisclub.enums.Hour24;
@@ -156,5 +157,17 @@ public class BookingServiceImpl implements BookingService {
         }
         return true;
     }
+
+	@Override
+	public List<Booking> getAllLessonsBookings() {
+		List<Booking> Bookings = BookingDao.getAllLessonsBookings();
+		return Bookings;
+	}
+
+	@Override
+	public List<Booking> getAllTournamentBookings() {
+		List<Booking> Bookings = BookingDao.getAllTournamentBookings();
+		return Bookings;
+	}
 
 }

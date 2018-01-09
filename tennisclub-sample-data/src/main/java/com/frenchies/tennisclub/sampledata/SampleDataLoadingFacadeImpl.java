@@ -86,12 +86,13 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		cal.set(2017, 11, 3);
 		Date date21 = cal.getTime();
 
-		Court court1 = court(CourtType.GRASS, Status.AVAILABLE,5,4);
-		Court court2 = court(CourtType.CLAY, Status.AVAILABLE,4,8);
-		Court court3 = court(CourtType.HARD, Status.AVAILABLE,7,8);
-		Court court4 = court(CourtType.GRASS, Status.AVAILABLE,9,9);
+		Court court1 = court(CourtType.GRASS, Status.AVAILABLE, 5, 4);
+		Court court2 = court(CourtType.CLAY, Status.AVAILABLE, 4, 8);
+		Court court3 = court(CourtType.HARD, Status.AVAILABLE, 7, 8);
+		Court court4 = court(CourtType.GRASS, Status.AVAILABLE, 9, 9);
 		log.info("Loaded court.");
 
+		User admin = user("admin", "admin", "Admin", "admin@admin.com", "611775389", date21);
 		User HanSolo = user("hanshotfirst", "Han", "Solo", "millenium@falcon.com", "603123456", date12);
 		User LukeSkywalker = user("thewayyouthink", "Luke", "Skywlaker", "love@porgs.com", "656738925", date13);
 		User Chewbacca = user("arrgh", "Chewbacca", "LastWookie", "chewie@arrgh.com", "678093677", date14);
@@ -101,30 +102,33 @@ public class SampleDataLoadingFacadeImpl implements SampleDataLoadingFacade {
 		User Palpatine = user("pleiguis", "Senator", "Palpatine", "order@66.com", "688663091", date18);
 		User JarJarBinks = user("clumpsy", "JarJar", "Binks", "missa@naboo.com", "609800053", date19);
 		User BobaFeet = user("carbonite", "Boba", "Feet", "sarlac@jetpack.com", "690748920", date20);
-		User admin = user("admin", "admin", "Admin", "admin@admin.com", "611775389", date21);
 		log.info("Loaded users.");
 
-		Booking b1 = booking(date1, 1L, Hour24.EIGHT, HanSolo, LukeSkywalker);
-		Booking b2 = booking(date2, 1L, Hour24.SEVEN, Palpatine, JarJarBinks);
-		Booking b3 = booking(date3, 2L, Hour24.EIGHT, ObiwanKenobi, BobaFeet);
-		Booking b4 = booking(date4, 1L, Hour24.EIGHT, BenSolo, HanSolo);
-		Booking b5 = booking(date5, 4L, Hour24.EIGHT, Chewbacca, R2D2);
-		Booking b6 = booking(date6, 3L, Hour24.EIGHT, Palpatine, LukeSkywalker);
-		Booking b7 = booking(date7, 1L, Hour24.EIGHT, JarJarBinks, Chewbacca);
-		Booking b8 = booking(date8, 2L, Hour24.EIGHT, BenSolo, ObiwanKenobi);
-		Booking b9 = booking(date9, 3L, Hour24.EIGHT, BobaFeet, R2D2);
+		Booking b1 = booking(date1, 1L, Hour24.EIGHT, HanSolo, LukeSkywalker, false, false);
+		Booking b2 = booking(date2, 1L, Hour24.SEVEN, Palpatine, JarJarBinks, false, false);
+		Booking b3 = booking(date3, 2L, Hour24.EIGHT, ObiwanKenobi, BobaFeet, false, false);
+		Booking b4 = booking(date4, 1L, Hour24.EIGHT, BenSolo, HanSolo, false, false);
+		Booking b5 = booking(date5, 4L, Hour24.EIGHT, Chewbacca, R2D2, false, false);
+		Booking b6 = booking(date6, 3L, Hour24.EIGHT, Palpatine, LukeSkywalker, false, false);
+		Booking b7 = booking(date7, 1L, Hour24.EIGHT, JarJarBinks, Chewbacca, false, false);
+		Booking b8 = booking(date8, 2L, Hour24.EIGHT, BenSolo, ObiwanKenobi, false, false);
+		Booking b9 = booking(date9, 3L, Hour24.EIGHT, BobaFeet, R2D2, false, false);
+		Booking b10 = booking(date9, 1L, Hour24.EIGHT, admin, admin, true, false);
+		Booking b11 = booking(date9, 2L, Hour24.EIGHT, admin, admin, false, true);
 		log.info("Loaded bookings.");
 
 	}
 
-	private Booking booking(Date dateOfBooking, Long idCourt, Hour24 hourOfBooking, User user1, User user2)
-			throws IOException {
+	private Booking booking(Date dateOfBooking, Long idCourt, Hour24 hourOfBooking, User user1, User user2,
+			boolean lesson, boolean tournament) throws IOException {
 		Booking b = new Booking();
 		b.setDateOfBooking(dateOfBooking);
 		b.setHourOfBooking(hourOfBooking);
 		b.setUser1(user1);
 		b.setUser2(user2);
 		b.setIdCourt(idCourt);
+		b.setLesson(lesson);
+		b.setTournament(tournament);
 		bookingService.createBooking(b);
 		return b;
 	}

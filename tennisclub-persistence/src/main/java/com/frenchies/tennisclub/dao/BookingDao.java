@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.frenchies.tennisclub.entity.Booking;
-import com.frenchies.tennisclub.entity.Court;
 import com.frenchies.tennisclub.entity.User;
 
 /**
@@ -59,4 +58,8 @@ public interface BookingDao {
 	List<Booking> getBookingsForUserCreatedBetween(Date start, Date end, User u);
 
 	List<Booking> findByCourt(Long idCourt);
+	
+	public List<Booking> getAllLessonsBookings();
+	
+	public List<Booking> getAllTournamentBookings();
 }

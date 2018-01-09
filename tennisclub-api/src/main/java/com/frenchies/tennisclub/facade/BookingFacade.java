@@ -25,6 +25,10 @@ public interface BookingFacade {
 	public List<BookingDTO> getBookingsByCourt(Long idCourt);
 
 	public List<BookingDTO> getBookingsByUser(UserDTO u);
+	
+	public List<BookingDTO> getAllLessonsBookings();
+	
+	public List<BookingDTO> getAllTournamentBookings();
 
 	public List<BookingDTO> getAllBookingsLastWeek();
 

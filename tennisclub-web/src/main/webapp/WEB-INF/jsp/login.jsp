@@ -8,8 +8,8 @@
 <my:pagetemplate>
 <jsp:attribute name="body">
 
-    <h1>Please authenticate!</h1>
-    <form:form class="form-horizontal" role="form" method="post" modelAttribute="authAgent"  action="${pageContext.request.contextPath}/loged">
+    <form:form class="form-horizontal" role="form" method="post">
+        
         <div class="form-group">
             <label class="control-label col-sm-2" for="usernameInput">Username:</label>
             <div class="col-sm-10">
@@ -37,9 +37,8 @@
         
         
     <br /><hr><br />
-    <h3>Credentials</h3>
-    <p><strong>Admin Agent:</strong> username:Bond; password:pass</p>
-    <p><strong>Normal Agent:</strong> username:Chan; password:pass</p>
+    <h1>Credentials</h1>
+    
 
 </jsp:attribute>
 </my:pagetemplate>
